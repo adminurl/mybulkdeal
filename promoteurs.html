@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>MyBulkDeal — Partenariat promoteurs Dubai</title>
+<meta name="description" content="MyBulkDeal est l'opérateur qui achète vos stocks en bloc auprès d'un pool d'investisseurs agrégés. Closing 60 jours, zéro budget marketing, un acheteur unique. Simulateur interactif." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --bg: #000000;
+    --bg-2: #060606;
+    --bg-3: #0d0d0d;
+    --surface: #111111;
+    --surface-2: #161616;
+    --border: rgba(255,255,255,0.08);
+    --border-strong: rgba(255,255,255,0.18);
+    --text: #FFFFFF;
+    --text-2: #B8B8B8;
+    --text-3: #6B6B6B;
+    --green: #A3E635;
+    --green-bright: #BEF264;
+    --green-dark: #84CC16;
+    --green-glow: rgba(163, 230, 53, 0.45);
+    --green-soft: rgba(163, 230, 53, 0.08);
+    --red: #f87171;
+    --radius: 16px;
+    --radius-lg: 24px;
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg); color: var(--text);
+    line-height: 1.55; -webkit-font-smoothing: antialiased; overflow-x: hidden;
+  }
+  ::selection { background: var(--green); color: var(--bg); }
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+  h1, h2, h3, h4 { font-family: 'Inter', sans-serif; letter-spacing: -0.035em; line-height: 1.05; font-weight: 800; }
+  h1 { font-size: clamp(2.6rem, 6vw, 5rem); }
+  h2 { font-size: clamp(2rem, 4.5vw, 3.4rem); }
+  h3 { font-size: 1.3rem; font-weight: 700; letter-spacing: -0.02em; }
+  p { color: var(--text-2); }
+  a { color: inherit; text-decoration: none; }
+  .green { color: var(--green); }
+
+  .logotype { font-weight: 900; letter-spacing: -0.04em; }
+  .logotype .my { color: var(--text); }
+  .logotype .bulk { color: var(--green); }
+  .logotype .deal { color: var(--text); }
+  .logotype .dot { color: var(--green); }
+
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(0,0,0,0.78);
+    backdrop-filter: blur(20px) saturate(180%); -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 16px 24px; max-width: 1200px; margin: 0 auto; }
+  .nav-logo { font-size: 1.2rem; display: inline-flex; align-items: center; gap: 10px; }
+  .nav-tag { font-size: 0.72rem; padding: 4px 10px; border-radius: 999px; background: var(--green-soft); color: var(--green); border: 1px solid rgba(163, 230, 53, 0.3); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; }
+  .nav-links { display: flex; gap: 28px; align-items: center; }
+  .nav-links a { font-size: 0.92rem; color: var(--text-2); transition: color 0.2s; }
+  .nav-links a:hover { color: var(--green); }
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 13px 22px; border-radius: 999px; font-family: inherit; font-weight: 800; font-size: 0.95rem; cursor: pointer; border: none; text-decoration: none; transition: all 0.3s var(--ease); letter-spacing: -0.005em; }
+  .btn-primary { background: var(--green); color: #000; box-shadow: 0 6px 24px rgba(163, 230, 53, 0.25); }
+  .btn-primary:hover { background: var(--green-bright); transform: translateY(-2px); box-shadow: 0 14px 40px var(--green-glow); }
+  .btn-ghost { background: transparent; color: var(--text); border: 1.5px solid var(--border-strong); }
+  .btn-ghost:hover { border-color: var(--green); color: var(--green); transform: translateY(-2px); }
+  @media (max-width: 768px) { .nav-links a:not(.btn) { display: none; } .nav-tag { display: none; } }
+
+  .hero { position: relative; padding: 120px 0 50px; overflow: hidden; }
+  .hero::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(900px 500px at 20% 10%, rgba(163, 230, 53, 0.18), transparent 65%),
+                radial-gradient(700px 400px at 85% 50%, rgba(163, 230, 53, 0.08), transparent 60%);
+    pointer-events: none;
+  }
+  .hero::after {
+    content: ''; position: absolute; inset: 0;
+    background-image: linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size: 80px 80px;
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 30%, transparent 80%);
+    -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 30%, transparent 80%);
+    pointer-events: none;
+  }
+  .hero-inner { position: relative; text-align: center; max-width: 1000px; margin: 0 auto; }
+
+  /* Language selector (badge) */
+  .lang-selector {
+    position: relative;
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 9px 18px; border-radius: 999px;
+    background: var(--green-soft); border: 1px solid rgba(163, 230, 53, 0.3);
+    font-size: 0.85rem; color: var(--green);
+    margin-bottom: 28px; font-weight: 500;
+    cursor: pointer; user-select: none;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .lang-selector:hover { background: rgba(163, 230, 53, 0.14); border-color: rgba(163, 230, 53, 0.5); }
+  .lang-selector .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); box-shadow: 0 0 16px var(--green); animation: pulse 2.2s infinite; }
+  .lang-arrow { font-size: 0.7rem; opacity: 0.8; transition: transform 0.25s var(--ease); }
+  .lang-selector.open .lang-arrow { transform: rotate(180deg); }
+  .lang-dropdown {
+    position: absolute; top: calc(100% + 8px); left: 50%; transform: translateX(-50%);
+    background: var(--surface-2); border: 1px solid var(--border-strong); border-radius: 14px;
+    padding: 6px; min-width: 240px; display: none; z-index: 50;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.6), 0 0 0 1px rgba(163, 230, 53, 0.05);
+    text-align: left;
+  }
+  .lang-selector.open .lang-dropdown { display: block; }
+  .lang-option {
+    display: block; width: 100%; padding: 11px 14px;
+    background: transparent; border: none;
+    color: var(--text-2); text-align: left;
+    font-family: inherit; font-size: 0.9rem; font-weight: 500;
+    border-radius: 10px; cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+  }
+  .lang-option:hover { background: var(--green-soft); color: var(--text); }
+  .lang-option.active { background: var(--green-soft); color: var(--green); font-weight: 700; }
+  @keyframes pulse { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(0.85); } }
+
+  .hero h1 { margin-bottom: 22px; }
+  .hero h1 .accent { color: var(--green); }
+  .hero-subtitle { font-size: clamp(1.05rem, 1.7vw, 1.25rem); color: var(--text-2); max-width: 760px; margin: 0 auto; line-height: 1.5; }
+  .hero-subtitle strong { color: var(--text); font-weight: 600; }
+  .hero-cta { display: flex; gap: 14px; justify-content: center; margin-top: 38px; flex-wrap: wrap; }
+  .hero-foot { margin-top: 36px; display: flex; gap: 36px; flex-wrap: wrap; justify-content: center; font-size: 0.88rem; color: var(--text-3); }
+  .hero-foot span { display: inline-flex; align-items: center; gap: 8px; }
+  .hero-foot .tick { color: var(--green); font-weight: 700; }
+
+  section { padding: 60px 0; position: relative; }
+  .section-head { text-align: center; max-width: 820px; margin: 0 auto 40px; }
+  .section-tag { display: inline-block; padding: 7px 16px; border-radius: 999px; background: var(--green-soft); border: 1px solid rgba(163, 230, 53, 0.3); color: var(--green); font-size: 0.78rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 20px; }
+  .section-head p { font-size: 1.1rem; margin-top: 18px; }
+
+  /* SIMULATEUR */
+  .simulator { background: var(--bg); padding: 30px 0 80px; }
+  .sim-card {
+    max-width: 1140px; margin: 0 auto;
+    background: radial-gradient(800px 400px at 50% 0%, var(--green-soft), transparent 70%), var(--surface);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-lg);
+    padding: 44px 44px;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.4);
+  }
+  .sim-head { text-align: center; margin-bottom: 34px; }
+  .sim-head h2 { font-size: clamp(1.7rem, 3vw, 2.4rem); margin-bottom: 12px; }
+  .sim-head p { color: var(--text-2); font-size: 1rem; }
+  .sim-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 40px; }
+  @media (max-width: 980px) { .sim-grid { grid-template-columns: 1fr; gap: 30px; } }
+
+  .sim-controls { display: flex; flex-direction: column; gap: 28px; }
+  .sim-field { }
+  .sim-field-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px; gap: 12px; }
+  .sim-field-label { font-size: 0.85rem; color: var(--text-2); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; }
+  .sim-field-value { font-family: 'Inter', sans-serif; font-weight: 800; font-size: 1.4rem; color: var(--green); letter-spacing: -0.02em; white-space: nowrap; }
+  .sim-field-value .unit { font-size: 0.9rem; color: var(--text-2); font-weight: 500; margin-left: 4px; }
+  input[type="range"] {
+    -webkit-appearance: none; appearance: none;
+    width: 100%; height: 6px;
+    background: linear-gradient(to right, var(--green) 0%, var(--green) var(--p, 50%), var(--bg-3) var(--p, 50%), var(--bg-3) 100%);
+    border-radius: 999px; outline: none; cursor: pointer;
+  }
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none; appearance: none;
+    width: 22px; height: 22px; border-radius: 50%;
+    background: var(--green); border: 3px solid #000;
+    box-shadow: 0 0 0 2px var(--green), 0 8px 16px rgba(163, 230, 53, 0.4);
+    cursor: pointer; transition: transform 0.15s;
+  }
+  input[type="range"]::-webkit-slider-thumb:hover { transform: scale(1.15); }
+  input[type="range"]::-moz-range-thumb {
+    width: 22px; height: 22px; border-radius: 50%;
+    background: var(--green); border: 3px solid #000;
+    box-shadow: 0 0 0 2px var(--green), 0 8px 16px rgba(163, 230, 53, 0.4);
+    cursor: pointer;
+  }
+  .sim-field-range-labels { display: flex; justify-content: space-between; margin-top: 8px; color: var(--text-3); font-size: 0.75rem; }
+  .sim-hypothesis { margin-top: 10px; font-size: 0.82rem; color: var(--text-3); line-height: 1.5; padding: 14px; background: rgba(255,255,255,0.025); border-radius: 12px; border: 1px solid var(--border); }
+  .sim-hypothesis strong { color: var(--text-2); font-weight: 600; }
+
+  .sim-results { display: flex; flex-direction: column; gap: 16px; }
+  .sim-result-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  @media (max-width: 540px) { .sim-result-row { grid-template-columns: 1fr; } }
+  .sim-stat { padding: 22px 20px; background: var(--bg-2); border: 1px solid var(--border); border-radius: var(--radius); }
+  .sim-stat.highlight { background: linear-gradient(180deg, rgba(163,230,53,0.10), rgba(163,230,53,0.02)); border-color: rgba(163, 230, 53, 0.4); }
+  .sim-stat-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-3); margin-bottom: 8px; }
+  .sim-stat-value { font-family: 'Inter', sans-serif; font-weight: 900; font-size: 1.65rem; letter-spacing: -0.025em; white-space: nowrap; }
+  .sim-stat-value.green { color: var(--green); }
+  .sim-stat-value .unit { font-size: 0.85rem; color: var(--text-2); font-weight: 500; margin-left: 4px; }
+  .sim-stat-sub { font-size: 0.8rem; color: var(--text-3); margin-top: 6px; }
+
+  .sim-chart-wrap { background: var(--bg-2); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; margin-top: 12px; min-height: 320px; }
+  .sim-chart-title { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-2); font-weight: 600; margin-bottom: 14px; text-align: center; }
+  .sim-chart-title .vs { color: var(--green); }
+  .sim-chart-canvas { width: 100% !important; height: 280px !important; }
+
+  .sim-balance { margin-top: 28px; padding: 24px 28px; background: linear-gradient(135deg, rgba(163,230,53,0.12), rgba(163,230,53,0.04)); border: 1.5px solid rgba(163,230,53,0.35); border-radius: var(--radius); display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; }
+  .sim-balance-label { font-size: 0.92rem; color: var(--text); font-weight: 600; }
+  .sim-balance-value { font-family: 'Inter', sans-serif; font-weight: 900; font-size: 2rem; color: var(--green); letter-spacing: -0.03em; white-space: nowrap; }
+  .sim-balance-value.negative { color: var(--red); }
+  .sim-balance-detail { font-size: 0.85rem; color: var(--text-2); margin-top: 4px; }
+
+  /* LEVIERS */
+  .levers { background: var(--bg-2); }
+  .lever-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  @media (max-width: 880px) { .lever-grid { grid-template-columns: 1fr; } }
+  .lever-card {
+    padding: 36px 30px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+    transition: transform 0.4s var(--ease), border-color 0.4s var(--ease), box-shadow 0.4s var(--ease);
+    cursor: default; position: relative; overflow: hidden;
+  }
+  .lever-card:hover { transform: translateY(-8px) scale(1.03); border-color: rgba(163, 230, 53, 0.4); box-shadow: 0 30px 60px -20px rgba(163, 230, 53, 0.25); }
+  .lever-num { font-family: 'Inter', sans-serif; font-weight: 900; font-size: 3rem; color: var(--green); line-height: 1; letter-spacing: -0.05em; margin-bottom: 14px; }
+  .lever-card h3 { margin-bottom: 12px; font-size: 1.3rem; }
+  .lever-card p { font-size: 0.96rem; }
+
+  /* HOW IT WORKS */
+  .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+  @media (max-width: 980px) { .steps { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .steps { grid-template-columns: 1fr; } }
+  .step { padding: 30px 24px; background: var(--surface); border-radius: var(--radius); border: 1px solid var(--border); transition: transform 0.4s var(--ease), border-color 0.4s var(--ease); cursor: default; }
+  .step:hover { transform: translateY(-6px) scale(1.03); border-color: var(--green); }
+  .step-num { width: 42px; height: 42px; border-radius: 12px; background: var(--green); color: #000; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 1.1rem; margin-bottom: 18px; }
+  .step h3 { margin-bottom: 10px; font-size: 1.05rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--green); }
+  .step p { font-size: 0.92rem; }
+
+  /* POOL */
+  .pool { background: var(--bg-2); }
+  .pool-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+  @media (max-width: 980px) { .pool-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .pool-grid { grid-template-columns: 1fr; } }
+  .pool-card { padding: 28px 22px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); text-align: center; transition: transform 0.4s var(--ease), border-color 0.4s var(--ease); cursor: default; }
+  .pool-card:hover { transform: scale(1.04); border-color: var(--green); }
+  .pool-num { font-family: 'Inter', sans-serif; font-weight: 900; font-size: 2.4rem; color: var(--green); line-height: 1; letter-spacing: -0.04em; }
+  .pool-card h4 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-3); margin: 12px 0 8px; font-weight: 600; }
+  .pool-card p { font-size: 0.9rem; }
+
+  /* PARTNERSHIP PROPOSAL */
+  .partnership-card {
+    max-width: 980px; margin: 0 auto;
+    padding: 50px 44px;
+    background: radial-gradient(700px 350px at 50% 0%, var(--green-soft), transparent 70%), var(--surface);
+    border: 1.5px solid rgba(163,230,53,0.35);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 0 60px -20px var(--green-glow);
+  }
+  .partnership-intro { text-align: center; margin-bottom: 36px; }
+  .partnership-intro h2 { margin-bottom: 16px; }
+  .partnership-intro p { font-size: 1.1rem; color: var(--text-2); max-width: 700px; margin: 0 auto; }
+  .partnership-list { display: flex; flex-direction: column; gap: 18px; }
+  .partnership-item { display: flex; gap: 22px; padding: 22px; background: var(--bg-2); border: 1px solid var(--border); border-radius: var(--radius); transition: transform 0.4s var(--ease), border-color 0.4s var(--ease); }
+  .partnership-item:hover { border-color: var(--green); transform: translateX(4px); }
+  .partnership-num { flex-shrink: 0; width: 44px; height: 44px; border-radius: 12px; background: var(--green); color: #000; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 1.1rem; }
+  .partnership-content h3 { margin-bottom: 8px; font-size: 1.2rem; }
+  .partnership-content p { font-size: 0.96rem; color: var(--text-2); }
+  .partnership-cta { margin-top: 36px; text-align: center; }
+  .partnership-cta p { font-size: 1rem; color: var(--text-2); margin-bottom: 18px; }
+
+  /* FINAL CTA */
+  .final { padding: 60px 0; text-align: center; background: var(--bg); }
+  .final h2 { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 18px; }
+  .final p { font-size: 1.1rem; max-width: 620px; margin: 0 auto 28px; }
+
+  /* FOOTER */
+  footer { padding: 36px 0 28px; background: var(--bg-2); border-top: 1px solid var(--border); text-align: center; }
+  .foot-logo { font-size: 1.3rem; margin-bottom: 14px; }
+  .foot-info { color: var(--text-3); font-size: 0.88rem; margin-bottom: 8px; }
+  .foot-entity { color: var(--text-2); font-size: 0.92rem; margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--border); max-width: 540px; margin-left: auto; margin-right: auto; }
+  .foot-entity strong { color: var(--text); font-weight: 700; }
+  .foot-disclaimer { color: var(--text-3); font-size: 0.74rem; max-width: 760px; margin: 18px auto 0; line-height: 1.6; }
+
+  .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="logotype nav-logo">
+      <span class="logo-mark"><span class="my">My</span><span class="bulk">Bulk</span><span class="deal">Deal<span class="dot">.</span></span></span>
+      <span class="nav-tag" data-i18n="nav.tag">Promoteurs</span>
+    </a>
+    <div class="nav-links">
+      <a href="#simulateur" data-i18n="nav.sim">Simulateur</a>
+      <a href="#leviers" data-i18n="nav.levers">Vos gains</a>
+      <a href="#mecanique" data-i18n="nav.how">Mécanique</a>
+      <a href="#partenariat" data-i18n="nav.partnership">Partenariat</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="container hero-inner">
+
+    <div class="lang-selector" id="langSelector" aria-label="Choisir la langue">
+      <span class="dot"></span>
+      <span id="langCurrentLabel">🇫🇷 Page promoteurs</span>
+      <span class="lang-arrow">▾</span>
+      <div class="lang-dropdown" id="langDropdown" role="menu">
+        <button class="lang-option" data-lang="fr">🇫🇷 Page promoteurs</button>
+        <button class="lang-option" data-lang="en">🇬🇧 Developers page</button>
+        <button class="lang-option" data-lang="it">🇮🇹 Pagina sviluppatori</button>
+      </div>
+    </div>
+
+    <h1 data-i18n="hero.h1">Votre stock vendu en bloc,<br/><span class="accent">en 60 jours.</span></h1>
+    <p class="hero-subtitle" data-i18n="hero.subtitle">
+      Un acheteur unique pour 1 à 28 unités. <strong>Closing 60 jours</strong>, capital libéré avant signature, <strong>aucun budget marketing à votre charge</strong>. Nous agrégeons un pool d'investisseurs — family offices, particuliers qualifiés, expats mid-income — qui ne peuvent pas se positionner seuls sur un bien entier.
+    </p>
+    <div class="hero-cta">
+      <a href="#simulateur" class="btn btn-primary" data-i18n="hero.cta1">Lancer le simulateur ↓</a>
+      <a href="#partenariat" class="btn btn-ghost" data-i18n="hero.cta2">Voir notre proposition</a>
+    </div>
+    <div class="hero-foot">
+      <span><span class="tick">✓</span> <span data-i18n="hero.foot1">Closing en 60 jours</span></span>
+      <span><span class="tick">✓</span> <span data-i18n="hero.foot2">Zéro budget marketing</span></span>
+      <span><span class="tick">✓</span> <span data-i18n="hero.foot3">Une contrepartie unique</span></span>
+    </div>
+  </div>
+</header>
+
+<!-- SIMULATEUR -->
+<section id="simulateur" class="simulator">
+  <div class="container">
+    <div class="sim-card reveal">
+      <div class="sim-head">
+        <span class="section-tag" data-i18n="sim.tag">Le simulateur</span>
+        <h2 data-i18n="sim.h2">Le poids réel d'un deal bulk dans votre P&amp;L.</h2>
+        <p data-i18n="sim.p">Ajustez le montant et le discount — nous mettons en face votre <strong style="color:var(--text)">vrai coût de vente classique</strong>.</p>
+      </div>
+
+      <div class="sim-grid">
+        <!-- CONTROLS -->
+        <div class="sim-controls">
+          <div class="sim-field">
+            <div class="sim-field-head">
+              <span class="sim-field-label" data-i18n="sim.amount">Montant du deal</span>
+              <span class="sim-field-value" id="amountDisplay">3,0 M AED</span>
+            </div>
+            <input type="range" id="amountSlider" min="150" max="40000" value="3000" step="50">
+            <div class="sim-field-range-labels"><span>150 K AED</span><span>40 M AED</span></div>
+          </div>
+
+          <div class="sim-field">
+            <div class="sim-field-head">
+              <span class="sim-field-label" data-i18n="sim.discount">Discount accordé</span>
+              <span class="sim-field-value"><span id="discountVal">12</span><span class="unit">%</span></span>
+            </div>
+            <input type="range" id="discountSlider" min="0" max="25" value="12" step="1">
+            <div class="sim-field-range-labels"><span>0 %</span><span>25 %</span></div>
+          </div>
+
+          <div class="sim-field">
+            <div class="sim-field-head">
+              <span class="sim-field-label" data-i18n="sim.delay">Délai vente classique</span>
+              <span class="sim-field-value"><span id="delayVal">18</span><span class="unit" data-i18n="sim.unit.months">mois</span></span>
+            </div>
+            <input type="range" id="delaySlider" min="1" max="36" value="18" step="1">
+            <div class="sim-field-range-labels"><span data-i18n="sim.range.6m">1 mois</span><span data-i18n="sim.range.36m">36 mois</span></div>
+          </div>
+
+          <div class="sim-hypothesis" data-i18n="sim.hypothesis">
+            <strong>Hypothèses retenues</strong> · Closing bulk MyBulkDeal : 60 jours · Budget marketing classique (Meta Ads, brokers, salons, RP) : 8&nbsp;% du CA · Coût d'opportunité du capital immobilisé : 6&nbsp;% par an. <em>Valeurs ajustables — dites-nous les vôtres en RDV.</em>
+          </div>
+        </div>
+
+        <!-- RESULTS -->
+        <div class="sim-results">
+          <div class="sim-result-row">
+            <div class="sim-stat highlight">
+              <div class="sim-stat-label" data-i18n="sim.r.cash">Cash net au closing (60 j)</div>
+              <div class="sim-stat-value green" id="cashNet">2,64 M AED</div>
+              <div class="sim-stat-sub"><span data-i18n="sim.r.cash.sub">vs vente unitaire étalée sur</span> <span id="delayShow">18</span>&nbsp;<span data-i18n="sim.unit.months">mois</span></div>
+            </div>
+            <div class="sim-stat">
+              <div class="sim-stat-label" data-i18n="sim.r.marketing">Budget marketing évité</div>
+              <div class="sim-stat-value" id="marketingSaved">240 K AED</div>
+              <div class="sim-stat-sub" data-i18n="sim.r.marketing.sub">8 % du CA en ads, brokers, salons</div>
+            </div>
+          </div>
+          <div class="sim-result-row">
+            <div class="sim-stat">
+              <div class="sim-stat-label" data-i18n="sim.r.carrying">Coût de portage évité</div>
+              <div class="sim-stat-value" id="carryingSaved">270 K AED</div>
+              <div class="sim-stat-sub"><span data-i18n="sim.r.carrying.sub">capital débloqué</span> <span id="monthsSaved">17</span>&nbsp;<span data-i18n="sim.r.carrying.sub2">mois plus tôt</span></div>
+            </div>
+            <div class="sim-stat">
+              <div class="sim-stat-label" data-i18n="sim.r.discount">Discount accordé</div>
+              <div class="sim-stat-value" style="color: var(--text-2)" id="discountCost">360 K AED</div>
+              <div class="sim-stat-sub" data-i18n="sim.r.discount.sub">prix de la liquidité immédiate</div>
+            </div>
+          </div>
+
+          <div class="sim-chart-wrap">
+            <div class="sim-chart-title"><span data-i18n="sim.chart.title.left">Vente unitaire classique</span> <span class="vs" data-i18n="sim.chart.vs">vs</span> <span data-i18n="sim.chart.title.right">Vente bulk MyBulkDeal</span></div>
+            <canvas id="simChart" class="sim-chart-canvas"></canvas>
+          </div>
+
+          <div class="sim-balance">
+            <div>
+              <div class="sim-balance-label" data-i18n="sim.balance.label">Bénéfice net du deal bulk pour vous</div>
+              <div class="sim-balance-detail" data-i18n="sim.balance.detail">Budget marketing évité + coût de portage évité − discount accordé</div>
+            </div>
+            <div class="sim-balance-value" id="balanceValue">+150 K AED</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3 LEVIERS -->
+<section id="leviers" class="levers">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-tag" data-i18n="levers.tag">Trois leviers, un seul deal</span>
+      <h2 data-i18n="levers.h2">Pourquoi un acheteur bulk pèse plus<br/>qu'un acheteur unitaire.</h2>
+    </div>
+    <div class="lever-grid">
+      <div class="lever-card reveal">
+        <div class="lever-num">60j</div>
+        <h3 data-i18n="levers.l1.h3">Cash velocity</h3>
+        <p data-i18n="levers.l1.p">Le capital arrive en 60 jours après l'accord — pas en 18 à 24 mois de pre-sales étalées. Vous redéployez immédiatement sur votre prochain projet, vous baissez votre besoin en financement court terme, vous libérez votre stock du bilan.</p>
+      </div>
+      <div class="lever-card reveal">
+        <div class="lever-num">0&nbsp;€</div>
+        <h3 data-i18n="levers.l2.h3">Budget marketing à votre charge</h3>
+        <p data-i18n="levers.l2.p">Nous apportons les acheteurs. Aucune Meta Ads supplémentaire, aucune commission broker fragmentée, aucun salon Dubai Property Show à co-financer pour ces unités. Votre CAC sur ce bloc tombe à zéro.</p>
+      </div>
+      <div class="lever-card reveal">
+        <div class="lever-num">1</div>
+        <h3 data-i18n="levers.l3.h3">Une contrepartie, un SPA</h3>
+        <p data-i18n="levers.l3.p">Une seule signature, un seul transfert au DLD, un seul interlocuteur juridique. Quel que soit le nombre d'investisseurs derrière nous, vous traitez avec une société. Pas de 28 closings individuels à orchestrer.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MECANIQUE -->
+<section id="mecanique">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-tag" data-i18n="how.tag">Comment ça marche</span>
+      <h2 data-i18n="how.h2">De votre accord de principe<br/>à la signature du SPA — 60 jours.</h2>
+    </div>
+    <div class="steps">
+      <div class="step reveal">
+        <div class="step-num">1</div>
+        <h3 data-i18n="how.s1.h3">Accord de principe</h3>
+        <p data-i18n="how.s1.p">Vous nous présentez le projet et la grille bulk. Nous validons sous 7 jours et signons un MOU non engageant.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">2</div>
+        <h3 data-i18n="how.s2.h3">Pool constitué</h3>
+        <p data-i18n="how.s2.p">Nous activons notre tunnel : Meta Ads ciblées, qualification individuelle, KYC corporate, lettre d'intention. Pool prêt en 30 jours.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">3</div>
+        <h3 data-i18n="how.s3.h3">SPV libérée</h3>
+        <p data-i18n="how.s3.p">Société dédiée constituée à Dubai, capital intégralement libéré sur compte bancaire, prête à signer. Tout est sur la table avant le SPA.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">4</div>
+        <h3 data-i18n="how.s4.h3">SPA signé</h3>
+        <p data-i18n="how.s4.p">Une signature, un transfert escrow DLD, votre stock sort du bilan. Nous nous occupons ensuite de la mise en gestion locative.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- POOL — repositionné autour de la demande agrégée -->
+<section class="pool">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-tag" data-i18n="pool.tag">Le capital que nous agrégeons</span>
+      <h2 data-i18n="pool.h2">La demande que vos canaux<br/>de vente unitaire n'atteignent pas.</h2>
+      <p data-i18n="pool.p">Family offices, fonds privés, investisseurs particuliers qualifiés, expats mid-income — un capital diffus, prêt à se positionner sur l'immobilier Dubai, mais qui ne peut pas absorber seul une unité complète.</p>
+    </div>
+    <div class="pool-grid">
+      <div class="pool-card reveal">
+        <div class="pool-num">700+</div>
+        <h4 data-i18n="pool.c1.h4">Family Offices au DIFC</h4>
+        <p data-i18n="pool.c1.p">Concentration patrimoniale multi-actifs, en croissance accélérée depuis 2022 — allocations immobilières en cours d'arbitrage.</p>
+      </div>
+      <div class="pool-card reveal">
+        <div class="pool-num">50K+</div>
+        <h4 data-i18n="pool.c2.h4">Investisseurs en co-investissement Dubai</h4>
+        <p data-i18n="pool.c2.p">Stake, SmartCrowd, Holo, Bricks et autres plateformes prouvent que la demande en investissement fractionné immobilier UAE explose.</p>
+      </div>
+      <div class="pool-card reveal">
+        <div class="pool-num">1M+</div>
+        <h4 data-i18n="pool.c3.h4">Expats mid-income aux UAE</h4>
+        <p data-i18n="pool.c3.p">Cadres, professionnels, founders à capacité d'épargne mensuelle 10 K AED+ — qui regardent passer vos lancements sans pouvoir y entrer seuls.</p>
+      </div>
+      <div class="pool-card reveal">
+        <div class="pool-num">5–7</div>
+        <h4 data-i18n="pool.c4.h4">Ans de détention médiane</h4>
+        <p data-i18n="pool.c4.p">Investisseurs buy-and-hold structurés en SPV — pas de revente spéculative à 6 mois qui déstabilise votre tour ou votre comparable de prix.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NOTRE PROPOSITION DE PARTENARIAT -->
+<section id="partenariat">
+  <div class="container">
+    <div class="partnership-card reveal">
+      <div class="partnership-intro">
+        <span class="section-tag" data-i18n="partnership.tag">Notre proposition de partenariat</span>
+        <h2 data-i18n="partnership.h2">Trois engagements réciproques —<br/>un partenariat gagnant pour les deux côtés.</h2>
+        <p data-i18n="partnership.p">Pour que la mécanique tourne, il faut un alignement clair. Voici ce que nous demandons formellement à nos promoteurs partenaires — et ce que vous gagnez en échange.</p>
+      </div>
+
+      <div class="partnership-list">
+        <div class="partnership-item">
+          <div class="partnership-num">1</div>
+          <div class="partnership-content">
+            <h3 data-i18n="partnership.p1.h3">Un partenariat privilégié pour la mise en avant de vos produits</h3>
+            <p data-i18n="partnership.p1.p">Vous nous accordez le droit de communiquer publiquement sur notre plateforme MyBulkDeal autour de vos projets : renders, plans, photos, fiche technique, prix négociés, calendrier. C'est ce qui nous permet d'amorcer la machine côté investisseurs et d'écouler vos unités.</p>
+          </div>
+        </div>
+
+        <div class="partnership-item">
+          <div class="partnership-num">2</div>
+          <div class="partnership-content">
+            <h3 data-i18n="partnership.p2.h3">Des produits sexy — vos meilleures références</h3>
+            <p data-i18n="partnership.p2.p">Pour qu'un pool d'investisseurs se mobilise, il faut un projet désirable : adresse premium, design, marque promoteur reconnue, conditions financières attractives. On ne convertit pas avec du fond de tiroir — donnez-nous le haut du panier et vous le verrez tourner vite.</p>
+          </div>
+        </div>
+
+        <div class="partnership-item">
+          <div class="partnership-num">3</div>
+          <div class="partnership-content">
+            <h3 data-i18n="partnership.p3.h3">Une diffusion à votre base clients existante</h3>
+            <p data-i18n="partnership.p3.p">Vous avez dans votre CRM des prospects intéressés par Dubai mais sans budget pour acheter une unité complète. Aujourd'hui, ils partent acheter moins cher chez un concurrent ou abandonnent. Nous proposons de les récupérer côté participatif — vous monétisez une base que vous perdiez, sans déplacer votre cible unitaire.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="partnership-cta">
+        <p data-i18n="partnership.cta.p">Concrètement, un partenariat MyBulkDeal s'incarne dans un protocole d'accord court (2 à 3 pages) couvrant ces trois points + les conditions économiques projet par projet.</p>
+        <a href="https://calendar.app.google/THtgFsGRfykeiTnE8" target="_blank" rel="noopener" class="btn btn-primary" data-i18n="partnership.cta.btn">Réserver un RDV de cadrage →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final">
+  <div class="container">
+    <div class="reveal">
+      <h2 data-i18n="final.h2">Votre prochain bloc, signé en 60 jours.</h2>
+      <p data-i18n="final.p">30 minutes en visio pour cadrer le projet candidat, valider la grille et lancer le pool.</p>
+      <a href="https://calendar.app.google/THtgFsGRfykeiTnE8" target="_blank" rel="noopener" class="btn btn-primary" data-i18n="final.cta">Réserver un RDV →</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="logotype foot-logo">
+      <span class="my">My</span><span class="bulk">Bulk</span><span class="deal">Deal<span class="dot">.</span></span>
+    </div>
+    <div class="foot-info" data-i18n="footer.tagline">Opérateur de SPV immobilier · Dubai · Pool d'investisseurs agrégé</div>
+    <div class="foot-entity">
+      <strong>MONOP'consulting FZ-LLC</strong> · Dubai, UAE
+    </div>
+    <p class="foot-disclaimer" data-i18n="footer.disclaimer">
+      Document à destination des promoteurs partenaires. Les chiffres du simulateur reposent sur des hypothèses de marché (vente classique 1 à 36 mois, marketing 8 % du CA, coût d'opportunité 6 %/an) — ils sont indicatifs et seront ajustés en RDV à partir de vos propres données. Aucune offre contractuelle n'est formulée par ce document.
+    </p>
+  </div>
+</footer>
+
+<script>
+/* ========== TRANSLATIONS ========== */
+const I18N = {
+  fr: {
+    'meta.title': "MyBulkDeal — Partenariat promoteurs Dubai",
+    'meta.description': "MyBulkDeal est l'opérateur qui achète vos stocks en bloc auprès d'un pool d'investisseurs agrégés. Closing 60 jours, zéro budget marketing, un acheteur unique. Simulateur interactif.",
+    'lang.label': "🇫🇷 Page promoteurs",
+    'nav.tag': "Promoteurs",
+    'nav.sim': "Simulateur",
+    'nav.levers': "Vos gains",
+    'nav.how': "Mécanique",
+    'nav.partnership': "Partenariat",
+
+    'hero.h1': `Votre stock vendu en bloc,<br/><span class="accent">en 60 jours.</span>`,
+    'hero.subtitle': `Un acheteur unique pour 1 à 28 unités. <strong>Closing 60 jours</strong>, capital libéré avant signature, <strong>aucun budget marketing à votre charge</strong>. Nous agrégeons un pool d'investisseurs — family offices, particuliers qualifiés, expats mid-income — qui ne peuvent pas se positionner seuls sur un bien entier.`,
+    'hero.cta1': "Lancer le simulateur ↓",
+    'hero.cta2': "Voir notre proposition",
+    'hero.foot1': "Closing en 60 jours",
+    'hero.foot2': "Zéro budget marketing",
+    'hero.foot3': "Une contrepartie unique",
+
+    'sim.tag': "Le simulateur",
+    'sim.h2': "Le poids réel d'un deal bulk dans votre P&L.",
+    'sim.p': `Ajustez le montant et le discount — nous mettons en face votre <strong style="color:var(--text)">vrai coût de vente classique</strong>.`,
+    'sim.amount': "Montant du deal",
+    'sim.discount': "Discount accordé",
+    'sim.delay': "Délai vente classique",
+    'sim.unit.months': "mois",
+    'sim.range.6m': "1 mois",
+    'sim.range.36m': "36 mois",
+    'sim.hypothesis': `<strong>Hypothèses retenues</strong> · Closing bulk MyBulkDeal : 60 jours · Budget marketing classique (Meta Ads, brokers, salons, RP) : 8&nbsp;% du CA · Coût d'opportunité du capital immobilisé : 6&nbsp;% par an. <em>Valeurs ajustables — dites-nous les vôtres en RDV.</em>`,
+
+    'sim.r.cash': "Cash net au closing (60 j)",
+    'sim.r.cash.sub': "vs vente unitaire étalée sur",
+    'sim.r.marketing': "Budget marketing évité",
+    'sim.r.marketing.sub': "8 % du CA en ads, brokers, salons",
+    'sim.r.carrying': "Coût de portage évité",
+    'sim.r.carrying.sub': "capital débloqué",
+    'sim.r.carrying.sub2': "mois plus tôt",
+    'sim.r.discount': "Discount accordé",
+    'sim.r.discount.sub': "prix de la liquidité immédiate",
+
+    'sim.chart.title.left': "Vente unitaire classique",
+    'sim.chart.vs': "vs",
+    'sim.chart.title.right': "Vente bulk MyBulkDeal",
+    'sim.chart.axis1': "Durée jusqu'au cash (mois)",
+    'sim.chart.axis2': "Marketing à votre charge",
+    'sim.chart.axis3': "Coût de portage",
+    'sim.chart.legend.classic': "Vente unitaire classique",
+    'sim.chart.legend.bulk': "Vente bulk MyBulkDeal",
+    'sim.chart.tooltip.months': "mois",
+
+    'sim.balance.label': "Bénéfice net du deal bulk pour vous",
+    'sim.balance.detail': "Budget marketing évité + coût de portage évité − discount accordé",
+
+    'levers.tag': "Trois leviers, un seul deal",
+    'levers.h2': `Pourquoi un acheteur bulk pèse plus<br/>qu'un acheteur unitaire.`,
+    'levers.l1.h3': "Cash velocity",
+    'levers.l1.p': "Le capital arrive en 60 jours après l'accord — pas en 18 à 24 mois de pre-sales étalées. Vous redéployez immédiatement sur votre prochain projet, vous baissez votre besoin en financement court terme, vous libérez votre stock du bilan.",
+    'levers.l2.h3': "Budget marketing à votre charge",
+    'levers.l2.p': "Nous apportons les acheteurs. Aucune Meta Ads supplémentaire, aucune commission broker fragmentée, aucun salon Dubai Property Show à co-financer pour ces unités. Votre CAC sur ce bloc tombe à zéro.",
+    'levers.l3.h3': "Une contrepartie, un SPA",
+    'levers.l3.p': "Une seule signature, un seul transfert au DLD, un seul interlocuteur juridique. Quel que soit le nombre d'investisseurs derrière nous, vous traitez avec une société. Pas de 28 closings individuels à orchestrer.",
+
+    'how.tag': "Comment ça marche",
+    'how.h2': `De votre accord de principe<br/>à la signature du SPA — 60 jours.`,
+    'how.s1.h3': "Accord de principe",
+    'how.s1.p': "Vous nous présentez le projet et la grille bulk. Nous validons sous 7 jours et signons un MOU non engageant.",
+    'how.s2.h3': "Pool constitué",
+    'how.s2.p': "Nous activons notre tunnel : Meta Ads ciblées, qualification individuelle, KYC corporate, lettre d'intention. Pool prêt en 30 jours.",
+    'how.s3.h3': "SPV libérée",
+    'how.s3.p': "Société dédiée constituée à Dubai, capital intégralement libéré sur compte bancaire, prête à signer. Tout est sur la table avant le SPA.",
+    'how.s4.h3': "SPA signé",
+    'how.s4.p': "Une signature, un transfert escrow DLD, votre stock sort du bilan. Nous nous occupons ensuite de la mise en gestion locative.",
+
+    'pool.tag': "Le capital que nous agrégeons",
+    'pool.h2': `La demande que vos canaux<br/>de vente unitaire n'atteignent pas.`,
+    'pool.p': "Family offices, fonds privés, investisseurs particuliers qualifiés, expats mid-income — un capital diffus, prêt à se positionner sur l'immobilier Dubai, mais qui ne peut pas absorber seul une unité complète.",
+    'pool.c1.h4': "Family Offices au DIFC",
+    'pool.c1.p': "Concentration patrimoniale multi-actifs, en croissance accélérée depuis 2022 — allocations immobilières en cours d'arbitrage.",
+    'pool.c2.h4': "Investisseurs en co-investissement Dubai",
+    'pool.c2.p': "Stake, SmartCrowd, Holo, Bricks et autres plateformes prouvent que la demande en investissement fractionné immobilier UAE explose.",
+    'pool.c3.h4': "Expats mid-income aux UAE",
+    'pool.c3.p': "Cadres, professionnels, founders à capacité d'épargne mensuelle 10 K AED+ — qui regardent passer vos lancements sans pouvoir y entrer seuls.",
+    'pool.c4.h4': "Ans de détention médiane",
+    'pool.c4.p': "Investisseurs buy-and-hold structurés en SPV — pas de revente spéculative à 6 mois qui déstabilise votre tour ou votre comparable de prix.",
+
+    'partnership.tag': "Notre proposition de partenariat",
+    'partnership.h2': `Trois engagements réciproques —<br/>un partenariat gagnant pour les deux côtés.`,
+    'partnership.p': "Pour que la mécanique tourne, il faut un alignement clair. Voici ce que nous demandons formellement à nos promoteurs partenaires — et ce que vous gagnez en échange.",
+    'partnership.p1.h3': "Un partenariat privilégié pour la mise en avant de vos produits",
+    'partnership.p1.p': "Vous nous accordez le droit de communiquer publiquement sur notre plateforme MyBulkDeal autour de vos projets : renders, plans, photos, fiche technique, prix négociés, calendrier. C'est ce qui nous permet d'amorcer la machine côté investisseurs et d'écouler vos unités.",
+    'partnership.p2.h3': "Des produits sexy — vos meilleures références",
+    'partnership.p2.p': "Pour qu'un pool d'investisseurs se mobilise, il faut un projet désirable : adresse premium, design, marque promoteur reconnue, conditions financières attractives. On ne convertit pas avec du fond de tiroir — donnez-nous le haut du panier et vous le verrez tourner vite.",
+    'partnership.p3.h3': "Une diffusion à votre base clients existante",
+    'partnership.p3.p': "Vous avez dans votre CRM des prospects intéressés par Dubai mais sans budget pour acheter une unité complète. Aujourd'hui, ils partent acheter moins cher chez un concurrent ou abandonnent. Nous proposons de les récupérer côté participatif — vous monétisez une base que vous perdiez, sans déplacer votre cible unitaire.",
+    'partnership.cta.p': "Concrètement, un partenariat MyBulkDeal s'incarne dans un protocole d'accord court (2 à 3 pages) couvrant ces trois points + les conditions économiques projet par projet.",
+    'partnership.cta.btn': "Réserver un RDV de cadrage →",
+
+    'final.h2': "Votre prochain bloc, signé en 60 jours.",
+    'final.p': "30 minutes en visio pour cadrer le projet candidat, valider la grille et lancer le pool.",
+    'final.cta': "Réserver un RDV →",
+
+    'footer.tagline': "Opérateur de SPV immobilier · Dubai · Pool d'investisseurs agrégé",
+    'footer.disclaimer': "Document à destination des promoteurs partenaires. Les chiffres du simulateur reposent sur des hypothèses de marché (vente classique 1 à 36 mois, marketing 8 % du CA, coût d'opportunité 6 %/an) — ils sont indicatifs et seront ajustés en RDV à partir de vos propres données. Aucune offre contractuelle n'est formulée par ce document."
+  },
+
+  en: {
+    'meta.title': "MyBulkDeal — Developer partnership for Dubai real estate",
+    'meta.description': "MyBulkDeal is the SPV operator that buys your inventory in bulk from an aggregated pool of investors. 60-day closing, zero marketing budget, single counterparty. Interactive simulator.",
+    'lang.label': "🇬🇧 Developers page",
+    'nav.tag': "Developers",
+    'nav.sim': "Simulator",
+    'nav.levers': "Your gains",
+    'nav.how': "How it works",
+    'nav.partnership': "Partnership",
+
+    'hero.h1': `Your inventory sold in bulk,<br/><span class="accent">in 60 days.</span>`,
+    'hero.subtitle': `A single buyer for 1 to 28 units. <strong>60-day closing</strong>, fully-funded capital before signature, <strong>zero marketing budget on your side</strong>. We aggregate a pool of investors — family offices, qualified individuals, mid-income expats — who can't position alone on a full unit.`,
+    'hero.cta1': "Launch the simulator ↓",
+    'hero.cta2': "See our proposal",
+    'hero.foot1': "60-day closing",
+    'hero.foot2': "Zero marketing budget",
+    'hero.foot3': "Single counterparty",
+
+    'sim.tag': "The simulator",
+    'sim.h2': "What a bulk deal really weighs in your P&L.",
+    'sim.p': `Adjust the amount and the discount — we put your <strong style="color:var(--text)">real cost of unitary sales</strong> next to it.`,
+    'sim.amount': "Deal size",
+    'sim.discount': "Discount granted",
+    'sim.delay': "Unitary sales horizon",
+    'sim.unit.months': "months",
+    'sim.range.6m': "1 month",
+    'sim.range.36m': "36 months",
+    'sim.hypothesis': `<strong>Assumptions used</strong> · MyBulkDeal bulk closing: 60 days · Classic marketing budget (Meta Ads, brokers, exhibitions, PR): 8&nbsp;% of revenue · Opportunity cost of immobilised capital: 6&nbsp;% per year. <em>All adjustable — share yours in the call.</em>`,
+
+    'sim.r.cash': "Net cash at closing (60 d)",
+    'sim.r.cash.sub': "vs unitary sales over",
+    'sim.r.marketing': "Marketing budget avoided",
+    'sim.r.marketing.sub': "8% of revenue on ads, brokers, shows",
+    'sim.r.carrying': "Carrying cost avoided",
+    'sim.r.carrying.sub': "capital freed",
+    'sim.r.carrying.sub2': "months earlier",
+    'sim.r.discount': "Discount granted",
+    'sim.r.discount.sub': "the price of instant liquidity",
+
+    'sim.chart.title.left': "Unitary sales (classic)",
+    'sim.chart.vs': "vs",
+    'sim.chart.title.right': "Bulk sale MyBulkDeal",
+    'sim.chart.axis1': "Time to cash (months)",
+    'sim.chart.axis2': "Marketing on your side",
+    'sim.chart.axis3': "Carrying cost",
+    'sim.chart.legend.classic': "Unitary sales (classic)",
+    'sim.chart.legend.bulk': "Bulk sale MyBulkDeal",
+    'sim.chart.tooltip.months': "months",
+
+    'sim.balance.label': "Net benefit of the bulk deal for you",
+    'sim.balance.detail': "Marketing avoided + carrying cost avoided − discount granted",
+
+    'levers.tag': "Three levers, one deal",
+    'levers.h2': `Why a bulk buyer weighs more<br/>than a unitary buyer.`,
+    'levers.l1.h3': "Cash velocity",
+    'levers.l1.p': "Capital lands in 60 days after agreement — not over 18 to 24 months of spread-out pre-sales. You redeploy immediately on your next project, reduce your short-term financing needs, free your inventory from the balance sheet.",
+    'levers.l2.h3': "Marketing budget on your side",
+    'levers.l2.p': "We bring the buyers. No extra Meta Ads, no fragmented broker commissions, no Dubai Property Show booth to co-finance for these units. Your CAC on this block drops to zero.",
+    'levers.l3.h3': "One counterparty, one SPA",
+    'levers.l3.p': "One signature, one DLD transfer, one legal contact. No matter how many investors stand behind us, you deal with one company. No 28 individual closings to orchestrate.",
+
+    'how.tag': "How it works",
+    'how.h2': `From your in-principle agreement<br/>to SPA signature — 60 days.`,
+    'how.s1.h3': "Agreement in principle",
+    'how.s1.p': "You present the project and the bulk grid. We validate within 7 days and sign a non-binding MOU.",
+    'how.s2.h3': "Pool assembled",
+    'how.s2.p': "We launch our funnel: targeted Meta Ads, individual qualification, corporate KYC, letter of intent. Pool ready in 30 days.",
+    'how.s3.h3': "SPV funded",
+    'how.s3.p': "Dedicated company set up in Dubai, capital fully released on a bank account, ready to sign. Everything is on the table before the SPA.",
+    'how.s4.h3': "SPA signed",
+    'how.s4.p': "One signature, one DLD escrow transfer, your inventory leaves the balance sheet. We then take over the property management.",
+
+    'pool.tag': "The capital we aggregate",
+    'pool.h2': `The demand your unitary sales channels<br/>can't reach.`,
+    'pool.p': "Family offices, private funds, qualified individual investors, mid-income expats — diffuse capital, ready to take a position in Dubai real estate, but unable to absorb a full unit alone.",
+    'pool.c1.h4': "Family Offices at DIFC",
+    'pool.c1.p': "Multi-asset wealth concentration, growing fast since 2022 — real estate allocations being arbitrated.",
+    'pool.c2.h4': "Co-investment investors in Dubai",
+    'pool.c2.p': "Stake, SmartCrowd, Holo, Bricks and other platforms prove that demand for fractional UAE real estate is exploding.",
+    'pool.c3.h4': "Mid-income UAE expats",
+    'pool.c3.p': "Executives, professionals, founders with monthly savings capacity of AED 10K+ — watching your launches go by without being able to enter alone.",
+    'pool.c4.h4': "Years of median hold",
+    'pool.c4.p': "Buy-and-hold investors structured via SPV — no 6-month speculative resale that destabilises your tower or your price comparable.",
+
+    'partnership.tag': "Our partnership proposal",
+    'partnership.h2': `Three reciprocal commitments —<br/>a partnership that wins on both sides.`,
+    'partnership.p': "For the mechanic to spin, we need a clear alignment. Here's what we formally ask of our developer partners — and what you gain in return.",
+    'partnership.p1.h3': "Preferred partnership to showcase your products",
+    'partnership.p1.p': "You grant us the right to communicate publicly on the MyBulkDeal platform about your projects: renders, plans, photos, technical sheets, negotiated prices, timeline. That's what allows us to start the engine on the investor side and clear your units.",
+    'partnership.p2.h3': "Sexy products — your best references",
+    'partnership.p2.p': "For an investor pool to mobilise, the project must be desirable: premium address, design, recognised developer brand, attractive financial conditions. You don't convert with leftovers — give us the best of your shelf and you'll watch it move fast.",
+    'partnership.p3.h3': "Distribution to your existing customer base",
+    'partnership.p3.p': "Your CRM holds prospects interested in Dubai but without budget for a full unit. Today, they go buy cheaper at a competitor or give up. We propose to recover them on the participative side — you monetise a base you were losing, without moving your unitary target.",
+    'partnership.cta.p': "Concretely, a MyBulkDeal partnership takes the form of a short MOU (2 to 3 pages) covering these three points + the economic terms project by project.",
+    'partnership.cta.btn': "Book a framing call →",
+
+    'final.h2': "Your next bulk, signed in 60 days.",
+    'final.p': "30 minutes on a video call to frame the candidate project, validate the grid and launch the pool.",
+    'final.cta': "Book a call →",
+
+    'footer.tagline': "Real estate SPV operator · Dubai · Aggregated investor pool",
+    'footer.disclaimer': "Document addressed to developer partners. The simulator figures rely on market assumptions (unitary sales 1 to 36 months, marketing 8% of revenue, opportunity cost 6%/year) — they are indicative and will be adjusted in call from your own data. No contractual offer is made through this document."
+  },
+
+  it: {
+    'meta.title': "MyBulkDeal — Partnership con sviluppatori a Dubai",
+    'meta.description': "MyBulkDeal è l'operatore di SPV che acquista il vostro stock in blocco da un pool di investitori aggregati. Closing in 60 giorni, zero budget marketing, controparte unica. Simulatore interattivo.",
+    'lang.label': "🇮🇹 Pagina sviluppatori",
+    'nav.tag': "Sviluppatori",
+    'nav.sim': "Simulatore",
+    'nav.levers': "I vostri guadagni",
+    'nav.how': "Come funziona",
+    'nav.partnership': "Partnership",
+
+    'hero.h1': `Il vostro stock venduto in blocco,<br/><span class="accent">in 60 giorni.</span>`,
+    'hero.subtitle': `Un compratore unico per 1 a 28 unità. <strong>Closing in 60 giorni</strong>, capitale liberato prima della firma, <strong>nessun budget marketing a vostro carico</strong>. Aggreghiamo un pool di investitori — family office, privati qualificati, expat mid-income — che non possono posizionarsi da soli su un'unità intera.`,
+    'hero.cta1': "Avvia il simulatore ↓",
+    'hero.cta2': "Vedi la nostra proposta",
+    'hero.foot1': "Closing in 60 giorni",
+    'hero.foot2': "Zero budget marketing",
+    'hero.foot3': "Controparte unica",
+
+    'sim.tag': "Il simulatore",
+    'sim.h2': "Il peso reale di un deal in blocco nel vostro P&L.",
+    'sim.p': `Regolate importo e sconto — vi mettiamo di fronte il <strong style="color:var(--text)">vero costo della vendita unitaria</strong>.`,
+    'sim.amount': "Importo del deal",
+    'sim.discount': "Sconto concesso",
+    'sim.delay': "Tempo vendita unitaria",
+    'sim.unit.months': "mesi",
+    'sim.range.6m': "1 mese",
+    'sim.range.36m': "36 mesi",
+    'sim.hypothesis': `<strong>Ipotesi utilizzate</strong> · Closing bulk MyBulkDeal: 60 giorni · Budget marketing classico (Meta Ads, broker, fiere, PR): 8&nbsp;% del fatturato · Costo opportunità del capitale immobilizzato: 6&nbsp;% annuo. <em>Tutti i valori sono modulabili — ci direte i vostri in call.</em>`,
+
+    'sim.r.cash': "Cash netto al closing (60 g)",
+    'sim.r.cash.sub': "vs vendita unitaria distribuita su",
+    'sim.r.marketing': "Budget marketing evitato",
+    'sim.r.marketing.sub': "8% del fatturato in ads, broker, fiere",
+    'sim.r.carrying': "Costo di portage evitato",
+    'sim.r.carrying.sub': "capitale liberato",
+    'sim.r.carrying.sub2': "mesi prima",
+    'sim.r.discount': "Sconto concesso",
+    'sim.r.discount.sub': "il prezzo della liquidità immediata",
+
+    'sim.chart.title.left': "Vendita unitaria classica",
+    'sim.chart.vs': "vs",
+    'sim.chart.title.right': "Vendita in blocco MyBulkDeal",
+    'sim.chart.axis1': "Tempo fino al cash (mesi)",
+    'sim.chart.axis2': "Marketing a vostro carico",
+    'sim.chart.axis3': "Costo di portage",
+    'sim.chart.legend.classic': "Vendita unitaria classica",
+    'sim.chart.legend.bulk': "Vendita in blocco MyBulkDeal",
+    'sim.chart.tooltip.months': "mesi",
+
+    'sim.balance.label': "Beneficio netto del deal in blocco per voi",
+    'sim.balance.detail': "Marketing evitato + costo di portage evitato − sconto concesso",
+
+    'levers.tag': "Tre leve, un solo deal",
+    'levers.h2': `Perché un compratore in blocco pesa più<br/>di un compratore unitario.`,
+    'levers.l1.h3': "Cash velocity",
+    'levers.l1.p': "Il capitale arriva in 60 giorni dall'accordo — non su 18-24 mesi di pre-sales distribuite. Riallocate subito sul vostro prossimo progetto, riducete il fabbisogno di finanziamento a breve, alleggerite il bilancio.",
+    'levers.l2.h3': "Budget marketing a vostro carico",
+    'levers.l2.p': "Portiamo noi i compratori. Nessuna Meta Ads aggiuntiva, nessuna commissione broker frammentata, nessuna fiera Dubai Property Show da co-finanziare per queste unità. Il vostro CAC su questo blocco va a zero.",
+    'levers.l3.h3': "Una controparte, un SPA",
+    'levers.l3.p': "Una sola firma, un solo trasferimento al DLD, un solo interlocutore legale. Indipendentemente dal numero di investitori dietro di noi, trattate con una società. Niente 28 closing individuali da orchestrare.",
+
+    'how.tag': "Come funziona",
+    'how.h2': `Dall'accordo di principio<br/>alla firma del SPA — 60 giorni.`,
+    'how.s1.h3': "Accordo di principio",
+    'how.s1.p': "Ci presentate il progetto e la griglia bulk. Validiamo entro 7 giorni e firmiamo un MOU non vincolante.",
+    'how.s2.h3': "Pool costituito",
+    'how.s2.p': "Attiviamo il nostro funnel: Meta Ads mirate, qualifica individuale, KYC corporate, lettera d'intento. Pool pronto in 30 giorni.",
+    'how.s3.h3': "SPV finanziata",
+    'how.s3.p': "Società dedicata costituita a Dubai, capitale integralmente liberato sul conto bancario, pronta a firmare. Tutto è sul tavolo prima del SPA.",
+    'how.s4.h3': "SPA firmato",
+    'how.s4.p': "Una firma, un trasferimento escrow al DLD, il vostro stock esce dal bilancio. Ci occupiamo poi della gestione locativa.",
+
+    'pool.tag': "Il capitale che aggreghiamo",
+    'pool.h2': `La domanda che i vostri canali<br/>di vendita unitaria non raggiungono.`,
+    'pool.p': "Family office, fondi privati, investitori privati qualificati, expat mid-income — un capitale diffuso, pronto a posizionarsi sull'immobiliare di Dubai, ma incapace di assorbire da solo un'unità completa.",
+    'pool.c1.h4': "Family Office al DIFC",
+    'pool.c1.p': "Concentrazione patrimoniale multi-asset, in crescita accelerata dal 2022 — allocazioni immobiliari in arbitraggio.",
+    'pool.c2.h4': "Investitori in co-investimento Dubai",
+    'pool.c2.p': "Stake, SmartCrowd, Holo, Bricks e altre piattaforme dimostrano che la domanda di investimento frazionato immobiliare UAE è in esplosione.",
+    'pool.c3.h4': "Expat mid-income negli UAE",
+    'pool.c3.p': "Dirigenti, professionisti, founder con capacità di risparmio mensile di 10 K AED+ — che guardano passare i vostri lanci senza poterci entrare da soli.",
+    'pool.c4.h4': "Anni di detenzione mediana",
+    'pool.c4.p': "Investitori buy-and-hold strutturati in SPV — niente rivendita speculativa a 6 mesi che destabilizzi la vostra torre o il comparable di prezzo.",
+
+    'partnership.tag': "La nostra proposta di partnership",
+    'partnership.h2': `Tre impegni reciproci —<br/>una partnership win-win.`,
+    'partnership.p': "Perché la meccanica giri, serve un allineamento chiaro. Ecco cosa chiediamo formalmente ai nostri sviluppatori partner — e cosa guadagnate in cambio.",
+    'partnership.p1.h3': "Una partnership privilegiata per la valorizzazione dei vostri prodotti",
+    'partnership.p1.p': "Ci concedete il diritto di comunicare pubblicamente sulla nostra piattaforma MyBulkDeal sui vostri progetti: render, planimetrie, foto, scheda tecnica, prezzi negoziati, calendario. È ciò che ci permette di innescare la macchina sul lato investitori e di smaltire le vostre unità.",
+    'partnership.p2.h3': "Prodotti sexy — le vostre referenze migliori",
+    'partnership.p2.p': "Perché un pool di investitori si mobiliti, serve un progetto desiderabile: indirizzo premium, design, brand sviluppatore riconosciuto, condizioni finanziarie attrattive. Non si converte con i fondi di magazzino — dateci la parte alta dello scaffale e la vedrete girare velocemente.",
+    'partnership.p3.h3': "Distribuzione alla vostra base clienti esistente",
+    'partnership.p3.p': "Avete nel CRM prospect interessati a Dubai ma senza budget per un'unità completa. Oggi vanno a comprare più economico da un concorrente o abbandonano. Proponiamo di recuperarli sul lato partecipativo — monetizzate una base che perdevate, senza spostare il vostro target unitario.",
+    'partnership.cta.p': "Concretamente, una partnership MyBulkDeal si incarna in un protocollo d'accordo breve (2-3 pagine) che copre questi tre punti + le condizioni economiche progetto per progetto.",
+    'partnership.cta.btn': "Prenota un call di inquadramento →",
+
+    'final.h2': "Il vostro prossimo blocco, firmato in 60 giorni.",
+    'final.p': "30 minuti in videocall per inquadrare il progetto candidato, validare la griglia e lanciare il pool.",
+    'final.cta': "Prenota un call →",
+
+    'footer.tagline': "Operatore di SPV immobiliari · Dubai · Pool di investitori aggregato",
+    'footer.disclaimer': "Documento destinato agli sviluppatori partner. I numeri del simulatore si basano su ipotesi di mercato (vendita classica 1-36 mesi, marketing 8% del fatturato, costo opportunità 6%/anno) — sono indicativi e saranno aggiustati in call dai vostri dati. Nessuna offerta contrattuale è formulata da questo documento."
+  }
+};
+
+/* ========== STATE ========== */
+let currentLang = 'fr';
+
+/* ========== AMOUNT FORMATTING ========== */
+function formatAmount(valK, lang) {
+  // valK is in thousands of AED (e.g., 150 = 150K AED, 3000 = 3M AED)
+  const sep = (lang === 'en') ? '.' : ',';
+  if (valK < 1000) {
+    return (lang === 'en') ? `AED ${valK}K` : `${valK} K AED`;
+  }
+  const valM = valK / 1000;
+  const txt = (valM % 1 === 0) ? valM.toString() : valM.toFixed(1).replace('.', sep);
+  return (lang === 'en') ? `AED ${txt}M` : `${txt} M AED`;
+}
+function formatNumber(num, lang, decimals = 0) {
+  const sep = (lang === 'en') ? '.' : ',';
+  return num.toFixed(decimals).replace('.', sep);
+}
+
+/* ========== SIMULATEUR ========== */
+const amountSlider = document.getElementById('amountSlider');
+const discountSlider = document.getElementById('discountSlider');
+const delaySlider = document.getElementById('delaySlider');
+
+const amountDisplay = document.getElementById('amountDisplay');
+const discountVal = document.getElementById('discountVal');
+const delayVal = document.getElementById('delayVal');
+const delayShow = document.getElementById('delayShow');
+
+const cashNet = document.getElementById('cashNet');
+const marketingSaved = document.getElementById('marketingSaved');
+const carryingSaved = document.getElementById('carryingSaved');
+const monthsSaved = document.getElementById('monthsSaved');
+const discountCost = document.getElementById('discountCost');
+const balanceValue = document.getElementById('balanceValue');
+
+// Hypothèses
+const MARKETING_RATE = 0.08;   // 8% du CA
+const CARRYING_RATE = 0.06;    // 6% par an
+const BULK_MONTHS = 2;         // 60 jours
+
+function updateSliderFill(slider) {
+  const min = +slider.min, max = +slider.max, val = +slider.value;
+  const pct = ((val - min) / (max - min)) * 100;
+  slider.style.setProperty('--p', pct + '%');
+}
+
+let chart = null;
+
+function compute() {
+  const amountK = +amountSlider.value;            // en K AED
+  const discount = +discountSlider.value;          // en %
+  const delay = +delaySlider.value;                // en mois
+  const lang = currentLang;
+
+  amountDisplay.textContent = formatAmount(amountK, lang);
+  discountVal.textContent = discount;
+  delayVal.textContent = delay;
+  delayShow.textContent = delay;
+
+  updateSliderFill(amountSlider);
+  updateSliderFill(discountSlider);
+  updateSliderFill(delaySlider);
+
+  // Calculs en K AED
+  const cashNetK = amountK * (1 - discount / 100);
+  const marketingSavedK = amountK * MARKETING_RATE;
+  const carryingSavedK = amountK * CARRYING_RATE * (delay / 12);
+  const discountCostK = amountK * (discount / 100);
+  const balanceK = marketingSavedK + carryingSavedK - discountCostK;
+  const monthsSavedVal = delay - BULK_MONTHS;
+
+  cashNet.textContent = formatAmount(Math.round(cashNetK), lang);
+  marketingSaved.textContent = formatAmount(Math.round(marketingSavedK), lang);
+  carryingSaved.textContent = formatAmount(Math.round(carryingSavedK), lang);
+  monthsSaved.textContent = monthsSavedVal;
+  discountCost.textContent = formatAmount(Math.round(discountCostK), lang);
+
+  // Balance final
+  const sign = balanceK >= 0 ? '+' : '−';
+  balanceValue.textContent = sign + formatAmount(Math.round(Math.abs(balanceK)), lang);
+  balanceValue.classList.toggle('negative', balanceK < 0);
+
+  // Update chart
+  updateChart(delay, marketingSavedK / 1000, carryingSavedK / 1000, lang);
+}
+
+function updateChart(delay, marketingM, carryingM, lang) {
+  const ctx = document.getElementById('simChart').getContext('2d');
+  const dict = I18N[lang];
+
+  const data = {
+    labels: [dict['sim.chart.axis1'], dict['sim.chart.axis2'] + ' (M AED)', dict['sim.chart.axis3'] + ' (M AED)'],
+    datasets: [
+      {
+        label: dict['sim.chart.legend.classic'],
+        data: [delay, marketingM, carryingM],
+        backgroundColor: 'rgba(248, 113, 113, 0.7)',
+        borderColor: 'rgba(248, 113, 113, 1)',
+        borderWidth: 1.5,
+        borderRadius: 6,
+      },
+      {
+        label: dict['sim.chart.legend.bulk'],
+        data: [2, 0, 0],
+        backgroundColor: 'rgba(163, 230, 53, 0.8)',
+        borderColor: 'rgba(163, 230, 53, 1)',
+        borderWidth: 1.5,
+        borderRadius: 6,
+      }
+    ]
+  };
+
+  if (chart) {
+    chart.data = data;
+    chart.update('none');
+    return;
+  }
+
+  chart = new Chart(ctx, {
+    type: 'bar',
+    data: data,
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          position: 'bottom',
+          labels: { color: '#B8B8B8', font: { family: 'Inter', size: 12, weight: '600' }, padding: 14, usePointStyle: true, pointStyle: 'rectRounded' }
+        },
+        tooltip: {
+          backgroundColor: '#000',
+          borderColor: 'rgba(163, 230, 53, 0.3)',
+          borderWidth: 1,
+          titleColor: '#fff',
+          bodyColor: '#B8B8B8',
+          titleFont: { family: 'Inter', weight: '700' },
+          bodyFont: { family: 'Inter' },
+          padding: 12,
+          callbacks: {
+            label: function(ctx) {
+              const v = ctx.parsed.y;
+              const label = ctx.dataset.label;
+              const isMonths = ctx.label === dict['sim.chart.axis1'];
+              if (isMonths) return `${label}: ${v} ${dict['sim.chart.tooltip.months']}`;
+              return `${label}: ${formatNumber(v, currentLang, 2)} M AED`;
+            }
+          }
+        }
+      },
+      scales: {
+        x: { grid: { display: false }, ticks: { color: '#B8B8B8', font: { family: 'Inter', size: 11 } } },
+        y: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#6B6B6B', font: { family: 'Inter', size: 11 } }, beginAtZero: true }
+      }
+    }
+  });
+}
+
+amountSlider.addEventListener('input', compute);
+discountSlider.addEventListener('input', compute);
+delaySlider.addEventListener('input', compute);
+
+/* ========== I18N ENGINE ========== */
+function applyLang(lang) {
+  if (!I18N[lang]) lang = 'fr';
+  currentLang = lang;
+  const dict = I18N[lang];
+
+  document.documentElement.lang = lang;
+
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (dict[key] !== undefined) el.innerHTML = dict[key];
+  });
+
+  // meta tags
+  if (dict['meta.title']) document.title = dict['meta.title'];
+  const metaDesc = document.querySelector('meta[name="description"]');
+  if (metaDesc && dict['meta.description']) metaDesc.setAttribute('content', dict['meta.description']);
+
+  // language label in selector
+  const currentLabel = document.getElementById('langCurrentLabel');
+  if (currentLabel && dict['lang.label']) currentLabel.textContent = dict['lang.label'];
+
+  // active state in dropdown
+  document.querySelectorAll('.lang-option').forEach(opt => {
+    opt.classList.toggle('active', opt.getAttribute('data-lang') === lang);
+  });
+
+  // Recompute simulator with new language
+  compute();
+
+  try { localStorage.setItem('mbd_lang', lang); } catch(e) {}
+}
+
+/* ========== DROPDOWN LOGIC ========== */
+const langSelector = document.getElementById('langSelector');
+if (langSelector) {
+  langSelector.addEventListener('click', (e) => {
+    if (e.target.closest('.lang-option')) return;
+    e.stopPropagation();
+    langSelector.classList.toggle('open');
+  });
+  document.addEventListener('click', () => langSelector.classList.remove('open'));
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') langSelector.classList.remove('open'); });
+  document.querySelectorAll('.lang-option').forEach(opt => {
+    opt.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const lang = opt.getAttribute('data-lang');
+      applyLang(lang);
+      langSelector.classList.remove('open');
+    });
+  });
+}
+
+/* ========== INIT ========== */
+let initialLang = 'fr';
+try {
+  const saved = localStorage.getItem('mbd_lang');
+  if (saved && I18N[saved]) initialLang = saved;
+} catch(e) {}
+applyLang(initialLang);
+
+/* ========== SCROLL REVEAL ========== */
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
