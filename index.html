@@ -1,0 +1,1293 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>MyBulkDeal — Investir dans l'immobilier Dubai à partir de 6 700 €</title>
+<meta name="description" content="MyBulkDeal est l'opérateur de SPV qui vous emmène investir à Dubai à plusieurs. Ticket d'entrée 6 700 € (26 700 AED). Neuf ou ancien. Tout est géré." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #000000;
+    --bg-2: #060606;
+    --bg-3: #0d0d0d;
+    --surface: #111111;
+    --surface-2: #161616;
+    --border: rgba(255,255,255,0.08);
+    --border-strong: rgba(255,255,255,0.18);
+    --text: #FFFFFF;
+    --text-2: #B8B8B8;
+    --text-3: #6B6B6B;
+    --green: #A3E635;
+    --green-bright: #BEF264;
+    --green-dark: #84CC16;
+    --green-glow: rgba(163, 230, 53, 0.45);
+    --green-soft: rgba(163, 230, 53, 0.08);
+    --radius: 16px;
+    --radius-lg: 24px;
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  ::selection { background: var(--green); color: var(--bg); }
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+  h1, h2, h3, h4 { font-family: 'Inter', sans-serif; letter-spacing: -0.035em; line-height: 1.05; font-weight: 800; }
+  h1 { font-size: clamp(2.8rem, 7vw, 5.6rem); }
+  h2 { font-size: clamp(2.2rem, 5vw, 3.8rem); }
+  h3 { font-size: 1.4rem; font-weight: 700; letter-spacing: -0.02em; }
+  p { color: var(--text-2); }
+  a { color: inherit; text-decoration: none; }
+  .green { color: var(--green); }
+
+  .logotype { font-weight: 900; letter-spacing: -0.04em; }
+  .logotype .my { color: var(--text); }
+  .logotype .bulk { color: var(--green); }
+  .logotype .deal { color: var(--text); }
+  .logotype .dot { color: var(--green); }
+
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(0,0,0,0.75);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 24px; max-width: 1200px; margin: 0 auto;
+  }
+  .nav-logo { font-size: 1.25rem; }
+  .nav-links { display: flex; gap: 32px; align-items: center; }
+  .nav-links a { font-size: 0.92rem; color: var(--text-2); transition: color 0.2s; }
+  .nav-links a:hover { color: var(--green); }
+
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 14px 24px; border-radius: 999px;
+    font-family: inherit; font-weight: 800; font-size: 0.95rem;
+    cursor: pointer; border: none; text-decoration: none;
+    transition: all 0.3s var(--ease);
+    letter-spacing: -0.005em;
+  }
+  .btn-primary {
+    background: var(--green); color: #000;
+    box-shadow: 0 6px 24px rgba(163, 230, 53, 0.25);
+  }
+  /* Bouton nav : texte noir, identique aux autres CTAs primaires */
+  nav .btn-primary { color: #000; font-weight: 800; letter-spacing: 0; }
+  .btn-primary:hover {
+    background: var(--green-bright);
+    transform: translateY(-2px);
+    box-shadow: 0 14px 40px var(--green-glow);
+  }
+  .btn-ghost {
+    background: transparent; color: var(--text);
+    border: 1.5px solid var(--border-strong);
+  }
+  .btn-ghost:hover { border-color: var(--green); color: var(--green); transform: translateY(-2px); }
+  @media (max-width: 768px) { .nav-links a:not(.btn) { display: none; } }
+
+  .hero { position: relative; padding: 130px 0 55px; overflow: hidden; }
+  .hero::before {
+    content: ''; position: absolute; inset: 0;
+    background:
+      radial-gradient(900px 500px at 20% 10%, rgba(163, 230, 53, 0.18), transparent 65%),
+      radial-gradient(700px 400px at 85% 50%, rgba(163, 230, 53, 0.08), transparent 60%);
+    pointer-events: none;
+  }
+  .hero::after {
+    content: ''; position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size: 80px 80px;
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 30%, transparent 80%);
+    -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 30%, transparent 80%);
+    pointer-events: none;
+  }
+  .hero-inner { position: relative; text-align: center; max-width: 1000px; margin: 0 auto; }
+
+  /* Hero badge transformé en sélecteur de langue */
+  .lang-selector {
+    position: relative;
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 9px 18px; border-radius: 999px;
+    background: var(--green-soft);
+    border: 1px solid rgba(163, 230, 53, 0.3);
+    font-size: 0.85rem; color: var(--green);
+    margin-bottom: 32px; font-weight: 500;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .lang-selector:hover { background: rgba(163, 230, 53, 0.14); border-color: rgba(163, 230, 53, 0.5); }
+  .lang-selector .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); box-shadow: 0 0 16px var(--green); animation: pulse 2.2s infinite; }
+  .lang-arrow { font-size: 0.7rem; opacity: 0.8; transition: transform 0.25s var(--ease); }
+  .lang-selector.open .lang-arrow { transform: rotate(180deg); }
+  .lang-dropdown {
+    position: absolute; top: calc(100% + 8px); left: 50%; transform: translateX(-50%);
+    background: var(--surface-2);
+    border: 1px solid var(--border-strong);
+    border-radius: 14px;
+    padding: 6px;
+    min-width: 240px;
+    display: none;
+    z-index: 50;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.6), 0 0 0 1px rgba(163, 230, 53, 0.05);
+    text-align: left;
+  }
+  .lang-selector.open .lang-dropdown { display: block; }
+  .lang-option {
+    display: block; width: 100%;
+    padding: 11px 14px;
+    background: transparent; border: none;
+    color: var(--text-2); text-align: left;
+    font-family: inherit; font-size: 0.9rem; font-weight: 500;
+    border-radius: 10px; cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+  }
+  .lang-option:hover { background: var(--green-soft); color: var(--text); }
+  .lang-option.active { background: var(--green-soft); color: var(--green); font-weight: 700; }
+  @keyframes pulse { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(0.85); } }
+
+  .hero h1 { margin-bottom: 22px; }
+  .hero h1 span.accent { color: var(--green); position: relative; display: inline-block; }
+  .hero-amount {
+    display: inline-block;
+    font-size: clamp(1.3rem, 2.2vw, 1.7rem);
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: -0.02em;
+    padding: 10px 22px;
+    margin-bottom: 28px;
+    border: 1.5px solid rgba(163, 230, 53, 0.4);
+    border-radius: 999px;
+    background: var(--green-soft);
+  }
+  .hero-amount .amount-green { color: var(--green); font-weight: 900; }
+  .hero-subtitle {
+    font-size: clamp(1.1rem, 1.8vw, 1.3rem);
+    color: var(--text-2);
+    max-width: 760px; margin: 0 auto;
+    line-height: 1.5;
+  }
+  .hero-subtitle strong { color: var(--text); font-weight: 600; }
+  .hero-cta { display: flex; gap: 14px; justify-content: center; margin-top: 44px; flex-wrap: wrap; }
+  .hero-foot {
+    margin-top: 40px;
+    display: flex; gap: 40px; flex-wrap: wrap; justify-content: center;
+    font-size: 0.88rem; color: var(--text-3);
+  }
+  .hero-foot span { display: inline-flex; align-items: center; gap: 8px; }
+  .hero-foot .tick { color: var(--green); font-weight: 700; }
+
+  section { padding: 55px 0; position: relative; }
+  .section-head { text-align: center; max-width: 820px; margin: 0 auto 36px; }
+  .section-tag {
+    display: inline-block; padding: 7px 16px; border-radius: 999px;
+    background: var(--green-soft); border: 1px solid rgba(163, 230, 53, 0.3);
+    color: var(--green); font-size: 0.78rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.12em;
+    margin-bottom: 22px;
+  }
+  .section-head p { font-size: 1.15rem; margin-top: 20px; }
+
+  .problem-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  @media (max-width: 880px) { .problem-grid { grid-template-columns: 1fr; } }
+  .problem-card {
+    padding: 38px 32px;
+    border-radius: var(--radius);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    transition: transform 0.4s var(--ease), border-color 0.4s var(--ease), box-shadow 0.4s var(--ease);
+    cursor: default; position: relative; overflow: hidden;
+  }
+  .problem-card::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(400px 200px at 50% 0%, rgba(163, 230, 53, 0.1), transparent 70%);
+    opacity: 0; transition: opacity 0.4s var(--ease); pointer-events: none;
+  }
+  .problem-card:hover { transform: translateY(-8px) scale(1.03); border-color: rgba(163, 230, 53, 0.4); box-shadow: 0 30px 60px -20px rgba(163, 230, 53, 0.25); }
+  .problem-card:hover::before { opacity: 1; }
+  .problem-icon {
+    width: 56px; height: 56px; border-radius: 14px;
+    background: var(--green-soft); border: 1px solid rgba(163, 230, 53, 0.3);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 22px; color: var(--green); font-size: 1.6rem;
+    transition: transform 0.4s var(--ease);
+  }
+  .problem-card:hover .problem-icon { transform: scale(1.1) rotate(-6deg); }
+  .problem-card h3 { margin-bottom: 12px; }
+  .problem-card p { font-size: 0.98rem; }
+  .problem-bottom { text-align: center; margin-top: 28px; font-size: 1.2rem; color: var(--text); font-weight: 600; }
+  .problem-bottom .arrow { color: var(--green); }
+
+  .mission { background: var(--bg-2); }
+  .mission-statement {
+    max-width: 920px; margin: 0 auto;
+    padding: 36px 40px;
+    background: radial-gradient(600px 300px at 50% 0%, var(--green-soft), transparent 70%), var(--surface);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-lg);
+    text-align: center;
+    transition: transform 0.4s var(--ease), border-color 0.4s var(--ease);
+  }
+  .mission-statement:hover { transform: scale(1.02); border-color: var(--green); }
+  .mission-statement h2 { margin-bottom: 28px; }
+  .mission-statement p { font-size: 1.25rem; line-height: 1.6; color: var(--text); max-width: 720px; margin: 0 auto; }
+  .mission-statement p strong { color: var(--green); font-weight: 700; }
+
+  .ticket-section { padding: 50px 0; background: var(--bg); position: relative; }
+  .ticket-card {
+    max-width: 880px; margin: 0 auto;
+    padding: 44px 40px;
+    background: radial-gradient(circle at 50% 50%, rgba(163, 230, 53, 0.15), transparent 60%), var(--bg-2);
+    border: 2px solid var(--green);
+    border-radius: var(--radius-lg);
+    text-align: center;
+    transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease);
+    cursor: default;
+    box-shadow: 0 0 60px -20px var(--green-glow);
+  }
+  .ticket-card:hover { transform: scale(1.025); box-shadow: 0 0 100px -10px var(--green-glow), 0 30px 80px -20px rgba(163, 230, 53, 0.3); }
+  .ticket-label { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--green); font-weight: 700; margin-bottom: 20px; }
+  .ticket-amount { font-size: clamp(4rem, 12vw, 8rem); font-weight: 900; letter-spacing: -0.05em; line-height: 1; color: var(--text); }
+  .ticket-amount .euro { color: var(--green); }
+  .ticket-sub { font-size: 1.3rem; color: var(--text-2); margin-top: 16px; }
+  .ticket-sub strong { color: var(--text); }
+  .ticket-tagline { margin-top: 32px; font-size: 1.1rem; color: var(--text-2); max-width: 560px; margin-left: auto; margin-right: auto; }
+
+  .how { background: var(--bg-2); }
+  .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+  @media (max-width: 980px) { .steps { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .steps { grid-template-columns: 1fr; } }
+  .step {
+    padding: 36px 28px;
+    background: var(--surface);
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    transition: transform 0.4s var(--ease), border-color 0.4s var(--ease), background 0.4s var(--ease);
+    cursor: default; position: relative;
+  }
+  .step:hover { transform: translateY(-8px) scale(1.04); border-color: var(--green); background: linear-gradient(180deg, rgba(163, 230, 53, 0.06), var(--surface)); }
+  .step-num {
+    width: 48px; height: 48px; border-radius: 14px;
+    background: var(--green); color: #000;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 900; font-size: 1.2rem;
+    margin-bottom: 22px;
+    transition: transform 0.4s var(--ease);
+  }
+  .step:hover .step-num { transform: scale(1.15) rotate(-8deg); }
+  .step h3 { margin-bottom: 12px; font-size: 1.15rem; }
+  .step p { font-size: 0.94rem; }
+
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  @media (max-width: 880px) { .dual-grid { grid-template-columns: 1fr; } }
+  .offer-card {
+    padding: 44px 36px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    transition: transform 0.4s var(--ease), border-color 0.4s var(--ease), box-shadow 0.4s var(--ease);
+    cursor: default; position: relative; overflow: hidden;
+  }
+  .offer-card::before {
+    content: ''; position: absolute; top: -50%; right: -20%;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, var(--green-soft), transparent 70%);
+    opacity: 0; transition: opacity 0.6s var(--ease);
+  }
+  .offer-card:hover { transform: translateY(-6px) scale(1.02); border-color: var(--green); box-shadow: 0 30px 70px -20px var(--green-glow); }
+  .offer-card:hover::before { opacity: 1; }
+  .offer-tag {
+    display: inline-block; padding: 6px 14px; border-radius: 8px;
+    background: var(--green-soft); color: var(--green);
+    font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em;
+    margin-bottom: 20px;
+  }
+  .offer-card h3 { font-size: 1.7rem; margin-bottom: 16px; position: relative; }
+  .offer-card > p { font-size: 1.02rem; margin-bottom: 24px; position: relative; }
+  .offer-list { list-style: none; padding: 0; position: relative; }
+  .offer-list li { padding: 10px 0; padding-left: 26px; position: relative; color: var(--text-2); font-size: 0.96rem; border-bottom: 1px solid var(--border); }
+  .offer-list li:last-child { border-bottom: none; }
+  .offer-list li::before { content: '→'; position: absolute; left: 0; color: var(--green); font-weight: 700; }
+
+  .benefits { background: var(--bg-2); }
+  .benefits-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  @media (max-width: 880px) { .benefits-grid { grid-template-columns: 1fr; } }
+  .benefit {
+    padding: 36px 32px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    transition: transform 0.4s var(--ease), border-color 0.4s var(--ease);
+    cursor: default;
+  }
+  .benefit:hover { transform: translateY(-6px) scale(1.03); border-color: var(--green); }
+  .benefit-icon {
+    width: 52px; height: 52px; border-radius: 12px;
+    background: var(--green); color: #000;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.4rem; margin-bottom: 20px; font-weight: 900;
+    transition: transform 0.4s var(--ease);
+  }
+  .benefit:hover .benefit-icon { transform: rotate(-10deg) scale(1.1); }
+  .benefit h3 { margin-bottom: 12px; }
+  .benefit p { font-size: 0.96rem; }
+
+  .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  @media (max-width: 880px) { .why-grid { grid-template-columns: 1fr; } }
+  .why-card {
+    padding: 44px 32px;
+    background: linear-gradient(180deg, var(--surface), var(--bg-2));
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    text-align: center;
+    transition: transform 0.4s var(--ease), border-color 0.4s var(--ease), box-shadow 0.4s var(--ease);
+    cursor: default;
+  }
+  .why-card:hover { transform: scale(1.05); border-color: var(--green); box-shadow: 0 30px 70px -20px var(--green-glow); }
+  .why-num { font-size: 4rem; font-weight: 900; color: var(--green); line-height: 1; letter-spacing: -0.05em; }
+  .why-card h3 { margin: 18px 0 12px; }
+  .why-card p { font-size: 0.95rem; }
+
+  .trust { background: var(--bg-2); }
+  .trust-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+  @media (max-width: 980px) { .trust-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .trust-grid { grid-template-columns: 1fr; } }
+  .trust-card {
+    padding: 30px 24px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    transition: transform 0.4s var(--ease), border-color 0.4s var(--ease);
+    cursor: default;
+  }
+  .trust-card:hover { transform: translateY(-6px) scale(1.04); border-color: var(--green); background: linear-gradient(180deg, rgba(163, 230, 53, 0.05), var(--surface)); }
+  .trust-card .check { color: var(--green); font-weight: 900; font-size: 1.6rem; margin-bottom: 14px; display: block; }
+  .trust-card h4 { font-size: 1.05rem; font-weight: 700; margin-bottom: 8px; }
+  .trust-card p { font-size: 0.9rem; }
+
+  .contact { background: var(--bg); position: relative; overflow: hidden; }
+  .contact::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(800px 500px at 50% 0%, var(--green-soft), transparent 70%);
+    pointer-events: none;
+  }
+  .contact-wrap {
+    max-width: 1080px; margin: 0 auto; position: relative;
+    display: grid; grid-template-columns: 1fr 1.2fr; gap: 64px; align-items: start;
+  }
+  @media (max-width: 880px) { .contact-wrap { grid-template-columns: 1fr; gap: 44px; } }
+  .contact-left h2 { margin-bottom: 24px; }
+  .contact-left h2 .green { display: block; }
+  .contact-left > p { font-size: 1.1rem; margin-bottom: 28px; }
+  .contact-perks { list-style: none; padding: 0; }
+  .contact-perks li { display: flex; align-items: flex-start; gap: 14px; padding: 14px 0; color: var(--text); font-size: 1rem; border-bottom: 1px solid var(--border); }
+  .contact-perks li:last-child { border-bottom: none; }
+  .contact-perks li .pcheck {
+    width: 28px; height: 28px; border-radius: 8px;
+    background: var(--green); color: #000;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 900; font-size: 0.9rem; flex-shrink: 0; margin-top: 1px;
+  }
+  form {
+    padding: 40px;
+    background: var(--surface-2);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 40px 100px rgba(0,0,0,0.5);
+    transition: transform 0.4s var(--ease), border-color 0.4s var(--ease);
+  }
+  form:hover { border-color: rgba(163, 230, 53, 0.4); }
+  form h3 { margin-bottom: 8px; font-size: 1.7rem; font-weight: 800; letter-spacing: -0.025em; color: var(--text); }
+  form .form-sub { color: var(--text-3); font-size: 0.92rem; margin-bottom: 26px; }
+  .field { margin-bottom: 18px; }
+  .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  @media (max-width: 520px) { .field-row { grid-template-columns: 1fr; } }
+  label { display: block; font-size: 0.82rem; color: var(--text-2); margin-bottom: 8px; font-weight: 500; }
+  input, textarea {
+    width: 100%; padding: 15px 18px;
+    border-radius: 12px;
+    background: var(--bg-3);
+    border: 1.5px solid var(--border);
+    color: var(--text);
+    font-family: inherit; font-size: 0.96rem;
+    transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+  }
+  input:focus, textarea:focus { outline: none; border-color: var(--green); background: var(--bg-2); box-shadow: 0 0 0 4px var(--green-soft); }
+  textarea { resize: vertical; min-height: 120px; }
+  form .btn-primary { width: 100%; padding: 18px; font-size: 1.05rem; margin-top: 10px; }
+  .form-foot { text-align: center; font-size: 0.78rem; color: var(--text-3); margin-top: 18px; }
+
+  .final { padding: 60px 0; text-align: center; background: var(--bg); }
+  .final h2 { font-size: clamp(2.4rem, 5vw, 4rem); margin-bottom: 24px; }
+  .final p { font-size: 1.2rem; max-width: 640px; margin: 0 auto 36px; }
+
+  footer { padding: 36px 0 30px; background: var(--bg-2); border-top: 1px solid var(--border); text-align: center; }
+  .foot-logo { font-size: 1.4rem; margin-bottom: 14px; }
+  .foot-info { color: var(--text-3); font-size: 0.88rem; margin-bottom: 8px; }
+  .foot-info a { color: var(--green); }
+  .foot-entity { color: var(--text-2); font-size: 0.92rem; margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--border); max-width: 540px; margin-left: auto; margin-right: auto; }
+  .foot-entity strong { color: var(--text); font-weight: 700; }
+  .foot-disclaimer { color: var(--text-3); font-size: 0.74rem; max-width: 760px; margin: 18px auto 0; line-height: 1.6; }
+
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.8s var(--ease), transform 0.8s var(--ease); }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="logotype nav-logo">
+      <span class="my">My</span><span class="bulk">Bulk</span><span class="deal">Deal<span class="dot">.</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="#mission" data-i18n="nav.mission">Notre mission</a>
+      <a href="#comment" data-i18n="nav.how">Comment ça marche</a>
+      <a href="#offres" data-i18n="nav.offers">Nos projets</a>
+      <a href="#contact" class="btn btn-primary" style="padding: 11px 20px; font-size: 0.88rem;" data-i18n="nav.contact">Nous contacter</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="container hero-inner">
+
+    <div class="lang-selector" id="langSelector" aria-label="Choisir la langue">
+      <span class="dot"></span>
+      <span id="langCurrentLabel">🇫🇷 Pool francophone</span>
+      <span class="lang-arrow">▾</span>
+      <div class="lang-dropdown" id="langDropdown" role="menu">
+        <button class="lang-option" data-lang="fr">🇫🇷 Pool francophone</button>
+        <button class="lang-option" data-lang="en">🇬🇧 English-speaking pool</button>
+        <button class="lang-option" data-lang="it">🇮🇹 Pool italofono</button>
+      </div>
+    </div>
+
+    <h1 data-i18n="hero.h1">Investir à Dubai,<br/><span class="accent">ensemble.</span></h1>
+    <div class="hero-amount" data-i18n="hero.amount">Dès <span class="amount-green">6&nbsp;700&nbsp;€</span> par investisseur</div>
+    <p class="hero-subtitle" data-i18n="hero.subtitle">
+      Vous voulez profiter du marché immobilier de Dubai mais <strong>vous n'avez pas le budget pour acheter seul</strong> — ou pas l'envie de tout gérer à 6 000 km. <strong>MyBulkDeal</strong> est l'opérateur qui vous y emmène. Nous regroupons les investisseurs, négocions au prix bulk et créons la société qui détient le bien. Vous n'avez qu'à signer.
+    </p>
+    <div class="hero-cta">
+      <a href="#contact" class="btn btn-primary" data-i18n="hero.cta1">Je veux en savoir plus →</a>
+      <a href="#mission" class="btn btn-ghost" data-i18n="hero.cta2">Découvrir comment ça marche</a>
+    </div>
+    <div class="hero-foot">
+      <span><span class="tick">✓</span> <span data-i18n="hero.foot1">À partir de 6 700 € (26 700 AED)</span></span>
+      <span><span class="tick">✓</span> <span data-i18n="hero.foot2">Neuf (off-plan) &amp; ancien</span></span>
+      <span><span class="tick">✓</span> <span data-i18n="hero.foot3">Tout est géré pour vous</span></span>
+    </div>
+  </div>
+</header>
+
+<section id="probleme">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-tag" data-i18n="problem.tag">Le problème</span>
+      <h2 data-i18n="problem.h2">Vous y avez pensé —<br/>puis vous avez refermé l'onglet.</h2>
+      <p data-i18n="problem.p">Investir à Dubai, sur le papier, ça fait rêver. Dans la réalité, il y a trois murs.</p>
+    </div>
+    <div class="problem-grid">
+      <div class="problem-card reveal">
+        <div class="problem-icon">€</div>
+        <h3 data-i18n="problem.c1.h3">Le ticket d'entrée</h3>
+        <p data-i18n="problem.c1.p">Un appartement neuf à Dubai démarre à 1,2 M AED. Soit 300 000 € sortis de votre trésorerie, sans diversification possible. Hors de portée pour la plupart d'entre nous.</p>
+      </div>
+      <div class="problem-card reveal">
+        <div class="problem-icon">⚙</div>
+        <h3 data-i18n="problem.c2.h3">La complexité</h3>
+        <p data-i18n="problem.c2.p">Trouver le bon promoteur, négocier le prix, ouvrir une société, le compte bancaire, le contrat de location, la gestion à distance... 6 mois de paperasse rien que pour démarrer.</p>
+      </div>
+      <div class="problem-card reveal">
+        <div class="problem-icon">⌖</div>
+        <h3 data-i18n="problem.c3.h3">La solitude</h3>
+        <p data-i18n="problem.c3.p">Vous ne connaissez personne sur place. Vous payez le prix vitrine. Vous ne savez pas qui appeler si ça bloque. Et vous gérez le locataire depuis votre canapé en France.</p>
+      </div>
+    </div>
+    <p class="problem-bottom reveal" data-i18n="problem.cta">
+      Et si on vous disait <span class="arrow">→</span> <span class="green">qu'on a tout réglé pour vous ?</span>
+    </p>
+  </div>
+</section>
+
+<section id="mission" class="mission">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-tag" data-i18n="mission.tag">Notre mission</span>
+      <h2 data-i18n="mission.h2">Vous emmener à Dubai —<br/>à plusieurs.</h2>
+    </div>
+    <div class="mission-statement reveal">
+      <p data-i18n="mission.p1">
+        <strong>MyBulkDeal est un opérateur de SPV.</strong> En clair, nous créons une société dédiée à chaque projet dans laquelle vous devenez actionnaire, aux côtés d'autres investisseurs francophones. Cette société achète le bien, le met en location, et vous reverse votre part des loyers et de la plus-value à la sortie.
+      </p>
+      <p style="margin-top:20px;" data-i18n="mission.p2">
+        Une signature — et nous nous occupons du reste.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="ticket-section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-tag" data-i18n="ticket.tag">Le ticket d'entrée</span>
+      <h2 data-i18n="ticket.h2">Le prix d'un voyage.<br/>Le rendement d'un investissement.</h2>
+    </div>
+    <div class="ticket-card reveal">
+      <div class="ticket-label" data-i18n="ticket.label">Investissement minimum</div>
+      <div class="ticket-amount"><span class="euro">6 700</span> €</div>
+      <div class="ticket-sub" data-i18n="ticket.sub">soit <strong>26 700 AED</strong></div>
+      <p class="ticket-tagline" data-i18n="ticket.tagline">
+        Avec ce ticket, vous devenez actionnaire de la société qui détient un appartement à Dubai. Vous percevez votre part des loyers et de la plus-value, comme si vous étiez propriétaire en direct.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="comment" class="how">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-tag" data-i18n="how.tag">Comment ça marche</span>
+      <h2 data-i18n="how.h2">Quatre étapes.<br/>Une seule signature.</h2>
+      <p data-i18n="how.p">De votre premier message à votre premier loyer, tout est cadré.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal">
+        <div class="step-num">1</div>
+        <h3 data-i18n="how.s1.h3">On échange</h3>
+        <p data-i18n="how.s1.p">30 minutes en visio. On comprend votre profil, votre budget, votre horizon. Vous repartez avec une réponse claire : c'est pour vous, ou pas.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">2</div>
+        <h3 data-i18n="how.s2.h3">On vous présente le projet</h3>
+        <p data-i18n="how.s2.p">Accès à la fiche complète du bien sélectionné : adresse, prix négocié, projection de rendement, calendrier. Vous étudiez en toute transparence.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">3</div>
+        <h3 data-i18n="how.s3.h3">On crée la société</h3>
+        <p data-i18n="how.s3.p">Société dédiée au projet, basée à Dubai. Vous y entrez au capital à hauteur de votre investissement. Le bien est acheté au nom de cette société.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">4</div>
+        <h3 data-i18n="how.s4.h3">On gère, vous encaissez</h3>
+        <p data-i18n="how.s4.p">Mise en location, perception des loyers, maintenance, comptabilité. Reporting trimestriel. Distribution des revenus. Sortie organisée à 5-7 ans.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="offres">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-tag" data-i18n="offers.tag">Nos projets</span>
+      <h2 data-i18n="offers.h2">Le neuf ou l'ancien —<br/>vous choisissez.</h2>
+      <p data-i18n="offers.p">Selon vos objectifs — rendement immédiat ou plus-value à la livraison — nous structurons l'un ou l'autre.</p>
+    </div>
+    <div class="dual-grid">
+      <div class="offer-card reveal">
+        <span class="offer-tag" data-i18n="offers.op.tag">Off-plan</span>
+        <h3 data-i18n="offers.op.h3">Acheter dans le neuf, au prix promoteur</h3>
+        <p data-i18n="offers.op.p">On entre tôt sur les phases pré-construction. C'est là que les promoteurs lâchent des décotes de 6 à 20 % sur les ventes en bloc. Vous payez moins cher dès le départ.</p>
+        <ul class="offer-list">
+          <li data-i18n="offers.op.li1">Décote de 6 à 20 % négociée à l'entrée</li>
+          <li data-i18n="offers.op.li2">Plus-value typique à la livraison : + 25 à 35 %</li>
+          <li data-i18n="offers.op.li3">Échéancier de paiement souple (versements étalés)</li>
+          <li data-i18n="offers.op.li4">Livraison 18 à 36 mois, location dès remise des clés</li>
+        </ul>
+      </div>
+      <div class="offer-card reveal">
+        <span class="offer-tag" data-i18n="offers.sec.tag">Ancien</span>
+        <h3 data-i18n="offers.sec.h3">Acheter dans l'ancien, déjà loué</h3>
+        <p data-i18n="offers.sec.p">On reprend en bloc des biens déjà construits — souvent déjà loués — auprès de propriétaires qui veulent sortir. Vous percevez un loyer dès le premier mois.</p>
+        <ul class="offer-list">
+          <li data-i18n="offers.sec.li1">Loyer encaissé dès le mois 1 de l'acquisition</li>
+          <li data-i18n="offers.sec.li2">Prix négocié bulk vs marché individuel</li>
+          <li data-i18n="offers.sec.li3">Rendement net cible : 5 à 7 % par an</li>
+          <li data-i18n="offers.sec.li4">Pas d'aléa de livraison, le bien existe déjà</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="benefits">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-tag" data-i18n="benefits.tag">Ce que vous gagnez</span>
+      <h2 data-i18n="benefits.h2">Du temps, du rendement, de la tranquillité.</h2>
+    </div>
+    <div class="benefits-grid">
+      <div class="benefit reveal">
+        <div class="benefit-icon">€</div>
+        <h3 data-i18n="benefits.b1.h3">Un rendement cible 5-7 %</h3>
+        <p data-i18n="benefits.b1.p">Loyer net après gestion, charges, vacance. Distribué chaque trimestre directement sur votre compte, en euros si vous le souhaitez.</p>
+      </div>
+      <div class="benefit reveal">
+        <div class="benefit-icon">↗</div>
+        <h3 data-i18n="benefits.b2.h3">Une plus-value à la revente</h3>
+        <p data-i18n="benefits.b2.p">Le marché Dubai a fait +50 % en 36 mois. À horizon 5-7 ans, votre plus-value attendue est de 25 à 35 % en plus des loyers.</p>
+      </div>
+      <div class="benefit reveal">
+        <div class="benefit-icon">✓</div>
+        <h3 data-i18n="benefits.b3.h3">Zéro charge mentale</h3>
+        <p data-i18n="benefits.b3.p">Nous gérons le bien, le locataire, la maintenance, la fiscalité locale, le reporting. Vous recevez un relevé trimestriel. C'est tout.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-tag" data-i18n="why.tag">Pourquoi Dubai, pourquoi maintenant</span>
+      <h2 data-i18n="why.h2">Le marché immobilier le plus dynamique du monde.</h2>
+      <p data-i18n="why.p">Trois chiffres qui résument la fenêtre 2026-2028.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card reveal">
+        <div class="why-num">+50%</div>
+        <h3 data-i18n="why.w1.h3">de prix en 3 ans</h3>
+        <p data-i18n="why.w1.p">+ 20 % en 2023, + 18 % en 2024, + 12 % en 2025. Et la dynamique ne s'arrête pas : Golden Visa, fiscalité 0 %, infrastructure record.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-num">200K</div>
+        <h3 data-i18n="why.w2.h3">unités à livrer d'ici 2029</h3>
+        <p data-i18n="why.w2.p">Damac, Emaar, Sobha, Aldar... Le pipeline est historique. La pression commerciale sur les promoteurs n'a jamais été aussi forte. C'est notre fenêtre pour négocier.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-num">65K</div>
+        <h3 data-i18n="why.w3.h3">francophones installés</h3>
+        <p data-i18n="why.w3.p">40 000 Français + 25 000 Belges, Suisses, Libanais, Maghrébins. Une demande locative captive et solvable. Votre locataire parle votre langue.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="confiance" class="trust">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-tag" data-i18n="trust.tag">Pourquoi nous</span>
+      <h2 data-i18n="trust.h2">Notre obsession : que vous reveniez.</h2>
+      <p data-i18n="trust.p">Nous ne vendons pas un produit. Nous construisons une relation longue.</p>
+    </div>
+    <div class="trust-grid">
+      <div class="trust-card reveal">
+        <span class="check">✓</span>
+        <h4 data-i18n="trust.t1.h4">Réseau direct promoteurs</h4>
+        <p data-i18n="trust.t1.p">Relations établies avec les têtes de vente Emaar, Damac, Sobha, Aldar — pas un intermédiaire d'intermédiaire.</p>
+      </div>
+      <div class="trust-card reveal">
+        <span class="check">✓</span>
+        <h4 data-i18n="trust.t2.h4">Transparence totale</h4>
+        <p data-i18n="trust.t2.p">Tous les frais sont écrits noir sur blanc dans le pacte que vous signez. Aucune commission cachée, jamais.</p>
+      </div>
+      <div class="trust-card reveal">
+        <span class="check">✓</span>
+        <h4 data-i18n="trust.t3.h4">Alignement d'intérêt</h4>
+        <p data-i18n="trust.t3.p">Nous investissons dans chaque société à hauteur de 1 à 5 % du capital. Si vous perdez, on perd avec vous.</p>
+      </div>
+      <div class="trust-card reveal">
+        <span class="check">✓</span>
+        <h4 data-i18n="trust.t4.h4">Vous restez propriétaire</h4>
+        <p data-i18n="trust.t4.p">Vous êtes actionnaire d'une société qui détient un vrai bien. Pas une part de fonds opaque. Vous votez, vous décidez.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="container">
+    <div class="contact-wrap">
+      <div class="contact-left reveal">
+        <span class="section-tag" data-i18n="contact.tag">Prochaine étape</span>
+        <h2 data-i18n="contact.h2">On en parle ?<br/><span class="green">30 minutes, sans engagement.</span></h2>
+        <p data-i18n="contact.p">
+          Vous remplissez le formulaire. On vous rappelle sous 24h. On échange sur votre profil et vos objectifs. Si c'est pertinent, on vous donne accès au prochain projet ouvert. Sinon, on vous dit clairement pourquoi.
+        </p>
+        <ul class="contact-perks">
+          <li><span class="pcheck">✓</span><div data-i18n="contact.perk1">Un call de 30 minutes pour comprendre votre besoin</div></li>
+          <li><span class="pcheck">✓</span><div data-i18n="contact.perk2">Accès complet à la fiche projet (prix · projection · fiscalité)</div></li>
+          <li><span class="pcheck">✓</span><div data-i18n="contact.perk3">Aucun engagement tant que vous n'avez pas signé</div></li>
+          <li><span class="pcheck">✓</span><div data-i18n="contact.perk4">Réponse sous 24h ouvrées</div></li>
+        </ul>
+      </div>
+      <form action="https://formsubmit.co/philippe@monopimmobilier.com" method="POST">
+        <h3 data-i18n="form.h3">Nous contacter</h3>
+        <p class="form-sub" data-i18n="form.sub">Réponse personnelle sous 24h ouvrées.</p>
+
+        <input type="hidden" name="_subject" value="🟢 Nouveau contact MyBulkDeal.com" data-i18n-value="form.subject">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_autoresponse" id="autoresponseField" value="Bonjour, merci pour votre intérêt pour MyBulkDeal. Notre équipe vous recontactera sous 24h pour planifier un échange de 30 minutes et vous présenter le prochain projet ouvert. À très vite. — L'équipe MyBulkDeal" data-i18n-value="form.autoresponse">
+        <input type="hidden" name="_language" id="languageField" value="fr">
+        <input type="text" name="_honey" style="display:none">
+
+        <div class="field-row">
+          <div class="field">
+            <label for="prenom" data-i18n="form.label.prenom">Prénom</label>
+            <input id="prenom" name="Prénom" type="text" required autocomplete="given-name" placeholder="Votre prénom" data-i18n-placeholder="form.ph.prenom">
+          </div>
+          <div class="field">
+            <label for="nom" data-i18n="form.label.nom">Nom</label>
+            <input id="nom" name="Nom" type="text" required autocomplete="family-name" placeholder="Votre nom" data-i18n-placeholder="form.ph.nom">
+          </div>
+        </div>
+        <div class="field">
+          <label for="email" data-i18n="form.label.email">Adresse e-mail</label>
+          <input id="email" name="Email" type="email" required autocomplete="email" placeholder="vous@email.com" data-i18n-placeholder="form.ph.email">
+        </div>
+        <div class="field">
+          <label for="tel" data-i18n="form.label.tel">Téléphone</label>
+          <input id="tel" name="Téléphone" type="tel" required autocomplete="tel" placeholder="+33 6 ..." data-i18n-placeholder="form.ph.tel">
+        </div>
+        <div class="field">
+          <label for="msg" data-i18n="form.label.msg">Votre message</label>
+          <textarea id="msg" name="Message" required placeholder="Quelques mots sur votre intérêt, votre ticket cible, vos questions..." data-i18n-placeholder="form.ph.msg"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" data-i18n="form.submit">Envoyer ma demande →</button>
+        <div class="form-foot" data-i18n="form.footnote">
+          Vos données ne servent qu'à vous recontacter. Aucun stockage tiers, aucune cession, aucune newsletter.
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="container">
+    <div class="reveal">
+      <h2 data-i18n="final.h2">Dubai vous attend —<br/><span class="green">et nous avec.</span></h2>
+      <p data-i18n="final.p">Le prochain projet ouvre bientôt. Le pool est limité à 28 places. Si vous voulez en faire partie, c'est maintenant.</p>
+      <a href="https://calendar.app.google/THtgFsGRfykeiTnE8" target="_blank" rel="noopener" class="btn btn-primary" data-i18n="final.cta">Réserver mon call →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="logotype foot-logo">
+      <span class="my">My</span><span class="bulk">Bulk</span><span class="deal">Deal<span class="dot">.</span></span>
+    </div>
+    <div class="foot-info" data-i18n="footer.tagline">
+      Opérateur de SPV immobilier · Dubai · Pool francophone
+    </div>
+    <div class="foot-entity">
+      <strong>MONOP'consulting FZ-LLC</strong> · Dubai, UAE
+    </div>
+    <p class="foot-disclaimer" data-i18n="footer.disclaimer">
+      MyBulkDeal s'adresse à un nombre restreint d'investisseurs qualifiés et n'effectue ni offre au public, ni démarchage. Les performances passées ne préjugent pas des performances futures. Tout investissement immobilier comporte un risque de perte en capital. Avant toute souscription, l'investisseur reçoit la documentation contractuelle complète et bénéficie d'un délai d'analyse.
+    </p>
+  </div>
+</footer>
+
+<script>
+/* ========== TRANSLATIONS ========== */
+const I18N = {
+  fr: {
+    'meta.title': "MyBulkDeal — Investir dans l'immobilier Dubai à partir de 6 700 €",
+    'meta.description': "MyBulkDeal est l'opérateur de SPV qui vous emmène investir à Dubai à plusieurs. Ticket d'entrée 6 700 € (26 700 AED). Neuf ou ancien. Tout est géré.",
+    'lang.label': "🇫🇷 Pool francophone",
+
+    'nav.mission': "Notre mission",
+    'nav.how': "Comment ça marche",
+    'nav.offers': "Nos projets",
+    'nav.contact': "Nous contacter",
+
+    'hero.h1': `Investir à Dubai,<br/><span class="accent">ensemble.</span>`,
+    'hero.amount': `Dès <span class="amount-green">6&nbsp;700&nbsp;€</span> par investisseur`,
+    'hero.subtitle': `Vous voulez profiter du marché immobilier de Dubai mais <strong>vous n'avez pas le budget pour acheter seul</strong> — ou pas l'envie de tout gérer à 6 000 km. <strong>MyBulkDeal</strong> est l'opérateur qui vous y emmène. Nous regroupons les investisseurs, négocions au prix bulk et créons la société qui détient le bien. Vous n'avez qu'à signer.`,
+    'hero.cta1': "Je veux en savoir plus →",
+    'hero.cta2': "Découvrir comment ça marche",
+    'hero.foot1': "À partir de 6 700 € (26 700 AED)",
+    'hero.foot2': "Neuf (off-plan) &amp; ancien",
+    'hero.foot3': "Tout est géré pour vous",
+
+    'problem.tag': "Le problème",
+    'problem.h2': `Vous y avez pensé —<br/>puis vous avez refermé l'onglet.`,
+    'problem.p': "Investir à Dubai, sur le papier, ça fait rêver. Dans la réalité, il y a trois murs.",
+    'problem.c1.h3': "Le ticket d'entrée",
+    'problem.c1.p': "Un appartement neuf à Dubai démarre à 1,2 M AED. Soit 300 000 € sortis de votre trésorerie, sans diversification possible. Hors de portée pour la plupart d'entre nous.",
+    'problem.c2.h3': "La complexité",
+    'problem.c2.p': "Trouver le bon promoteur, négocier le prix, ouvrir une société, le compte bancaire, le contrat de location, la gestion à distance... 6 mois de paperasse rien que pour démarrer.",
+    'problem.c3.h3': "La solitude",
+    'problem.c3.p': "Vous ne connaissez personne sur place. Vous payez le prix vitrine. Vous ne savez pas qui appeler si ça bloque. Et vous gérez le locataire depuis votre canapé en France.",
+    'problem.cta': `Et si on vous disait <span class="arrow">→</span> <span class="green">qu'on a tout réglé pour vous ?</span>`,
+
+    'mission.tag': "Notre mission",
+    'mission.h2': `Vous emmener à Dubai —<br/>à plusieurs.`,
+    'mission.p1': `<strong>MyBulkDeal est un opérateur de SPV.</strong> En clair, nous créons une société dédiée à chaque projet dans laquelle vous devenez actionnaire, aux côtés d'autres investisseurs francophones. Cette société achète le bien, le met en location, et vous reverse votre part des loyers et de la plus-value à la sortie.`,
+    'mission.p2': "Une signature — et nous nous occupons du reste.",
+
+    'ticket.tag': "Le ticket d'entrée",
+    'ticket.h2': `Le prix d'un voyage.<br/>Le rendement d'un investissement.`,
+    'ticket.label': "Investissement minimum",
+    'ticket.sub': "soit <strong>26 700 AED</strong>",
+    'ticket.tagline': "Avec ce ticket, vous devenez actionnaire de la société qui détient un appartement à Dubai. Vous percevez votre part des loyers et de la plus-value, comme si vous étiez propriétaire en direct.",
+
+    'how.tag': "Comment ça marche",
+    'how.h2': `Quatre étapes.<br/>Une seule signature.`,
+    'how.p': "De votre premier message à votre premier loyer, tout est cadré.",
+    'how.s1.h3': "On échange",
+    'how.s1.p': "30 minutes en visio. On comprend votre profil, votre budget, votre horizon. Vous repartez avec une réponse claire : c'est pour vous, ou pas.",
+    'how.s2.h3': "On vous présente le projet",
+    'how.s2.p': "Accès à la fiche complète du bien sélectionné : adresse, prix négocié, projection de rendement, calendrier. Vous étudiez en toute transparence.",
+    'how.s3.h3': "On crée la société",
+    'how.s3.p': "Société dédiée au projet, basée à Dubai. Vous y entrez au capital à hauteur de votre investissement. Le bien est acheté au nom de cette société.",
+    'how.s4.h3': "On gère, vous encaissez",
+    'how.s4.p': "Mise en location, perception des loyers, maintenance, comptabilité. Reporting trimestriel. Distribution des revenus. Sortie organisée à 5-7 ans.",
+
+    'offers.tag': "Nos projets",
+    'offers.h2': `Le neuf ou l'ancien —<br/>vous choisissez.`,
+    'offers.p': "Selon vos objectifs — rendement immédiat ou plus-value à la livraison — nous structurons l'un ou l'autre.",
+    'offers.op.tag': "Off-plan",
+    'offers.op.h3': "Acheter dans le neuf, au prix promoteur",
+    'offers.op.p': "On entre tôt sur les phases pré-construction. C'est là que les promoteurs lâchent des décotes de 6 à 20 % sur les ventes en bloc. Vous payez moins cher dès le départ.",
+    'offers.op.li1': "Décote de 6 à 20 % négociée à l'entrée",
+    'offers.op.li2': "Plus-value typique à la livraison : + 25 à 35 %",
+    'offers.op.li3': "Échéancier de paiement souple (versements étalés)",
+    'offers.op.li4': "Livraison 18 à 36 mois, location dès remise des clés",
+    'offers.sec.tag': "Ancien",
+    'offers.sec.h3': "Acheter dans l'ancien, déjà loué",
+    'offers.sec.p': "On reprend en bloc des biens déjà construits — souvent déjà loués — auprès de propriétaires qui veulent sortir. Vous percevez un loyer dès le premier mois.",
+    'offers.sec.li1': "Loyer encaissé dès le mois 1 de l'acquisition",
+    'offers.sec.li2': "Prix négocié bulk vs marché individuel",
+    'offers.sec.li3': "Rendement net cible : 5 à 7 % par an",
+    'offers.sec.li4': "Pas d'aléa de livraison, le bien existe déjà",
+
+    'benefits.tag': "Ce que vous gagnez",
+    'benefits.h2': "Du temps, du rendement, de la tranquillité.",
+    'benefits.b1.h3': "Un rendement cible 5-7 %",
+    'benefits.b1.p': "Loyer net après gestion, charges, vacance. Distribué chaque trimestre directement sur votre compte, en euros si vous le souhaitez.",
+    'benefits.b2.h3': "Une plus-value à la revente",
+    'benefits.b2.p': "Le marché Dubai a fait +50 % en 36 mois. À horizon 5-7 ans, votre plus-value attendue est de 25 à 35 % en plus des loyers.",
+    'benefits.b3.h3': "Zéro charge mentale",
+    'benefits.b3.p': "Nous gérons le bien, le locataire, la maintenance, la fiscalité locale, le reporting. Vous recevez un relevé trimestriel. C'est tout.",
+
+    'why.tag': "Pourquoi Dubai, pourquoi maintenant",
+    'why.h2': "Le marché immobilier le plus dynamique du monde.",
+    'why.p': "Trois chiffres qui résument la fenêtre 2026-2028.",
+    'why.w1.h3': "de prix en 3 ans",
+    'why.w1.p': "+ 20 % en 2023, + 18 % en 2024, + 12 % en 2025. Et la dynamique ne s'arrête pas : Golden Visa, fiscalité 0 %, infrastructure record.",
+    'why.w2.h3': "unités à livrer d'ici 2029",
+    'why.w2.p': "Damac, Emaar, Sobha, Aldar... Le pipeline est historique. La pression commerciale sur les promoteurs n'a jamais été aussi forte. C'est notre fenêtre pour négocier.",
+    'why.w3.h3': "francophones installés",
+    'why.w3.p': "40 000 Français + 25 000 Belges, Suisses, Libanais, Maghrébins. Une demande locative captive et solvable. Votre locataire parle votre langue.",
+
+    'trust.tag': "Pourquoi nous",
+    'trust.h2': "Notre obsession : que vous reveniez.",
+    'trust.p': "Nous ne vendons pas un produit. Nous construisons une relation longue.",
+    'trust.t1.h4': "Réseau direct promoteurs",
+    'trust.t1.p': "Relations établies avec les têtes de vente Emaar, Damac, Sobha, Aldar — pas un intermédiaire d'intermédiaire.",
+    'trust.t2.h4': "Transparence totale",
+    'trust.t2.p': "Tous les frais sont écrits noir sur blanc dans le pacte que vous signez. Aucune commission cachée, jamais.",
+    'trust.t3.h4': "Alignement d'intérêt",
+    'trust.t3.p': "Nous investissons dans chaque société à hauteur de 1 à 5 % du capital. Si vous perdez, on perd avec vous.",
+    'trust.t4.h4': "Vous restez propriétaire",
+    'trust.t4.p': "Vous êtes actionnaire d'une société qui détient un vrai bien. Pas une part de fonds opaque. Vous votez, vous décidez.",
+
+    'contact.tag': "Prochaine étape",
+    'contact.h2': `On en parle ?<br/><span class="green">30 minutes, sans engagement.</span>`,
+    'contact.p': "Vous remplissez le formulaire. On vous rappelle sous 24h. On échange sur votre profil et vos objectifs. Si c'est pertinent, on vous donne accès au prochain projet ouvert. Sinon, on vous dit clairement pourquoi.",
+    'contact.perk1': "Un call de 30 minutes pour comprendre votre besoin",
+    'contact.perk2': "Accès complet à la fiche projet (prix · projection · fiscalité)",
+    'contact.perk3': "Aucun engagement tant que vous n'avez pas signé",
+    'contact.perk4': "Réponse sous 24h ouvrées",
+
+    'form.h3': "Nous contacter",
+    'form.sub': "Réponse personnelle sous 24h ouvrées.",
+    'form.subject': "🟢 Nouveau contact MyBulkDeal.com [FR]",
+    'form.autoresponse': "Bonjour, merci pour votre intérêt pour MyBulkDeal. Notre équipe vous recontactera sous 24h pour planifier un échange de 30 minutes et vous présenter le prochain projet ouvert. À très vite. — L'équipe MyBulkDeal",
+    'form.label.prenom': "Prénom",
+    'form.label.nom': "Nom",
+    'form.label.email': "Adresse e-mail",
+    'form.label.tel': "Téléphone",
+    'form.label.msg': "Votre message",
+    'form.ph.prenom': "Votre prénom",
+    'form.ph.nom': "Votre nom",
+    'form.ph.email': "vous@email.com",
+    'form.ph.tel': "+33 6 ...",
+    'form.ph.msg': "Quelques mots sur votre intérêt, votre ticket cible, vos questions...",
+    'form.submit': "Envoyer ma demande →",
+    'form.footnote': "Vos données ne servent qu'à vous recontacter. Aucun stockage tiers, aucune cession, aucune newsletter.",
+
+    'final.h2': `Dubai vous attend —<br/><span class="green">et nous avec.</span>`,
+    'final.p': "Le prochain projet ouvre bientôt. Le pool est limité à 28 places. Si vous voulez en faire partie, c'est maintenant.",
+    'final.cta': "Réserver mon call →",
+
+    'footer.tagline': "Opérateur de SPV immobilier · Dubai · Pool francophone",
+    'footer.disclaimer': "MyBulkDeal s'adresse à un nombre restreint d'investisseurs qualifiés et n'effectue ni offre au public, ni démarchage. Les performances passées ne préjugent pas des performances futures. Tout investissement immobilier comporte un risque de perte en capital. Avant toute souscription, l'investisseur reçoit la documentation contractuelle complète et bénéficie d'un délai d'analyse."
+  },
+
+  en: {
+    'meta.title': "MyBulkDeal — Invest in Dubai property from €6,700",
+    'meta.description': "MyBulkDeal is the SPV operator that takes you to Dubai together. Minimum ticket €6,700 (AED 26,700). Off-plan or resale. Everything handled.",
+    'lang.label': "🇬🇧 English-speaking pool",
+
+    'nav.mission': "Our mission",
+    'nav.how': "How it works",
+    'nav.offers': "Our projects",
+    'nav.contact': "Contact us",
+
+    'hero.h1': `Investing in Dubai,<br/><span class="accent">together.</span>`,
+    'hero.amount': `From <span class="amount-green">€6,700</span> per investor`,
+    'hero.subtitle': `You want to ride Dubai's property market but <strong>you don't have the budget to buy alone</strong> — or no appetite to manage it all from 4,000 miles away. <strong>MyBulkDeal</strong> is the operator that takes you there. We pool investors, negotiate the bulk price, and create the company that owns the asset. All you have to do is sign.`,
+    'hero.cta1': "Tell me more →",
+    'hero.cta2': "See how it works",
+    'hero.foot1': "From €6,700 (AED 26,700)",
+    'hero.foot2': "Off-plan &amp; resale",
+    'hero.foot3': "Everything handled for you",
+
+    'problem.tag': "The problem",
+    'problem.h2': `You thought about it —<br/>then you closed the tab.`,
+    'problem.p': "Investing in Dubai sounds great on paper. In reality, there are three walls.",
+    'problem.c1.h3': "The entry ticket",
+    'problem.c1.p': "A new flat in Dubai starts at AED 1.2M. That's £255,000 out of your cash, with zero diversification. Out of reach for most of us.",
+    'problem.c2.h3': "The complexity",
+    'problem.c2.p': "Finding the right developer, negotiating the price, opening a company, the bank account, the tenancy contract, remote management... 6 months of paperwork just to start.",
+    'problem.c3.h3': "The isolation",
+    'problem.c3.p': "You don't know anyone on the ground. You pay the showroom price. You don't know who to call when things go wrong. And you manage tenants from your sofa back home.",
+    'problem.cta': `What if we told you <span class="arrow">→</span> <span class="green">we've sorted all of that for you?</span>`,
+
+    'mission.tag': "Our mission",
+    'mission.h2': `Taking you to Dubai —<br/>together.`,
+    'mission.p1': `<strong>MyBulkDeal is an SPV operator.</strong> In plain English: we create a dedicated company for each project, and you become a shareholder alongside other English-speaking investors. The company buys the asset, lets it out, and pays you your share of the rent and the capital gain on exit.`,
+    'mission.p2': "One signature — and we handle the rest.",
+
+    'ticket.tag': "The entry ticket",
+    'ticket.h2': `The price of a holiday.<br/>The yield of an investment.`,
+    'ticket.label': "Minimum investment",
+    'ticket.sub': "i.e. <strong>AED 26,700</strong>",
+    'ticket.tagline': "With this ticket, you become a shareholder of the company that owns a Dubai flat. You receive your share of the rent and capital gain — as if you owned it outright.",
+
+    'how.tag': "How it works",
+    'how.h2': `Four steps.<br/>One single signature.`,
+    'how.p': "From your first message to your first rent cheque, every step is mapped out.",
+    'how.s1.h3': "We talk",
+    'how.s1.p': "30 minutes on a video call. We understand your profile, your budget, your horizon. You leave with a clear answer: this is for you, or it isn't.",
+    'how.s2.h3': "We show you the project",
+    'how.s2.p': "Full access to the asset's data sheet: address, negotiated price, yield projection, timeline. You study it with total transparency.",
+    'how.s3.h3': "We set up the company",
+    'how.s3.p': "Dedicated company for the project, based in Dubai. You come in as a shareholder at the level of your investment. The asset is bought in the company's name.",
+    'how.s4.h3': "We manage, you collect",
+    'how.s4.p': "Letting, rent collection, maintenance, accounting. Quarterly reporting. Income distribution. Planned exit at 5-7 years.",
+
+    'offers.tag': "Our projects",
+    'offers.h2': `Off-plan or resale —<br/>your choice.`,
+    'offers.p': "Depending on your goals — immediate income or capital gain at handover — we structure either route.",
+    'offers.op.tag': "Off-plan",
+    'offers.op.h3': "Buy new, at developer price",
+    'offers.op.p': "We enter early, during pre-construction phases. That's where developers release 6 to 20 % bulk discounts. You pay less from day one.",
+    'offers.op.li1': "6 to 20 % discount negotiated at entry",
+    'offers.op.li2': "Typical capital gain at handover: + 25 to 35 %",
+    'offers.op.li3': "Flexible payment schedule (instalments)",
+    'offers.op.li4': "Handover 18 to 36 months, letting starts on keys delivery",
+    'offers.sec.tag': "Resale",
+    'offers.sec.h3': "Buy resale, already tenanted",
+    'offers.sec.p': "We acquire in bulk from existing owners looking to exit — often with tenants in place. You collect rent from month one.",
+    'offers.sec.li1': "Rent collected from month 1",
+    'offers.sec.li2': "Bulk-negotiated price vs retail market",
+    'offers.sec.li3': "Target net yield: 5 to 7 % per year",
+    'offers.sec.li4': "No completion risk, the asset already exists",
+
+    'benefits.tag': "What you get",
+    'benefits.h2': "Time, yield, and peace of mind.",
+    'benefits.b1.h3': "Target yield 5-7 %",
+    'benefits.b1.p': "Net rent after management, charges and voids. Distributed quarterly to your bank account, in your currency of choice.",
+    'benefits.b2.h3': "Capital gain on exit",
+    'benefits.b2.p': "Dubai's market is up +50 % over 36 months. Over 5-7 years, your expected capital gain is 25 to 35 % on top of the rental income.",
+    'benefits.b3.h3': "Zero hassle",
+    'benefits.b3.p': "We handle the asset, the tenant, the maintenance, the local tax, the reporting. You receive a quarterly statement. That's it.",
+
+    'why.tag': "Why Dubai, why now",
+    'why.h2': "The most dynamic property market in the world.",
+    'why.p': "Three numbers that sum up the 2026-2028 window.",
+    'why.w1.h3': "price growth in 3 years",
+    'why.w1.p': "+ 20 % in 2023, + 18 % in 2024, + 12 % in 2025. And the momentum isn't slowing: Golden Visa, 0 % tax regime, record infrastructure.",
+    'why.w2.h3': "units delivered by 2029",
+    'why.w2.p': "Damac, Emaar, Sobha, Aldar... The pipeline is unprecedented. Commercial pressure on developers has never been this strong. That's our window to negotiate.",
+    'why.w3.h3': "British residents in UAE",
+    'why.w3.p': "Around 240,000 Brits + 70,000 Americans + Canadians, Aussies, Irish. A captive, solvent rental demand. Your tenant speaks your language.",
+
+    'trust.tag': "Why us",
+    'trust.h2': "Our obsession: that you come back.",
+    'trust.p': "We don't sell a product. We build a long relationship.",
+    'trust.t1.h4': "Direct developer network",
+    'trust.t1.p': "Established relationships with the heads of sales at Emaar, Damac, Sobha, Aldar — not a broker of a broker.",
+    'trust.t2.h4': "Full transparency",
+    'trust.t2.p': "All fees are written black on white in the agreement you sign. No hidden commission, ever.",
+    'trust.t3.h4': "Skin in the game",
+    'trust.t3.p': "We invest 1 to 5 % of the capital in every company. If you lose, we lose with you.",
+    'trust.t4.h4': "You remain the owner",
+    'trust.t4.p': "You're a shareholder of a company that owns a real asset. Not a unit in an opaque fund. You vote, you decide.",
+
+    'contact.tag': "Next step",
+    'contact.h2': `Shall we talk?<br/><span class="green">30 minutes, no commitment.</span>`,
+    'contact.p': "You fill in the form. We call you back within 24h. We talk through your profile and your goals. If it's a fit, we give you access to the next open project. If not, we tell you plainly why.",
+    'contact.perk1': "A 30-minute call to understand your needs",
+    'contact.perk2': "Full access to the project file (price · projection · tax)",
+    'contact.perk3': "No commitment until you've signed",
+    'contact.perk4': "Reply within 24 working hours",
+
+    'form.h3': "Contact us",
+    'form.sub': "Personal reply within 24 working hours.",
+    'form.subject': "🟢 New contact from MyBulkDeal.com [EN]",
+    'form.autoresponse': "Hello, thank you for your interest in MyBulkDeal. Our team will get back to you within 24 hours to arrange a 30-minute call and walk you through the next open project. Talk soon. — The MyBulkDeal team",
+    'form.label.prenom': "First name",
+    'form.label.nom': "Last name",
+    'form.label.email': "Email address",
+    'form.label.tel': "Phone",
+    'form.label.msg': "Your message",
+    'form.ph.prenom': "Your first name",
+    'form.ph.nom': "Your last name",
+    'form.ph.email': "you@email.com",
+    'form.ph.tel': "+44 7 ...",
+    'form.ph.msg': "A few words about your interest, target ticket, questions...",
+    'form.submit': "Send my request →",
+    'form.footnote': "Your data is only used to call you back. No third-party storage, no resale, no newsletter.",
+
+    'final.h2': `Dubai is waiting —<br/><span class="green">and so are we.</span>`,
+    'final.p': "The next project opens shortly. The pool is capped at 28 seats. If you want one of them, now is the time.",
+    'final.cta': "Book my call →",
+
+    'footer.tagline': "Real estate SPV operator · Dubai · English-speaking pool",
+    'footer.disclaimer': "MyBulkDeal addresses a limited number of qualified investors and conducts neither a public offer nor solicitation. Past performance is no guarantee of future results. All property investment carries a risk of capital loss. Before any subscription, the investor receives the full contractual documentation and a reflection period."
+  },
+
+  it: {
+    'meta.title': "MyBulkDeal — Investire nell'immobiliare di Dubai a partire da €6.700",
+    'meta.description': "MyBulkDeal è l'operatore di SPV che ti porta a investire a Dubai in gruppo. Ticket minimo €6.700 (AED 26.700). Nuovo o usato. Gestione completa.",
+    'lang.label': "🇮🇹 Pool italofono",
+
+    'nav.mission': "La nostra missione",
+    'nav.how': "Come funziona",
+    'nav.offers': "I nostri progetti",
+    'nav.contact': "Contattaci",
+
+    'hero.h1': `Investire a Dubai,<br/><span class="accent">insieme.</span>`,
+    'hero.amount': `A partire da <span class="amount-green">€6.700</span> per investitore`,
+    'hero.subtitle': `Vuoi sfruttare il mercato immobiliare di Dubai ma <strong>non hai il budget per comprare da solo</strong> — o non hai voglia di gestire tutto a 5.000 km di distanza. <strong>MyBulkDeal</strong> è l'operatore che ti porta lì. Raggruppiamo gli investitori, negoziamo il prezzo bulk e creiamo la società che possiede l'immobile. A te resta solo da firmare.`,
+    'hero.cta1': "Voglio saperne di più →",
+    'hero.cta2': "Scopri come funziona",
+    'hero.foot1': "A partire da €6.700 (AED 26.700)",
+    'hero.foot2': "Nuovo (off-plan) &amp; usato",
+    'hero.foot3': "Gestiamo tutto per te",
+
+    'problem.tag': "Il problema",
+    'problem.h2': `Ci hai pensato —<br/>poi hai chiuso la scheda.`,
+    'problem.p': "Investire a Dubai sulla carta fa sognare. Nella realtà, ci sono tre muri.",
+    'problem.c1.h3': "Il ticket d'ingresso",
+    'problem.c1.p': "Un appartamento nuovo a Dubai parte da AED 1,2 M. Cioè €300.000 di liquidità immobilizzata, senza alcuna diversificazione. Fuori portata per la maggior parte di noi.",
+    'problem.c2.h3': "La complessità",
+    'problem.c2.p': "Trovare il costruttore giusto, negoziare il prezzo, aprire una società, il conto bancario, il contratto di locazione, la gestione a distanza... 6 mesi di burocrazia solo per iniziare.",
+    'problem.c3.h3': "La solitudine",
+    'problem.c3.p': "Non conosci nessuno sul posto. Paghi il prezzo di listino. Non sai chi chiamare se qualcosa va storto. E gestisci l'inquilino dal divano di casa.",
+    'problem.cta': `E se ti dicessimo <span class="arrow">→</span> <span class="green">che abbiamo già risolto tutto per te?</span>`,
+
+    'mission.tag': "La nostra missione",
+    'mission.h2': `Portarti a Dubai —<br/>insieme.`,
+    'mission.p1': `<strong>MyBulkDeal è un operatore di SPV.</strong> In parole semplici: creiamo una società dedicata a ogni progetto, in cui diventi azionista insieme ad altri investitori italofoni. Questa società compra l'immobile, lo affitta e ti riversa la tua quota di canoni e di plusvalore all'uscita.`,
+    'mission.p2': "Una firma — e ci occupiamo del resto.",
+
+    'ticket.tag': "Il ticket d'ingresso",
+    'ticket.h2': `Il prezzo di un viaggio.<br/>Il rendimento di un investimento.`,
+    'ticket.label': "Investimento minimo",
+    'ticket.sub': "ovvero <strong>AED 26.700</strong>",
+    'ticket.tagline': "Con questo ticket, diventi azionista della società che possiede un appartamento a Dubai. Ricevi la tua quota di canoni e di plusvalore, come se fossi proprietario diretto.",
+
+    'how.tag': "Come funziona",
+    'how.h2': `Quattro passi.<br/>Una sola firma.`,
+    'how.p': "Dal tuo primo messaggio al tuo primo canone, ogni passaggio è definito.",
+    'how.s1.h3': "Ci parliamo",
+    'how.s1.p': "30 minuti in videocall. Capiamo il tuo profilo, il tuo budget, il tuo orizzonte. Ne esci con una risposta chiara: è per te, o non lo è.",
+    'how.s2.h3': "Ti presentiamo il progetto",
+    'how.s2.p': "Accesso alla scheda completa dell'immobile selezionato: indirizzo, prezzo negoziato, proiezione di rendimento, calendario. Studi tutto in piena trasparenza.",
+    'how.s3.h3': "Creiamo la società",
+    'how.s3.p': "Società dedicata al progetto, con sede a Dubai. Entri nel capitale per la tua quota di investimento. L'immobile viene acquistato a nome della società.",
+    'how.s4.h3': "Gestiamo noi, incassi tu",
+    'how.s4.p': "Locazione, riscossione dei canoni, manutenzione, contabilità. Reporting trimestrale. Distribuzione dei ricavi. Uscita pianificata a 5-7 anni.",
+
+    'offers.tag': "I nostri progetti",
+    'offers.h2': `Nuovo o usato —<br/>scelta tua.`,
+    'offers.p': "A seconda dei tuoi obiettivi — rendita immediata o plusvalore alla consegna — strutturiamo l'una o l'altra strada.",
+    'offers.op.tag': "Off-plan",
+    'offers.op.h3': "Comprare nuovo, al prezzo del costruttore",
+    'offers.op.p': "Entriamo presto, nelle fasi di pre-costruzione. È lì che i costruttori rilasciano sconti del 6-20 % sulle vendite in blocco. Paghi meno fin dall'inizio.",
+    'offers.op.li1': "Sconto del 6-20 % negoziato all'ingresso",
+    'offers.op.li2': "Plusvalore tipico alla consegna: + 25-35 %",
+    'offers.op.li3': "Calendario di pagamento flessibile (rate)",
+    'offers.op.li4': "Consegna 18-36 mesi, locazione dalla consegna chiavi",
+    'offers.sec.tag': "Usato",
+    'offers.sec.h3': "Comprare nell'usato, già locato",
+    'offers.sec.p': "Acquistiamo in blocco immobili già costruiti — spesso già locati — da proprietari che vogliono uscire. Incassi un canone dal primo mese.",
+    'offers.sec.li1': "Canone incassato dal mese 1 dell'acquisto",
+    'offers.sec.li2': "Prezzo negoziato bulk vs mercato singolo",
+    'offers.sec.li3': "Rendimento netto target: 5-7 % all'anno",
+    'offers.sec.li4': "Nessun rischio di consegna, l'immobile esiste già",
+
+    'benefits.tag': "Cosa ottieni",
+    'benefits.h2': "Tempo, rendimento, tranquillità.",
+    'benefits.b1.h3': "Rendimento target 5-7 %",
+    'benefits.b1.p': "Canone netto dopo gestione, oneri, sfitto. Distribuito ogni trimestre direttamente sul tuo conto, in euro se preferisci.",
+    'benefits.b2.h3': "Plusvalore alla rivendita",
+    'benefits.b2.p': "Il mercato di Dubai ha fatto +50 % in 36 mesi. Su 5-7 anni, il plusvalore atteso è del 25-35 % in aggiunta ai canoni.",
+    'benefits.b3.h3': "Zero stress",
+    'benefits.b3.p': "Gestiamo noi l'immobile, l'inquilino, la manutenzione, la fiscalità locale, il reporting. Tu ricevi un estratto trimestrale. Tutto qui.",
+
+    'why.tag': "Perché Dubai, perché adesso",
+    'why.h2': "Il mercato immobiliare più dinamico al mondo.",
+    'why.p': "Tre numeri che riassumono la finestra 2026-2028.",
+    'why.w1.h3': "di prezzi in 3 anni",
+    'why.w1.p': "+ 20 % nel 2023, + 18 % nel 2024, + 12 % nel 2025. E lo slancio non si ferma: Golden Visa, fiscalità 0 %, infrastrutture record.",
+    'why.w2.h3': "unità in consegna entro il 2029",
+    'why.w2.p': "Damac, Emaar, Sobha, Aldar... La pipeline è storica. La pressione commerciale sui costruttori non è mai stata così forte. È la nostra finestra per negoziare.",
+    'why.w3.h3': "italiani negli Emirati",
+    'why.w3.p': "Circa 15.000 italiani residenti, in forte crescita. Una domanda locativa solvente e in espansione. Il tuo inquilino parla la tua lingua.",
+
+    'trust.tag': "Perché noi",
+    'trust.h2': "La nostra ossessione: che tu torni.",
+    'trust.p': "Non vendiamo un prodotto. Costruiamo una relazione lunga.",
+    'trust.t1.h4': "Rete diretta con i costruttori",
+    'trust.t1.p': "Rapporti consolidati con i responsabili vendita di Emaar, Damac, Sobha, Aldar — non un intermediario di intermediari.",
+    'trust.t2.h4': "Trasparenza totale",
+    'trust.t2.p': "Tutte le commissioni sono scritte nero su bianco nell'accordo che firmi. Nessuna commissione nascosta, mai.",
+    'trust.t3.h4': "Allineamento di interessi",
+    'trust.t3.p': "Investiamo personalmente l'1-5 % del capitale in ogni società. Se perdi tu, perdiamo noi con te.",
+    'trust.t4.h4': "Resti proprietario",
+    'trust.t4.p': "Sei azionista di una società che possiede un immobile vero. Non una quota di un fondo opaco. Voti, decidi.",
+
+    'contact.tag': "Prossimo passo",
+    'contact.h2': `Ne parliamo?<br/><span class="green">30 minuti, senza impegno.</span>`,
+    'contact.p': "Compili il modulo. Ti richiamiamo entro 24 ore. Parliamo del tuo profilo e dei tuoi obiettivi. Se è il momento giusto, ti diamo accesso al prossimo progetto aperto. In caso contrario, ti diciamo chiaramente perché.",
+    'contact.perk1': "Una call di 30 minuti per capire le tue esigenze",
+    'contact.perk2': "Accesso completo alla scheda progetto (prezzo · proiezione · fiscalità)",
+    'contact.perk3': "Nessun impegno finché non hai firmato",
+    'contact.perk4': "Risposta entro 24 ore lavorative",
+
+    'form.h3': "Contattaci",
+    'form.sub': "Risposta personale entro 24 ore lavorative.",
+    'form.subject': "🟢 Nuovo contatto da MyBulkDeal.com [IT]",
+    'form.autoresponse': "Ciao, grazie per il tuo interesse per MyBulkDeal. Il nostro team ti ricontatterà entro 24 ore per fissare un colloquio di 30 minuti e presentarti il prossimo progetto aperto. A presto. — Il team MyBulkDeal",
+    'form.label.prenom': "Nome",
+    'form.label.nom': "Cognome",
+    'form.label.email': "Indirizzo email",
+    'form.label.tel': "Telefono",
+    'form.label.msg': "Il tuo messaggio",
+    'form.ph.prenom': "Il tuo nome",
+    'form.ph.nom': "Il tuo cognome",
+    'form.ph.email': "tu@email.com",
+    'form.ph.tel': "+39 3 ...",
+    'form.ph.msg': "Due righe sul tuo interesse, ticket previsto, domande...",
+    'form.submit': "Invia la mia richiesta →",
+    'form.footnote': "I tuoi dati servono solo per ricontattarti. Nessun archivio terzo, nessuna cessione, nessuna newsletter.",
+
+    'final.h2': `Dubai ti aspetta —<br/><span class="green">e noi con lei.</span>`,
+    'final.p': "Il prossimo progetto apre a breve. Il pool è limitato a 28 posti. Se vuoi farne parte, è il momento.",
+    'final.cta': "Prenota il mio call →",
+
+    'footer.tagline': "Operatore di SPV immobiliari · Dubai · Pool italofono",
+    'footer.disclaimer': "MyBulkDeal si rivolge a un numero limitato di investitori qualificati e non effettua né offerta pubblica né sollecitazione del risparmio. Le performance passate non garantiscono i risultati futuri. Ogni investimento immobiliare comporta un rischio di perdita di capitale. Prima di ogni sottoscrizione, l'investitore riceve la documentazione contrattuale completa e dispone di un periodo di riflessione."
+  }
+};
+
+/* ========== I18N ENGINE ========== */
+function applyLang(lang) {
+  if (!I18N[lang]) lang = 'fr';
+  const dict = I18N[lang];
+
+  document.documentElement.lang = lang;
+
+  // innerHTML keys
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (dict[key] !== undefined) el.innerHTML = dict[key];
+  });
+  // placeholders
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+    const key = el.getAttribute('data-i18n-placeholder');
+    if (dict[key] !== undefined) el.setAttribute('placeholder', dict[key]);
+  });
+  // hidden input values (form subject, autoresponse)
+  document.querySelectorAll('[data-i18n-value]').forEach(el => {
+    const key = el.getAttribute('data-i18n-value');
+    if (dict[key] !== undefined) el.value = dict[key];
+  });
+
+  // meta tags
+  if (dict['meta.title']) document.title = dict['meta.title'];
+  const metaDesc = document.querySelector('meta[name="description"]');
+  if (metaDesc && dict['meta.description']) metaDesc.setAttribute('content', dict['meta.description']);
+
+  // language label in selector
+  const currentLabel = document.getElementById('langCurrentLabel');
+  if (currentLabel && dict['lang.label']) currentLabel.textContent = dict['lang.label'];
+
+  // _language hidden field (lets you see in the email which version was used)
+  const langField = document.getElementById('languageField');
+  if (langField) langField.value = lang;
+
+  // active state in dropdown
+  document.querySelectorAll('.lang-option').forEach(opt => {
+    opt.classList.toggle('active', opt.getAttribute('data-lang') === lang);
+  });
+
+  // persist
+  try { localStorage.setItem('mbd_lang', lang); } catch(e) {}
+}
+
+/* ========== DROPDOWN LOGIC ========== */
+const langSelector = document.getElementById('langSelector');
+const langDropdown = document.getElementById('langDropdown');
+if (langSelector) {
+  langSelector.addEventListener('click', (e) => {
+    if (e.target.closest('.lang-option')) return;
+    e.stopPropagation();
+    langSelector.classList.toggle('open');
+  });
+  document.addEventListener('click', () => langSelector.classList.remove('open'));
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') langSelector.classList.remove('open');
+  });
+  document.querySelectorAll('.lang-option').forEach(opt => {
+    opt.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const lang = opt.getAttribute('data-lang');
+      applyLang(lang);
+      langSelector.classList.remove('open');
+    });
+  });
+}
+
+/* ========== INIT ========== */
+let initialLang = 'fr';
+try {
+  const saved = localStorage.getItem('mbd_lang');
+  if (saved && I18N[saved]) initialLang = saved;
+} catch(e) {}
+applyLang(initialLang);
+
+/* ========== SCROLL REVEAL ========== */
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -80px 0px' });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
