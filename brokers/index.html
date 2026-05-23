@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>MyBulkDeal — Partenariat brokers & agences Dubai</title>
-<meta name="description" content="Activez les leads dormants de votre pipeline. Vos prospects qui n'ont pas le ticket d'entrée 200 K AED entrent à 6 700 €. Vous monétisez du flux, pas un événement. Commission 2 à 8 % sur le capital placé." />
+<meta name="description" content="Activez les leads dormants de votre pipeline. Vos prospects qui n'ont pas le ticket d'entrée 200 K AED entrent à 6 700 €. Vous monétisez du flux, pas un événement. Commission 2 à 5 % sur le capital placé." />
 <!-- Favicon -->
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -228,16 +228,73 @@
 
   .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
   .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* === Bouton "Web site" — retour à la page principale === */
+  .nav-left { display: flex; align-items: center; gap: 18px; }
+  @property --angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+  }
+  .btn-website {
+    --angle: 0deg;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 16px;
+    border-radius: 999px;
+    background: var(--bg);
+    color: var(--green);
+    font-family: inherit;
+    font-weight: 800;
+    font-size: 0.82rem;
+    letter-spacing: -0.005em;
+    text-decoration: none;
+    border: 2px solid transparent;
+    background-image:
+      linear-gradient(var(--bg), var(--bg)),
+      conic-gradient(from var(--angle), transparent 0deg, var(--green) 60deg, var(--green-bright) 90deg, var(--green) 120deg, transparent 180deg, transparent 360deg);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    animation: websiteSpin 3.5s linear infinite;
+    transition: color 0.25s ease, transform 0.25s ease;
+    white-space: nowrap;
+  }
+  .btn-website .arrow {
+    margin-right: 7px;
+    font-weight: 900;
+    transition: transform 0.25s ease;
+  }
+  .btn-website:hover {
+    color: var(--bg);
+    transform: translateY(-1px);
+    background-image:
+      linear-gradient(var(--green-bright), var(--green-bright)),
+      conic-gradient(from var(--angle), transparent 0deg, var(--green-bright) 60deg, #FFFFFF 90deg, var(--green-bright) 120deg, transparent 180deg, transparent 360deg);
+  }
+  .btn-website:hover .arrow { transform: translateX(-3px); }
+  @keyframes websiteSpin { to { --angle: 360deg; } }
+  @supports not (background: conic-gradient(from 0deg, red, blue)) {
+    .btn-website { background: var(--green); color: var(--bg); border: 2px solid var(--green); }
+  }
+  @media (max-width: 768px) {
+    .btn-website { padding: 7px 13px; font-size: 0.76rem; }
+    .nav-left { gap: 12px; }
+  }
 </style>
 </head>
 <body>
 
 <nav>
   <div class="nav-inner">
-    <a href="#" class="logotype nav-logo">
-      <span class="logo-mark"><span class="my">My</span><span class="bulk">Bulk</span><span class="deal">Deal<span class="dot">.</span></span></span>
-      <span class="nav-tag" data-i18n="nav.tag">Brokers</span>
-    </a>
+    <div class="nav-left">
+      <a href="#" class="logotype nav-logo">
+        <span class="logo-mark"><span class="my">My</span><span class="bulk">Bulk</span><span class="deal">Deal<span class="dot">.</span></span></span>
+      </a>
+      <a href="https://mybulkdeal.com/" class="btn-website" data-i18n="nav.website" aria-label="Aller au site principal">
+        <span class="arrow" aria-hidden="true">←</span><span class="label">Web site</span>
+      </a>
+    </div>
     <div class="nav-links">
       <a href="#contexte" data-i18n="nav.context">Contexte</a>
       <a href="#simulateur" data-i18n="nav.sim">Simulateur</a>
@@ -263,7 +320,11 @@
 
     <h1 data-i18n="hero.h1">Activez les leads dormants<br/><span class="accent">de votre pipeline.</span></h1>
     <p class="hero-subtitle" data-i18n="hero.subtitle">
-      Vos prospects sérieux qui butent sur le ticket d'entrée Dubai (<strong>200 à 400 K AED</strong>) entrent désormais à partir de <strong>6 700 €</strong>. Vous monétisez du <strong>flux récurrent</strong>, pas un événement unique. Commission <strong>2 à 8 % sur le capital placé</strong>, avec effet de levier via nos partenaires crédit France — et <strong>vous restez le seul contact de votre client</strong>.
+      Vos prospects sérieux qui butent sur le ticket d'entrée Dubai (<strong>200 à 400 K AED</strong>) entrent désormais à partir de <strong>6 700 €</strong>.
+      <br/><br/>
+      Vous monétisez du <strong>flux récurrent</strong>, pas un événement unique. Commission <strong>2 à 5 % sur le capital placé</strong>, avec effet de levier via nos partenaires crédit France.
+      <br/><br/>
+      Et surtout — <strong>vous restez le seul contact de votre client</strong>.
     </p>
     <div class="hero-cta">
       <a href="#simulateur" class="btn btn-primary" data-i18n="hero.cta1">Calculer ma commission ↓</a>
@@ -272,7 +333,7 @@
     <div class="hero-foot">
       <span><span class="tick">✓</span> <span data-i18n="hero.foot1">Vos leads dormants activés</span></span>
       <span><span class="tick">✓</span> <span data-i18n="hero.foot2">Crédit France pour vos clients</span></span>
-      <span><span class="tick">✓</span> <span data-i18n="hero.foot3">Commission 2-8 % récurrente</span></span>
+      <span><span class="tick">✓</span> <span data-i18n="hero.foot3">Commission 2-5 % récurrente</span></span>
     </div>
   </div>
 </header>
@@ -343,8 +404,8 @@
               <span class="sim-field-label" data-i18n="sim.commission">Votre commission</span>
               <span class="sim-field-value"><span id="commissionVal">3,0</span><span class="unit">%</span></span>
             </div>
-            <input type="range" id="commissionSlider" min="2" max="8" value="3" step="0.1">
-            <div class="sim-field-range-labels"><span>2 %</span><span>8 %</span></div>
+            <input type="range" id="commissionSlider" min="2" max="5" value="3" step="0.1">
+            <div class="sim-field-range-labels"><span>2 %</span><span>5 %</span></div>
           </div>
 
           <div class="sim-hypothesis" data-i18n="sim.hypothesis">
@@ -421,9 +482,11 @@
   <div class="container">
     <div class="credit-card reveal">
       <span class="credit-tag" data-i18n="credit.tag">Le levier qui change tout</span>
-      <h2 data-i18n="credit.h2">Vos clients financent leur entrée Dubai<br/>avec du <span class="green">crédit France</span>.</h2>
+      <h2 data-i18n="credit.h2">Vos clients financent leur projet d'investissement à Dubai<br/>par du <span class="green">crédit en France</span>.</h2>
       <p data-i18n="credit.p">
-        Nous avons noué des partenariats avec des sociétés de crédit en France. Vos clients <strong>n'ont plus besoin d'attendre d'avoir épargné le ticket complet</strong>. Ils lèvent de la dette en France pour financer leur entrée sur un deal MyBulkDeal à Dubai.
+        Nous avons noué des partenariats avec des sociétés de crédit en France. Vos clients <strong>n'ont plus besoin d'attendre d'avoir épargné le ticket complet</strong>.
+        <br/><br/>
+        Ils lèvent de la dette en France — à un coût compétitif — pour financer leur entrée sur un deal MyBulkDeal à Dubai. Leur épargne reste intacte, leur capacité d'investissement est démultipliée.
       </p>
       <div class="credit-grid">
         <div class="credit-point">
@@ -481,7 +544,7 @@
           <li data-i18n="comp.new.li5">Un même client : 3, 5, 10 lignes de commission</li>
         </ul>
         <div class="comp-range">
-          <div class="comp-range-value" data-i18n="comp.range.value">2 à 8 %</div>
+          <div class="comp-range-value" data-i18n="comp.range.value">2 à 5 %</div>
           <div class="comp-range-label" data-i18n="comp.range.label">du capital placé par votre client, projet par projet</div>
         </div>
       </div>
@@ -499,28 +562,28 @@
     <div class="steps">
       <div class="step reveal">
         <div class="step-num">1</div>
-        <h3 data-i18n="how.s1.h3">Vous identifiez</h3>
-        <p data-i18n="how.s1.p">Un lead dans votre pipeline qui matche : intérêt Dubai, ticket insuffisant pour un deal direct, épargne ou capacité d'emprunt FR.</p>
+        <h3 data-i18n="how.s1.h3">Vous identifiez & premier RDV</h3>
+        <p data-i18n="how.s1.p">Un lead dans votre pipeline qui matche : intérêt Dubai, ticket insuffisant pour un deal direct, épargne ou capacité d'emprunt FR. Vous organisez le premier rendez-vous avec votre client.</p>
       </div>
       <div class="step reveal">
         <div class="step-num">2</div>
-        <h3 data-i18n="how.s2.h3">Vous remplissez l'EOI</h3>
-        <p data-i18n="how.s2.p">Un formulaire d'Expression of Interest auprès de nous, à votre nom. Vous restez le seul contact de votre client. On valide en 24 à 48 heures.</p>
+        <h3 data-i18n="how.s2.h3">RDV avec MyBulkDeal</h3>
+        <p data-i18n="how.s2.p">Prise de rendez-vous avec un membre de l'équipe MyBulkDeal, en présence du partenaire (vous). On valide ensemble la pertinence du dossier et on présente la mécanique au client.</p>
       </div>
       <div class="step reveal">
         <div class="step-num">3</div>
-        <h3 data-i18n="how.s3.h3">Nous vous transmettons le crédit FR</h3>
-        <p data-i18n="how.s3.p">Si pertinent, nous vous envoyons les coordonnées de notre partenaire crédit France. Vous les passez à votre client (ou organisez la mise en relation). Vous restez son référent.</p>
+        <h3 data-i18n="how.s3.h3">Suivi client & LOI</h3>
+        <p data-i18n="how.s3.p">Vous assurez le suivi de votre client. Dès qu'il manifeste son intention de prendre position sur un deal, vous nous transmettez la LOI (Letter of Intent). Vous restez le seul interlocuteur du client.</p>
       </div>
       <div class="step reveal">
         <div class="step-num">4</div>
-        <h3 data-i18n="how.s4.h3">Le client signe</h3>
-        <p data-i18n="how.s4.p">Entrée dans la SPV dédiée à partir de 6 700 €. Capital sécurisé via un mandataire RERA local.</p>
+        <h3 data-i18n="how.s4.h3">Entrée dans le SPV</h3>
+        <p data-i18n="how.s4.p">Le client rejoint la SPV dédiée (à partir de 6 700 €) et le bien est acheté. Capital sécurisé via un mandataire RERA local.</p>
       </div>
       <div class="step reveal">
         <div class="step-num">5</div>
         <h3 data-i18n="how.s5.h3">Vous encaissez</h3>
-        <p data-i18n="how.s5.p">Commission 2 à 8 % sur le capital placé. Le client reste le vôtre — vous remontez les prochains deals à votre rythme.</p>
+        <p data-i18n="how.s5.p">Commission 2 à 5 % sur le capital placé. Le client reste le vôtre — vous remontez les prochains deals à votre rythme.</p>
       </div>
     </div>
   </div>
@@ -612,9 +675,9 @@
 const I18N = {
   fr: {
     'meta.title': "MyBulkDeal — Partenariat brokers & agences Dubai",
-    'meta.description': "Activez les leads dormants de votre pipeline. Vos prospects qui n'ont pas le ticket d'entrée 200 K AED entrent à 6 700 €. Vous monétisez du flux, pas un événement. Commission 2 à 8 % sur le capital placé.",
+    'meta.description': "Activez les leads dormants de votre pipeline. Vos prospects qui n'ont pas le ticket d'entrée 200 K AED entrent à 6 700 €. Vous monétisez du flux, pas un événement. Commission 2 à 5 % sur le capital placé.",
     'lang.label': "🇫🇷 Page brokers",
-    'nav.tag': "Brokers",
+    'nav.website': `<span class="arrow" aria-hidden="true">←</span><span class="label">Web site</span>`,
     'nav.context': "Contexte",
     'nav.sim': "Simulateur",
     'nav.credit': "Crédit France",
@@ -622,12 +685,12 @@ const I18N = {
     'nav.partnership': "Partenariat",
 
     'hero.h1': `Activez les leads dormants<br/><span class="accent">de votre pipeline.</span>`,
-    'hero.subtitle': `Vos prospects sérieux qui butent sur le ticket d'entrée Dubai (<strong>200 à 400 K AED</strong>) entrent désormais à partir de <strong>6 700 €</strong>. Vous monétisez du <strong>flux récurrent</strong>, pas un événement unique. Commission <strong>2 à 8 % sur le capital placé</strong>, avec effet de levier via nos partenaires crédit France — et <strong>vous restez le seul contact de votre client</strong>.`,
+    'hero.subtitle': `Vos prospects sérieux qui butent sur le ticket d'entrée Dubai (<strong>200 à 400 K AED</strong>) entrent désormais à partir de <strong>6 700 €</strong>.<br/><br/>Vous monétisez du <strong>flux récurrent</strong>, pas un événement unique. Commission <strong>2 à 5 % sur le capital placé</strong>, avec effet de levier via nos partenaires crédit France.<br/><br/>Et surtout — <strong>vous restez le seul contact de votre client</strong>.`,
     'hero.cta1': "Calculer ma commission ↓",
     'hero.cta2': "Voir notre proposition",
     'hero.foot1': "Vos leads dormants activés",
     'hero.foot2': "Crédit France pour vos clients",
-    'hero.foot3': "Commission 2-8 % récurrente",
+    'hero.foot3': "Commission 2-5 % récurrente",
 
     'context.tag': "Le contexte que vous vivez",
     'context.h2': `30 à 50 % de vos leads<br/>ne signent pas. Pour une seule raison.`,
@@ -671,8 +734,8 @@ const I18N = {
     'levers.l3.p': "L'ordre de grandeur que nous observons sur les pipelines déjà activés. Pas un objectif marketing — un constat terrain, par broker, en plus de votre flux habituel.",
 
     'credit.tag': "Le levier qui change tout",
-    'credit.h2': `Vos clients financent leur entrée Dubai<br/>avec du <span class="green">crédit France</span>.`,
-    'credit.p': `Nous avons noué des partenariats avec des sociétés de crédit en France. Vos clients <strong>n'ont plus besoin d'attendre d'avoir épargné le ticket complet</strong>. Ils lèvent de la dette en France pour financer leur entrée sur un deal MyBulkDeal à Dubai.`,
+    'credit.h2': `Vos clients financent leur projet d'investissement à Dubai<br/>par du <span class="green">crédit en France</span>.`,
+    'credit.p': `Nous avons noué des partenariats avec des sociétés de crédit en France. Vos clients <strong>n'ont plus besoin d'attendre d'avoir épargné le ticket complet</strong>.<br/><br/>Ils lèvent de la dette en France — à un coût compétitif — pour financer leur entrée sur un deal MyBulkDeal à Dubai. Leur épargne reste intacte, leur capacité d'investissement est démultipliée.`,
     'credit.p1.h4': "L'épargne client reste préservée",
     'credit.p1.p': "Plutôt que de casser une assurance-vie ou vider un livret, il garde son matelas intact et finance son investissement par effet de levier.",
     'credit.p2.h4': "Capacité d'investissement multipliée",
@@ -698,21 +761,21 @@ const I18N = {
     'comp.new.li3': "Vos « pas mûr » redeviennent actifs",
     'comp.new.li4': "Commission sur capital total (apport + crédit)",
     'comp.new.li5': "Un même client : 3, 5, 10 lignes de commission",
-    'comp.range.value': "2 à 8 %",
+    'comp.range.value': "2 à 5 %",
     'comp.range.label': "du capital placé par votre client, projet par projet",
 
     'how.tag': "Comment ça marche",
     'how.h2': "Cinq étapes. Vous restez sur votre métier.",
-    'how.s1.h3': "Vous identifiez",
-    'how.s1.p': "Un lead dans votre pipeline qui matche : intérêt Dubai, ticket insuffisant pour un deal direct, épargne ou capacité d'emprunt FR.",
-    'how.s2.h3': "Vous remplissez l'EOI",
-    'how.s2.p': "Un formulaire d'Expression of Interest auprès de nous, à votre nom. Vous restez le seul contact de votre client. On valide en 24 à 48 heures.",
-    'how.s3.h3': "Nous vous transmettons le crédit FR",
-    'how.s3.p': "Si pertinent, nous vous envoyons les coordonnées de notre partenaire crédit France. Vous les passez à votre client (ou organisez la mise en relation). Vous restez son référent.",
-    'how.s4.h3': "Le client signe",
-    'how.s4.p': "Entrée dans la SPV dédiée à partir de 6 700 €. Capital sécurisé via un mandataire RERA local.",
+    'how.s1.h3': "Vous identifiez & premier RDV",
+    'how.s1.p': "Un lead dans votre pipeline qui matche : intérêt Dubai, ticket insuffisant pour un deal direct, épargne ou capacité d'emprunt FR. Vous organisez le premier rendez-vous avec votre client.",
+    'how.s2.h3': "RDV avec MyBulkDeal",
+    'how.s2.p': "Prise de rendez-vous avec un membre de l'équipe MyBulkDeal, en présence du partenaire (vous). On valide ensemble la pertinence du dossier et on présente la mécanique au client.",
+    'how.s3.h3': "Suivi client & LOI",
+    'how.s3.p': "Vous assurez le suivi de votre client. Dès qu'il manifeste son intention de prendre position sur un deal, vous nous transmettez la LOI (Letter of Intent). Vous restez le seul interlocuteur du client.",
+    'how.s4.h3': "Entrée dans le SPV",
+    'how.s4.p': "Le client rejoint la SPV dédiée (à partir de 6 700 €) et le bien est acheté. Capital sécurisé via un mandataire RERA local.",
     'how.s5.h3': "Vous encaissez",
-    'how.s5.p': "Commission 2 à 8 % sur le capital placé. Le client reste le vôtre — vous remontez les prochains deals à votre rythme.",
+    'how.s5.p': "Commission 2 à 5 % sur le capital placé. Le client reste le vôtre — vous remontez les prochains deals à votre rythme.",
 
     'partnership.tag': "Ce qu'on vous propose",
     'partnership.h2': `Un partenariat souple,<br/>sans exclusivité, sans engagement de volume.`,
@@ -740,9 +803,9 @@ const I18N = {
 
   en: {
     'meta.title': "MyBulkDeal — Brokers & agencies partnership for Dubai",
-    'meta.description': "Activate the dormant leads in your pipeline. Your prospects who can't afford the AED 200K+ entry ticket can now enter from €6,700. You monetise recurring flow, not a one-off event. 2 to 8% commission on placed capital.",
+    'meta.description': "Activate the dormant leads in your pipeline. Your prospects who can't afford the AED 200K+ entry ticket can now enter from €6,700. You monetise recurring flow, not a one-off event. 2 to 5% commission on placed capital.",
     'lang.label': "🇬🇧 Brokers page",
-    'nav.tag': "Brokers",
+    'nav.website': `<span class="arrow" aria-hidden="true">←</span><span class="label">Web site</span>`,
     'nav.context': "Context",
     'nav.sim': "Simulator",
     'nav.credit': "France credit",
@@ -750,12 +813,12 @@ const I18N = {
     'nav.partnership': "Partnership",
 
     'hero.h1': `Activate the dormant leads<br/><span class="accent">in your pipeline.</span>`,
-    'hero.subtitle': `Your serious prospects who hit the Dubai entry wall (<strong>AED 200 to 400K</strong>) now enter from <strong>€6,700</strong>. You monetise <strong>recurring flow</strong>, not a one-off event. <strong>2 to 8% commission on placed capital</strong>, with French credit leverage for your clients — and <strong>you remain your client's only contact</strong>.`,
+    'hero.subtitle': `Your serious prospects who hit the Dubai entry wall (<strong>AED 200 to 400K</strong>) now enter from <strong>€6,700</strong>.<br/><br/>You monetise <strong>recurring flow</strong>, not a one-off event. <strong>2 to 5% commission on placed capital</strong>, with French credit leverage for your clients.<br/><br/>And above all — <strong>you remain your client's only contact</strong>.`,
     'hero.cta1': "Calculate my commission ↓",
     'hero.cta2': "See our proposal",
     'hero.foot1': "Your dormant leads activated",
     'hero.foot2': "French credit for your clients",
-    'hero.foot3': "Recurring 2-8% commission",
+    'hero.foot3': "Recurring 2-5% commission",
 
     'context.tag': "The context you live every day",
     'context.h2': `30 to 50% of your leads<br/>don't sign. For one single reason.`,
@@ -799,8 +862,8 @@ const I18N = {
     'levers.l3.p': "The order of magnitude we observe on already activated pipelines. Not a marketing target — a field observation, per broker, on top of your usual flow.",
 
     'credit.tag': "The game-changing lever",
-    'credit.h2': `Your clients finance their Dubai entry<br/>with <span class="green">French credit</span>.`,
-    'credit.p': `We've partnered with credit companies in France. Your clients <strong>no longer need to wait until they've saved the full ticket</strong>. They raise debt in France to finance their entry into a MyBulkDeal Dubai deal.`,
+    'credit.h2': `Your clients fund their Dubai investment project<br/>with <span class="green">credit raised in France</span>.`,
+    'credit.p': `We've partnered with credit companies in France. Your clients <strong>no longer need to wait until they've saved the full ticket</strong>.<br/><br/>They raise debt in France — at a competitive cost — to fund their entry into a MyBulkDeal Dubai deal. Their savings stay intact, their investment capacity is multiplied.`,
     'credit.p1.h4': "Client savings stay intact",
     'credit.p1.p': "Rather than breaking a life insurance or emptying a savings account, they keep their safety net intact and finance their investment with leverage.",
     'credit.p2.h4': "Investment capacity multiplied",
@@ -826,21 +889,21 @@ const I18N = {
     'comp.new.li3': "Your 'not mature' leads become active",
     'comp.new.li4': "Commission on total capital (equity + credit)",
     'comp.new.li5': "One client: 3, 5, 10 commission lines",
-    'comp.range.value': "2 to 8%",
+    'comp.range.value': "2 to 5%",
     'comp.range.label': "of capital placed by your client, project by project",
 
     'how.tag': "How it works",
     'how.h2': "Five steps. You stay on your job.",
-    'how.s1.h3': "You identify",
-    'how.s1.p': "A lead in your pipeline that matches: Dubai interest, insufficient ticket for a direct deal, savings or French borrowing capacity.",
-    'how.s2.h3': "You fill the EOI",
-    'how.s2.p': "An Expression of Interest form with us, under your name. You stay your client's only contact. We validate within 24 to 48 hours.",
-    'how.s3.h3': "We pass you the credit contact",
-    'how.s3.p': "If relevant, we send you our French credit partner's contact details. You pass them on to your client (or organise the introduction). You remain their referent.",
-    'how.s4.h3': "The client signs",
-    'how.s4.p': "Entry into the dedicated SPV from €6,700. Capital secured via a local RERA trustee.",
+    'how.s1.h3': "You identify & first meeting",
+    'how.s1.p': "A lead in your pipeline that matches: Dubai interest, insufficient ticket for a direct deal, savings or French borrowing capacity. You set up the first meeting with your client.",
+    'how.s2.h3': "Joint call with MyBulkDeal",
+    'how.s2.p': "A call with a member of the MyBulkDeal team, with you (the partner) present. We validate the file together and walk the client through the mechanism.",
+    'how.s3.h3': "Client follow-up & LOI",
+    'how.s3.p': "You handle the client follow-up. As soon as they confirm intention to take a position on a deal, you pass us the LOI (Letter of Intent). You remain the client's sole point of contact.",
+    'how.s4.h3': "Entry into the SPV",
+    'how.s4.p': "The client joins the dedicated SPV (from €6,700) and the asset is acquired. Capital secured via a local RERA trustee.",
     'how.s5.h3': "You get paid",
-    'how.s5.p': "2 to 8% commission on placed capital. The client stays yours — you bring the next deals at your own pace.",
+    'how.s5.p': "2 to 5% commission on placed capital. The client stays yours — you bring the next deals at your own pace.",
 
     'partnership.tag': "What we offer you",
     'partnership.h2': `A flexible partnership,<br/>no exclusivity, no volume commitment.`,
@@ -868,9 +931,9 @@ const I18N = {
 
   it: {
     'meta.title': "MyBulkDeal — Partnership con broker e agenzie Dubai",
-    'meta.description': "Attivate i lead dormienti del vostro pipeline. I prospect senza il ticket d'ingresso 200 K AED entrano da €6.700. Monetizzate flusso ricorrente, non un evento isolato. Commissione 2-8% sul capitale collocato.",
+    'meta.description': "Attivate i lead dormienti del vostro pipeline. I prospect senza il ticket d'ingresso 200 K AED entrano da €6.700. Monetizzate flusso ricorrente, non un evento isolato. Commissione 2-5% sul capitale collocato.",
     'lang.label': "🇮🇹 Pagina broker",
-    'nav.tag': "Broker",
+    'nav.website': `<span class="arrow" aria-hidden="true">←</span><span class="label">Sito web</span>`,
     'nav.context': "Contesto",
     'nav.sim': "Simulatore",
     'nav.credit': "Credito Francia",
@@ -878,12 +941,12 @@ const I18N = {
     'nav.partnership': "Partnership",
 
     'hero.h1': `Attivate i lead dormienti<br/><span class="accent">del vostro pipeline.</span>`,
-    'hero.subtitle': `I vostri prospect seri che sbattono contro il ticket d'ingresso Dubai (<strong>200 a 400 K AED</strong>) entrano ora da <strong>€6.700</strong>. Monetizzate <strong>flusso ricorrente</strong>, non un evento isolato. Commissione <strong>2-8% sul capitale collocato</strong>, con leva via i nostri partner credito Francia — e <strong>restate l'unico contatto del vostro cliente</strong>.`,
+    'hero.subtitle': `I vostri prospect seri che sbattono contro il ticket d'ingresso Dubai (<strong>200 a 400 K AED</strong>) entrano ora da <strong>€6.700</strong>.<br/><br/>Monetizzate <strong>flusso ricorrente</strong>, non un evento isolato. Commissione <strong>2-5% sul capitale collocato</strong>, con leva via i nostri partner credito Francia.<br/><br/>E soprattutto — <strong>restate l'unico contatto del vostro cliente</strong>.`,
     'hero.cta1': "Calcola la mia commissione ↓",
     'hero.cta2': "Vedi la nostra proposta",
     'hero.foot1': "I vostri lead dormienti attivati",
     'hero.foot2': "Credito Francia per i vostri clienti",
-    'hero.foot3': "Commissione 2-8% ricorrente",
+    'hero.foot3': "Commissione 2-5% ricorrente",
 
     'context.tag': "Il contesto che vivete ogni giorno",
     'context.h2': `Il 30-50% dei vostri lead<br/>non firma. Per un solo motivo.`,
@@ -927,8 +990,8 @@ const I18N = {
     'levers.l3.p': "L'ordine di grandezza che osserviamo sui pipeline già attivati. Non un target marketing — una constatazione di campo, per broker, in aggiunta al flusso abituale.",
 
     'credit.tag': "La leva che cambia tutto",
-    'credit.h2': `I vostri clienti finanziano l'ingresso a Dubai<br/>con <span class="green">credito Francia</span>.`,
-    'credit.p': `Abbiamo stretto partnership con società di credito in Francia. I vostri clienti <strong>non devono più aspettare di aver risparmiato il ticket intero</strong>. Levano debito in Francia per finanziare l'ingresso in un deal MyBulkDeal a Dubai.`,
+    'credit.h2': `I vostri clienti finanziano il loro progetto d'investimento a Dubai<br/>con <span class="green">credito in Francia</span>.`,
+    'credit.p': `Abbiamo stretto partnership con società di credito in Francia. I vostri clienti <strong>non devono più aspettare di aver risparmiato il ticket intero</strong>.<br/><br/>Levano debito in Francia — a un costo competitivo — per finanziare l'ingresso in un deal MyBulkDeal a Dubai. Il loro risparmio resta intatto, la capacità d'investimento è moltiplicata.`,
     'credit.p1.h4': "Il risparmio del cliente resta intatto",
     'credit.p1.p': "Invece di rompere una polizza vita o svuotare un libretto, mantiene il cuscinetto intatto e finanzia l'investimento con leva.",
     'credit.p2.h4': "Capacità di investimento moltiplicata",
@@ -954,21 +1017,21 @@ const I18N = {
     'comp.new.li3': "I vostri 'non maturi' tornano attivi",
     'comp.new.li4': "Commissione sul capitale totale (apporto + credito)",
     'comp.new.li5': "Uno stesso cliente: 3, 5, 10 linee di commissione",
-    'comp.range.value': "2 a 8%",
+    'comp.range.value': "2 a 5%",
     'comp.range.label': "del capitale collocato dal vostro cliente, progetto per progetto",
 
     'how.tag': "Come funziona",
     'how.h2': "Cinque passi. Voi restate sul vostro mestiere.",
-    'how.s1.h3': "Voi identificate",
-    'how.s1.p': "Un lead nel pipeline che combacia: interesse Dubai, ticket insufficiente per deal diretto, risparmio o capacità di indebitamento FR.",
-    'how.s2.h3': "Compilate l'EOI",
-    'how.s2.p': "Un formulario di Expression of Interest presso di noi, a vostro nome. Restate l'unico contatto del vostro cliente. Validiamo in 24-48 ore.",
-    'how.s3.h3': "Vi trasmettiamo il credito FR",
-    'how.s3.p': "Se pertinente, vi inviamo i contatti del nostro partner credito Francia. Li passate al vostro cliente (o organizzate la presentazione). Restate il loro referente.",
-    'how.s4.h3': "Il cliente firma",
-    'how.s4.p': "Ingresso nella SPV dedicata a partire da €6.700. Capitale sicuro via mandatario RERA locale.",
+    'how.s1.h3': "Identificate & primo incontro",
+    'how.s1.p': "Un lead nel pipeline che combacia: interesse Dubai, ticket insufficiente per deal diretto, risparmio o capacità di indebitamento FR. Organizzate il primo incontro con il vostro cliente.",
+    'how.s2.h3': "Call con MyBulkDeal",
+    'how.s2.p': "Appuntamento con un membro del team MyBulkDeal, in presenza del partner (voi). Validiamo insieme la pertinenza del dossier e presentiamo il meccanismo al cliente.",
+    'how.s3.h3': "Follow-up cliente & LOI",
+    'how.s3.p': "Voi gestite il follow-up del cliente. Appena conferma l'intenzione di prendere posizione su un deal, ci trasmettete la LOI (Letter of Intent). Restate l'unico interlocutore del cliente.",
+    'how.s4.h3': "Ingresso nella SPV",
+    'how.s4.p': "Il cliente raggiunge la SPV dedicata (da €6.700) e l'immobile viene acquistato. Capitale sicuro tramite mandatario RERA locale.",
     'how.s5.h3': "Voi incassate",
-    'how.s5.p': "Commissione 2-8% sul capitale collocato. Il cliente resta vostro — risalite i prossimi deal al vostro ritmo.",
+    'how.s5.p': "Commissione 2-5% sul capitale collocato. Il cliente resta vostro — risalite i prossimi deal al vostro ritmo.",
 
     'partnership.tag': "Cosa vi proponiamo",
     'partnership.h2': `Una partnership flessibile,<br/>senza esclusiva, senza impegno di volume.`,
