@@ -1,0 +1,1162 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>MyBulkDeal — Partenariat brokers & agences Dubai</title>
+<meta name="description" content="Activez les leads dormants de votre pipeline. Vos prospects qui n'ont pas le ticket d'entrée 200 K AED entrent à 6 700 €. Vous monétisez du flux, pas un événement. Commission 2 à 8 % sur le capital placé." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --bg: #000000; --bg-2: #060606; --bg-3: #0d0d0d;
+    --surface: #111111; --surface-2: #161616;
+    --border: rgba(255,255,255,0.08); --border-strong: rgba(255,255,255,0.18);
+    --text: #FFFFFF; --text-2: #B8B8B8; --text-3: #6B6B6B;
+    --green: #A3E635; --green-bright: #BEF264; --green-dark: #84CC16;
+    --green-glow: rgba(163, 230, 53, 0.45); --green-soft: rgba(163, 230, 53, 0.08);
+    --red: #f87171;
+    --radius: 16px; --radius-lg: 24px;
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: var(--bg); color: var(--text); line-height: 1.55; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  ::selection { background: var(--green); color: var(--bg); }
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+  h1, h2, h3, h4 { font-family: 'Inter', sans-serif; letter-spacing: -0.035em; line-height: 1.05; font-weight: 800; }
+  h1 { font-size: clamp(2.6rem, 6vw, 5rem); }
+  h2 { font-size: clamp(2rem, 4.5vw, 3.4rem); }
+  h3 { font-size: 1.3rem; font-weight: 700; letter-spacing: -0.02em; }
+  p { color: var(--text-2); }
+  a { color: inherit; text-decoration: none; }
+  .green { color: var(--green); }
+
+  .logotype { font-weight: 900; letter-spacing: -0.04em; }
+  .logotype .my { color: var(--text); }
+  .logotype .bulk { color: var(--green); }
+  .logotype .deal { color: var(--text); }
+  .logotype .dot { color: var(--green); }
+
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(0,0,0,0.78); backdrop-filter: blur(20px) saturate(180%); -webkit-backdrop-filter: blur(20px) saturate(180%); border-bottom: 1px solid var(--border); }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 16px 24px; max-width: 1200px; margin: 0 auto; }
+  .nav-logo { font-size: 1.2rem; display: inline-flex; align-items: center; gap: 10px; }
+  .nav-tag { font-size: 0.72rem; padding: 4px 10px; border-radius: 999px; background: var(--green-soft); color: var(--green); border: 1px solid rgba(163, 230, 53, 0.3); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; }
+  .nav-links { display: flex; gap: 28px; align-items: center; }
+  .nav-links a { font-size: 0.92rem; color: var(--text-2); transition: color 0.2s; }
+  .nav-links a:hover { color: var(--green); }
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 13px 22px; border-radius: 999px; font-family: inherit; font-weight: 800; font-size: 0.95rem; cursor: pointer; border: none; text-decoration: none; transition: all 0.3s var(--ease); letter-spacing: -0.005em; }
+  .btn-primary { background: var(--green); color: #000; box-shadow: 0 6px 24px rgba(163, 230, 53, 0.25); }
+  .btn-primary:hover { background: var(--green-bright); transform: translateY(-2px); box-shadow: 0 14px 40px var(--green-glow); }
+  .btn-ghost { background: transparent; color: var(--text); border: 1.5px solid var(--border-strong); }
+  .btn-ghost:hover { border-color: var(--green); color: var(--green); transform: translateY(-2px); }
+  @media (max-width: 768px) { .nav-links a:not(.btn) { display: none; } .nav-tag { display: none; } }
+
+  .hero { position: relative; padding: 120px 0 50px; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(900px 500px at 20% 10%, rgba(163, 230, 53, 0.18), transparent 65%), radial-gradient(700px 400px at 85% 50%, rgba(163, 230, 53, 0.08), transparent 60%); pointer-events: none; }
+  .hero::after { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px); background-size: 80px 80px; mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 30%, transparent 80%); -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 30%, transparent 80%); pointer-events: none; }
+  .hero-inner { position: relative; text-align: center; max-width: 1000px; margin: 0 auto; }
+
+  .lang-selector { position: relative; display: inline-flex; align-items: center; gap: 10px; padding: 9px 18px; border-radius: 999px; background: var(--green-soft); border: 1px solid rgba(163, 230, 53, 0.3); font-size: 0.85rem; color: var(--green); margin-bottom: 28px; font-weight: 500; cursor: pointer; user-select: none; transition: background 0.2s, border-color 0.2s; }
+  .lang-selector:hover { background: rgba(163, 230, 53, 0.14); border-color: rgba(163, 230, 53, 0.5); }
+  .lang-selector .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); box-shadow: 0 0 16px var(--green); animation: pulse 2.2s infinite; }
+  .lang-arrow { font-size: 0.7rem; opacity: 0.8; transition: transform 0.25s var(--ease); }
+  .lang-selector.open .lang-arrow { transform: rotate(180deg); }
+  .lang-dropdown { position: absolute; top: calc(100% + 8px); left: 50%; transform: translateX(-50%); background: var(--surface-2); border: 1px solid var(--border-strong); border-radius: 14px; padding: 6px; min-width: 240px; display: none; z-index: 50; box-shadow: 0 20px 60px rgba(0,0,0,0.6), 0 0 0 1px rgba(163, 230, 53, 0.05); text-align: left; }
+  .lang-selector.open .lang-dropdown { display: block; }
+  .lang-option { display: block; width: 100%; padding: 11px 14px; background: transparent; border: none; color: var(--text-2); text-align: left; font-family: inherit; font-size: 0.9rem; font-weight: 500; border-radius: 10px; cursor: pointer; transition: background 0.15s, color 0.15s; }
+  .lang-option:hover { background: var(--green-soft); color: var(--text); }
+  .lang-option.active { background: var(--green-soft); color: var(--green); font-weight: 700; }
+  @keyframes pulse { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(0.85); } }
+
+  .hero h1 { margin-bottom: 22px; }
+  .hero h1 .accent { color: var(--green); }
+  .hero-subtitle { font-size: clamp(1.05rem, 1.7vw, 1.25rem); color: var(--text-2); max-width: 760px; margin: 0 auto; line-height: 1.5; }
+  .hero-subtitle strong { color: var(--text); font-weight: 600; }
+  .hero-cta { display: flex; gap: 14px; justify-content: center; margin-top: 38px; flex-wrap: wrap; }
+  .hero-foot { margin-top: 36px; display: flex; gap: 36px; flex-wrap: wrap; justify-content: center; font-size: 0.88rem; color: var(--text-3); }
+  .hero-foot span { display: inline-flex; align-items: center; gap: 8px; }
+  .hero-foot .tick { color: var(--green); font-weight: 700; }
+
+  section { padding: 60px 0; position: relative; }
+  .section-head { text-align: center; max-width: 820px; margin: 0 auto 40px; }
+  .section-tag { display: inline-block; padding: 7px 16px; border-radius: 999px; background: var(--green-soft); border: 1px solid rgba(163, 230, 53, 0.3); color: var(--green); font-size: 0.78rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 20px; }
+  .section-head p { font-size: 1.1rem; margin-top: 18px; }
+
+  /* CONTEXTE — 3 profils dormants */
+  .context-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  @media (max-width: 880px) { .context-grid { grid-template-columns: 1fr; } }
+  .context-card { padding: 36px 30px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); transition: transform 0.4s var(--ease), border-color 0.4s var(--ease), box-shadow 0.4s var(--ease); cursor: default; position: relative; overflow: hidden; }
+  .context-card:hover { transform: translateY(-8px) scale(1.03); border-color: rgba(163, 230, 53, 0.4); box-shadow: 0 30px 60px -20px rgba(163, 230, 53, 0.25); }
+  .context-card .pct { font-family: 'Inter', sans-serif; font-weight: 900; font-size: 0.85rem; color: var(--green); margin-bottom: 14px; text-transform: uppercase; letter-spacing: 0.1em; }
+  .context-card h3 { margin-bottom: 12px; font-size: 1.25rem; }
+  .context-card p { font-size: 0.96rem; }
+  .context-bottom { text-align: center; margin-top: 36px; font-size: 1.15rem; color: var(--text); font-weight: 600; max-width: 760px; margin-left: auto; margin-right: auto; }
+  .context-bottom .arrow { color: var(--green); }
+
+  /* SIMULATEUR */
+  .simulator { background: var(--bg-2); padding: 60px 0 80px; }
+  .sim-card { max-width: 1140px; margin: 0 auto; background: radial-gradient(800px 400px at 50% 0%, var(--green-soft), transparent 70%), var(--surface); border: 1px solid var(--border-strong); border-radius: var(--radius-lg); padding: 44px 44px; box-shadow: 0 30px 80px rgba(0,0,0,0.4); }
+  .sim-head { text-align: center; margin-bottom: 34px; }
+  .sim-head h2 { font-size: clamp(1.7rem, 3vw, 2.4rem); margin-bottom: 12px; }
+  .sim-head p { color: var(--text-2); font-size: 1rem; }
+  .sim-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 40px; }
+  @media (max-width: 980px) { .sim-grid { grid-template-columns: 1fr; gap: 30px; } }
+
+  .sim-controls { display: flex; flex-direction: column; gap: 28px; }
+  .sim-field-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px; gap: 12px; }
+  .sim-field-label { font-size: 0.85rem; color: var(--text-2); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; }
+  .sim-field-value { font-family: 'Inter', sans-serif; font-weight: 800; font-size: 1.4rem; color: var(--green); letter-spacing: -0.02em; white-space: nowrap; }
+  .sim-field-value .unit { font-size: 0.9rem; color: var(--text-2); font-weight: 500; margin-left: 4px; }
+  input[type="range"] { -webkit-appearance: none; appearance: none; width: 100%; height: 6px; background: linear-gradient(to right, var(--green) 0%, var(--green) var(--p, 50%), var(--bg-3) var(--p, 50%), var(--bg-3) 100%); border-radius: 999px; outline: none; cursor: pointer; }
+  input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 22px; height: 22px; border-radius: 50%; background: var(--green); border: 3px solid #000; box-shadow: 0 0 0 2px var(--green), 0 8px 16px rgba(163, 230, 53, 0.4); cursor: pointer; transition: transform 0.15s; }
+  input[type="range"]::-webkit-slider-thumb:hover { transform: scale(1.15); }
+  input[type="range"]::-moz-range-thumb { width: 22px; height: 22px; border-radius: 50%; background: var(--green); border: 3px solid #000; box-shadow: 0 0 0 2px var(--green), 0 8px 16px rgba(163, 230, 53, 0.4); cursor: pointer; }
+  .sim-field-range-labels { display: flex; justify-content: space-between; margin-top: 8px; color: var(--text-3); font-size: 0.75rem; }
+  .sim-hypothesis { margin-top: 10px; font-size: 0.82rem; color: var(--text-3); line-height: 1.5; padding: 14px; background: rgba(255,255,255,0.025); border-radius: 12px; border: 1px solid var(--border); }
+  .sim-hypothesis strong { color: var(--text-2); font-weight: 600; }
+
+  .sim-results { display: flex; flex-direction: column; gap: 16px; }
+  .sim-result-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+  @media (max-width: 720px) { .sim-result-row { grid-template-columns: 1fr; } }
+  .sim-stat { padding: 22px 20px; background: var(--bg-2); border: 1px solid var(--border); border-radius: var(--radius); }
+  .sim-stat.highlight { background: linear-gradient(180deg, rgba(163,230,53,0.10), rgba(163,230,53,0.02)); border-color: rgba(163, 230, 53, 0.4); }
+  .sim-stat-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-3); margin-bottom: 8px; }
+  .sim-stat-value { font-family: 'Inter', sans-serif; font-weight: 900; font-size: 1.5rem; letter-spacing: -0.025em; white-space: nowrap; }
+  .sim-stat-value.green { color: var(--green); }
+  .sim-stat-sub { font-size: 0.78rem; color: var(--text-3); margin-top: 6px; }
+
+  .sim-chart-wrap { background: var(--bg-2); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; margin-top: 12px; min-height: 320px; }
+  .sim-chart-title { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-2); font-weight: 600; margin-bottom: 14px; text-align: center; }
+  .sim-chart-canvas { width: 100% !important; height: 280px !important; }
+
+  .sim-balance { margin-top: 28px; padding: 24px 28px; background: linear-gradient(135deg, rgba(163,230,53,0.12), rgba(163,230,53,0.04)); border: 1.5px solid rgba(163,230,53,0.35); border-radius: var(--radius); display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; }
+  .sim-balance-label { font-size: 0.92rem; color: var(--text); font-weight: 600; }
+  .sim-balance-value { font-family: 'Inter', sans-serif; font-weight: 900; font-size: 2.1rem; color: var(--green); letter-spacing: -0.03em; white-space: nowrap; }
+  .sim-balance-detail { font-size: 0.85rem; color: var(--text-2); margin-top: 4px; }
+
+  /* LEVIERS */
+  .levers { background: var(--bg); }
+  .lever-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  @media (max-width: 880px) { .lever-grid { grid-template-columns: 1fr; } }
+  .lever-card { padding: 36px 30px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); transition: transform 0.4s var(--ease), border-color 0.4s var(--ease), box-shadow 0.4s var(--ease); cursor: default; position: relative; overflow: hidden; }
+  .lever-card:hover { transform: translateY(-8px) scale(1.03); border-color: rgba(163, 230, 53, 0.4); box-shadow: 0 30px 60px -20px rgba(163, 230, 53, 0.25); }
+  .lever-num { font-family: 'Inter', sans-serif; font-weight: 900; font-size: 2.6rem; color: var(--green); line-height: 1; letter-spacing: -0.05em; margin-bottom: 14px; }
+  .lever-card h3 { margin-bottom: 12px; font-size: 1.25rem; }
+  .lever-card p { font-size: 0.96rem; }
+
+  /* CRÉDIT FRANCE — section vedette */
+  .credit { background: var(--bg-2); }
+  .credit-card { max-width: 980px; margin: 0 auto; padding: 50px 44px; background: radial-gradient(700px 350px at 50% 0%, var(--green-soft), transparent 70%), var(--surface); border: 1.5px solid rgba(163,230,53,0.35); border-radius: var(--radius-lg); box-shadow: 0 0 60px -20px var(--green-glow); }
+  .credit-tag { display: inline-block; padding: 6px 14px; border-radius: 8px; background: var(--green); color: #000; font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 18px; }
+  .credit-card h2 { font-size: clamp(1.8rem, 3.5vw, 2.6rem); margin-bottom: 16px; }
+  .credit-card > p { font-size: 1.05rem; max-width: 720px; margin-bottom: 30px; }
+  .credit-card > p strong { color: var(--green); font-weight: 700; }
+  .credit-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+  @media (max-width: 760px) { .credit-grid { grid-template-columns: 1fr; } }
+  .credit-point { padding: 22px; background: var(--bg-2); border: 1px solid var(--border); border-radius: var(--radius); }
+  .credit-point .icon { width: 36px; height: 36px; border-radius: 10px; background: var(--green); color: #000; display: flex; align-items: center; justify-content: center; font-weight: 900; margin-bottom: 14px; }
+  .credit-point h4 { margin-bottom: 8px; font-size: 1.05rem; }
+  .credit-point p { font-size: 0.9rem; color: var(--text-2); }
+
+  /* RÉMUNÉRATION */
+  .compensation .container { max-width: 1100px; }
+  .comp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: stretch; }
+  @media (max-width: 880px) { .comp-grid { grid-template-columns: 1fr; } }
+  .comp-card { padding: 36px 30px; border-radius: var(--radius-lg); transition: transform 0.4s var(--ease), border-color 0.4s var(--ease); }
+  .comp-card.old { background: var(--surface); border: 1px solid var(--border); }
+  .comp-card.new { background: linear-gradient(180deg, rgba(163,230,53,0.06), rgba(163,230,53,0.01)); border: 1.5px solid rgba(163,230,53,0.4); position: relative; }
+  .comp-card.new::before { content: 'MyBulkDeal'; position: absolute; top: -12px; right: 22px; background: var(--green); color: #000; padding: 4px 12px; border-radius: 6px; font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; }
+  .comp-card:hover { transform: translateY(-4px); }
+  .comp-card h3 { margin-bottom: 8px; font-size: 1.4rem; }
+  .comp-card .comp-sub { font-size: 0.88rem; color: var(--text-3); margin-bottom: 22px; }
+  .comp-list { list-style: none; padding: 0; }
+  .comp-list li { padding: 12px 0; padding-left: 26px; position: relative; color: var(--text-2); font-size: 0.95rem; border-bottom: 1px solid var(--border); }
+  .comp-list li:last-child { border-bottom: none; }
+  .comp-card.old .comp-list li::before { content: '×'; position: absolute; left: 0; color: #f87171; font-weight: 700; font-size: 1.1rem; }
+  .comp-card.new .comp-list li::before { content: '✓'; position: absolute; left: 0; color: var(--green); font-weight: 700; }
+  .comp-range { margin-top: 22px; padding: 18px 22px; background: var(--bg-2); border-radius: var(--radius); text-align: center; }
+  .comp-range-value { font-family: 'Inter', sans-serif; font-weight: 900; font-size: 2.2rem; color: var(--green); letter-spacing: -0.03em; line-height: 1; }
+  .comp-range-label { font-size: 0.85rem; color: var(--text-2); margin-top: 6px; }
+
+  /* HOW IT WORKS */
+  .how { background: var(--bg-2); }
+  .steps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; }
+  @media (max-width: 980px) { .steps { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .steps { grid-template-columns: 1fr; } }
+  .step { padding: 26px 22px; background: var(--surface); border-radius: var(--radius); border: 1px solid var(--border); transition: transform 0.4s var(--ease), border-color 0.4s var(--ease); cursor: default; }
+  .step:hover { transform: translateY(-6px) scale(1.03); border-color: var(--green); }
+  .step-num { width: 38px; height: 38px; border-radius: 11px; background: var(--green); color: #000; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 1rem; margin-bottom: 16px; }
+  .step h3 { margin-bottom: 8px; font-size: 1rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--green); }
+  .step p { font-size: 0.88rem; }
+
+  /* PARTNERSHIP */
+  .partnership-card { max-width: 980px; margin: 0 auto; padding: 50px 44px; background: radial-gradient(700px 350px at 50% 0%, var(--green-soft), transparent 70%), var(--surface); border: 1.5px solid rgba(163,230,53,0.35); border-radius: var(--radius-lg); box-shadow: 0 0 60px -20px var(--green-glow); }
+  .partnership-intro { text-align: center; margin-bottom: 36px; }
+  .partnership-intro h2 { margin-bottom: 16px; }
+  .partnership-intro p { font-size: 1.1rem; color: var(--text-2); max-width: 700px; margin: 0 auto; }
+  .partnership-list { display: flex; flex-direction: column; gap: 14px; }
+  .partnership-item { display: flex; gap: 18px; padding: 18px 22px; background: var(--bg-2); border: 1px solid var(--border); border-radius: var(--radius); transition: transform 0.4s var(--ease), border-color 0.4s var(--ease); }
+  .partnership-item:hover { border-color: var(--green); transform: translateX(4px); }
+  .partnership-icon { flex-shrink: 0; width: 36px; height: 36px; border-radius: 10px; background: var(--green); color: #000; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 0.95rem; }
+  .partnership-content h3 { margin-bottom: 6px; font-size: 1.05rem; }
+  .partnership-content p { font-size: 0.92rem; color: var(--text-2); }
+  .partnership-cta { margin-top: 36px; text-align: center; }
+  .partnership-cta p { font-size: 1rem; color: var(--text-2); margin-bottom: 18px; }
+
+  /* FINAL CTA */
+  .final { padding: 60px 0; text-align: center; background: var(--bg); }
+  .final h2 { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 18px; }
+  .final p { font-size: 1.1rem; max-width: 620px; margin: 0 auto 28px; }
+
+  /* FOOTER */
+  footer { padding: 36px 0 28px; background: var(--bg-2); border-top: 1px solid var(--border); text-align: center; }
+  .foot-logo { font-size: 1.3rem; margin-bottom: 14px; }
+  .foot-info { color: var(--text-3); font-size: 0.88rem; margin-bottom: 8px; }
+  .foot-entity { color: var(--text-2); font-size: 0.92rem; margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--border); max-width: 540px; margin-left: auto; margin-right: auto; }
+  .foot-entity strong { color: var(--text); font-weight: 700; }
+  .foot-disclaimer { color: var(--text-3); font-size: 0.74rem; max-width: 760px; margin: 18px auto 0; line-height: 1.6; }
+
+  .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="logotype nav-logo">
+      <span class="logo-mark"><span class="my">My</span><span class="bulk">Bulk</span><span class="deal">Deal<span class="dot">.</span></span></span>
+      <span class="nav-tag" data-i18n="nav.tag">Brokers</span>
+    </a>
+    <div class="nav-links">
+      <a href="#contexte" data-i18n="nav.context">Contexte</a>
+      <a href="#simulateur" data-i18n="nav.sim">Simulateur</a>
+      <a href="#credit" data-i18n="nav.credit">Crédit France</a>
+      <a href="#remuneration" data-i18n="nav.compensation">Rémunération</a>
+      <a href="#partenariat" data-i18n="nav.partnership">Partenariat</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="container hero-inner">
+    <div class="lang-selector" id="langSelector" aria-label="Choisir la langue">
+      <span class="dot"></span>
+      <span id="langCurrentLabel">🇫🇷 Page brokers</span>
+      <span class="lang-arrow">▾</span>
+      <div class="lang-dropdown" id="langDropdown" role="menu">
+        <button class="lang-option" data-lang="fr">🇫🇷 Page brokers</button>
+        <button class="lang-option" data-lang="en">🇬🇧 Brokers page</button>
+        <button class="lang-option" data-lang="it">🇮🇹 Pagina broker</button>
+      </div>
+    </div>
+
+    <h1 data-i18n="hero.h1">Activez les leads dormants<br/><span class="accent">de votre pipeline.</span></h1>
+    <p class="hero-subtitle" data-i18n="hero.subtitle">
+      Vos prospects sérieux qui butent sur le ticket d'entrée Dubai (<strong>200 à 400 K AED</strong>) entrent désormais à partir de <strong>6 700 €</strong>. Vous monétisez du <strong>flux récurrent</strong>, pas un événement unique. Commission <strong>2 à 8 % sur le capital placé</strong>, avec effet de levier via nos partenaires crédit France — et <strong>vous restez le seul contact de votre client</strong>.
+    </p>
+    <div class="hero-cta">
+      <a href="#simulateur" class="btn btn-primary" data-i18n="hero.cta1">Calculer ma commission ↓</a>
+      <a href="#partenariat" class="btn btn-ghost" data-i18n="hero.cta2">Voir notre proposition</a>
+    </div>
+    <div class="hero-foot">
+      <span><span class="tick">✓</span> <span data-i18n="hero.foot1">Vos leads dormants activés</span></span>
+      <span><span class="tick">✓</span> <span data-i18n="hero.foot2">Crédit France pour vos clients</span></span>
+      <span><span class="tick">✓</span> <span data-i18n="hero.foot3">Commission 2-8 % récurrente</span></span>
+    </div>
+  </div>
+</header>
+
+<!-- CONTEXTE — 3 profils dormants -->
+<section id="contexte">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-tag" data-i18n="context.tag">Le contexte que vous vivez</span>
+      <h2 data-i18n="context.h2">30 à 50 % de vos leads<br/>ne signent pas. Pour une seule raison.</h2>
+      <p data-i18n="context.p">Le ticket d'entrée. Pas le sérieux du prospect, pas son intérêt pour Dubai. Juste le mur des 200-400 K AED. Trois profils reviennent en boucle.</p>
+    </div>
+    <div class="context-grid">
+      <div class="context-card reveal">
+        <div class="pct" data-i18n="context.c1.pct">Profil 01 · épargne moyenne</div>
+        <h3 data-i18n="context.c1.h3">30 à 80 K€ de côté</h3>
+        <p data-i18n="context.c1.p">Solide, mais insuffisant pour acheter seul à Dubai. Vous lui dites « revenez quand vous aurez plus » — et il disparaît.</p>
+      </div>
+      <div class="context-card reveal">
+        <div class="pct" data-i18n="context.c2.pct">Profil 02 · capacité d'emprunt</div>
+        <h3 data-i18n="context.c2.h3">Bon dossier bancaire FR</h3>
+        <p data-i18n="context.c2.p">Cadre, salaire confortable, vraie capacité à lever de la dette. Personne ne lui a jamais montré comment transformer ça en investissement Dubai.</p>
+      </div>
+      <div class="context-card reveal">
+        <div class="pct" data-i18n="context.c3.pct">Profil 03 · épargne immobilisée</div>
+        <h3 data-i18n="context.c3.h3">Cash en assurance-vie dormante</h3>
+        <p data-i18n="context.c3.p">Livrets, fonds euros peu rémunérateurs, comptes-titres dormants. Il veut bouger, mais ne sait pas comment passer le pas sans tout casser.</p>
+      </div>
+    </div>
+    <p class="context-bottom reveal" data-i18n="context.bottom">
+      Ces leads ne sont pas une perte — <span class="arrow">→</span> <span class="green">c'est un gisement.</span>
+    </p>
+  </div>
+</section>
+
+<!-- SIMULATEUR -->
+<section id="simulateur" class="simulator">
+  <div class="container">
+    <div class="sim-card reveal">
+      <div class="sim-head">
+        <span class="section-tag" data-i18n="sim.tag">Le simulateur</span>
+        <h2 data-i18n="sim.h2">Combien vous rapporte votre base dormante.</h2>
+        <p data-i18n="sim.p">Ajustez les trois variables — nous projetons votre commission additionnelle sur <strong style="color:var(--text)">3 ans</strong>.</p>
+      </div>
+
+      <div class="sim-grid">
+        <div class="sim-controls">
+          <div>
+            <div class="sim-field-head">
+              <span class="sim-field-label" data-i18n="sim.clients">Clients dormants par an</span>
+              <span class="sim-field-value"><span id="clientsVal">20</span></span>
+            </div>
+            <input type="range" id="clientsSlider" min="1" max="200" value="20" step="1">
+            <div class="sim-field-range-labels"><span>1</span><span>200</span></div>
+          </div>
+
+          <div>
+            <div class="sim-field-head">
+              <span class="sim-field-label" data-i18n="sim.budget">Budget moyen par client</span>
+              <span class="sim-field-value" id="budgetDisplay">30 000 €</span>
+            </div>
+            <input type="range" id="budgetSlider" min="6700" max="200000" value="30000" step="1000">
+            <div class="sim-field-range-labels"><span>6 700 €</span><span>200 000 €</span></div>
+          </div>
+
+          <div>
+            <div class="sim-field-head">
+              <span class="sim-field-label" data-i18n="sim.commission">Votre commission</span>
+              <span class="sim-field-value"><span id="commissionVal">3,0</span><span class="unit">%</span></span>
+            </div>
+            <input type="range" id="commissionSlider" min="2" max="8" value="3" step="0.1">
+            <div class="sim-field-range-labels"><span>2 %</span><span>8 %</span></div>
+          </div>
+
+          <div class="sim-hypothesis" data-i18n="sim.hypothesis">
+            <strong>Projection 3 ans</strong> · Année 1 : conversion de votre base dormante. Année 2 : +70 % (réinvestissements de vos clients + nouveaux leads activés). Année 3 : +150 % vs Année 1. Hypothèses basées sur les pipelines observés. <em>Valeurs ajustables en RDV.</em>
+          </div>
+        </div>
+
+        <div class="sim-results">
+          <div class="sim-result-row">
+            <div class="sim-stat">
+              <div class="sim-stat-label" data-i18n="sim.r.y1">Commission année 1</div>
+              <div class="sim-stat-value" id="y1Val">18 000 €</div>
+              <div class="sim-stat-sub"><span id="y1Capital">600 000 €</span> <span data-i18n="sim.r.placed">de capital placé</span></div>
+            </div>
+            <div class="sim-stat">
+              <div class="sim-stat-label" data-i18n="sim.r.y2">Commission année 2</div>
+              <div class="sim-stat-value" id="y2Val">30 600 €</div>
+              <div class="sim-stat-sub"><span id="y2Capital">1 020 000 €</span> <span data-i18n="sim.r.placed">de capital placé</span></div>
+            </div>
+            <div class="sim-stat">
+              <div class="sim-stat-label" data-i18n="sim.r.y3">Commission année 3</div>
+              <div class="sim-stat-value" id="y3Val">45 000 €</div>
+              <div class="sim-stat-sub"><span id="y3Capital">1 500 000 €</span> <span data-i18n="sim.r.placed">de capital placé</span></div>
+            </div>
+          </div>
+
+          <div class="sim-chart-wrap">
+            <div class="sim-chart-title" data-i18n="sim.chart.title">Votre commission projetée — Année 1 / 2 / 3</div>
+            <canvas id="simChart" class="sim-chart-canvas"></canvas>
+          </div>
+
+          <div class="sim-balance">
+            <div>
+              <div class="sim-balance-label" data-i18n="sim.balance.label">Commission cumulée sur 3 ans</div>
+              <div class="sim-balance-detail" data-i18n="sim.balance.detail">Que vous ne touchiez pas hier avec votre modèle classique</div>
+            </div>
+            <div class="sim-balance-value" id="totalVal">+93 600 €</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3 LEVIERS -->
+<section id="leviers" class="levers">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-tag" data-i18n="levers.tag">Ce que MyBulkDeal change pour vous</span>
+      <h2 data-i18n="levers.h2">Trois effets sur votre P&L,<br/>tout de suite.</h2>
+    </div>
+    <div class="lever-grid">
+      <div class="lever-card reveal">
+        <div class="lever-num">×&nbsp;3</div>
+        <h3 data-i18n="levers.l1.h3">Le même lead, plusieurs fois</h3>
+        <p data-i18n="levers.l1.p">Un investisseur qui démarre à 6 700 € revient. Une fois rassuré sur la mécanique, il refait un deal, puis un autre. Vous monétisez la confiance — pas une transaction isolée.</p>
+      </div>
+      <div class="lever-card reveal">
+        <div class="lever-num">+0&nbsp;€</div>
+        <h3 data-i18n="levers.l2.h3">Aucun coût d'acquisition</h3>
+        <p data-i18n="levers.l2.p">Tous les dossiers classés « pas mûr » dans votre CRM redeviennent actifs. Pas de nouveau lead à acheter, pas de nouvelle pub. Vous réveillez votre base existante.</p>
+      </div>
+      <div class="lever-card reveal">
+        <div class="lever-num">2-3</div>
+        <h3 data-i18n="levers.l3.h3">Ventes additionnelles par an</h3>
+        <p data-i18n="levers.l3.p">L'ordre de grandeur que nous observons sur les pipelines déjà activés. Pas un objectif marketing — un constat terrain, par broker, en plus de votre flux habituel.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CRÉDIT FRANCE -->
+<section id="credit" class="credit">
+  <div class="container">
+    <div class="credit-card reveal">
+      <span class="credit-tag" data-i18n="credit.tag">Le levier qui change tout</span>
+      <h2 data-i18n="credit.h2">Vos clients financent leur entrée Dubai<br/>avec du <span class="green">crédit France</span>.</h2>
+      <p data-i18n="credit.p">
+        Nous avons noué des partenariats avec des sociétés de crédit en France. Vos clients <strong>n'ont plus besoin d'attendre d'avoir épargné le ticket complet</strong>. Ils lèvent de la dette en France pour financer leur entrée sur un deal MyBulkDeal à Dubai.
+      </p>
+      <div class="credit-grid">
+        <div class="credit-point">
+          <div class="icon">✓</div>
+          <h4 data-i18n="credit.p1.h4">L'épargne client reste préservée</h4>
+          <p data-i18n="credit.p1.p">Plutôt que de casser une assurance-vie ou vider un livret, il garde son matelas intact et finance son investissement par effet de levier.</p>
+        </div>
+        <div class="credit-point">
+          <div class="icon">×</div>
+          <h4 data-i18n="credit.p2.h4">Capacité d'investissement multipliée</h4>
+          <p data-i18n="credit.p2.p">Un client avec 30 K€ d'épargne peut potentiellement entrer sur un deal à 80, 100, voire 120 K€ selon son profil bancaire — sans toucher à son cash.</p>
+        </div>
+        <div class="credit-point">
+          <div class="icon">€</div>
+          <h4 data-i18n="credit.p3.h4">Coût du crédit FR raisonnable</h4>
+          <p data-i18n="credit.p3.p">Comparé aux rendements locatifs et à la plus-value attendue sur l'actif Dubai, le différentiel est intéressant. Nos partenaires connaissent ce produit et qualifient vite.</p>
+        </div>
+        <div class="credit-point">
+          <div class="icon">→</div>
+          <h4 data-i18n="credit.p4.h4">Vous gardez la relation client</h4>
+          <p data-i18n="credit.p4.p">Nous vous fournissons les coordonnées de notre partenaire crédit France ; c'est vous qui les transmettez à votre client (ou organisez la mise en relation). Vous restez son interlocuteur unique du début à la fin — vous gardez la relation, vous touchez la commission.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RÉMUNÉRATION -->
+<section id="remuneration" class="compensation">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-tag" data-i18n="comp.tag">Un nouveau modèle de rémunération</span>
+      <h2 data-i18n="comp.h2">Moins d'aléa, plus de récurrence,<br/>un ARPU client qui grimpe.</h2>
+    </div>
+    <div class="comp-grid">
+      <div class="comp-card old reveal">
+        <h3 data-i18n="comp.old.h3">Broker classique</h3>
+        <p class="comp-sub" data-i18n="comp.old.sub">Commission attachée à la vente, au closing.</p>
+        <ul class="comp-list">
+          <li data-i18n="comp.old.li1">Commission sur un événement isolé</li>
+          <li data-i18n="comp.old.li2">Cycle de vente long (6-18 mois)</li>
+          <li data-i18n="comp.old.li3">Aucune rémunération sur les « pas mûr »</li>
+          <li data-i18n="comp.old.li4">Pas d'effet de levier crédit</li>
+          <li data-i18n="comp.old.li5">Aléa fort sur le closing final</li>
+        </ul>
+      </div>
+      <div class="comp-card new reveal">
+        <h3 data-i18n="comp.new.h3">Modèle MyBulkDeal</h3>
+        <p class="comp-sub" data-i18n="comp.new.sub">Commission sur le capital placé dans nos véhicules.</p>
+        <ul class="comp-list">
+          <li data-i18n="comp.new.li1">Commission sur du flux récurrent</li>
+          <li data-i18n="comp.new.li2">Premier closing visé sous 60 jours</li>
+          <li data-i18n="comp.new.li3">Vos « pas mûr » redeviennent actifs</li>
+          <li data-i18n="comp.new.li4">Commission sur capital total (apport + crédit)</li>
+          <li data-i18n="comp.new.li5">Un même client : 3, 5, 10 lignes de commission</li>
+        </ul>
+        <div class="comp-range">
+          <div class="comp-range-value" data-i18n="comp.range.value">2 à 8 %</div>
+          <div class="comp-range-label" data-i18n="comp.range.label">du capital placé par votre client, projet par projet</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-tag" data-i18n="how.tag">Comment ça marche</span>
+      <h2 data-i18n="how.h2">Cinq étapes. Vous restez sur votre métier.</h2>
+    </div>
+    <div class="steps">
+      <div class="step reveal">
+        <div class="step-num">1</div>
+        <h3 data-i18n="how.s1.h3">Vous identifiez</h3>
+        <p data-i18n="how.s1.p">Un lead dans votre pipeline qui matche : intérêt Dubai, ticket insuffisant pour un deal direct, épargne ou capacité d'emprunt FR.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">2</div>
+        <h3 data-i18n="how.s2.h3">Vous remplissez l'EOI</h3>
+        <p data-i18n="how.s2.p">Un formulaire d'Expression of Interest auprès de nous, à votre nom. Vous restez le seul contact de votre client. On valide en 24 à 48 heures.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">3</div>
+        <h3 data-i18n="how.s3.h3">Nous vous transmettons le crédit FR</h3>
+        <p data-i18n="how.s3.p">Si pertinent, nous vous envoyons les coordonnées de notre partenaire crédit France. Vous les passez à votre client (ou organisez la mise en relation). Vous restez son référent.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">4</div>
+        <h3 data-i18n="how.s4.h3">Le client signe</h3>
+        <p data-i18n="how.s4.p">Entrée dans la SPV dédiée à partir de 6 700 €. Capital sécurisé via un mandataire RERA local.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">5</div>
+        <h3 data-i18n="how.s5.h3">Vous encaissez</h3>
+        <p data-i18n="how.s5.p">Commission 2 à 8 % sur le capital placé. Le client reste le vôtre — vous remontez les prochains deals à votre rythme.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PARTENARIAT -->
+<section id="partenariat">
+  <div class="container">
+    <div class="partnership-card reveal">
+      <div class="partnership-intro">
+        <span class="section-tag" data-i18n="partnership.tag">Ce qu'on vous propose</span>
+        <h2 data-i18n="partnership.h2">Un partenariat souple,<br/>sans exclusivité, sans engagement de volume.</h2>
+        <p data-i18n="partnership.p">Notre approche s'intègre à votre activité actuelle sans la perturber. Voici ce qui constitue un partenariat MyBulkDeal côté broker.</p>
+      </div>
+
+      <div class="partnership-list">
+        <div class="partnership-item">
+          <div class="partnership-icon">1</div>
+          <div class="partnership-content">
+            <h3 data-i18n="partnership.p1.h3">Un accord de partenariat simple</h3>
+            <p data-i18n="partnership.p1.p">Une page, deux signatures. Définit le périmètre, la rémunération et le mode de transmission des leads. Pas d'exclusivité demandée, pas d'engagement de volume.</p>
+          </div>
+        </div>
+        <div class="partnership-item">
+          <div class="partnership-icon">2</div>
+          <div class="partnership-content">
+            <h3 data-i18n="partnership.p2.h3">Un accès direct à nos deals en cours</h3>
+            <p data-i18n="partnership.p2.p">Off-plan et secondary market, mis à jour en continu. Vous voyez en temps réel ce qui est ouvert, ce qui ferme, ce qui se prépare.</p>
+          </div>
+        </div>
+        <div class="partnership-item">
+          <div class="partnership-icon">3</div>
+          <div class="partnership-content">
+            <h3 data-i18n="partnership.p3.h3">Un onboarding court de votre équipe</h3>
+            <p data-i18n="partnership.p3.p">Une session de 90 minutes : mécanique, pitch client, outils de qualification, présentation du partenaire crédit France. Vos commerciaux sont opérationnels le lendemain.</p>
+          </div>
+        </div>
+        <div class="partnership-item">
+          <div class="partnership-icon">4</div>
+          <div class="partnership-content">
+            <h3 data-i18n="partnership.p4.h3">Un point de contact dédié</h3>
+            <p data-i18n="partnership.p4.p">Une personne référente, joignable en direct, qui pilote vos dossiers du premier appel jusqu'au closing. Pas de support multi-tickets, pas de standard.</p>
+          </div>
+        </div>
+        <div class="partnership-item">
+          <div class="partnership-icon">5</div>
+          <div class="partnership-content">
+            <h3 data-i18n="partnership.p5.h3">Un reporting trimestriel</h3>
+            <p data-i18n="partnership.p5.p">Leads convertis, capital placé, rémunération cumulée, opportunités de relance sur votre base. Vous savez exactement où vous en êtes.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="partnership-cta">
+        <p data-i18n="partnership.cta.p">Un appel ou un café de 30 minutes. On regarde ensemble la typologie de votre pipeline et on identifie 2 ou 3 profils tests.</p>
+        <a href="https://calendar.app.google/THtgFsGRfykeiTnE8" target="_blank" rel="noopener" class="btn btn-primary" data-i18n="partnership.cta.btn">Réserver un RDV →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final">
+  <div class="container">
+    <div class="reveal">
+      <h2 data-i18n="final.h2">Votre base de clients est là.<br/>Le reste, on le construit ensemble.</h2>
+      <p data-i18n="final.p">Premier deal closé visé sous 60 jours à partir du premier dossier transmis.</p>
+      <a href="https://calendar.app.google/THtgFsGRfykeiTnE8" target="_blank" rel="noopener" class="btn btn-primary" data-i18n="final.cta">Réserver mon RDV →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="logotype foot-logo">
+      <span class="my">My</span><span class="bulk">Bulk</span><span class="deal">Deal<span class="dot">.</span></span>
+    </div>
+    <div class="foot-info" data-i18n="footer.tagline">Opérateur de SPV immobilier · Dubai · Partenariat brokers</div>
+    <div class="foot-entity">
+      <strong>MONOP'consulting FZ-LLC</strong> · Dubai, UAE
+    </div>
+    <p class="foot-disclaimer" data-i18n="footer.disclaimer">
+      Document à destination des brokers et agences partenaires. Les chiffres du simulateur reposent sur des hypothèses de marché et des observations sur des pipelines existants. La rémunération réelle se cale projet par projet selon la nature du deal et le niveau d'accompagnement client fourni. Aucune offre contractuelle n'est formulée par ce document.
+    </p>
+  </div>
+</footer>
+
+<script>
+const I18N = {
+  fr: {
+    'meta.title': "MyBulkDeal — Partenariat brokers & agences Dubai",
+    'meta.description': "Activez les leads dormants de votre pipeline. Vos prospects qui n'ont pas le ticket d'entrée 200 K AED entrent à 6 700 €. Vous monétisez du flux, pas un événement. Commission 2 à 8 % sur le capital placé.",
+    'lang.label': "🇫🇷 Page brokers",
+    'nav.tag': "Brokers",
+    'nav.context': "Contexte",
+    'nav.sim': "Simulateur",
+    'nav.credit': "Crédit France",
+    'nav.compensation': "Rémunération",
+    'nav.partnership': "Partenariat",
+
+    'hero.h1': `Activez les leads dormants<br/><span class="accent">de votre pipeline.</span>`,
+    'hero.subtitle': `Vos prospects sérieux qui butent sur le ticket d'entrée Dubai (<strong>200 à 400 K AED</strong>) entrent désormais à partir de <strong>6 700 €</strong>. Vous monétisez du <strong>flux récurrent</strong>, pas un événement unique. Commission <strong>2 à 8 % sur le capital placé</strong>, avec effet de levier via nos partenaires crédit France — et <strong>vous restez le seul contact de votre client</strong>.`,
+    'hero.cta1': "Calculer ma commission ↓",
+    'hero.cta2': "Voir notre proposition",
+    'hero.foot1': "Vos leads dormants activés",
+    'hero.foot2': "Crédit France pour vos clients",
+    'hero.foot3': "Commission 2-8 % récurrente",
+
+    'context.tag': "Le contexte que vous vivez",
+    'context.h2': `30 à 50 % de vos leads<br/>ne signent pas. Pour une seule raison.`,
+    'context.p': "Le ticket d'entrée. Pas le sérieux du prospect, pas son intérêt pour Dubai. Juste le mur des 200-400 K AED. Trois profils reviennent en boucle.",
+    'context.c1.pct': "Profil 01 · épargne moyenne",
+    'context.c1.h3': "30 à 80 K€ de côté",
+    'context.c1.p': "Solide, mais insuffisant pour acheter seul à Dubai. Vous lui dites « revenez quand vous aurez plus » — et il disparaît.",
+    'context.c2.pct': "Profil 02 · capacité d'emprunt",
+    'context.c2.h3': "Bon dossier bancaire FR",
+    'context.c2.p': "Cadre, salaire confortable, vraie capacité à lever de la dette. Personne ne lui a jamais montré comment transformer ça en investissement Dubai.",
+    'context.c3.pct': "Profil 03 · épargne immobilisée",
+    'context.c3.h3': "Cash en assurance-vie dormante",
+    'context.c3.p': "Livrets, fonds euros peu rémunérateurs, comptes-titres dormants. Il veut bouger, mais ne sait pas comment passer le pas sans tout casser.",
+    'context.bottom': `Ces leads ne sont pas une perte — <span class="arrow">→</span> <span class="green">c'est un gisement.</span>`,
+
+    'sim.tag': "Le simulateur",
+    'sim.h2': "Combien vous rapporte votre base dormante.",
+    'sim.p': `Ajustez les trois variables — nous projetons votre commission additionnelle sur <strong style="color:var(--text)">3 ans</strong>.`,
+    'sim.clients': "Clients dormants par an",
+    'sim.budget': "Budget moyen par client",
+    'sim.commission': "Votre commission",
+    'sim.hypothesis': `<strong>Projection 3 ans</strong> · Année 1 : conversion de votre base dormante. Année 2 : +70 % (réinvestissements de vos clients + nouveaux leads activés). Année 3 : +150 % vs Année 1. Hypothèses basées sur les pipelines observés. <em>Valeurs ajustables en RDV.</em>`,
+    'sim.r.y1': "Commission année 1",
+    'sim.r.y2': "Commission année 2",
+    'sim.r.y3': "Commission année 3",
+    'sim.r.placed': "de capital placé",
+    'sim.chart.title': "Votre commission projetée — Année 1 / 2 / 3",
+    'sim.chart.legend.commission': "Commission",
+    'sim.chart.legend.capital': "Capital placé",
+    'sim.chart.year': "Année",
+    'sim.balance.label': "Commission cumulée sur 3 ans",
+    'sim.balance.detail': "Que vous ne touchiez pas hier avec votre modèle classique",
+
+    'levers.tag': "Ce que MyBulkDeal change pour vous",
+    'levers.h2': `Trois effets sur votre P&L,<br/>tout de suite.`,
+    'levers.l1.h3': "Le même lead, plusieurs fois",
+    'levers.l1.p': "Un investisseur qui démarre à 6 700 € revient. Une fois rassuré sur la mécanique, il refait un deal, puis un autre. Vous monétisez la confiance — pas une transaction isolée.",
+    'levers.l2.h3': "Aucun coût d'acquisition",
+    'levers.l2.p': "Tous les dossiers classés « pas mûr » dans votre CRM redeviennent actifs. Pas de nouveau lead à acheter, pas de nouvelle pub. Vous réveillez votre base existante.",
+    'levers.l3.h3': "Ventes additionnelles par an",
+    'levers.l3.p': "L'ordre de grandeur que nous observons sur les pipelines déjà activés. Pas un objectif marketing — un constat terrain, par broker, en plus de votre flux habituel.",
+
+    'credit.tag': "Le levier qui change tout",
+    'credit.h2': `Vos clients financent leur entrée Dubai<br/>avec du <span class="green">crédit France</span>.`,
+    'credit.p': `Nous avons noué des partenariats avec des sociétés de crédit en France. Vos clients <strong>n'ont plus besoin d'attendre d'avoir épargné le ticket complet</strong>. Ils lèvent de la dette en France pour financer leur entrée sur un deal MyBulkDeal à Dubai.`,
+    'credit.p1.h4': "L'épargne client reste préservée",
+    'credit.p1.p': "Plutôt que de casser une assurance-vie ou vider un livret, il garde son matelas intact et finance son investissement par effet de levier.",
+    'credit.p2.h4': "Capacité d'investissement multipliée",
+    'credit.p2.p': "Un client avec 30 K€ d'épargne peut potentiellement entrer sur un deal à 80, 100, voire 120 K€ selon son profil bancaire — sans toucher à son cash.",
+    'credit.p3.h4': "Coût du crédit FR raisonnable",
+    'credit.p3.p': "Comparé aux rendements locatifs et à la plus-value attendue sur l'actif Dubai, le différentiel est intéressant. Nos partenaires connaissent ce produit et qualifient vite.",
+    'credit.p4.h4': "Vous gardez la relation client",
+    'credit.p4.p': "Nous vous fournissons les coordonnées de notre partenaire crédit France ; c'est vous qui les transmettez à votre client (ou organisez la mise en relation). Vous restez son interlocuteur unique du début à la fin — vous gardez la relation, vous touchez la commission.",
+
+    'comp.tag': "Un nouveau modèle de rémunération",
+    'comp.h2': `Moins d'aléa, plus de récurrence,<br/>un ARPU client qui grimpe.`,
+    'comp.old.h3': "Broker classique",
+    'comp.old.sub': "Commission attachée à la vente, au closing.",
+    'comp.old.li1': "Commission sur un événement isolé",
+    'comp.old.li2': "Cycle de vente long (6-18 mois)",
+    'comp.old.li3': "Aucune rémunération sur les « pas mûr »",
+    'comp.old.li4': "Pas d'effet de levier crédit",
+    'comp.old.li5': "Aléa fort sur le closing final",
+    'comp.new.h3': "Modèle MyBulkDeal",
+    'comp.new.sub': "Commission sur le capital placé dans nos véhicules.",
+    'comp.new.li1': "Commission sur du flux récurrent",
+    'comp.new.li2': "Premier closing visé sous 60 jours",
+    'comp.new.li3': "Vos « pas mûr » redeviennent actifs",
+    'comp.new.li4': "Commission sur capital total (apport + crédit)",
+    'comp.new.li5': "Un même client : 3, 5, 10 lignes de commission",
+    'comp.range.value': "2 à 8 %",
+    'comp.range.label': "du capital placé par votre client, projet par projet",
+
+    'how.tag': "Comment ça marche",
+    'how.h2': "Cinq étapes. Vous restez sur votre métier.",
+    'how.s1.h3': "Vous identifiez",
+    'how.s1.p': "Un lead dans votre pipeline qui matche : intérêt Dubai, ticket insuffisant pour un deal direct, épargne ou capacité d'emprunt FR.",
+    'how.s2.h3': "Vous remplissez l'EOI",
+    'how.s2.p': "Un formulaire d'Expression of Interest auprès de nous, à votre nom. Vous restez le seul contact de votre client. On valide en 24 à 48 heures.",
+    'how.s3.h3': "Nous vous transmettons le crédit FR",
+    'how.s3.p': "Si pertinent, nous vous envoyons les coordonnées de notre partenaire crédit France. Vous les passez à votre client (ou organisez la mise en relation). Vous restez son référent.",
+    'how.s4.h3': "Le client signe",
+    'how.s4.p': "Entrée dans la SPV dédiée à partir de 6 700 €. Capital sécurisé via un mandataire RERA local.",
+    'how.s5.h3': "Vous encaissez",
+    'how.s5.p': "Commission 2 à 8 % sur le capital placé. Le client reste le vôtre — vous remontez les prochains deals à votre rythme.",
+
+    'partnership.tag': "Ce qu'on vous propose",
+    'partnership.h2': `Un partenariat souple,<br/>sans exclusivité, sans engagement de volume.`,
+    'partnership.p': "Notre approche s'intègre à votre activité actuelle sans la perturber. Voici ce qui constitue un partenariat MyBulkDeal côté broker.",
+    'partnership.p1.h3': "Un accord de partenariat simple",
+    'partnership.p1.p': "Une page, deux signatures. Définit le périmètre, la rémunération et le mode de transmission des leads. Pas d'exclusivité demandée, pas d'engagement de volume.",
+    'partnership.p2.h3': "Un accès direct à nos deals en cours",
+    'partnership.p2.p': "Off-plan et secondary market, mis à jour en continu. Vous voyez en temps réel ce qui est ouvert, ce qui ferme, ce qui se prépare.",
+    'partnership.p3.h3': "Un onboarding court de votre équipe",
+    'partnership.p3.p': "Une session de 90 minutes : mécanique, pitch client, outils de qualification, présentation du partenaire crédit France. Vos commerciaux sont opérationnels le lendemain.",
+    'partnership.p4.h3': "Un point de contact dédié",
+    'partnership.p4.p': "Une personne référente, joignable en direct, qui pilote vos dossiers du premier appel jusqu'au closing. Pas de support multi-tickets, pas de standard.",
+    'partnership.p5.h3': "Un reporting trimestriel",
+    'partnership.p5.p': "Leads convertis, capital placé, rémunération cumulée, opportunités de relance sur votre base. Vous savez exactement où vous en êtes.",
+    'partnership.cta.p': "Un appel ou un café de 30 minutes. On regarde ensemble la typologie de votre pipeline et on identifie 2 ou 3 profils tests.",
+    'partnership.cta.btn': "Réserver un RDV →",
+
+    'final.h2': `Votre base de clients est là.<br/>Le reste, on le construit ensemble.`,
+    'final.p': "Premier deal closé visé sous 60 jours à partir du premier dossier transmis.",
+    'final.cta': "Réserver mon RDV →",
+
+    'footer.tagline': "Opérateur de SPV immobilier · Dubai · Partenariat brokers",
+    'footer.disclaimer': "Document à destination des brokers et agences partenaires. Les chiffres du simulateur reposent sur des hypothèses de marché et des observations sur des pipelines existants. La rémunération réelle se cale projet par projet selon la nature du deal et le niveau d'accompagnement client fourni. Aucune offre contractuelle n'est formulée par ce document."
+  },
+
+  en: {
+    'meta.title': "MyBulkDeal — Brokers & agencies partnership for Dubai",
+    'meta.description': "Activate the dormant leads in your pipeline. Your prospects who can't afford the AED 200K+ entry ticket can now enter from €6,700. You monetise recurring flow, not a one-off event. 2 to 8% commission on placed capital.",
+    'lang.label': "🇬🇧 Brokers page",
+    'nav.tag': "Brokers",
+    'nav.context': "Context",
+    'nav.sim': "Simulator",
+    'nav.credit': "France credit",
+    'nav.compensation': "Compensation",
+    'nav.partnership': "Partnership",
+
+    'hero.h1': `Activate the dormant leads<br/><span class="accent">in your pipeline.</span>`,
+    'hero.subtitle': `Your serious prospects who hit the Dubai entry wall (<strong>AED 200 to 400K</strong>) now enter from <strong>€6,700</strong>. You monetise <strong>recurring flow</strong>, not a one-off event. <strong>2 to 8% commission on placed capital</strong>, with French credit leverage for your clients — and <strong>you remain your client's only contact</strong>.`,
+    'hero.cta1': "Calculate my commission ↓",
+    'hero.cta2': "See our proposal",
+    'hero.foot1': "Your dormant leads activated",
+    'hero.foot2': "French credit for your clients",
+    'hero.foot3': "Recurring 2-8% commission",
+
+    'context.tag': "The context you live every day",
+    'context.h2': `30 to 50% of your leads<br/>don't sign. For one single reason.`,
+    'context.p': "The entry ticket. Not the prospect's seriousness, not their interest in Dubai. Just the AED 200-400K wall. Three profiles keep coming back.",
+    'context.c1.pct': "Profile 01 · average savings",
+    'context.c1.h3': "€30 to €80K set aside",
+    'context.c1.p': "Solid, but not enough to buy alone in Dubai. You tell them 'come back when you have more' — and they disappear.",
+    'context.c2.pct': "Profile 02 · borrowing capacity",
+    'context.c2.h3': "Strong banking profile",
+    'context.c2.p': "Executive, comfortable salary, real debt capacity. No one ever showed them how to turn this into a Dubai investment.",
+    'context.c3.pct': "Profile 03 · locked-in savings",
+    'context.c3.h3': "Cash in dormant life insurance",
+    'context.c3.p': "Savings accounts, low-yield funds, dormant securities accounts. They want to move but don't know how without breaking everything.",
+    'context.bottom': `These leads aren't a loss — <span class="arrow">→</span> <span class="green">they're a goldmine.</span>`,
+
+    'sim.tag': "The simulator",
+    'sim.h2': "How much your dormant base is worth.",
+    'sim.p': `Adjust the three variables — we project your additional commission over <strong style="color:var(--text)">3 years</strong>.`,
+    'sim.clients': "Dormant clients per year",
+    'sim.budget': "Average client budget",
+    'sim.commission': "Your commission",
+    'sim.hypothesis': `<strong>3-year projection</strong> · Year 1: conversion of your dormant base. Year 2: +70% (existing clients reinvesting + new activated leads). Year 3: +150% vs Year 1. Assumptions based on observed pipelines. <em>Adjustable in call.</em>`,
+    'sim.r.y1': "Year 1 commission",
+    'sim.r.y2': "Year 2 commission",
+    'sim.r.y3': "Year 3 commission",
+    'sim.r.placed': "of placed capital",
+    'sim.chart.title': "Your projected commission — Year 1 / 2 / 3",
+    'sim.chart.legend.commission': "Commission",
+    'sim.chart.legend.capital': "Placed capital",
+    'sim.chart.year': "Year",
+    'sim.balance.label': "Cumulative commission over 3 years",
+    'sim.balance.detail': "Money you weren't earning yesterday with the classic model",
+
+    'levers.tag': "What MyBulkDeal changes for you",
+    'levers.h2': `Three effects on your P&L,<br/>right away.`,
+    'levers.l1.h3': "The same lead, several times",
+    'levers.l1.p': "An investor starting at €6,700 comes back. Once reassured on the mechanism, they do another deal, then another. You monetise trust — not an isolated transaction.",
+    'levers.l2.h3': "No acquisition cost",
+    'levers.l2.p': "All those files tagged 'not mature' in your CRM become active again. No new lead to buy, no new ad. You wake up your existing base.",
+    'levers.l3.h3': "Additional sales per year",
+    'levers.l3.p': "The order of magnitude we observe on already activated pipelines. Not a marketing target — a field observation, per broker, on top of your usual flow.",
+
+    'credit.tag': "The game-changing lever",
+    'credit.h2': `Your clients finance their Dubai entry<br/>with <span class="green">French credit</span>.`,
+    'credit.p': `We've partnered with credit companies in France. Your clients <strong>no longer need to wait until they've saved the full ticket</strong>. They raise debt in France to finance their entry into a MyBulkDeal Dubai deal.`,
+    'credit.p1.h4': "Client savings stay intact",
+    'credit.p1.p': "Rather than breaking a life insurance or emptying a savings account, they keep their safety net intact and finance their investment with leverage.",
+    'credit.p2.h4': "Investment capacity multiplied",
+    'credit.p2.p': "A client with €30K of savings can potentially enter a deal worth €80K, €100K, even €120K depending on their banking profile — without touching their cash.",
+    'credit.p3.h4': "French credit cost stays reasonable",
+    'credit.p3.p': "Compared to the rental yields and expected capital gain on the Dubai asset, the spread is attractive. Our partners know this product and qualify fast.",
+    'credit.p4.h4': "You keep the client relationship",
+    'credit.p4.p': "We provide you with our France credit partner's contact details; you are the one passing them on to your client (or organising the introduction). You remain their single point of contact from start to finish — you keep the relationship, you earn the commission.",
+
+    'comp.tag': "A new compensation model",
+    'comp.h2': `Less randomness, more recurrence,<br/>client ARPU goes up.`,
+    'comp.old.h3': "Classic broker",
+    'comp.old.sub': "Commission tied to the sale, at closing.",
+    'comp.old.li1': "Commission on an isolated event",
+    'comp.old.li2': "Long sales cycle (6-18 months)",
+    'comp.old.li3': "No compensation on 'not mature' leads",
+    'comp.old.li4': "No credit leverage effect",
+    'comp.old.li5': "High randomness on final closing",
+    'comp.new.h3': "MyBulkDeal model",
+    'comp.new.sub': "Commission on capital placed in our vehicles.",
+    'comp.new.li1': "Commission on recurring flow",
+    'comp.new.li2': "First closing targeted within 60 days",
+    'comp.new.li3': "Your 'not mature' leads become active",
+    'comp.new.li4': "Commission on total capital (equity + credit)",
+    'comp.new.li5': "One client: 3, 5, 10 commission lines",
+    'comp.range.value': "2 to 8%",
+    'comp.range.label': "of capital placed by your client, project by project",
+
+    'how.tag': "How it works",
+    'how.h2': "Five steps. You stay on your job.",
+    'how.s1.h3': "You identify",
+    'how.s1.p': "A lead in your pipeline that matches: Dubai interest, insufficient ticket for a direct deal, savings or French borrowing capacity.",
+    'how.s2.h3': "You fill the EOI",
+    'how.s2.p': "An Expression of Interest form with us, under your name. You stay your client's only contact. We validate within 24 to 48 hours.",
+    'how.s3.h3': "We pass you the credit contact",
+    'how.s3.p': "If relevant, we send you our French credit partner's contact details. You pass them on to your client (or organise the introduction). You remain their referent.",
+    'how.s4.h3': "The client signs",
+    'how.s4.p': "Entry into the dedicated SPV from €6,700. Capital secured via a local RERA trustee.",
+    'how.s5.h3': "You get paid",
+    'how.s5.p': "2 to 8% commission on placed capital. The client stays yours — you bring the next deals at your own pace.",
+
+    'partnership.tag': "What we offer you",
+    'partnership.h2': `A flexible partnership,<br/>no exclusivity, no volume commitment.`,
+    'partnership.p': "Our approach fits into your current activity without disrupting it. Here's what makes a MyBulkDeal broker partnership.",
+    'partnership.p1.h3': "A simple partnership agreement",
+    'partnership.p1.p': "One page, two signatures. Defines the scope, the compensation and the lead transmission method. No exclusivity required, no volume commitment.",
+    'partnership.p2.h3': "Direct access to our current deals",
+    'partnership.p2.p': "Off-plan and secondary market, continuously updated. You see in real time what's open, what's closing, what's coming up.",
+    'partnership.p3.h3': "A short onboarding for your team",
+    'partnership.p3.p': "A 90-minute session: mechanics, client pitch, qualification tools, presentation of the French credit partner. Your sales team is operational the next day.",
+    'partnership.p4.h3': "A dedicated point of contact",
+    'partnership.p4.p': "One referent person, reachable directly, who pilots your files from first call to closing. No multi-ticket support, no switchboard.",
+    'partnership.p5.h3': "Quarterly reporting",
+    'partnership.p5.p': "Converted leads, placed capital, cumulative compensation, follow-up opportunities on your base. You know exactly where you stand.",
+    'partnership.cta.p': "A call or coffee for 30 minutes. We look together at your pipeline typology and identify 2 or 3 test profiles.",
+    'partnership.cta.btn': "Book a call →",
+
+    'final.h2': `Your client base is there.<br/>The rest, we build together.`,
+    'final.p': "First deal closed targeted within 60 days from the first file transmitted.",
+    'final.cta': "Book my call →",
+
+    'footer.tagline': "Real estate SPV operator · Dubai · Brokers partnership",
+    'footer.disclaimer': "Document addressed to broker and agency partners. The simulator figures rely on market assumptions and observations on existing pipelines. Actual compensation is calibrated project by project according to deal nature and client support level. No contractual offer is made through this document."
+  },
+
+  it: {
+    'meta.title': "MyBulkDeal — Partnership con broker e agenzie Dubai",
+    'meta.description': "Attivate i lead dormienti del vostro pipeline. I prospect senza il ticket d'ingresso 200 K AED entrano da €6.700. Monetizzate flusso ricorrente, non un evento isolato. Commissione 2-8% sul capitale collocato.",
+    'lang.label': "🇮🇹 Pagina broker",
+    'nav.tag': "Broker",
+    'nav.context': "Contesto",
+    'nav.sim': "Simulatore",
+    'nav.credit': "Credito Francia",
+    'nav.compensation': "Remunerazione",
+    'nav.partnership': "Partnership",
+
+    'hero.h1': `Attivate i lead dormienti<br/><span class="accent">del vostro pipeline.</span>`,
+    'hero.subtitle': `I vostri prospect seri che sbattono contro il ticket d'ingresso Dubai (<strong>200 a 400 K AED</strong>) entrano ora da <strong>€6.700</strong>. Monetizzate <strong>flusso ricorrente</strong>, non un evento isolato. Commissione <strong>2-8% sul capitale collocato</strong>, con leva via i nostri partner credito Francia — e <strong>restate l'unico contatto del vostro cliente</strong>.`,
+    'hero.cta1': "Calcola la mia commissione ↓",
+    'hero.cta2': "Vedi la nostra proposta",
+    'hero.foot1': "I vostri lead dormienti attivati",
+    'hero.foot2': "Credito Francia per i vostri clienti",
+    'hero.foot3': "Commissione 2-8% ricorrente",
+
+    'context.tag': "Il contesto che vivete ogni giorno",
+    'context.h2': `Il 30-50% dei vostri lead<br/>non firma. Per un solo motivo.`,
+    'context.p': "Il ticket d'ingresso. Non la serietà del prospect, non il suo interesse per Dubai. Solo il muro dei 200-400 K AED. Tre profili tornano sempre.",
+    'context.c1.pct': "Profilo 01 · risparmio medio",
+    'context.c1.h3': "30-80 K€ da parte",
+    'context.c1.p': "Solido, ma insufficiente per comprare da solo a Dubai. Gli dite 'tornate quando ne avrete di più' — e sparisce.",
+    'context.c2.pct': "Profilo 02 · capacità di indebitamento",
+    'context.c2.h3': "Buon profilo bancario",
+    'context.c2.p': "Dirigente, stipendio confortevole, reale capacità di levare debito. Nessuno gli ha mai mostrato come trasformarla in investimento Dubai.",
+    'context.c3.pct': "Profilo 03 · risparmio immobilizzato",
+    'context.c3.h3': "Cash in polizza vita dormiente",
+    'context.c3.p': "Libretti, fondi a basso rendimento, conti titoli dormienti. Vuole muoversi ma non sa come fare senza rompere tutto.",
+    'context.bottom': `Questi lead non sono una perdita — <span class="arrow">→</span> <span class="green">sono un giacimento.</span>`,
+
+    'sim.tag': "Il simulatore",
+    'sim.h2': "Quanto vi rende la vostra base dormiente.",
+    'sim.p': `Regolate le tre variabili — proiettiamo la vostra commissione aggiuntiva su <strong style="color:var(--text)">3 anni</strong>.`,
+    'sim.clients': "Clienti dormienti all'anno",
+    'sim.budget': "Budget medio per cliente",
+    'sim.commission': "La vostra commissione",
+    'sim.hypothesis': `<strong>Proiezione 3 anni</strong> · Anno 1: conversione della base dormiente. Anno 2: +70% (reinvestimenti dei clienti + nuovi lead attivati). Anno 3: +150% vs Anno 1. Ipotesi basate sui pipeline osservati. <em>Valori modulabili in call.</em>`,
+    'sim.r.y1': "Commissione anno 1",
+    'sim.r.y2': "Commissione anno 2",
+    'sim.r.y3': "Commissione anno 3",
+    'sim.r.placed': "di capitale collocato",
+    'sim.chart.title': "La vostra commissione proiettata — Anno 1 / 2 / 3",
+    'sim.chart.legend.commission': "Commissione",
+    'sim.chart.legend.capital': "Capitale collocato",
+    'sim.chart.year': "Anno",
+    'sim.balance.label': "Commissione cumulata su 3 anni",
+    'sim.balance.detail': "Soldi che ieri non incassavate con il modello classico",
+
+    'levers.tag': "Cosa MyBulkDeal cambia per voi",
+    'levers.h2': `Tre effetti sul vostro P&L,<br/>subito.`,
+    'levers.l1.h3': "Lo stesso lead, più volte",
+    'levers.l1.p': "Un investitore che parte da €6.700 torna. Una volta rassicurato sul meccanismo, fa un altro deal, poi un altro. Monetizzate la fiducia — non una transazione isolata.",
+    'levers.l2.h3': "Zero costi di acquisizione",
+    'levers.l2.p': "Tutti i dossier classificati 'non maturo' nel CRM tornano attivi. Niente lead nuovi da comprare, niente nuove ads. Risvegliate la base esistente.",
+    'levers.l3.h3': "Vendite addizionali all'anno",
+    'levers.l3.p': "L'ordine di grandezza che osserviamo sui pipeline già attivati. Non un target marketing — una constatazione di campo, per broker, in aggiunta al flusso abituale.",
+
+    'credit.tag': "La leva che cambia tutto",
+    'credit.h2': `I vostri clienti finanziano l'ingresso a Dubai<br/>con <span class="green">credito Francia</span>.`,
+    'credit.p': `Abbiamo stretto partnership con società di credito in Francia. I vostri clienti <strong>non devono più aspettare di aver risparmiato il ticket intero</strong>. Levano debito in Francia per finanziare l'ingresso in un deal MyBulkDeal a Dubai.`,
+    'credit.p1.h4': "Il risparmio del cliente resta intatto",
+    'credit.p1.p': "Invece di rompere una polizza vita o svuotare un libretto, mantiene il cuscinetto intatto e finanzia l'investimento con leva.",
+    'credit.p2.h4': "Capacità di investimento moltiplicata",
+    'credit.p2.p': "Un cliente con 30 K€ di risparmio può potenzialmente entrare su un deal da 80, 100, fino a 120 K€ in base al profilo bancario — senza toccare il cash.",
+    'credit.p3.h4': "Costo del credito FR ragionevole",
+    'credit.p3.p': "Confrontato ai rendimenti locativi e al plusvalore atteso sull'asset Dubai, il differenziale è interessante. I nostri partner conoscono il prodotto e qualificano in fretta.",
+    'credit.p4.h4': "Mantenete la relazione cliente",
+    'credit.p4.p': "Vi forniamo i contatti del nostro partner credito Francia; siete voi a trasmetterli al vostro cliente (o organizzare la presentazione). Restate il loro interlocutore unico dall'inizio alla fine — mantenete la relazione, incassate la commissione.",
+
+    'comp.tag': "Un nuovo modello di remunerazione",
+    'comp.h2': `Meno casualità, più ricorrenza,<br/>un ARPU cliente che cresce.`,
+    'comp.old.h3': "Broker classico",
+    'comp.old.sub': "Commissione legata alla vendita, al closing.",
+    'comp.old.li1': "Commissione su un evento isolato",
+    'comp.old.li2': "Ciclo di vendita lungo (6-18 mesi)",
+    'comp.old.li3': "Zero remunerazione sui 'non maturi'",
+    'comp.old.li4': "Nessuna leva credito",
+    'comp.old.li5': "Forte aleatorietà sul closing finale",
+    'comp.new.h3': "Modello MyBulkDeal",
+    'comp.new.sub': "Commissione sul capitale collocato nei nostri veicoli.",
+    'comp.new.li1': "Commissione su flusso ricorrente",
+    'comp.new.li2': "Primo closing in 60 giorni",
+    'comp.new.li3': "I vostri 'non maturi' tornano attivi",
+    'comp.new.li4': "Commissione sul capitale totale (apporto + credito)",
+    'comp.new.li5': "Uno stesso cliente: 3, 5, 10 linee di commissione",
+    'comp.range.value': "2 a 8%",
+    'comp.range.label': "del capitale collocato dal vostro cliente, progetto per progetto",
+
+    'how.tag': "Come funziona",
+    'how.h2': "Cinque passi. Voi restate sul vostro mestiere.",
+    'how.s1.h3': "Voi identificate",
+    'how.s1.p': "Un lead nel pipeline che combacia: interesse Dubai, ticket insufficiente per deal diretto, risparmio o capacità di indebitamento FR.",
+    'how.s2.h3': "Compilate l'EOI",
+    'how.s2.p': "Un formulario di Expression of Interest presso di noi, a vostro nome. Restate l'unico contatto del vostro cliente. Validiamo in 24-48 ore.",
+    'how.s3.h3': "Vi trasmettiamo il credito FR",
+    'how.s3.p': "Se pertinente, vi inviamo i contatti del nostro partner credito Francia. Li passate al vostro cliente (o organizzate la presentazione). Restate il loro referente.",
+    'how.s4.h3': "Il cliente firma",
+    'how.s4.p': "Ingresso nella SPV dedicata a partire da €6.700. Capitale sicuro via mandatario RERA locale.",
+    'how.s5.h3': "Voi incassate",
+    'how.s5.p': "Commissione 2-8% sul capitale collocato. Il cliente resta vostro — risalite i prossimi deal al vostro ritmo.",
+
+    'partnership.tag': "Cosa vi proponiamo",
+    'partnership.h2': `Una partnership flessibile,<br/>senza esclusiva, senza impegno di volume.`,
+    'partnership.p': "Il nostro approccio si integra nella vostra attività attuale senza perturbarla. Ecco cosa costituisce una partnership MyBulkDeal lato broker.",
+    'partnership.p1.h3': "Un accordo di partnership semplice",
+    'partnership.p1.p': "Una pagina, due firme. Definisce il perimetro, la remunerazione e il modo di trasmissione dei lead. Niente esclusiva richiesta, niente impegno di volume.",
+    'partnership.p2.h3': "Accesso diretto ai nostri deal in corso",
+    'partnership.p2.p': "Off-plan e secondary market, aggiornati in continuo. Vedete in tempo reale cosa è aperto, cosa chiude, cosa si prepara.",
+    'partnership.p3.h3': "Un onboarding corto del vostro team",
+    'partnership.p3.p': "Una sessione di 90 minuti: meccanica, pitch cliente, strumenti di qualifica, presentazione del partner credito Francia. I vostri commerciali operativi l'indomani.",
+    'partnership.p4.h3': "Un punto di contatto dedicato",
+    'partnership.p4.p': "Una persona referente, raggiungibile in diretta, che pilota i vostri dossier dalla prima call al closing. Niente supporto multi-ticket, niente centralino.",
+    'partnership.p5.h3': "Un reporting trimestrale",
+    'partnership.p5.p': "Lead convertiti, capitale collocato, remunerazione cumulata, opportunità di rilancio sulla base. Sapete esattamente dove siete.",
+    'partnership.cta.p': "Una call o un caffè di 30 minuti. Guardiamo insieme la tipologia del vostro pipeline e identifichiamo 2-3 profili test.",
+    'partnership.cta.btn': "Prenota una call →",
+
+    'final.h2': `La vostra base clienti è lì.<br/>Il resto, lo costruiamo insieme.`,
+    'final.p': "Primo deal chiuso atteso entro 60 giorni dal primo dossier trasmesso.",
+    'final.cta': "Prenota la mia call →",
+
+    'footer.tagline': "Operatore di SPV immobiliari · Dubai · Partnership broker",
+    'footer.disclaimer': "Documento destinato a broker e agenzie partner. I numeri del simulatore si basano su ipotesi di mercato e osservazioni su pipeline esistenti. La remunerazione effettiva si cala progetto per progetto secondo la natura del deal e il livello di accompagnamento cliente fornito. Nessuna offerta contrattuale è formulata da questo documento."
+  }
+};
+
+let currentLang = 'fr';
+
+function formatEur(amount, lang) {
+  // amount in € (number). Returns formatted string.
+  const sep = (lang === 'en') ? ',' : ' ';
+  const fmt = Math.round(amount).toString().replace(/\B(?=(\d{3})+(?!\d))/g, sep);
+  return (lang === 'en') ? `€${fmt}` : `${fmt} €`;
+}
+
+const clientsSlider = document.getElementById('clientsSlider');
+const budgetSlider = document.getElementById('budgetSlider');
+const commissionSlider = document.getElementById('commissionSlider');
+const clientsVal = document.getElementById('clientsVal');
+const budgetDisplay = document.getElementById('budgetDisplay');
+const commissionVal = document.getElementById('commissionVal');
+const y1Val = document.getElementById('y1Val');
+const y2Val = document.getElementById('y2Val');
+const y3Val = document.getElementById('y3Val');
+const y1Capital = document.getElementById('y1Capital');
+const y2Capital = document.getElementById('y2Capital');
+const y3Capital = document.getElementById('y3Capital');
+const totalVal = document.getElementById('totalVal');
+
+// Croissance pipeline
+const Y2_MULT = 1.7;
+const Y3_MULT = 2.5;
+
+function updateSliderFill(slider) {
+  const min = +slider.min, max = +slider.max, val = +slider.value;
+  const pct = ((val - min) / (max - min)) * 100;
+  slider.style.setProperty('--p', pct + '%');
+}
+
+let chart = null;
+
+function compute() {
+  const clients = +clientsSlider.value;
+  const budget = +budgetSlider.value;
+  const commission = +commissionSlider.value;
+  const lang = currentLang;
+
+  clientsVal.textContent = clients;
+  budgetDisplay.textContent = formatEur(budget, lang);
+  commissionVal.textContent = (lang === 'en') ? commission.toFixed(1) : commission.toFixed(1).replace('.', ',');
+
+  updateSliderFill(clientsSlider);
+  updateSliderFill(budgetSlider);
+  updateSliderFill(commissionSlider);
+
+  const capitalY1 = clients * budget;
+  const capitalY2 = capitalY1 * Y2_MULT;
+  const capitalY3 = capitalY1 * Y3_MULT;
+  const commissionY1 = capitalY1 * (commission / 100);
+  const commissionY2 = capitalY2 * (commission / 100);
+  const commissionY3 = capitalY3 * (commission / 100);
+  const total = commissionY1 + commissionY2 + commissionY3;
+
+  y1Val.textContent = formatEur(commissionY1, lang);
+  y2Val.textContent = formatEur(commissionY2, lang);
+  y3Val.textContent = formatEur(commissionY3, lang);
+  y1Capital.textContent = formatEur(capitalY1, lang);
+  y2Capital.textContent = formatEur(capitalY2, lang);
+  y3Capital.textContent = formatEur(capitalY3, lang);
+  totalVal.textContent = '+' + formatEur(total, lang);
+
+  updateChart(commissionY1, commissionY2, commissionY3, lang);
+}
+
+function updateChart(c1, c2, c3, lang) {
+  const ctx = document.getElementById('simChart').getContext('2d');
+  const dict = I18N[lang];
+
+  const data = {
+    labels: [`${dict['sim.chart.year']} 1`, `${dict['sim.chart.year']} 2`, `${dict['sim.chart.year']} 3`],
+    datasets: [{
+      label: dict['sim.chart.legend.commission'],
+      data: [c1, c2, c3],
+      backgroundColor: ['rgba(163, 230, 53, 0.5)', 'rgba(163, 230, 53, 0.75)', 'rgba(163, 230, 53, 1)'],
+      borderColor: 'rgba(163, 230, 53, 1)',
+      borderWidth: 1.5,
+      borderRadius: 8,
+    }]
+  };
+
+  if (chart) {
+    chart.data = data;
+    chart.update('none');
+    return;
+  }
+
+  chart = new Chart(ctx, {
+    type: 'bar',
+    data: data,
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          backgroundColor: '#000', borderColor: 'rgba(163, 230, 53, 0.3)', borderWidth: 1,
+          titleColor: '#fff', bodyColor: '#B8B8B8',
+          titleFont: { family: 'Inter', weight: '700' }, bodyFont: { family: 'Inter' },
+          padding: 12,
+          callbacks: { label: (ctx) => `${dict['sim.chart.legend.commission']}: ${formatEur(ctx.parsed.y, currentLang)}` }
+        }
+      },
+      scales: {
+        x: { grid: { display: false }, ticks: { color: '#B8B8B8', font: { family: 'Inter', size: 12, weight: '600' } } },
+        y: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#6B6B6B', font: { family: 'Inter', size: 11 }, callback: function(v) { return formatEur(v, currentLang); } }, beginAtZero: true }
+      }
+    }
+  });
+}
+
+clientsSlider.addEventListener('input', compute);
+budgetSlider.addEventListener('input', compute);
+commissionSlider.addEventListener('input', compute);
+
+function applyLang(lang) {
+  if (!I18N[lang]) lang = 'fr';
+  currentLang = lang;
+  const dict = I18N[lang];
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (dict[key] !== undefined) el.innerHTML = dict[key];
+  });
+  if (dict['meta.title']) document.title = dict['meta.title'];
+  const metaDesc = document.querySelector('meta[name="description"]');
+  if (metaDesc && dict['meta.description']) metaDesc.setAttribute('content', dict['meta.description']);
+  const currentLabel = document.getElementById('langCurrentLabel');
+  if (currentLabel && dict['lang.label']) currentLabel.textContent = dict['lang.label'];
+  document.querySelectorAll('.lang-option').forEach(opt => {
+    opt.classList.toggle('active', opt.getAttribute('data-lang') === lang);
+  });
+  compute();
+  try { localStorage.setItem('mbd_lang', lang); } catch(e) {}
+}
+
+const langSelector = document.getElementById('langSelector');
+if (langSelector) {
+  langSelector.addEventListener('click', (e) => {
+    if (e.target.closest('.lang-option')) return;
+    e.stopPropagation();
+    langSelector.classList.toggle('open');
+  });
+  document.addEventListener('click', () => langSelector.classList.remove('open'));
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') langSelector.classList.remove('open'); });
+  document.querySelectorAll('.lang-option').forEach(opt => {
+    opt.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const lang = opt.getAttribute('data-lang');
+      applyLang(lang);
+      langSelector.classList.remove('open');
+    });
+  });
+}
+
+let initialLang = 'fr';
+try {
+  const saved = localStorage.getItem('mbd_lang');
+  if (saved && I18N[saved]) initialLang = saved;
+} catch(e) {}
+applyLang(initialLang);
+
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+}, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
