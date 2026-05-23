@@ -3,7 +3,9 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Simulateur de financement — MyBulkDeal × Younited Credit</title>
+<title>Simulateur de financement — MyBulkDeal</title>
+<meta name="description" content="Outil de calcul indicatif de mensualité pour un crédit à la consommation classique. Taux constatés mai 2026. Non contractuel. MyBulkDeal n'effectue aucune intermédiation en crédit." />
+<meta name="robots" content="noindex,nofollow">
 <!-- Favicon -->
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -87,16 +89,16 @@
   .brand {
     display: inline-flex;
     align-items: center;
-    gap: 12px;
-    margin-bottom: 16px;
+    gap: 16px;
+    margin-bottom: 22px;
     font-weight: 900;
     letter-spacing: -0.04em;
-    font-size: 1.4rem;
+    font-size: 2rem;
   }
   .brand-dot {
-    width: 12px; height: 12px; border-radius: 50%;
+    width: 16px; height: 16px; border-radius: 50%;
     background: var(--vert);
-    box-shadow: 0 0 16px var(--vert);
+    box-shadow: 0 0 20px var(--vert);
     animation: pulseDot 2.2s infinite;
   }
   @keyframes pulseDot { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.55; transform: scale(0.8); } }
@@ -528,8 +530,8 @@
       <span class="brand-dot"></span>
       <span class="brand-name"><span class="b1">My</span><span class="b2">Bulk</span><span class="b3">Deal</span><span class="b4">.</span></span>
     </div>
-    <h1>Financez votre ticket en <span class="accent">quelques clics</span></h1>
-    <p class="sub">Simulez votre prêt personnel Younited Credit pour entrer dans une opération MyBulkDeal sans mobiliser toute votre épargne. Mensualité fixe, taux fixe, sans frais cachés.</p>
+    <h1>Estimez votre <span class="accent">mensualité indicative</span></h1>
+    <p class="sub">Simulez un prêt à la consommation classique pour estimer la mensualité d'un ticket MyBulkDeal sans mobiliser toute votre épargne. Outil de calcul mathématique, taux indicatifs constatés en mai 2026. Non contractuel.</p>
   </header>
 
   <div class="grid">
@@ -553,19 +555,19 @@
       <div class="field">
         <div class="field-header-row">
           <label for="taeg">TAEG annuel</label>
-          <span class="badge-auto" id="auto-taeg-badge" title="Cliquez pour basculer en mode manuel">Auto Younited</span>
+          <span class="badge-auto" id="auto-taeg-badge" title="Cliquez pour basculer en mode manuel">Auto (marché)</span>
         </div>
         <input type="number" id="taeg" class="num-input" step="0.01" min="0" max="25" value="5.90">
-        <div class="helper" id="taeg-helper">Taux indicatif Younited Credit selon le montant et la durée (mai 2026). Modifiable.</div>
+        <div class="helper" id="taeg-helper">Taux indicatifs constatés sur le marché du crédit à la consommation en France selon le montant et la durée (mai 2026). Modifiable selon votre profil.</div>
       </div>
 
       <div class="field">
         <div class="field-header-row">
           <label for="frais">Frais de dossier</label>
-          <span class="badge-auto off" id="frais-info">0 € chez Younited</span>
+          <span class="badge-auto off" id="frais-info">Variable selon prêteur</span>
         </div>
         <input type="number" id="frais" class="num-input" step="1" min="0" value="0">
-        <div class="helper">Younited Credit affiche <strong>0 € de frais de dossier</strong>. Modifiable si vous voulez tester un autre prêteur.</div>
+        <div class="helper">Certains prêteurs affichent <strong>0 € de frais de dossier</strong>, d'autres facturent un pourcentage du capital. À ajuster selon le devis que vous obtenez.</div>
       </div>
 
       <details>
@@ -581,7 +583,7 @@
             <tr><td>30 000 – 50 000 €</td><td>3,5 %</td><td>4,8 %</td><td>6,0 %</td></tr>
           </tbody>
         </table>
-        <div class="helper" style="margin-top:10px;">Court ≤ 24 mois · Moyen 25-48 mois · Long &gt; 48 mois. Taux indicatifs, le vrai taux dépend de votre profil.</div>
+        <div class="helper" style="margin-top:10px;">Court ≤ 24 mois · Moyen 25-48 mois · Long &gt; 48 mois. Taux indicatifs constatés mai 2026 sur le marché français du crédit à la consommation, hors assurance emprunteur. Le taux réel dépend de votre profil et du prêteur retenu.</div>
       </details>
     </section>
 
@@ -666,14 +668,18 @@
   </section>
 
   <footer>
-    <strong>Simulateur indicatif — MyBulkDeal × Younited Credit</strong><br>
-    Younited Credit : prêt personnel de 1 000 à 50 000 €, de 6 à 84 mois, taux fixe, 0 € de frais de dossier, remboursement anticipé gratuit. Les taux affichés sont des moyennes constatées en mai 2026 et dépendent in fine de votre profil emprunteur. Un crédit vous engage et doit être remboursé. Vérifiez vos capacités de remboursement avant de vous engager.<br><br>
-    <a href="https://www.younited-credit.com/projets/pret-personnel/calculs/simulation-pret-personnel" class="cta" target="_blank" rel="noopener">Faire ma vraie demande sur Younited →</a>
+    <strong>Simulateur indicatif — MyBulkDeal</strong><br>
+    Outil de calcul mathématique non contractuel. Les taux affichés sont des moyennes constatées sur le marché du crédit à la consommation en France en mai 2026 (prêt personnel classique de 1 000 à 50 000 €, de 6 à 84 mois). Le taux et les conditions définitives dépendent de votre profil emprunteur et du prêteur retenu. <strong>MyBulkDeal n'effectue aucune intermédiation en opérations de banque ou en services de paiement</strong> au sens des articles L.519-1 et suivants du Code monétaire et financier et n'a aucun partenariat de courtage avec un établissement de crédit nommé. Aucune donnée saisie dans ce simulateur n'est transmise à un tiers. Un crédit vous engage et doit être remboursé. Vérifiez vos capacités de remboursement avant de vous engager.<br><br>
+    Pour étudier votre éligibilité et obtenir une offre réelle, rapprochez-vous d'un <strong>courtier crédit indépendant français immatriculé ORIAS</strong>.<br><br>
+    <a href="https://www.orias.fr/" class="cta" target="_blank" rel="noopener">Consulter le registre ORIAS →</a>
+    <div style="margin-top:24px; padding-top:18px; border-top:1px solid var(--gris); font-size:11px; color:var(--texte-doux); max-width:760px; margin-left:auto; margin-right:auto; line-height:1.6;">
+      MyBulkDeal est une marque exploitée par <strong>MONOP'consulting FZ-LLC</strong>, cabinet de conseil immobilier de droit émirien, immatriculé à Dubaï, UAE.
+    </div>
   </footer>
 </div>
 
 <script>
-  // ----- Grille de taux Younited indicatifs (mai 2026) -----
+  // ----- Grille de taux indicatifs marché français du crédit conso (mai 2026) -----
   function getAutoTaeg(montant, duree) {
     // colonnes : court (<=24), moyen (25-48), long (>48)
     let bucket;
@@ -797,13 +803,13 @@
     autoMode = false;
     badge.classList.add('off');
     badge.textContent = 'Manuel';
-    taegHelper.innerHTML = 'Vous avez saisi votre propre taux. <a href="#" id="back-auto" style="color:var(--vert);">Revenir au taux auto Younited</a>';
+    taegHelper.innerHTML = 'Vous avez saisi votre propre taux. <a href="#" id="back-auto" style="color:var(--vert);">Revenir au taux auto (marché)</a>';
     document.getElementById('back-auto').addEventListener('click', e => {
       e.preventDefault();
       autoMode = true;
       badge.classList.remove('off');
-      badge.textContent = 'Auto Younited';
-      taegHelper.innerHTML = 'Taux indicatif Younited Credit selon le montant et la durée (mai 2026). Modifiable.';
+      badge.textContent = 'Auto (marché)';
+      taegHelper.innerHTML = 'Taux indicatifs constatés sur le marché du crédit à la consommation en France selon le montant et la durée (mai 2026). Modifiable selon votre profil.';
       render();
     });
   });
@@ -811,8 +817,8 @@
     autoMode = !autoMode;
     if (autoMode) {
       badge.classList.remove('off');
-      badge.textContent = 'Auto Younited';
-      taegHelper.innerHTML = 'Taux indicatif Younited Credit selon le montant et la durée (mai 2026). Modifiable.';
+      badge.textContent = 'Auto (marché)';
+      taegHelper.innerHTML = 'Taux indicatifs constatés sur le marché du crédit à la consommation en France selon le montant et la durée (mai 2026). Modifiable selon votre profil.';
     } else {
       badge.classList.add('off');
       badge.textContent = 'Manuel';
