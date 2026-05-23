@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Simulateur de financement — MyBulkDeal × Younited Credit</title>
+<style>
+  :root {
+    --noir: #0A0A0A;
+    --noir-2: #161616;
+    --noir-3: #1F1F1F;
+    --vert: #B4E61D;        /* vert pomme MyBulkDeal */
+    --vert-soft: #C8F23A;
+    --gris: #2A2A2A;
+    --gris-2: #3A3A3A;
+    --texte: #F5F5F5;
+    --texte-doux: #A0A0A0;
+    --rouge: #FF5252;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--noir);
+    color: var(--texte);
+    min-height: 100vh;
+    line-height: 1.5;
+  }
+  .wrap {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+  }
+  header.hero {
+    text-align: center;
+    padding: 24px 0 40px;
+    border-bottom: 1px solid var(--gris);
+    margin-bottom: 40px;
+  }
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .brand-dot {
+    width: 14px; height: 14px; border-radius: 50%;
+    background: var(--vert);
+    box-shadow: 0 0 16px var(--vert);
+  }
+  .brand-name {
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    font-size: 18px;
+  }
+  .brand-name span { color: var(--vert); }
+  h1 {
+    font-size: 36px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    margin-bottom: 12px;
+  }
+  h1 .accent { color: var(--vert); }
+  .sub {
+    color: var(--texte-doux);
+    font-size: 16px;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 28px;
+  }
+  @media (max-width: 880px) {
+    .grid { grid-template-columns: 1fr; }
+    h1 { font-size: 28px; }
+  }
+  .card {
+    background: var(--noir-2);
+    border: 1px solid var(--gris);
+    border-radius: 18px;
+    padding: 28px;
+  }
+  .card h2 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .card h2::before {
+    content: "";
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--vert);
+  }
+  .field {
+    margin-bottom: 22px;
+  }
+  .field label {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: 13px;
+    color: var(--texte-doux);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+  }
+  .field .value {
+    color: var(--vert);
+    font-weight: 700;
+    font-size: 16px;
+    text-transform: none;
+    letter-spacing: 0;
+  }
+  input[type="range"] {
+    width: 100%;
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    height: 28px;
+  }
+  input[type="range"]::-webkit-slider-runnable-track {
+    height: 6px; border-radius: 3px;
+    background: linear-gradient(to right, var(--vert) var(--p, 0%), var(--gris-2) var(--p, 0%));
+  }
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    background: var(--vert);
+    border: 3px solid var(--noir);
+    margin-top: -8px;
+    cursor: pointer;
+    box-shadow: 0 0 0 1px var(--vert);
+  }
+  input[type="range"]::-moz-range-track {
+    height: 6px; border-radius: 3px; background: var(--gris-2);
+  }
+  input[type="range"]::-moz-range-progress {
+    height: 6px; border-radius: 3px; background: var(--vert);
+  }
+  input[type="range"]::-moz-range-thumb {
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    background: var(--vert);
+    border: 3px solid var(--noir);
+    cursor: pointer;
+  }
+  .row2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+  .num-input {
+    background: var(--noir-3);
+    border: 1px solid var(--gris-2);
+    color: var(--texte);
+    border-radius: 10px;
+    padding: 10px 14px;
+    font-size: 15px;
+    width: 100%;
+    font-weight: 600;
+    font-family: inherit;
+  }
+  .num-input:focus {
+    outline: none;
+    border-color: var(--vert);
+  }
+  .field-with-input label .value { display: none; }
+  .badge-auto {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(180, 230, 29, 0.12);
+    border: 1px solid rgba(180, 230, 29, 0.35);
+    color: var(--vert);
+    border-radius: 999px;
+    padding: 4px 10px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+    cursor: pointer;
+    user-select: none;
+  }
+  .badge-auto.off {
+    background: var(--noir-3);
+    border-color: var(--gris-2);
+    color: var(--texte-doux);
+  }
+  .badge-auto::before {
+    content: "";
+    width: 6px; height: 6px; border-radius: 50%;
+    background: currentColor;
+  }
+  .field-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+  .field-header-row label { margin-bottom: 0; }
+  .helper {
+    font-size: 12px;
+    color: var(--texte-doux);
+    margin-top: 6px;
+  }
+
+  /* Résultats */
+  .result-hero {
+    background: var(--vert);
+    color: var(--noir);
+    border-radius: 14px;
+    padding: 22px 26px;
+    margin-bottom: 18px;
+  }
+  .result-hero .lbl {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    opacity: 0.7;
+  }
+  .result-hero .big {
+    font-size: 44px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    line-height: 1.1;
+    margin-top: 4px;
+  }
+  .result-hero .big small {
+    font-size: 18px;
+    font-weight: 600;
+    opacity: 0.7;
+  }
+  .stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 18px;
+  }
+  .stat {
+    background: var(--noir-3);
+    border: 1px solid var(--gris);
+    border-radius: 12px;
+    padding: 14px 16px;
+  }
+  .stat .lbl {
+    font-size: 11px;
+    color: var(--texte-doux);
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    margin-bottom: 6px;
+  }
+  .stat .val {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--texte);
+  }
+  .stat.accent .val { color: var(--vert); }
+
+  .mbd-card {
+    background: linear-gradient(135deg, rgba(180, 230, 29, 0.08), rgba(180, 230, 29, 0.02));
+    border: 1px dashed rgba(180, 230, 29, 0.4);
+    border-radius: 14px;
+    padding: 18px 20px;
+    margin-bottom: 18px;
+  }
+  .mbd-card .ttl {
+    font-size: 12px;
+    color: var(--vert);
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .mbd-card .body {
+    font-size: 14px;
+    color: var(--texte);
+    line-height: 1.55;
+  }
+  .mbd-card .body strong { color: var(--vert); }
+
+  details {
+    background: var(--noir-3);
+    border: 1px solid var(--gris);
+    border-radius: 12px;
+    padding: 14px 18px;
+  }
+  details summary {
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14px;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  details summary::-webkit-details-marker { display: none; }
+  details summary::after {
+    content: "+";
+    color: var(--vert);
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1;
+  }
+  details[open] summary::after { content: "−"; }
+
+  /* Carte amortissement pleine largeur */
+  .amort-card {
+    margin-top: 28px;
+    padding: 0;
+    overflow: hidden;
+    background: var(--noir-2);
+  }
+  .amort-card > details {
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+  }
+  .amort-card > details > summary {
+    padding: 22px 28px;
+    font-size: 16px;
+    font-weight: 700;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s;
+  }
+  .amort-card > details[open] > summary {
+    border-bottom-color: var(--gris);
+  }
+  .amort-card > details > summary span {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .dot-vert {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--vert);
+    display: inline-block;
+  }
+  #amort-wrap {
+    padding: 8px 0 16px;
+  }
+
+  /* Tableau */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  th, td {
+    padding: 12px 16px;
+    text-align: right;
+    border-bottom: 1px solid var(--gris);
+  }
+  th {
+    text-align: right;
+    color: var(--texte-doux);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 0.6px;
+    background: var(--noir-3);
+    position: sticky;
+    top: 0;
+  }
+  th:first-child, td:first-child {
+    text-align: left;
+    padding-left: 28px;
+  }
+  th:last-child, td:last-child {
+    padding-right: 28px;
+  }
+  tbody tr {
+    transition: background 0.1s;
+  }
+  tbody tr:hover { background: var(--noir-3); }
+  tbody tr:nth-child(12n) td {
+    border-bottom: 2px solid var(--vert);
+    border-bottom-style: dashed;
+    border-bottom-color: rgba(180, 230, 29, 0.25);
+  }
+  tbody td:first-child {
+    font-weight: 700;
+    color: var(--texte-doux);
+  }
+  tbody td:last-child {
+    color: var(--vert);
+    font-weight: 600;
+  }
+
+  /* Petite grille de résumé en haut du tableau d'amortissement */
+  .amort-summary {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    padding: 0 0 0 0;
+    border-bottom: 1px solid var(--gris);
+  }
+  .amort-summary .cell {
+    padding: 16px 20px;
+    border-right: 1px solid var(--gris);
+  }
+  .amort-summary .cell:last-child { border-right: none; }
+  .amort-summary .lbl {
+    font-size: 11px;
+    color: var(--texte-doux);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+  }
+  .amort-summary .val {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--texte);
+  }
+  .amort-summary .val.accent { color: var(--vert); }
+  @media (max-width: 720px) {
+    .amort-summary { grid-template-columns: repeat(2, 1fr); }
+    .amort-summary .cell:nth-child(2) { border-right: none; }
+    th:first-child, td:first-child { padding-left: 14px; }
+    th:last-child, td:last-child { padding-right: 14px; }
+    th, td { padding: 10px 8px; font-size: 12px; }
+  }
+
+  footer {
+    margin-top: 36px;
+    padding-top: 24px;
+    border-top: 1px solid var(--gris);
+    font-size: 12px;
+    color: var(--texte-doux);
+    line-height: 1.7;
+    text-align: center;
+  }
+  footer strong { color: var(--texte); }
+  .cta {
+    display: inline-block;
+    background: var(--vert);
+    color: var(--noir);
+    padding: 14px 28px;
+    border-radius: 999px;
+    font-weight: 800;
+    text-decoration: none;
+    margin-top: 18px;
+    font-size: 14px;
+    letter-spacing: 0.4px;
+    transition: transform 0.15s ease;
+  }
+  .cta:hover { transform: translateY(-2px); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <div class="brand">
+      <span class="brand-dot"></span>
+      <span class="brand-name">My<span>Bulk</span>Deal</span>
+    </div>
+    <h1>Financez votre ticket en <span class="accent">quelques clics</span></h1>
+    <p class="sub">Simulez votre prêt personnel Younited Credit pour entrer dans une opération MyBulkDeal sans mobiliser toute votre épargne. Mensualité fixe, taux fixe, sans frais cachés.</p>
+  </header>
+
+  <div class="grid">
+
+    <!-- COLONNE GAUCHE : PARAMÈTRES -->
+    <section class="card">
+      <h2>Vos paramètres</h2>
+
+      <div class="field">
+        <label for="montant">Montant à financer <span class="value" id="montant-val">6 700 €</span></label>
+        <input type="range" id="montant" min="1000" max="50000" step="100" value="6700">
+        <div class="helper">De 1 000 € à 50 000 € — ticket MyBulkDeal standard : 6 700 €.</div>
+      </div>
+
+      <div class="field">
+        <label for="duree">Durée de remboursement <span class="value" id="duree-val">48 mois</span></label>
+        <input type="range" id="duree" min="6" max="84" step="1" value="48">
+        <div class="helper">De 6 à 84 mois (jusqu'à 7 ans).</div>
+      </div>
+
+      <div class="field">
+        <div class="field-header-row">
+          <label for="taeg">TAEG annuel</label>
+          <span class="badge-auto" id="auto-taeg-badge" title="Cliquez pour basculer en mode manuel">Auto Younited</span>
+        </div>
+        <input type="number" id="taeg" class="num-input" step="0.01" min="0" max="25" value="5.90">
+        <div class="helper" id="taeg-helper">Taux indicatif Younited Credit selon le montant et la durée (mai 2026). Modifiable.</div>
+      </div>
+
+      <div class="field">
+        <div class="field-header-row">
+          <label for="frais">Frais de dossier</label>
+          <span class="badge-auto off" id="frais-info">0 € chez Younited</span>
+        </div>
+        <input type="number" id="frais" class="num-input" step="1" min="0" value="0">
+        <div class="helper">Younited Credit affiche <strong>0 € de frais de dossier</strong>. Modifiable si vous voulez tester un autre prêteur.</div>
+      </div>
+
+      <details>
+        <summary>Voir la grille des taux indicatifs</summary>
+        <table>
+          <thead>
+            <tr><th>Montant</th><th>Court terme</th><th>Moyen terme</th><th>Long terme</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>1 000 – 5 000 €</td><td>7,0 %</td><td>9,5 %</td><td>12,0 %</td></tr>
+            <tr><td>5 000 – 15 000 €</td><td>4,5 %</td><td>5,9 %</td><td>7,5 %</td></tr>
+            <tr><td>15 000 – 30 000 €</td><td>3,9 %</td><td>5,2 %</td><td>6,5 %</td></tr>
+            <tr><td>30 000 – 50 000 €</td><td>3,5 %</td><td>4,8 %</td><td>6,0 %</td></tr>
+          </tbody>
+        </table>
+        <div class="helper" style="margin-top:10px;">Court ≤ 24 mois · Moyen 25-48 mois · Long &gt; 48 mois. Taux indicatifs, le vrai taux dépend de votre profil.</div>
+      </details>
+    </section>
+
+    <!-- COLONNE DROITE : RÉSULTATS -->
+    <section class="card">
+      <h2>Votre simulation</h2>
+
+      <div class="result-hero">
+        <div class="lbl">Mensualité</div>
+        <div class="big"><span id="mensualite">157,29</span> <small>€ / mois</small></div>
+      </div>
+
+      <div class="stats">
+        <div class="stat">
+          <div class="lbl">Coût total des intérêts</div>
+          <div class="val" id="cout-interets">848 €</div>
+        </div>
+        <div class="stat">
+          <div class="lbl">Montant total remboursé</div>
+          <div class="val" id="total-rembourse">7 548 €</div>
+        </div>
+        <div class="stat accent">
+          <div class="lbl">TAEG appliqué</div>
+          <div class="val" id="taeg-affiche">5,90 %</div>
+        </div>
+        <div class="stat">
+          <div class="lbl">Effort mensuel</div>
+          <div class="val" id="effort">~ 3,5 % du salaire net</div>
+        </div>
+      </div>
+
+      <div class="mbd-card">
+        <div class="ttl">⟶ Ce que ça change pour vous</div>
+        <div class="body" id="mbd-msg">
+          Avec <strong>157 € / mois</strong> seulement, vous entrez dans une opération MyBulkDeal de <strong>6 700 €</strong> sans toucher à votre épargne. Le rendement du deal MBD vise à couvrir — et largement — le coût du crédit.
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <!-- TABLEAU D'AMORTISSEMENT — PLEINE LARGEUR -->
+  <section class="card amort-card">
+    <details open>
+      <summary>
+        <span><span class="dot-vert"></span>Tableau d'amortissement complet</span>
+      </summary>
+      <div id="amort-wrap">
+        <div class="amort-summary">
+          <div class="cell">
+            <div class="lbl">Capital emprunté</div>
+            <div class="val" id="sum-capital">6 700 €</div>
+          </div>
+          <div class="cell">
+            <div class="lbl">Intérêts cumulés</div>
+            <div class="val accent" id="sum-interets">838 €</div>
+          </div>
+          <div class="cell">
+            <div class="lbl">Total remboursé</div>
+            <div class="val" id="sum-total">7 538 €</div>
+          </div>
+          <div class="cell">
+            <div class="lbl">Mensualité fixe</div>
+            <div class="val accent" id="sum-mens">157,04 €</div>
+          </div>
+        </div>
+        <table id="amort-table">
+          <thead>
+            <tr>
+              <th>Mois</th>
+              <th>Capital remboursé</th>
+              <th>Intérêts</th>
+              <th>Mensualité</th>
+              <th>Capital restant dû</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </details>
+  </section>
+
+  <footer>
+    <strong>Simulateur indicatif — MyBulkDeal × Younited Credit</strong><br>
+    Younited Credit : prêt personnel de 1 000 à 50 000 €, de 6 à 84 mois, taux fixe, 0 € de frais de dossier, remboursement anticipé gratuit. Les taux affichés sont des moyennes constatées en mai 2026 et dépendent in fine de votre profil emprunteur. Un crédit vous engage et doit être remboursé. Vérifiez vos capacités de remboursement avant de vous engager.<br><br>
+    <a href="https://www.younited-credit.com/projets/pret-personnel/calculs/simulation-pret-personnel" class="cta" target="_blank" rel="noopener">Faire ma vraie demande sur Younited →</a>
+  </footer>
+</div>
+
+<script>
+  // ----- Grille de taux Younited indicatifs (mai 2026) -----
+  function getAutoTaeg(montant, duree) {
+    // colonnes : court (<=24), moyen (25-48), long (>48)
+    let bucket;
+    if (montant < 5000)        bucket = [7.0, 9.5, 12.0];
+    else if (montant < 15000)  bucket = [4.5, 5.9, 7.5];
+    else if (montant < 30000)  bucket = [3.9, 5.2, 6.5];
+    else                       bucket = [3.5, 4.8, 6.0];
+    if (duree <= 24) return bucket[0];
+    if (duree <= 48) return bucket[1];
+    return bucket[2];
+  }
+
+  // ----- Formule de mensualité prêt amortissable -----
+  function mensualite(K, taegPct, n) {
+    const t = (taegPct / 100) / 12;
+    if (t === 0) return K / n;
+    return K * t / (1 - Math.pow(1 + t, -n));
+  }
+
+  // ----- Formatage -----
+  const fmtEUR = new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 });
+  const fmtEUR2 = new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR', minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  const fmtNum = new Intl.NumberFormat('fr-FR', { maximumFractionDigits: 0 });
+
+  // ----- Etats -----
+  let autoMode = true;
+
+  // ----- Refs -----
+  const $ = id => document.getElementById(id);
+  const elMontant = $('montant'), elDuree = $('duree'), elTaeg = $('taeg'), elFrais = $('frais');
+  const valMontant = $('montant-val'), valDuree = $('duree-val');
+  const badge = $('auto-taeg-badge');
+  const taegHelper = $('taeg-helper');
+
+  // ----- Maj % barre slider (pour le fill vert) -----
+  function setRangeFill(input) {
+    const min = +input.min, max = +input.max, val = +input.value;
+    const p = ((val - min) / (max - min)) * 100;
+    input.style.setProperty('--p', p + '%');
+  }
+
+  // ----- Render -----
+  function render() {
+    const K = +elMontant.value;
+    const n = +elDuree.value;
+    const frais = +elFrais.value || 0;
+
+    if (autoMode) {
+      const t = getAutoTaeg(K, n);
+      elTaeg.value = t.toFixed(2);
+    }
+    const taeg = +elTaeg.value || 0;
+
+    // Mensualité = sur capital emprunté (frais ajoutés au capital remboursé pour simplifier le client)
+    const Keff = K + frais;
+    const m = mensualite(Keff, taeg, n);
+    const total = m * n;
+    const interets = total - Keff;
+
+    // Affichages
+    valMontant.textContent = fmtEUR.format(K).replace('€', '€');
+    valDuree.textContent = n + ' mois';
+    $('mensualite').textContent = fmtEUR2.format(m).replace('€', '').trim();
+    $('cout-interets').textContent = fmtEUR.format(Math.max(0, interets));
+    $('total-rembourse').textContent = fmtEUR.format(total + 0); // total déjà inclut frais
+    $('taeg-affiche').textContent = taeg.toFixed(2).replace('.', ',') + ' %';
+
+    // Effort = mensualité / 3500 €/mois (salaire moyen FR approximatif net)
+    const eff = (m / 3500) * 100;
+    $('effort').textContent = '~ ' + eff.toFixed(1).replace('.', ',') + ' % d\'un salaire de 3 500 €';
+
+    // Message MBD adaptatif
+    const mbd = $('mbd-msg');
+    if (K <= 8000) {
+      mbd.innerHTML = `Avec <strong>${fmtEUR2.format(m).replace('€','').trim()} € / mois</strong>, vous prenez part à une opération MyBulkDeal de <strong>${fmtEUR.format(K)}</strong> sans toucher à votre épargne. Notre objectif : que le rendement du deal couvre — et dépasse — le coût du crédit.`;
+    } else if (K <= 20000) {
+      mbd.innerHTML = `Avec <strong>${fmtEUR2.format(m).replace('€','').trim()} € / mois</strong>, vous démultipliez votre ticket sur <strong>${fmtEUR.format(K)}</strong> via plusieurs deals MyBulkDeal. Effet d'échelle, sans bloquer votre cash.`;
+    } else {
+      mbd.innerHTML = `Avec <strong>${fmtEUR2.format(m).replace('€','').trim()} € / mois</strong>, vous mobilisez <strong>${fmtEUR.format(K)}</strong> sur un portefeuille MyBulkDeal. Stratégie investisseur : effet de levier maîtrisé, rendement visé &gt; coût du crédit.`;
+    }
+
+    // Slider fills
+    setRangeFill(elMontant);
+    setRangeFill(elDuree);
+
+    // Tableau d'amortissement
+    renderAmort(Keff, taeg, n, m);
+  }
+
+  function renderAmort(K, taegPct, n, m) {
+    const t = (taegPct / 100) / 12;
+    const tbody = document.querySelector('#amort-table tbody');
+    let rows = '';
+    let restant = K;
+    let totalInt = 0;
+    for (let i = 1; i <= n; i++) {
+      const int = restant * t;
+      const cap = m - int;
+      restant -= cap;
+      totalInt += int;
+      rows += `<tr>
+        <td>Mois ${i}</td>
+        <td>${fmtEUR2.format(cap)}</td>
+        <td>${fmtEUR2.format(int)}</td>
+        <td>${fmtEUR2.format(m)}</td>
+        <td>${fmtEUR2.format(Math.max(0, restant))}</td>
+      </tr>`;
+    }
+    tbody.innerHTML = rows;
+
+    // Maj du résumé en haut du tableau
+    document.getElementById('sum-capital').textContent  = fmtEUR.format(K);
+    document.getElementById('sum-interets').textContent = fmtEUR.format(Math.max(0, totalInt));
+    document.getElementById('sum-total').textContent    = fmtEUR.format(m * n);
+    document.getElementById('sum-mens').textContent     = fmtEUR2.format(m);
+  }
+
+  // ----- Listeners -----
+  [elMontant, elDuree, elFrais].forEach(el => el.addEventListener('input', render));
+  elTaeg.addEventListener('input', () => {
+    autoMode = false;
+    badge.classList.add('off');
+    badge.textContent = 'Manuel';
+    taegHelper.innerHTML = 'Vous avez saisi votre propre taux. <a href="#" id="back-auto" style="color:var(--vert);">Revenir au taux auto Younited</a>';
+    document.getElementById('back-auto').addEventListener('click', e => {
+      e.preventDefault();
+      autoMode = true;
+      badge.classList.remove('off');
+      badge.textContent = 'Auto Younited';
+      taegHelper.innerHTML = 'Taux indicatif Younited Credit selon le montant et la durée (mai 2026). Modifiable.';
+      render();
+    });
+  });
+  badge.addEventListener('click', () => {
+    autoMode = !autoMode;
+    if (autoMode) {
+      badge.classList.remove('off');
+      badge.textContent = 'Auto Younited';
+      taegHelper.innerHTML = 'Taux indicatif Younited Credit selon le montant et la durée (mai 2026). Modifiable.';
+    } else {
+      badge.classList.add('off');
+      badge.textContent = 'Manuel';
+      taegHelper.innerHTML = 'Mode manuel : vous saisissez le taux.';
+    }
+    render();
+  });
+
+  // Init
+  render();
+</script>
+</body>
+</html>
