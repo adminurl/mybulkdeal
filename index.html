@@ -394,7 +394,7 @@
   .step h3 { margin-bottom: 12px; font-size: 1.15rem; }
   .step p { font-size: 0.94rem; }
 
-  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: stretch; }
   @media (max-width: 880px) { .dual-grid { grid-template-columns: 1fr; } }
   .offer-card {
     padding: 44px 36px;
@@ -403,6 +403,7 @@
     border-radius: var(--radius-lg);
     transition: transform 0.4s var(--ease), border-color 0.4s var(--ease), box-shadow 0.4s var(--ease);
     cursor: default; position: relative; overflow: hidden;
+    display: flex; flex-direction: column;
   }
   .offer-card::before {
     content: ''; position: absolute; top: -50%; right: -20%;
@@ -420,10 +421,24 @@
   }
   .offer-card h3 { font-size: 1.7rem; margin-bottom: 16px; position: relative; }
   .offer-card > p { font-size: 1.02rem; margin-bottom: 24px; position: relative; }
-  .offer-list { list-style: none; padding: 0; position: relative; }
-  .offer-list li { padding: 10px 0; padding-left: 26px; position: relative; color: var(--text-2); font-size: 0.96rem; border-bottom: 1px solid var(--border); }
+  .offer-list { list-style: none; padding: 0; position: relative; display: flex; flex-direction: column; margin-top: auto; }
+  .offer-list li {
+    padding: 16px 0; padding-left: 26px;
+    position: relative;
+    color: var(--text-2); font-size: 0.96rem;
+    border-bottom: 1px solid var(--border);
+    min-height: 72px;
+    display: flex; align-items: center;
+  }
   .offer-list li:last-child { border-bottom: none; }
-  .offer-list li::before { content: '→'; position: absolute; left: 0; color: var(--green); font-weight: 700; }
+  .offer-list li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--green); font-weight: 700;
+  }
 
   .benefits { background: var(--bg-2); }
   .benefits-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
@@ -576,19 +591,23 @@
 
     <div class="lang-selector" id="langSelector" aria-label="Choisir la langue">
       <span class="dot"></span>
-      <span id="langCurrentLabel">🇫🇷 Pool francophone</span>
+      <span id="langCurrentLabel">🌐 Français</span>
       <span class="lang-arrow">▾</span>
       <div class="lang-dropdown" id="langDropdown" role="menu">
-        <button class="lang-option" data-lang="fr">🇫🇷 Pool francophone</button>
-        <button class="lang-option" data-lang="en">🇬🇧 English-speaking pool</button>
-        <button class="lang-option" data-lang="it">🇮🇹 Pool italofono</button>
+        <button class="lang-option" data-lang="fr">🇫🇷 Français</button>
+        <button class="lang-option" data-lang="en">🇬🇧 English</button>
+        <button class="lang-option" data-lang="it">🇮🇹 Italiano</button>
       </div>
     </div>
 
     <h1 data-i18n="hero.h1">Investir à Dubai,<br/><span class="accent">ensemble.</span></h1>
     <div class="hero-amount" data-i18n="hero.amount">Dès <span class="amount-green">6&nbsp;700&nbsp;€</span> par investisseur</div>
     <p class="hero-subtitle" data-i18n="hero.subtitle">
-      <strong>MyBulkDeal vous permet d'investir dans l'immobilier à Dubai</strong> — neuf ou ancien — sans avoir à mobiliser un gros capital, ni à gérer la distance. Nous sélectionnons les biens, négocions au prix bulk grâce à nos partenariats, regroupons les investisseurs et créons la société qui détient le bien. <strong>Vous devenez actionnaire d'un actif immobilier réel</strong>, vous percevez votre part des loyers et de la plus-value. Vous n'avez qu'à signer.
+      <strong>MyBulkDeal vous permet d'investir dans l'immobilier à Dubai</strong>, neuf ou ancien, sans avoir à mobiliser un gros capital ni à gérer la distance.
+      <br/><br/>
+      Nous sélectionnons les biens, négocions au prix bulk grâce à nos partenariats, regroupons les investisseurs et créons la société qui détient le bien.
+      <br/><br/>
+      <strong>Vous devenez actionnaire d'un actif immobilier réel</strong>, vous percevez votre part des loyers et de la plus-value. Vous n'avez qu'à signer.
     </p>
     <div class="hero-cta">
       <a href="#contact" class="btn btn-primary" data-i18n="hero.cta1">Je veux en savoir plus →</a>
@@ -643,7 +662,7 @@
         <strong>MyBulkDeal est un opérateur de SPV.</strong> En clair, nous créons une société dédiée à chaque projet dans laquelle vous devenez actionnaire, aux côtés d'autres investisseurs francophones. Cette société achète le bien, le met en location, et vous reverse votre part des loyers et de la plus-value à la sortie.
       </p>
       <p style="margin-top:20px;" data-i18n="mission.p2">
-        Une signature — et nous nous occupons du reste.
+        Une signature, et nous nous occupons du reste.
       </p>
     </div>
   </div>
@@ -708,8 +727,8 @@
   <div class="container">
     <div class="section-head reveal">
       <span class="section-tag" data-i18n="offers.tag">Nos projets</span>
-      <h2 data-i18n="offers.h2">Le neuf ou l'ancien —<br/>vous choisissez.</h2>
-      <p data-i18n="offers.p">Selon vos objectifs — rendement immédiat ou plus-value à la livraison — nous structurons l'un ou l'autre.</p>
+      <h2 data-i18n="offers.h2">Le neuf ou l'ancien,<br/>vous choisissez.</h2>
+      <p data-i18n="offers.p">Selon vos objectifs (rendement immédiat ou plus-value à la livraison), nous structurons l'un ou l'autre.</p>
     </div>
     <div class="dual-grid">
       <div class="offer-card reveal">
@@ -800,7 +819,7 @@
       <div class="trust-card reveal">
         <span class="check">✓</span>
         <h4 data-i18n="trust.t1.h4">Réseau direct promoteurs</h4>
-        <p data-i18n="trust.t1.p">Relations établies avec les têtes de vente Emaar, Damac, Sobha, Aldar — pas un intermédiaire d'intermédiaire.</p>
+        <p data-i18n="trust.t1.p">Relations établies avec les têtes de vente Emaar, Damac, Sobha, Aldar. Pas un intermédiaire d'intermédiaire.</p>
       </div>
       <div class="trust-card reveal">
         <span class="check">✓</span>
@@ -810,7 +829,7 @@
       <div class="trust-card reveal">
         <span class="check">✓</span>
         <h4 data-i18n="trust.t3.h4">Alignement d'intérêt</h4>
-        <p data-i18n="trust.t3.p">Nous récupérons la gestion de la société pour assurer une prestation qualitative à nos clients. Notre rémunération est liée à la performance du projet — si vous gagnez, nous gagnons avec vous.</p>
+        <p data-i18n="trust.t3.p">Nous récupérons la gestion de la société pour assurer une prestation qualitative à nos clients. Notre rémunération est liée à la performance du projet : si vous gagnez, nous gagnons avec vous.</p>
       </div>
       <div class="trust-card reveal">
         <span class="check">✓</span>
@@ -912,7 +931,7 @@ const I18N = {
   fr: {
     'meta.title': "MyBulkDeal — Investir dans l'immobilier Dubai à partir de 6 700 €",
     'meta.description': "MyBulkDeal est l'opérateur de SPV qui vous emmène investir à Dubai à plusieurs. Ticket d'entrée 6 700 € (26 700 AED). Neuf ou ancien. Tout est géré.",
-    'lang.label': "🇫🇷 Pool francophone",
+    'lang.label': "🌐 Français",
 
     'nav.mission': "Notre mission",
     'nav.how': "Comment ça marche",
@@ -922,7 +941,7 @@ const I18N = {
 
     'hero.h1': `Investir à Dubai,<br/><span class="accent">ensemble.</span>`,
     'hero.amount': `Dès <span class="amount-green">6&nbsp;700&nbsp;€</span> par investisseur`,
-    'hero.subtitle': `<strong>MyBulkDeal vous permet d'investir dans l'immobilier à Dubai</strong> — neuf ou ancien — sans avoir à mobiliser un gros capital, ni à gérer la distance. Nous sélectionnons les biens, négocions au prix bulk grâce à nos partenariats, regroupons les investisseurs et créons la société qui détient le bien. <strong>Vous devenez actionnaire d'un actif immobilier réel</strong>, vous percevez votre part des loyers et de la plus-value. Vous n'avez qu'à signer.`,
+    'hero.subtitle': `<strong>MyBulkDeal vous permet d'investir dans l'immobilier à Dubai</strong>, neuf ou ancien, sans avoir à mobiliser un gros capital ni à gérer la distance.<br/><br/>Nous sélectionnons les biens, négocions au prix bulk grâce à nos partenariats, regroupons les investisseurs et créons la société qui détient le bien.<br/><br/><strong>Vous devenez actionnaire d'un actif immobilier réel</strong>, vous percevez votre part des loyers et de la plus-value. Vous n'avez qu'à signer.`,
     'hero.cta1': "Je veux en savoir plus →",
     'hero.cta2': "Découvrir comment ça marche",
     'hero.foot1': "À partir de 6 700 € (26 700 AED)",
@@ -943,7 +962,7 @@ const I18N = {
     'mission.tag': "Notre mission",
     'mission.h2': `Vous emmener à Dubai,<br/>à plusieurs.`,
     'mission.p1': `<strong>MyBulkDeal est un opérateur de SPV.</strong> En clair, nous créons une société dédiée à chaque projet dans laquelle vous devenez actionnaire, aux côtés d'autres investisseurs francophones. Cette société achète le bien, le met en location, et vous reverse votre part des loyers et de la plus-value à la sortie.`,
-    'mission.p2': "Une signature — et nous nous occupons du reste.",
+    'mission.p2': "Une signature, et nous nous occupons du reste.",
 
     'ticket.tag': "Le ticket d'entrée",
     'ticket.h2': `Le prix d'un voyage.<br/>Le rendement d'un investissement.`,
@@ -966,8 +985,8 @@ const I18N = {
     'how.s4.p': "Mise en location, perception des loyers, maintenance, comptabilité. Reporting trimestriel. Distribution des revenus à chaque période de versement.",
 
     'offers.tag': "Nos projets",
-    'offers.h2': `Le neuf ou l'ancien —<br/>vous choisissez.`,
-    'offers.p': "Selon vos objectifs — rendement immédiat ou plus-value à la livraison — nous structurons l'un ou l'autre.",
+    'offers.h2': `Le neuf ou l'ancien,<br/>vous choisissez.`,
+    'offers.p': "Selon vos objectifs (rendement immédiat ou plus-value à la livraison), nous structurons l'un ou l'autre.",
     'offers.op.tag': "Off-plan",
     'offers.op.h3': "Acheter dans le neuf, au prix promoteur",
     'offers.op.p': "On entre tôt sur les phases pré-construction. Grâce à nos partenariats négociés directement avec les promoteurs, nous obtenons des décotes de 4 à 20 % sur les ventes en bloc. Vous payez moins cher dès le départ.",
@@ -1004,11 +1023,11 @@ const I18N = {
     'trust.h2': "Notre obsession : que vous reveniez.",
     'trust.p': "Nous ne vendons pas un produit. Nous construisons une relation longue.",
     'trust.t1.h4': "Réseau direct promoteurs",
-    'trust.t1.p': "Relations établies avec les têtes de vente Emaar, Damac, Sobha, Aldar — pas un intermédiaire d'intermédiaire.",
+    'trust.t1.p': "Relations établies avec les têtes de vente Emaar, Damac, Sobha, Aldar. Pas un intermédiaire d'intermédiaire.",
     'trust.t2.h4': "Transparence totale",
     'trust.t2.p': "Tous les frais sont écrits noir sur blanc dans le pacte que vous signez. Aucune commission cachée, jamais.",
     'trust.t3.h4': "Alignement d'intérêt",
-    'trust.t3.p': "Nous récupérons la gestion de la société pour assurer une prestation qualitative à nos clients. Notre rémunération est liée à la performance du projet — si vous gagnez, nous gagnons avec vous.",
+    'trust.t3.p': "Nous récupérons la gestion de la société pour assurer une prestation qualitative à nos clients. Notre rémunération est liée à la performance du projet : si vous gagnez, nous gagnons avec vous.",
     'trust.t4.h4': "Vous restez propriétaire",
     'trust.t4.p': "Vous êtes actionnaire d'une société qui détient un vrai bien. Pas une part de fonds opaque. Vous votez, vous décidez.",
 
@@ -1048,7 +1067,7 @@ const I18N = {
   en: {
     'meta.title': "MyBulkDeal — Invest in Dubai property from €6,700",
     'meta.description': "MyBulkDeal is the SPV operator that takes you to Dubai together. Minimum ticket €6,700 (AED 26,700). Off-plan or resale. Everything handled.",
-    'lang.label': "🇬🇧 English-speaking pool",
+    'lang.label': "🌐 English",
 
     'nav.mission': "Our mission",
     'nav.how': "How it works",
@@ -1058,7 +1077,7 @@ const I18N = {
 
     'hero.h1': `Investing in Dubai,<br/><span class="accent">together.</span>`,
     'hero.amount': `From <span class="amount-green">€6,700</span> per investor`,
-    'hero.subtitle': `<strong>MyBulkDeal lets you invest in Dubai property</strong> — off-plan or resale — without locking up a large amount of cash or having to manage things from afar. We select the assets, negotiate the bulk price through our partnerships, pool the investors and create the company that owns the asset. <strong>You become a shareholder of a real property asset</strong>, you receive your share of the rent and the capital gain. All you have to do is sign.`,
+    'hero.subtitle': `<strong>MyBulkDeal lets you invest in Dubai property</strong>, off-plan or resale, without locking up a large amount of cash or having to manage things from afar.<br/><br/>We select the assets, negotiate the bulk price through our partnerships, pool the investors and create the company that owns the asset.<br/><br/><strong>You become a shareholder of a real property asset</strong>, you receive your share of the rent and the capital gain. All you have to do is sign.`,
     'hero.cta1': "Tell me more →",
     'hero.cta2': "See how it works",
     'hero.foot1': "From €6,700 (AED 26,700)",
@@ -1079,13 +1098,13 @@ const I18N = {
     'mission.tag': "Our mission",
     'mission.h2': `Taking you to Dubai,<br/>together.`,
     'mission.p1': `<strong>MyBulkDeal is an SPV operator.</strong> In plain English: we create a dedicated company for each project, and you become a shareholder alongside other English-speaking investors. The company buys the asset, lets it out, and pays you your share of the rent and the capital gain on exit.`,
-    'mission.p2': "One signature — and we handle the rest.",
+    'mission.p2': "One signature, and we handle the rest.",
 
     'ticket.tag': "The entry ticket",
     'ticket.h2': `The price of a holiday.<br/>The yield of an investment.`,
     'ticket.label': "Minimum investment",
     'ticket.sub': "i.e. <strong>AED 26,700</strong>",
-    'ticket.tagline': "With this ticket, you become a shareholder of the company that owns a Dubai flat. You receive your share of the rent and capital gain — as if you owned it outright.",
+    'ticket.tagline': "With this ticket, you become a shareholder of the company that owns a Dubai flat. You receive your share of the rent and capital gain, as if you owned it outright.",
     'ticket.financing': `<strong style="color:var(--green);">Don't want to tie up your savings?</strong> Your ticket can be <strong style="color:var(--text);">financed through one of our banking partners</strong>, with a fixed monthly payment and preferential rate. Estimate your payment in 30 seconds.`,
     'ticket.cta': "Simulate my financing →",
 
@@ -1102,8 +1121,8 @@ const I18N = {
     'how.s4.p': "Letting, rent collection, maintenance, accounting. Quarterly reporting. Income distribution at each pay-out period.",
 
     'offers.tag': "Our projects",
-    'offers.h2': `Off-plan or resale —<br/>your choice.`,
-    'offers.p': "Depending on your goals — immediate income or capital gain at handover — we structure either route.",
+    'offers.h2': `Off-plan or resale,<br/>your choice.`,
+    'offers.p': "Depending on your goals (immediate income or capital gain at handover), we structure either route.",
     'offers.op.tag': "Off-plan",
     'offers.op.h3': "Buy new, at developer price",
     'offers.op.p': "We enter early, during pre-construction phases. Thanks to our partnerships negotiated directly with developers, we secure 4 to 20 % bulk discounts. You pay less from day one.",
@@ -1140,11 +1159,11 @@ const I18N = {
     'trust.h2': "Our obsession: that you come back.",
     'trust.p': "We don't sell a product. We build a long relationship.",
     'trust.t1.h4': "Direct developer network",
-    'trust.t1.p': "Established relationships with the heads of sales at Emaar, Damac, Sobha, Aldar — not a broker of a broker.",
+    'trust.t1.p': "Established relationships with the heads of sales at Emaar, Damac, Sobha, Aldar. Not a broker of a broker.",
     'trust.t2.h4': "Full transparency",
     'trust.t2.p': "All fees are written black on white in the agreement you sign. No hidden commission, ever.",
     'trust.t3.h4': "Skin in the game",
-    'trust.t3.p': "We take over the management of the company to ensure a quality service for our clients. Our fee is tied to project performance — if you win, we win with you.",
+    'trust.t3.p': "We take over the management of the company to ensure a quality service for our clients. Our fee is tied to project performance: if you win, we win with you.",
     'trust.t4.h4': "You remain the owner",
     'trust.t4.p': "You're a shareholder of a company that owns a real asset. Not a unit in an opaque fund. You vote, you decide.",
 
@@ -1184,7 +1203,7 @@ const I18N = {
   it: {
     'meta.title': "MyBulkDeal — Investire nell'immobiliare di Dubai a partire da €6.700",
     'meta.description': "MyBulkDeal è l'operatore di SPV che ti porta a investire a Dubai in gruppo. Ticket minimo €6.700 (AED 26.700). Nuovo o usato. Gestione completa.",
-    'lang.label': "🇮🇹 Pool italofono",
+    'lang.label': "🌐 Italiano",
 
     'nav.mission': "La nostra missione",
     'nav.how': "Come funziona",
@@ -1194,7 +1213,7 @@ const I18N = {
 
     'hero.h1': `Investire a Dubai,<br/><span class="accent">insieme.</span>`,
     'hero.amount': `A partire da <span class="amount-green">€6.700</span> per investitore`,
-    'hero.subtitle': `<strong>MyBulkDeal ti permette di investire nell'immobiliare a Dubai</strong> — nuovo o usato — senza dover mobilitare grossi capitali né gestire la distanza. Selezioniamo gli immobili, negoziamo il prezzo bulk grazie alle nostre partnership, raggruppiamo gli investitori e creiamo la società che possiede l'immobile. <strong>Diventi azionista di un asset immobiliare reale</strong>, ricevi la tua quota di canoni e di plusvalore. A te resta solo da firmare.`,
+    'hero.subtitle': `<strong>MyBulkDeal ti permette di investire nell'immobiliare a Dubai</strong>, nuovo o usato, senza dover mobilitare grossi capitali né gestire la distanza.<br/><br/>Selezioniamo gli immobili, negoziamo il prezzo bulk grazie alle nostre partnership, raggruppiamo gli investitori e creiamo la società che possiede l'immobile.<br/><br/><strong>Diventi azionista di un asset immobiliare reale</strong>, ricevi la tua quota di canoni e di plusvalore. A te resta solo da firmare.`,
     'hero.cta1': "Voglio saperne di più →",
     'hero.cta2': "Scopri come funziona",
     'hero.foot1': "A partire da €6.700 (AED 26.700)",
@@ -1215,7 +1234,7 @@ const I18N = {
     'mission.tag': "La nostra missione",
     'mission.h2': `Portarti a Dubai,<br/>insieme.`,
     'mission.p1': `<strong>MyBulkDeal è un operatore di SPV.</strong> In parole semplici: creiamo una società dedicata a ogni progetto, in cui diventi azionista insieme ad altri investitori italofoni. Questa società compra l'immobile, lo affitta e ti riversa la tua quota di canoni e di plusvalore all'uscita.`,
-    'mission.p2': "Una firma — e ci occupiamo del resto.",
+    'mission.p2': "Una firma, e ci occupiamo del resto.",
 
     'ticket.tag': "Il ticket d'ingresso",
     'ticket.h2': `Il prezzo di un viaggio.<br/>Il rendimento di un investimento.`,
@@ -1238,8 +1257,8 @@ const I18N = {
     'how.s4.p': "Locazione, riscossione dei canoni, manutenzione, contabilità. Reporting trimestrale. Distribuzione dei ricavi ad ogni periodo di versamento.",
 
     'offers.tag': "I nostri progetti",
-    'offers.h2': `Nuovo o usato —<br/>scelta tua.`,
-    'offers.p': "A seconda dei tuoi obiettivi — rendita immediata o plusvalore alla consegna — strutturiamo l'una o l'altra strada.",
+    'offers.h2': `Nuovo o usato,<br/>scelta tua.`,
+    'offers.p': "A seconda dei tuoi obiettivi (rendita immediata o plusvalore alla consegna), strutturiamo l'una o l'altra strada.",
     'offers.op.tag': "Off-plan",
     'offers.op.h3': "Comprare nuovo, al prezzo del costruttore",
     'offers.op.p': "Entriamo presto, nelle fasi di pre-costruzione. Grazie alle nostre partnership negoziate direttamente con i costruttori, otteniamo sconti del 4-20 % sulle vendite in blocco. Paghi meno fin dall'inizio.",
@@ -1276,11 +1295,11 @@ const I18N = {
     'trust.h2': "La nostra ossessione: che tu torni.",
     'trust.p': "Non vendiamo un prodotto. Costruiamo una relazione lunga.",
     'trust.t1.h4': "Rete diretta con i costruttori",
-    'trust.t1.p': "Rapporti consolidati con i responsabili vendita di Emaar, Damac, Sobha, Aldar — non un intermediario di intermediari.",
+    'trust.t1.p': "Rapporti consolidati con i responsabili vendita di Emaar, Damac, Sobha, Aldar. Non un intermediario di intermediari.",
     'trust.t2.h4': "Trasparenza totale",
     'trust.t2.p': "Tutte le commissioni sono scritte nero su bianco nell'accordo che firmi. Nessuna commissione nascosta, mai.",
     'trust.t3.h4': "Allineamento di interessi",
-    'trust.t3.p': "Riprendiamo la gestione della società per garantire un servizio di qualità ai nostri clienti. La nostra remunerazione è legata alla performance del progetto — se guadagni tu, guadagniamo noi con te.",
+    'trust.t3.p': "Riprendiamo la gestione della società per garantire un servizio di qualità ai nostri clienti. La nostra remunerazione è legata alla performance del progetto : se guadagni tu, guadagniamo noi con te.",
     'trust.t4.h4': "Resti proprietario",
     'trust.t4.p': "Sei azionista di una società che possiede un immobile vero. Non una quota di un fondo opaco. Voti, decidi.",
 
