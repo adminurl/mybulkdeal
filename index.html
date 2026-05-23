@@ -105,6 +105,100 @@
   .btn-ghost:hover { border-color: var(--green); color: var(--green); transform: translateY(-2px); }
   @media (max-width: 768px) { .nav-links a:not(.btn) { display: none; } }
 
+  /* === CTA "Devenir partenaire" avec halo lumineux tournant === */
+  .nav-left { display: flex; align-items: center; gap: 22px; }
+  @property --angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+  }
+  .btn-partner {
+    --angle: 0deg;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    padding: 9px 18px;
+    border-radius: 999px;
+    background: var(--bg);
+    color: var(--green);
+    font-family: inherit;
+    font-weight: 800;
+    font-size: 0.85rem;
+    letter-spacing: -0.005em;
+    text-decoration: none;
+    border: 2px solid transparent;
+    background-image:
+      linear-gradient(var(--bg), var(--bg)),
+      conic-gradient(from var(--angle), transparent 0deg, var(--green) 60deg, var(--green-bright) 90deg, var(--green) 120deg, transparent 180deg, transparent 360deg);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    animation: partnerSpin 3s linear infinite, partnerPulse 2.4s ease-in-out infinite;
+    transition: color 0.25s ease, transform 0.25s ease;
+    white-space: nowrap;
+  }
+  .btn-partner::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    background: var(--green);
+    filter: blur(14px);
+    opacity: 0.35;
+    z-index: -1;
+    animation: partnerHalo 2.4s ease-in-out infinite;
+  }
+  .btn-partner .spark {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--green);
+    box-shadow: 0 0 10px var(--green), 0 0 20px var(--green-glow);
+    margin-right: 9px;
+    flex: 0 0 auto;
+    animation: sparkPulse 1.5s ease-in-out infinite;
+  }
+  .btn-partner:hover {
+    color: var(--bg);
+    transform: translateY(-2px);
+    background-image:
+      linear-gradient(var(--green-bright), var(--green-bright)),
+      conic-gradient(from var(--angle), transparent 0deg, var(--green-bright) 60deg, #FFFFFF 90deg, var(--green-bright) 120deg, transparent 180deg, transparent 360deg);
+  }
+  .btn-partner:hover .spark {
+    background: var(--bg);
+    box-shadow: 0 0 10px var(--bg);
+  }
+  @keyframes partnerSpin {
+    to { --angle: 360deg; }
+  }
+  @keyframes partnerPulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(163, 230, 53, 0.35), 0 6px 20px rgba(163, 230, 53, 0.18); }
+    50%      { box-shadow: 0 0 0 8px rgba(163, 230, 53, 0.00), 0 6px 28px rgba(163, 230, 53, 0.35); }
+  }
+  @keyframes partnerHalo {
+    0%, 100% { opacity: 0.30; filter: blur(14px); }
+    50%      { opacity: 0.55; filter: blur(18px); }
+  }
+  @keyframes sparkPulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50%      { transform: scale(0.75); opacity: 0.6; }
+  }
+  /* Fallback gracieux sur navigateurs sans @property : un beau dégradé statique reste visible. */
+  @supports not (background: conic-gradient(from 0deg, red, blue)) {
+    .btn-partner {
+      background: var(--green);
+      color: var(--bg);
+      border: 2px solid var(--green);
+    }
+  }
+  @media (max-width: 768px) {
+    .btn-partner { padding: 8px 14px; font-size: 0.78rem; }
+    .btn-partner .spark { width: 6px; height: 6px; margin-right: 7px; }
+    .nav-left { gap: 14px; }
+  }
+  @media (max-width: 520px) {
+    .btn-partner .label-long { display: none; }
+  }
+
   .hero { position: relative; padding: 130px 0 55px; overflow: hidden; }
   .hero::before {
     content: ''; position: absolute; inset: 0;
@@ -459,9 +553,15 @@
 
 <nav>
   <div class="nav-inner">
-    <a href="#" class="logotype nav-logo">
-      <span class="my">My</span><span class="bulk">Bulk</span><span class="deal">Deal<span class="dot">.</span></span>
-    </a>
+    <div class="nav-left">
+      <a href="#" class="logotype nav-logo">
+        <span class="my">My</span><span class="bulk">Bulk</span><span class="deal">Deal<span class="dot">.</span></span>
+      </a>
+      <a href="/brokers/" class="btn-partner" data-i18n="nav.partner" aria-label="Devenir partenaire">
+        <span class="spark" aria-hidden="true"></span>
+        <span class="label-long">Devenir partenaire</span>
+      </a>
+    </div>
     <div class="nav-links">
       <a href="#mission" data-i18n="nav.mission">Notre mission</a>
       <a href="#comment" data-i18n="nav.how">Comment ça marche</a>
@@ -818,6 +918,7 @@ const I18N = {
     'nav.how': "Comment ça marche",
     'nav.offers': "Nos projets",
     'nav.contact': "Nous contacter",
+    'nav.partner': `<span class="spark" aria-hidden="true"></span><span class="label-long">Devenir partenaire</span>`,
 
     'hero.h1': `Investir à Dubai,<br/><span class="accent">ensemble.</span>`,
     'hero.amount': `Dès <span class="amount-green">6&nbsp;700&nbsp;€</span> par investisseur`,
@@ -953,6 +1054,7 @@ const I18N = {
     'nav.how': "How it works",
     'nav.offers': "Our projects",
     'nav.contact': "Contact us",
+    'nav.partner': `<span class="spark" aria-hidden="true"></span><span class="label-long">Become a partner</span>`,
 
     'hero.h1': `Investing in Dubai,<br/><span class="accent">together.</span>`,
     'hero.amount': `From <span class="amount-green">€6,700</span> per investor`,
@@ -1088,6 +1190,7 @@ const I18N = {
     'nav.how': "Come funziona",
     'nav.offers': "I nostri progetti",
     'nav.contact': "Contattaci",
+    'nav.partner': `<span class="spark" aria-hidden="true"></span><span class="label-long">Diventa partner</span>`,
 
     'hero.h1': `Investire a Dubai,<br/><span class="accent">insieme.</span>`,
     'hero.amount': `A partire da <span class="amount-green">€6.700</span> per investitore`,
