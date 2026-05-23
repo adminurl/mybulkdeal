@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>MyBulkDeal — Investir dans l'immobilier Dubai à partir de 6 700 €</title>
-<meta name="description" content="MyBulkDeal est l'opérateur de SPV qui vous emmène investir à Dubai à plusieurs. Ticket d'entrée 6 700 € (26 700 AED). Neuf ou ancien. Tout est géré." />
+<title>MyBulkDeal — Co-acquérir un bien immobilier à Dubaï à partir de 26 700 AED</title>
+<meta name="description" content="MyBulkDeal structure et gère des co-acquisitions immobilières à Dubaï pour un cercle francophone d'investisseurs qualifiés. Ticket à partir de 26 700 AED soit 6 700 €. Neuf ou ancien. Gestion intégrée." />
 <!-- Favicon -->
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -504,9 +504,14 @@
   }
   .contact-wrap {
     max-width: 1080px; margin: 0 auto; position: relative;
-    display: grid; grid-template-columns: 1fr 1.2fr; gap: 64px; align-items: start;
+    display: grid; grid-template-columns: 1fr 1.2fr; gap: 64px; align-items: stretch;
   }
   @media (max-width: 880px) { .contact-wrap { grid-template-columns: 1fr; gap: 44px; } }
+  .contact-left {
+    display: flex; flex-direction: column;
+    padding: 40px 0 0 0;
+  }
+  .contact-left .contact-perks { margin-top: auto; }
   .contact-left h2 { margin-bottom: 24px; }
   .contact-left h2 .green { display: block; }
   .contact-left > p { font-size: 1.1rem; margin-bottom: 28px; }
@@ -547,6 +552,26 @@
   textarea { resize: vertical; min-height: 120px; }
   form .btn-primary { width: 100%; padding: 18px; font-size: 1.05rem; margin-top: 10px; }
   .form-foot { text-align: center; font-size: 0.78rem; color: var(--text-3); margin-top: 18px; }
+  .qualif-block {
+    margin: 22px 0 6px;
+    padding: 18px 18px 14px;
+    background: var(--bg-3);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+  }
+  .qualif-line {
+    display: flex; gap: 12px; align-items: flex-start;
+    padding: 8px 0;
+    font-size: 0.82rem; color: var(--text-2); line-height: 1.5;
+    cursor: pointer;
+  }
+  .qualif-line input[type="checkbox"] {
+    width: 18px; height: 18px;
+    flex: 0 0 auto; margin-top: 2px;
+    accent-color: var(--green);
+    cursor: pointer;
+  }
+  .qualif-line:hover span { color: var(--text); }
 
   .final { padding: 60px 0; text-align: center; background: var(--bg); }
   .final h2 { font-size: clamp(2.4rem, 5vw, 4rem); margin-bottom: 24px; }
@@ -600,12 +625,12 @@
       </div>
     </div>
 
-    <h1 data-i18n="hero.h1">Investir à Dubai,<br/><span class="accent">ensemble.</span></h1>
-    <div class="hero-amount" data-i18n="hero.amount">Dès <span class="amount-green">6&nbsp;700&nbsp;€</span> par investisseur</div>
+    <h1 data-i18n="hero.h1">Co-acquérir à Dubaï,<br/><span class="accent">ensemble.</span></h1>
+    <div class="hero-amount" data-i18n="hero.amount">À partir de <span class="amount-green">26&nbsp;700&nbsp;AED</span> <span style="font-size:0.7em;opacity:0.75;">soit 6 700 €</span> par co-acquéreur</div>
     <p class="hero-subtitle" data-i18n="hero.subtitle">
-      <strong>MyBulkDeal vous permet d'investir dans l'immobilier à Dubai</strong>, neuf ou ancien, sans avoir à mobiliser un gros capital ni à gérer la distance.
+      <strong>MyBulkDeal vous permet de co-acquérir un bien immobilier à Dubaï</strong>, neuf ou ancien, sans avoir à mobiliser un gros capital ni à gérer la distance.
       <br/><br/>
-      Nous sélectionnons les biens, négocions au prix bulk grâce à nos partenariats, regroupons les investisseurs et créons la société qui détient le bien.
+      Nous sélectionnons les biens, les négocions via notre agence partenaire à Dubaï, regroupons les co-acquéreurs et créons la société d'exploitation qui détient le bien.
       <br/><br/>
       <strong>Vous devenez actionnaire d'un actif immobilier réel</strong>, vous percevez votre part des loyers et de la plus-value. Vous n'avez qu'à signer.
     </p>
@@ -614,7 +639,7 @@
       <a href="#mission" class="btn btn-ghost" data-i18n="hero.cta2">Découvrir comment ça marche</a>
     </div>
     <div class="hero-foot">
-      <span><span class="tick">✓</span> <span data-i18n="hero.foot1">À partir de 6 700 € (26 700 AED)</span></span>
+      <span><span class="tick">✓</span> <span data-i18n="hero.foot1">À partir de 26 700 AED soit 6 700 €</span></span>
       <span><span class="tick">✓</span> <span data-i18n="hero.foot2">Neuf (off-plan) &amp; ancien</span></span>
       <span><span class="tick">✓</span> <span data-i18n="hero.foot3">Tout est géré pour vous</span></span>
     </div>
@@ -659,7 +684,7 @@
     </div>
     <div class="mission-statement reveal">
       <p data-i18n="mission.p1">
-        <strong>MyBulkDeal est un opérateur de SPV.</strong> En clair, nous créons une société dédiée à chaque projet dans laquelle vous devenez actionnaire, aux côtés d'autres investisseurs francophones. Cette société achète le bien, le met en location, et vous reverse votre part des loyers et de la plus-value à la sortie.
+        <strong>MyBulkDeal structure et opère des co-acquisitions immobilières à Dubaï.</strong> Pour chaque bien, nous constituons une société d'exploitation dédiée, dont vous devenez actionnaire aux côtés d'autres co-acquéreurs francophones. Cette société achète le bien en son nom, le met en location, perçoit les loyers et distribue les produits locatifs à ses actionnaires selon les statuts.
       </p>
       <p style="margin-top:20px;" data-i18n="mission.p2">
         Une signature, et nous nous occupons du reste.
@@ -675,18 +700,21 @@
       <h2 data-i18n="ticket.h2">Le prix d'un voyage.<br/>Le rendement d'un investissement.</h2>
     </div>
     <div class="ticket-card reveal">
-      <div class="ticket-label" data-i18n="ticket.label">Investissement minimum</div>
-      <div class="ticket-amount"><span class="euro">6 700</span> €</div>
-      <div class="ticket-sub" data-i18n="ticket.sub">soit <strong>26 700 AED</strong></div>
+      <div class="ticket-label" data-i18n="ticket.label">Apport minimum</div>
+      <div class="ticket-amount"><span class="euro">26 700</span> <span style="font-size:0.55em;">AED</span></div>
+      <div class="ticket-sub" data-i18n="ticket.sub">soit <strong>6 700 €</strong></div>
       <p class="ticket-tagline" data-i18n="ticket.tagline">
-        Avec ce ticket, vous devenez actionnaire de la société qui détient un appartement à Dubai. Vous percevez votre part des loyers et de la plus-value, comme si vous étiez propriétaire en direct.
+        Avec cet apport, vous devenez actionnaire de la société d'exploitation qui détient un appartement à Dubaï. Vous percevez votre part des loyers et de la plus-value, comme si vous étiez propriétaire en direct.
       </p>
       <p class="ticket-financing" data-i18n="ticket.financing" style="margin-top:24px; font-size:1rem; color:var(--text-2);">
-        <strong style="color:var(--green);">Pas envie de mobiliser votre épargne ?</strong> Votre ticket peut être <strong style="color:var(--text);">financé par un de nos partenaires bancaires</strong>, avec mensualité fixe et taux préférentiel. Calculez votre mensualité en 30 secondes.
+        <strong style="color:var(--green);">Pas envie de mobiliser votre épargne&nbsp;?</strong> Plusieurs solutions de crédit existent en France pour financer un ticket de ce niveau (crédit conso, crédit Lombard, prêt familial). Un crédit conso à 6 % sur 5 ans pour 6 700 € représente environ <strong style="color:var(--text);">130 €/mois</strong>. Notre simulateur ci-dessous vous donne une estimation indicative.
       </p>
       <div style="margin-top:22px;">
-        <a href="/simulateur/" class="btn btn-primary" data-i18n="ticket.cta">Simuler mon financement →</a>
+        <a href="/simulateur/" class="btn btn-primary" data-i18n="ticket.cta">Estimer une mensualité indicative →</a>
       </div>
+      <p style="margin-top:18px; font-size:0.78rem; color:var(--text-3); max-width:520px; margin-left:auto; margin-right:auto; line-height:1.5;" data-i18n="ticket.creditdisclaimer">
+        Outil de calcul indicatif, non contractuel. MyBulkDeal n'effectue aucune intermédiation en crédit. Pour étudier votre éligibilité, rapprochez-vous d'un courtier crédit indépendant français immatriculé ORIAS.
+      </p>
     </div>
   </div>
 </section>
@@ -702,22 +730,22 @@
       <div class="step reveal">
         <div class="step-num">1</div>
         <h3 data-i18n="how.s1.h3">On échange</h3>
-        <p data-i18n="how.s1.p">30 minutes en visio. On comprend votre profil, votre budget, votre horizon. Vous repartez avec une réponse claire : c'est pour vous, ou pas.</p>
+        <p data-i18n="how.s1.p">30 minutes en visio. Nous comprenons votre projet de co-acquisition, votre apport, votre horizon. Vous repartez avec une réponse claire : c'est pour vous, ou pas.</p>
       </div>
       <div class="step reveal">
         <div class="step-num">2</div>
         <h3 data-i18n="how.s2.h3">On vous présente le projet</h3>
-        <p data-i18n="how.s2.p">Accès à la fiche complète du bien sélectionné : adresse, prix négocié, projection de rendement, calendrier. Vous étudiez en toute transparence.</p>
+        <p data-i18n="how.s2.p">Après signature d'un accord de confidentialité, accès à la fiche complète du bien sélectionné : adresse, prix négocié, projection de rendement, calendrier. Vous étudiez en toute transparence.</p>
       </div>
       <div class="step reveal">
         <div class="step-num">3</div>
         <h3 data-i18n="how.s3.h3">On crée la société</h3>
-        <p data-i18n="how.s3.p">Société dédiée au projet, basée à Dubai. Vous y entrez au capital à hauteur de votre investissement. Le bien est acheté au nom de cette société.</p>
+        <p data-i18n="how.s3.p">Société d'exploitation dédiée au projet, immatriculée à Dubaï. Vous entrez au capital à hauteur de votre apport. Le bien est acheté au nom de cette société.</p>
       </div>
       <div class="step reveal">
         <div class="step-num">4</div>
         <h3 data-i18n="how.s4.h3">On gère, vous encaissez</h3>
-        <p data-i18n="how.s4.p">Mise en location, perception des loyers, maintenance, comptabilité. Reporting trimestriel. Distribution des revenus à chaque période de versement.</p>
+        <p data-i18n="how.s4.p">Mise en location, perception des loyers, maintenance, comptabilité. Compte-rendu annuel envoyé aux actionnaires. Distribution des produits locatifs sous forme de dividende selon les statuts.</p>
       </div>
     </div>
   </div>
@@ -734,20 +762,20 @@
       <div class="offer-card reveal">
         <span class="offer-tag" data-i18n="offers.op.tag">Off-plan</span>
         <h3 data-i18n="offers.op.h3">Acheter dans le neuf, au prix promoteur</h3>
-        <p data-i18n="offers.op.p">On entre tôt sur les phases pré-construction. Grâce à nos partenariats négociés directement avec les promoteurs, nous obtenons des décotes de 4 à 20 % sur les ventes en bloc. Vous payez moins cher dès le départ.</p>
+        <p data-i18n="offers.op.p">Nous entrons tôt, en phase pré-construction. Notre agence partenaire à Dubaï entretient des relations directes avec les promoteurs et négocie des conditions privilégiées sur les ventes en bloc. Vous payez moins cher dès le départ.</p>
         <ul class="offer-list">
-          <li data-i18n="offers.op.li1">Décote de 4 à 20 % grâce à nos partenariats négociés</li>
-          <li data-i18n="offers.op.li2">Plus-value typique à la livraison : + 25 à 35 %</li>
+          <li data-i18n="offers.op.li1">Conditions privilégiées via notre agence partenaire à Dubaï</li>
+          <li data-i18n="offers.op.li2">Potentiel de plus-value à la livraison communiqué dans la fiche projet sous NDA</li>
           <li data-i18n="offers.op.li3">Livraison 18 à 36 mois, location dès remise des clés</li>
         </ul>
       </div>
       <div class="offer-card reveal">
         <span class="offer-tag" data-i18n="offers.sec.tag">Ancien</span>
         <h3 data-i18n="offers.sec.h3">Acheter dans l'ancien, déjà loué</h3>
-        <p data-i18n="offers.sec.p">On reprend en bloc des biens déjà construits, souvent déjà loués, auprès de propriétaires qui veulent sortir. Vous percevez un loyer dès le premier mois.</p>
+        <p data-i18n="offers.sec.p">Nous reprenons en bloc des biens déjà construits, souvent déjà loués, auprès de propriétaires qui veulent sortir. Vous percevez un loyer dès le premier mois.</p>
         <ul class="offer-list">
           <li data-i18n="offers.sec.li1">Loyer encaissé dès le premier mois</li>
-          <li data-i18n="offers.sec.li2">Rendement entre 7 et 11 % par an</li>
+          <li data-i18n="offers.sec.li2">Rendement de marché communiqué dans la fiche projet sous NDA</li>
           <li data-i18n="offers.sec.li3">Pas d'aléa de livraison, le bien existe déjà</li>
         </ul>
       </div>
@@ -764,18 +792,18 @@
     <div class="benefits-grid">
       <div class="benefit reveal">
         <div class="benefit-icon">€</div>
-        <h3 data-i18n="benefits.b1.h3">Un rendement entre 5 et 9 % net</h3>
-        <p data-i18n="benefits.b1.p">Rendement net, sans frais de gestion à votre charge. Distribué directement sur votre compte, en euros si vous le souhaitez.</p>
+        <h3 data-i18n="benefits.b1.h3">Des produits locatifs distribués</h3>
+        <p data-i18n="benefits.b1.p">Les loyers nets de charges sont distribués aux actionnaires sous forme de dividende, selon les modalités fixées dans les statuts. Versement en AED ou en euros selon votre préférence.</p>
       </div>
       <div class="benefit reveal">
         <div class="benefit-icon">↗</div>
         <h3 data-i18n="benefits.b2.h3">Une plus-value à la revente</h3>
-        <p data-i18n="benefits.b2.p">Nous sélectionnons des biens à forte valeur ajoutée, avec un potentiel de prise de valeur à long terme. Vous captez la plus-value à la sortie, en plus des loyers perçus.</p>
+        <p data-i18n="benefits.b2.p">Nous sélectionnons des biens à forte valeur ajoutée, avec un potentiel de prise de valeur à long terme. Vous participez à toute plus-value éventuelle à la sortie au prorata de votre apport, en plus des loyers perçus.</p>
       </div>
       <div class="benefit reveal">
         <div class="benefit-icon">✓</div>
         <h3 data-i18n="benefits.b3.h3">Zéro charge mentale</h3>
-        <p data-i18n="benefits.b3.p">Nous gérons le bien, le locataire, la maintenance, la fiscalité locale, le reporting. Vous recevez un relevé trimestriel. C'est tout.</p>
+        <p data-i18n="benefits.b3.p">Nous gérons le bien, le locataire, la maintenance, la fiscalité locale, la comptabilité. Vous recevez un compte-rendu annuel. C'est tout.</p>
       </div>
     </div>
   </div>
@@ -818,23 +846,23 @@
     <div class="trust-grid">
       <div class="trust-card reveal">
         <span class="check">✓</span>
-        <h4 data-i18n="trust.t1.h4">Réseau direct promoteurs</h4>
-        <p data-i18n="trust.t1.p">Relations établies avec les têtes de vente Emaar, Damac, Sobha, Aldar. Pas un intermédiaire d'intermédiaire.</p>
+        <h4 data-i18n="trust.t1.h4">Réseau opérationnel à Dubaï</h4>
+        <p data-i18n="trust.t1.p">Notre agence partenaire à Dubaï entretient des relations directes avec les têtes de vente Emaar, Damac, Sobha, Aldar. Pas un intermédiaire d'intermédiaire.</p>
       </div>
       <div class="trust-card reveal">
         <span class="check">✓</span>
         <h4 data-i18n="trust.t2.h4">Transparence totale</h4>
-        <p data-i18n="trust.t2.p">Tous les frais sont écrits noir sur blanc dans le pacte que vous signez. Aucune commission cachée, jamais.</p>
+        <p data-i18n="trust.t2.p">Tous les frais sont écrits noir sur blanc dans le pacte d'actionnaires que vous signez. Aucune commission cachée, jamais.</p>
       </div>
       <div class="trust-card reveal">
         <span class="check">✓</span>
         <h4 data-i18n="trust.t3.h4">Alignement d'intérêt</h4>
-        <p data-i18n="trust.t3.p">Nous récupérons la gestion de la société pour assurer une prestation qualitative à nos clients. Notre rémunération est liée à la performance du projet : si vous gagnez, nous gagnons avec vous.</p>
+        <p data-i18n="trust.t3.p">Nous assurons la gestion opérationnelle de chaque société d'exploitation pour garantir une prestation qualitative. Notre rémunération combine des honoraires forfaitaires de structuration et de gestion, et une participation au résultat alignée avec celle des co-acquéreurs.</p>
       </div>
       <div class="trust-card reveal">
         <span class="check">✓</span>
         <h4 data-i18n="trust.t4.h4">Vous restez propriétaire</h4>
-        <p data-i18n="trust.t4.p">Vous êtes actionnaire d'une société qui détient un vrai bien. Pas une part de fonds opaque. Vous votez, vous décidez.</p>
+        <p data-i18n="trust.t4.p">Vous êtes actionnaire nominatif d'une société d'exploitation immobilière de droit émirien qui détient un vrai bien. Vous votez en assemblée, vous accédez aux comptes, vous décidez.</p>
       </div>
     </div>
   </div>
@@ -847,11 +875,14 @@
         <span class="section-tag" data-i18n="contact.tag">Prochaine étape</span>
         <h2 data-i18n="contact.h2">On en parle ?<br/><span class="green">30 minutes, sans engagement.</span></h2>
         <p data-i18n="contact.p">
-          Vous remplissez le formulaire. On vous rappelle sous 24h. On échange sur votre profil et vos objectifs. Si c'est pertinent, on vous donne accès au prochain projet ouvert. Sinon, on vous dit clairement pourquoi.
+          Vous remplissez le formulaire. On vous rappelle sous 24h. On échange sur votre profil et vos objectifs. Si la solution est adaptée à votre situation, on vous donne accès à la prochaine opération proposée aux co-acquéreurs qualifiés. Sinon, on vous dit clairement pourquoi.
+        </p>
+        <p data-i18n="contact.p2" style="font-size: 1.05rem; margin-bottom: 28px;">
+          <strong style="color: var(--text);">Pourquoi un cercle restreint et une qualification préalable ?</strong> Nous travaillons avec un nombre limité de co-acquéreurs par opération pour préserver la qualité de la sélection, la rigueur de la gestion et la confidentialité due à nos partenaires à Dubaï. Toute information détaillée (prix négocié, projection de rendement, fiche bien) vous est transmise après signature d'un accord de confidentialité — c'est ce qui distingue MyBulkDeal d'un catalogue d'opportunités ouvert à tous.
         </p>
         <ul class="contact-perks">
           <li><span class="pcheck">✓</span><div data-i18n="contact.perk1">Un call de 30 minutes pour comprendre votre besoin</div></li>
-          <li><span class="pcheck">✓</span><div data-i18n="contact.perk2">Accès complet à la fiche projet (prix · projection · fiscalité)</div></li>
+          <li><span class="pcheck">✓</span><div data-i18n="contact.perk2">Accès complet à la fiche projet sous NDA (prix · projection · fiscalité)</div></li>
           <li><span class="pcheck">✓</span><div data-i18n="contact.perk3">Aucun engagement tant que vous n'avez pas signé</div></li>
           <li><span class="pcheck">✓</span><div data-i18n="contact.perk4">Réponse sous 24h ouvrées</div></li>
         </ul>
@@ -889,6 +920,22 @@
           <label for="msg" data-i18n="form.label.msg">Votre message</label>
           <textarea id="msg" name="Message" required placeholder="Quelques mots sur votre intérêt, votre ticket cible, vos questions..." data-i18n-placeholder="form.ph.msg"></textarea>
         </div>
+
+        <div class="qualif-block">
+          <label class="qualif-line">
+            <input type="checkbox" name="Confirmation_disclaimer" required>
+            <span data-i18n="form.check1">J'ai pris connaissance des mentions légales figurant en bas de page.</span>
+          </label>
+          <label class="qualif-line">
+            <input type="checkbox" name="Confirmation_qualification" required>
+            <span data-i18n="form.check2">Je déclare être investisseur qualifié, ou solliciter MyBulkDeal de mon initiative exclusive en tant qu'investisseur averti.</span>
+          </label>
+          <label class="qualif-line">
+            <input type="checkbox" name="Confirmation_nda" required>
+            <span data-i18n="form.check3">J'accepte que toute information détaillée sur un projet soit subordonnée à la signature préalable d'un accord de confidentialité.</span>
+          </label>
+        </div>
+
         <button type="submit" class="btn btn-primary" data-i18n="form.submit">Envoyer ma demande →</button>
         <div class="form-foot" data-i18n="form.footnote">
           Vos données ne servent qu'à vous recontacter. Aucun stockage tiers, aucune cession, aucune newsletter.
@@ -901,8 +948,8 @@
 <section class="final">
   <div class="container">
     <div class="reveal">
-      <h2 data-i18n="final.h2">Dubai vous attend,<br/><span class="green">et nous avec.</span></h2>
-      <p data-i18n="final.p">Le prochain projet ouvre bientôt. Le pool est limité à 28 places. Si vous voulez en faire partie, c'est maintenant.</p>
+      <h2 data-i18n="final.h2">Dubaï vous attend,<br/><span class="green">et nous avec.</span></h2>
+      <p data-i18n="final.p">Une nouvelle opération sera proposée prochainement aux co-acquéreurs qualifiés inscrits. Le cercle est limité par opération pour préserver la qualité de la gouvernance. Si vous voulez en faire partie, c'est maintenant.</p>
       <a href="https://calendar.app.google/THtgFsGRfykeiTnE8" target="_blank" rel="noopener" class="btn btn-primary" data-i18n="final.cta">Réserver mon call →</a>
     </div>
   </div>
@@ -914,13 +961,13 @@
       <span class="my">My</span><span class="bulk">Bulk</span><span class="deal">Deal<span class="dot">.</span></span>
     </div>
     <div class="foot-info" data-i18n="footer.tagline">
-      Opérateur de SPV immobilier · Dubai · Pool francophone
+      Co-acquisition immobilière à Dubaï · Cercle francophone d'investisseurs qualifiés
     </div>
-    <div class="foot-entity">
-      <strong>MONOP'consulting FZ-LLC</strong> · Dubai, UAE
+    <div class="foot-entity" data-i18n="footer.entity">
+      MyBulkDeal est une marque exploitée par <strong>MONOP'consulting FZ-LLC</strong>, cabinet de conseil immobilier de droit émirien, immatriculé à Dubaï, UAE. La transaction immobilière à Dubaï est portée par notre agence partenaire titulaire d'une licence RERA. La gestion opérationnelle de chaque société d'exploitation est assurée par MONOP'consulting FZ-LLC.
     </div>
     <p class="foot-disclaimer" data-i18n="footer.disclaimer">
-      MyBulkDeal s'adresse à un nombre restreint d'investisseurs qualifiés et n'effectue ni offre au public, ni démarchage. Les performances passées ne préjugent pas des performances futures. Tout investissement immobilier comporte un risque de perte en capital. Avant toute souscription, l'investisseur reçoit la documentation contractuelle complète et bénéficie d'un délai d'analyse.
+      Les informations présentées sur ce site ne constituent ni une offre au public de titres financiers au sens des articles L.411-1 et suivants du Code monétaire et financier français, ni un acte de démarchage bancaire et financier au sens des articles L.341-1 et suivants du même code, ni une sollicitation à investir dans un fonds d'investissement alternatif (FIA) au sens de la directive 2011/61/UE (AIFMD). Le dispositif est réservé à un nombre limité d'investisseurs qualifiés au sens de l'article L.533-16 du Code monétaire et financier, ou à des investisseurs avertis ayant sollicité MyBulkDeal de leur initiative exclusive. Aucune décision d'investissement ne peut être prise sur la base des informations publiques figurant sur ce site ; la documentation contractuelle complète est remise individuellement après qualification et signature d'un accord de confidentialité. Tout investissement immobilier comporte un risque de perte en capital. Les performances passées ne préjugent pas des performances futures. MyBulkDeal n'effectue aucune intermédiation en crédit immobilier ; toute solution de financement doit être étudiée avec un courtier indépendant français immatriculé ORIAS.
     </p>
   </div>
 </footer>
@@ -929,8 +976,8 @@
 /* ========== TRANSLATIONS ========== */
 const I18N = {
   fr: {
-    'meta.title': "MyBulkDeal — Investir dans l'immobilier Dubai à partir de 6 700 €",
-    'meta.description': "MyBulkDeal est l'opérateur de SPV qui vous emmène investir à Dubai à plusieurs. Ticket d'entrée 6 700 € (26 700 AED). Neuf ou ancien. Tout est géré.",
+    'meta.title': "MyBulkDeal — Co-acquérir un bien immobilier à Dubaï à partir de 26 700 AED",
+    'meta.description': "MyBulkDeal structure et gère des co-acquisitions immobilières à Dubaï pour un cercle francophone d'investisseurs qualifiés. Ticket à partir de 26 700 AED soit 6 700 €. Neuf ou ancien. Gestion intégrée.",
     'lang.label': "🌐 Français",
 
     'nav.mission': "Notre mission",
@@ -939,12 +986,12 @@ const I18N = {
     'nav.contact': "Nous contacter",
     'nav.partner': `<span class="spark" aria-hidden="true"></span><span class="label-long">Devenir partenaire</span>`,
 
-    'hero.h1': `Investir à Dubai,<br/><span class="accent">ensemble.</span>`,
-    'hero.amount': `Dès <span class="amount-green">6&nbsp;700&nbsp;€</span> par investisseur`,
-    'hero.subtitle': `<strong>MyBulkDeal vous permet d'investir dans l'immobilier à Dubai</strong>, neuf ou ancien, sans avoir à mobiliser un gros capital ni à gérer la distance.<br/><br/>Nous sélectionnons les biens, négocions au prix bulk grâce à nos partenariats, regroupons les investisseurs et créons la société qui détient le bien.<br/><br/><strong>Vous devenez actionnaire d'un actif immobilier réel</strong>, vous percevez votre part des loyers et de la plus-value. Vous n'avez qu'à signer.`,
+    'hero.h1': `Co-acquérir à Dubaï,<br/><span class="accent">ensemble.</span>`,
+    'hero.amount': `À partir de <span class="amount-green">26&nbsp;700&nbsp;AED</span> <span style="font-size:0.7em;opacity:0.75;">soit 6 700 €</span> par co-acquéreur`,
+    'hero.subtitle': `<strong>MyBulkDeal vous permet de co-acquérir un bien immobilier à Dubaï</strong>, neuf ou ancien, sans avoir à mobiliser un gros capital ni à gérer la distance.<br/><br/>Nous sélectionnons les biens, les négocions via notre agence partenaire à Dubaï, regroupons les co-acquéreurs et créons la société d'exploitation qui détient le bien.<br/><br/><strong>Vous devenez actionnaire d'un actif immobilier réel</strong>, vous percevez votre part des loyers et de la plus-value. Vous n'avez qu'à signer.`,
     'hero.cta1': "Je veux en savoir plus →",
     'hero.cta2': "Découvrir comment ça marche",
-    'hero.foot1': "À partir de 6 700 € (26 700 AED)",
+    'hero.foot1': "À partir de 26 700 AED soit 6 700 €",
     'hero.foot2': "Neuf (off-plan) &amp; ancien",
     'hero.foot3': "Tout est géré pour vous",
 
@@ -961,53 +1008,54 @@ const I18N = {
 
     'mission.tag': "Notre mission",
     'mission.h2': `Vous emmener à Dubai,<br/>à plusieurs.`,
-    'mission.p1': `<strong>MyBulkDeal est un opérateur de SPV.</strong> En clair, nous créons une société dédiée à chaque projet dans laquelle vous devenez actionnaire, aux côtés d'autres investisseurs francophones. Cette société achète le bien, le met en location, et vous reverse votre part des loyers et de la plus-value à la sortie.`,
+    'mission.p1': `<strong>MyBulkDeal structure et opère des co-acquisitions immobilières à Dubaï.</strong> Pour chaque bien, nous constituons une société d'exploitation dédiée, dont vous devenez actionnaire aux côtés d'autres co-acquéreurs francophones. Cette société achète le bien en son nom, le met en location, perçoit les loyers et distribue les produits locatifs à ses actionnaires selon les statuts.`,
     'mission.p2': "Une signature, et nous nous occupons du reste.",
 
-    'ticket.tag': "Le ticket d'entrée",
+    'ticket.tag': "L'apport d'entrée",
     'ticket.h2': `Le prix d'un voyage.<br/>Le rendement d'un investissement.`,
-    'ticket.label': "Investissement minimum",
-    'ticket.sub': "soit <strong>26 700 AED</strong>",
-    'ticket.tagline': "Avec ce ticket, vous devenez actionnaire de la société qui détient un appartement à Dubai. Vous percevez votre part des loyers et de la plus-value, comme si vous étiez propriétaire en direct.",
-    'ticket.financing': `<strong style="color:var(--green);">Pas envie de mobiliser votre épargne ?</strong> Votre ticket peut être <strong style="color:var(--text);">financé par un de nos partenaires bancaires</strong>, avec mensualité fixe et taux préférentiel. Calculez votre mensualité en 30 secondes.`,
-    'ticket.cta': "Simuler mon financement →",
+    'ticket.label': "Apport minimum",
+    'ticket.sub': "soit <strong>6 700 €</strong>",
+    'ticket.tagline': "Avec cet apport, vous devenez actionnaire de la société d'exploitation qui détient un appartement à Dubaï. Vous percevez votre part des loyers et de la plus-value, comme si vous étiez propriétaire en direct.",
+    'ticket.financing': `<strong style="color:var(--green);">Pas envie de mobiliser votre épargne&nbsp;?</strong> Plusieurs solutions de crédit existent en France pour financer un ticket de ce niveau (crédit conso, crédit Lombard, prêt familial). Un crédit conso à 6 % sur 5 ans pour 6 700 € représente environ <strong style="color:var(--text);">130 €/mois</strong>. Notre simulateur ci-dessous vous donne une estimation indicative.`,
+    'ticket.cta': "Estimer une mensualité indicative →",
+    'ticket.creditdisclaimer': "Outil de calcul indicatif, non contractuel. MyBulkDeal n'effectue aucune intermédiation en crédit. Pour étudier votre éligibilité, rapprochez-vous d'un courtier crédit indépendant français immatriculé ORIAS.",
 
     'how.tag': "Comment ça marche",
     'how.h2': `Quatre étapes.<br/>Une seule signature.`,
     'how.p': "De votre premier message à votre premier loyer, tout est cadré.",
     'how.s1.h3': "On échange",
-    'how.s1.p': "30 minutes en visio. On comprend votre profil, votre budget, votre horizon. Vous repartez avec une réponse claire : c'est pour vous, ou pas.",
+    'how.s1.p': "30 minutes en visio. Nous comprenons votre projet de co-acquisition, votre apport, votre horizon. Vous repartez avec une réponse claire : c'est pour vous, ou pas.",
     'how.s2.h3': "On vous présente le projet",
-    'how.s2.p': "Accès à la fiche complète du bien sélectionné : adresse, prix négocié, projection de rendement, calendrier. Vous étudiez en toute transparence.",
+    'how.s2.p': "Après signature d'un accord de confidentialité, accès à la fiche complète du bien sélectionné : adresse, prix négocié, projection de rendement, calendrier. Vous étudiez en toute transparence.",
     'how.s3.h3': "On crée la société",
-    'how.s3.p': "Société dédiée au projet, basée à Dubai. Vous y entrez au capital à hauteur de votre investissement. Le bien est acheté au nom de cette société.",
+    'how.s3.p': "Société d'exploitation dédiée au projet, immatriculée à Dubaï. Vous entrez au capital à hauteur de votre apport. Le bien est acheté au nom de cette société.",
     'how.s4.h3': "On gère, vous encaissez",
-    'how.s4.p': "Mise en location, perception des loyers, maintenance, comptabilité. Reporting trimestriel. Distribution des revenus à chaque période de versement.",
+    'how.s4.p': "Mise en location, perception des loyers, maintenance, comptabilité. Compte-rendu annuel envoyé aux actionnaires. Distribution des produits locatifs sous forme de dividende selon les statuts.",
 
     'offers.tag': "Nos projets",
     'offers.h2': `Le neuf ou l'ancien,<br/>vous choisissez.`,
     'offers.p': "Selon vos objectifs (rendement immédiat ou plus-value à la livraison), nous structurons l'un ou l'autre.",
     'offers.op.tag': "Off-plan",
     'offers.op.h3': "Acheter dans le neuf, au prix promoteur",
-    'offers.op.p': "On entre tôt sur les phases pré-construction. Grâce à nos partenariats négociés directement avec les promoteurs, nous obtenons des décotes de 4 à 20 % sur les ventes en bloc. Vous payez moins cher dès le départ.",
-    'offers.op.li1': "Décote de 4 à 20 % grâce à nos partenariats négociés",
-    'offers.op.li2': "Plus-value typique à la livraison : + 25 à 35 %",
+    'offers.op.p': "Nous entrons tôt, en phase pré-construction. Notre agence partenaire à Dubaï entretient des relations directes avec les promoteurs et négocie des conditions privilégiées sur les ventes en bloc. Vous payez moins cher dès le départ.",
+    'offers.op.li1': "Conditions privilégiées via notre agence partenaire à Dubaï",
+    'offers.op.li2': "Potentiel de plus-value à la livraison communiqué dans la fiche projet sous NDA",
     'offers.op.li3': "Livraison 18 à 36 mois, location dès remise des clés",
     'offers.sec.tag': "Ancien",
     'offers.sec.h3': "Acheter dans l'ancien, déjà loué",
-    'offers.sec.p': "On reprend en bloc des biens déjà construits, souvent déjà loués, auprès de propriétaires qui veulent sortir. Vous percevez un loyer dès le premier mois.",
+    'offers.sec.p': "Nous reprenons en bloc des biens déjà construits, souvent déjà loués, auprès de propriétaires qui veulent sortir. Vous percevez un loyer dès le premier mois.",
     'offers.sec.li1': "Loyer encaissé dès le premier mois",
-    'offers.sec.li2': "Rendement entre 7 et 11 % par an",
+    'offers.sec.li2': "Rendement de marché communiqué dans la fiche projet sous NDA",
     'offers.sec.li3': "Pas d'aléa de livraison, le bien existe déjà",
 
     'benefits.tag': "Ce que vous gagnez",
     'benefits.h2': "Du temps, du rendement, de la tranquillité.",
-    'benefits.b1.h3': "Un rendement entre 5 et 9 % net",
-    'benefits.b1.p': "Rendement net, sans frais de gestion à votre charge. Distribué directement sur votre compte, en euros si vous le souhaitez.",
+    'benefits.b1.h3': "Des produits locatifs distribués",
+    'benefits.b1.p': "Les loyers nets de charges sont distribués aux actionnaires sous forme de dividende, selon les modalités fixées dans les statuts. Versement en AED ou en euros selon votre préférence.",
     'benefits.b2.h3': "Une plus-value à la revente",
-    'benefits.b2.p': "Nous sélectionnons des biens à forte valeur ajoutée, avec un potentiel de prise de valeur à long terme. Vous captez la plus-value à la sortie, en plus des loyers perçus.",
+    'benefits.b2.p': "Nous sélectionnons des biens à forte valeur ajoutée, avec un potentiel de prise de valeur à long terme. Vous participez à toute plus-value éventuelle à la sortie au prorata de votre apport, en plus des loyers perçus.",
     'benefits.b3.h3': "Zéro charge mentale",
-    'benefits.b3.p': "Nous gérons le bien, le locataire, la maintenance, la fiscalité locale, le reporting. Vous recevez un relevé trimestriel. C'est tout.",
+    'benefits.b3.p': "Nous gérons le bien, le locataire, la maintenance, la fiscalité locale, la comptabilité. Vous recevez un compte-rendu annuel. C'est tout.",
 
     'why.tag': "Pourquoi Dubai, pourquoi maintenant",
     'why.h2': "Le marché immobilier le plus dynamique du monde.",
@@ -1022,20 +1070,21 @@ const I18N = {
     'trust.tag': "Pourquoi nous",
     'trust.h2': "Notre obsession : que vous reveniez.",
     'trust.p': "Nous ne vendons pas un produit. Nous construisons une relation longue.",
-    'trust.t1.h4': "Réseau direct promoteurs",
-    'trust.t1.p': "Relations établies avec les têtes de vente Emaar, Damac, Sobha, Aldar. Pas un intermédiaire d'intermédiaire.",
+    'trust.t1.h4': "Réseau opérationnel à Dubaï",
+    'trust.t1.p': "Notre agence partenaire à Dubaï entretient des relations directes avec les têtes de vente Emaar, Damac, Sobha, Aldar. Pas un intermédiaire d'intermédiaire.",
     'trust.t2.h4': "Transparence totale",
-    'trust.t2.p': "Tous les frais sont écrits noir sur blanc dans le pacte que vous signez. Aucune commission cachée, jamais.",
+    'trust.t2.p': "Tous les frais sont écrits noir sur blanc dans le pacte d'actionnaires que vous signez. Aucune commission cachée, jamais.",
     'trust.t3.h4': "Alignement d'intérêt",
-    'trust.t3.p': "Nous récupérons la gestion de la société pour assurer une prestation qualitative à nos clients. Notre rémunération est liée à la performance du projet : si vous gagnez, nous gagnons avec vous.",
+    'trust.t3.p': "Nous assurons la gestion opérationnelle de chaque société d'exploitation pour garantir une prestation qualitative. Notre rémunération combine des honoraires forfaitaires de structuration et de gestion, et une participation au résultat alignée avec celle des co-acquéreurs.",
     'trust.t4.h4': "Vous restez propriétaire",
-    'trust.t4.p': "Vous êtes actionnaire d'une société qui détient un vrai bien. Pas une part de fonds opaque. Vous votez, vous décidez.",
+    'trust.t4.p': "Vous êtes actionnaire nominatif d'une société d'exploitation immobilière de droit émirien qui détient un vrai bien. Vous votez en assemblée, vous accédez aux comptes, vous décidez.",
 
     'contact.tag': "Prochaine étape",
     'contact.h2': `On en parle ?<br/><span class="green">30 minutes, sans engagement.</span>`,
-    'contact.p': "Vous remplissez le formulaire. On vous rappelle sous 24h. On échange sur votre profil et vos objectifs. Si c'est pertinent, on vous donne accès au prochain projet ouvert. Sinon, on vous dit clairement pourquoi.",
+    'contact.p': "Vous remplissez le formulaire. On vous rappelle sous 24h. On échange sur votre profil et vos objectifs. Si la solution est adaptée à votre situation, on vous donne accès à la prochaine opération proposée aux co-acquéreurs qualifiés. Sinon, on vous dit clairement pourquoi.",
+    'contact.p2': `<strong style="color: var(--text);">Pourquoi un cercle restreint et une qualification préalable ?</strong> Nous travaillons avec un nombre limité de co-acquéreurs par opération pour préserver la qualité de la sélection, la rigueur de la gestion et la confidentialité due à nos partenaires à Dubaï. Toute information détaillée (prix négocié, projection de rendement, fiche bien) vous est transmise après signature d'un accord de confidentialité — c'est ce qui distingue MyBulkDeal d'un catalogue d'opportunités ouvert à tous.`,
     'contact.perk1': "Un call de 30 minutes pour comprendre votre besoin",
-    'contact.perk2': "Accès complet à la fiche projet (prix · projection · fiscalité)",
+    'contact.perk2': "Accès complet à la fiche projet sous NDA (prix · projection · fiscalité)",
     'contact.perk3': "Aucun engagement tant que vous n'avez pas signé",
     'contact.perk4': "Réponse sous 24h ouvrées",
 
@@ -1055,18 +1104,22 @@ const I18N = {
     'form.ph.msg': "Quelques mots sur votre intérêt, votre ticket cible, vos questions...",
     'form.submit': "Envoyer ma demande →",
     'form.footnote': "Vos données ne servent qu'à vous recontacter. Aucun stockage tiers, aucune cession, aucune newsletter.",
+    'form.check1': "J'ai pris connaissance des mentions légales figurant en bas de page.",
+    'form.check2': "Je déclare être investisseur qualifié, ou solliciter MyBulkDeal de mon initiative exclusive en tant qu'investisseur averti.",
+    'form.check3': "J'accepte que toute information détaillée sur un projet soit subordonnée à la signature préalable d'un accord de confidentialité.",
 
-    'final.h2': `Dubai vous attend,<br/><span class="green">et nous avec.</span>`,
-    'final.p': "Le prochain projet ouvre bientôt. Le pool est limité à 28 places. Si vous voulez en faire partie, c'est maintenant.",
+    'final.h2': `Dubaï vous attend,<br/><span class="green">et nous avec.</span>`,
+    'final.p': "Une nouvelle opération sera proposée prochainement aux co-acquéreurs qualifiés inscrits. Le cercle est limité par opération pour préserver la qualité de la gouvernance. Si vous voulez en faire partie, c'est maintenant.",
     'final.cta': "Réserver mon call →",
 
-    'footer.tagline': "Opérateur de SPV immobilier · Dubai · Pool francophone",
-    'footer.disclaimer': "MyBulkDeal s'adresse à un nombre restreint d'investisseurs qualifiés et n'effectue ni offre au public, ni démarchage. Les performances passées ne préjugent pas des performances futures. Tout investissement immobilier comporte un risque de perte en capital. Avant toute souscription, l'investisseur reçoit la documentation contractuelle complète et bénéficie d'un délai d'analyse."
+    'footer.tagline': "Co-acquisition immobilière à Dubaï · Cercle francophone d'investisseurs qualifiés",
+    'footer.entity': "MyBulkDeal est une marque exploitée par <strong>MONOP'consulting FZ-LLC</strong>, cabinet de conseil immobilier de droit émirien, immatriculé à Dubaï, UAE. La transaction immobilière à Dubaï est portée par notre agence partenaire titulaire d'une licence RERA. La gestion opérationnelle de chaque société d'exploitation est assurée par MONOP'consulting FZ-LLC.",
+    'footer.disclaimer': "Les informations présentées sur ce site ne constituent ni une offre au public de titres financiers au sens des articles L.411-1 et suivants du Code monétaire et financier français, ni un acte de démarchage bancaire et financier au sens des articles L.341-1 et suivants du même code, ni une sollicitation à investir dans un fonds d'investissement alternatif (FIA) au sens de la directive 2011/61/UE (AIFMD). Le dispositif est réservé à un nombre limité d'investisseurs qualifiés au sens de l'article L.533-16 du Code monétaire et financier, ou à des investisseurs avertis ayant sollicité MyBulkDeal de leur initiative exclusive. Aucune décision d'investissement ne peut être prise sur la base des informations publiques figurant sur ce site ; la documentation contractuelle complète est remise individuellement après qualification et signature d'un accord de confidentialité. Tout investissement immobilier comporte un risque de perte en capital. Les performances passées ne préjugent pas des performances futures. MyBulkDeal n'effectue aucune intermédiation en crédit immobilier ; toute solution de financement doit être étudiée avec un courtier indépendant français immatriculé ORIAS."
   },
 
   en: {
-    'meta.title': "MyBulkDeal — Invest in Dubai property from €6,700",
-    'meta.description': "MyBulkDeal is the SPV operator that takes you to Dubai together. Minimum ticket €6,700 (AED 26,700). Off-plan or resale. Everything handled.",
+    'meta.title': "MyBulkDeal — Co-acquire a Dubai property from AED 26,700",
+    'meta.description': "MyBulkDeal structures and operates Dubai real estate co-acquisitions for an English-speaking circle of qualified investors. Ticket from AED 26,700 i.e. €6,700. Off-plan or resale. Fully managed.",
     'lang.label': "🌐 English",
 
     'nav.mission': "Our mission",
@@ -1075,12 +1128,12 @@ const I18N = {
     'nav.contact': "Contact us",
     'nav.partner': `<span class="spark" aria-hidden="true"></span><span class="label-long">Become a partner</span>`,
 
-    'hero.h1': `Investing in Dubai,<br/><span class="accent">together.</span>`,
-    'hero.amount': `From <span class="amount-green">€6,700</span> per investor`,
-    'hero.subtitle': `<strong>MyBulkDeal lets you invest in Dubai property</strong>, off-plan or resale, without locking up a large amount of cash or having to manage things from afar.<br/><br/>We select the assets, negotiate the bulk price through our partnerships, pool the investors and create the company that owns the asset.<br/><br/><strong>You become a shareholder of a real property asset</strong>, you receive your share of the rent and the capital gain. All you have to do is sign.`,
+    'hero.h1': `Co-acquiring in Dubai,<br/><span class="accent">together.</span>`,
+    'hero.amount': `From <span class="amount-green">AED&nbsp;26,700</span> <span style="font-size:0.7em;opacity:0.75;">i.e. €6,700</span> per co-acquirer`,
+    'hero.subtitle': `<strong>MyBulkDeal lets you co-acquire a Dubai property</strong>, off-plan or resale, without locking up a large amount of cash or having to manage things from afar.<br/><br/>We select the assets, negotiate them through our Dubai-based partner agency, pool the co-acquirers and create the operating company that owns the asset.<br/><br/><strong>You become a shareholder of a real property asset</strong>, you receive your share of the rent and the capital gain. All you have to do is sign.`,
     'hero.cta1': "Tell me more →",
     'hero.cta2': "See how it works",
-    'hero.foot1': "From €6,700 (AED 26,700)",
+    'hero.foot1': "From AED 26,700 i.e. €6,700",
     'hero.foot2': "Off-plan &amp; resale",
     'hero.foot3': "Everything handled for you",
 
@@ -1097,53 +1150,54 @@ const I18N = {
 
     'mission.tag': "Our mission",
     'mission.h2': `Taking you to Dubai,<br/>together.`,
-    'mission.p1': `<strong>MyBulkDeal is an SPV operator.</strong> In plain English: we create a dedicated company for each project, and you become a shareholder alongside other English-speaking investors. The company buys the asset, lets it out, and pays you your share of the rent and the capital gain on exit.`,
+    'mission.p1': `<strong>MyBulkDeal structures and operates Dubai real estate co-acquisitions.</strong> For each asset we set up a dedicated operating company, of which you become a shareholder alongside other English-speaking co-acquirers. The company buys the asset in its own name, lets it out, collects the rent and distributes the rental proceeds to its shareholders as per the articles of association.`,
     'mission.p2': "One signature, and we handle the rest.",
 
-    'ticket.tag': "The entry ticket",
+    'ticket.tag': "The entry contribution",
     'ticket.h2': `The price of a holiday.<br/>The yield of an investment.`,
-    'ticket.label': "Minimum investment",
-    'ticket.sub': "i.e. <strong>AED 26,700</strong>",
-    'ticket.tagline': "With this ticket, you become a shareholder of the company that owns a Dubai flat. You receive your share of the rent and capital gain, as if you owned it outright.",
-    'ticket.financing': `<strong style="color:var(--green);">Don't want to tie up your savings?</strong> Your ticket can be <strong style="color:var(--text);">financed through one of our banking partners</strong>, with a fixed monthly payment and preferential rate. Estimate your payment in 30 seconds.`,
-    'ticket.cta': "Simulate my financing →",
+    'ticket.label': "Minimum contribution",
+    'ticket.sub': "i.e. <strong>€6,700</strong>",
+    'ticket.tagline': "With this contribution, you become a shareholder of the operating company that owns a Dubai flat. You receive your share of the rent and capital gain, as if you owned it outright.",
+    'ticket.financing': `<strong style="color:var(--green);">Don't want to tie up your savings?</strong> Several credit solutions exist in the UK and EU to finance a ticket of this size (consumer loan, Lombard credit, family loan). A consumer loan at 6% over 5 years for €6,700 is roughly <strong style="color:var(--text);">€130/month</strong>. Our simulator below gives you an indicative estimate.`,
+    'ticket.cta': "Estimate an indicative payment →",
+    'ticket.creditdisclaimer': "Indicative calculation tool, non-contractual. MyBulkDeal does not act as a credit intermediary. To check your eligibility, please reach out to an independent regulated credit broker in your jurisdiction.",
 
     'how.tag': "How it works",
     'how.h2': `Four steps.<br/>One single signature.`,
     'how.p': "From your first message to your first rent cheque, every step is mapped out.",
     'how.s1.h3': "We talk",
-    'how.s1.p': "30 minutes on a video call. We understand your profile, your budget, your horizon. You leave with a clear answer: this is for you, or it isn't.",
+    'how.s1.p': "30 minutes on a video call. We understand your co-acquisition project, your contribution, your horizon. You leave with a clear answer: this is for you, or it isn't.",
     'how.s2.h3': "We show you the project",
-    'how.s2.p': "Full access to the asset's data sheet: address, negotiated price, yield projection, timeline. You study it with total transparency.",
+    'how.s2.p': "After signing a confidentiality agreement, full access to the asset's data sheet: address, negotiated price, yield projection, timeline. You study it with total transparency.",
     'how.s3.h3': "We set up the company",
-    'how.s3.p': "Dedicated company for the project, based in Dubai. You come in as a shareholder at the level of your investment. The asset is bought in the company's name.",
+    'how.s3.p': "Dedicated operating company for the project, incorporated in Dubai. You come in as a shareholder at the level of your contribution. The asset is bought in the company's name.",
     'how.s4.h3': "We manage, you collect",
-    'how.s4.p': "Letting, rent collection, maintenance, accounting. Quarterly reporting. Income distribution at each pay-out period.",
+    'how.s4.p': "Letting, rent collection, maintenance, accounting. Annual report sent to shareholders. Rental proceeds distributed as a dividend per the articles of association.",
 
     'offers.tag': "Our projects",
     'offers.h2': `Off-plan or resale,<br/>your choice.`,
     'offers.p': "Depending on your goals (immediate income or capital gain at handover), we structure either route.",
     'offers.op.tag': "Off-plan",
     'offers.op.h3': "Buy new, at developer price",
-    'offers.op.p': "We enter early, during pre-construction phases. Thanks to our partnerships negotiated directly with developers, we secure 4 to 20 % bulk discounts. You pay less from day one.",
-    'offers.op.li1': "4 to 20 % discount through our negotiated partnerships",
-    'offers.op.li2': "Typical capital gain at handover: + 25 to 35 %",
+    'offers.op.p': "We enter early, in the pre-construction phase. Our Dubai-based partner agency maintains direct relationships with developers and negotiates privileged conditions on bulk sales. You pay less from day one.",
+    'offers.op.li1': "Privileged conditions via our Dubai-based partner agency",
+    'offers.op.li2': "Capital gain potential at handover disclosed in the project file under NDA",
     'offers.op.li3': "Handover 18 to 36 months, letting starts on keys delivery",
     'offers.sec.tag': "Resale",
     'offers.sec.h3': "Buy resale, already tenanted",
     'offers.sec.p': "We acquire in bulk from existing owners looking to exit, often with tenants in place. You collect rent from the first month.",
     'offers.sec.li1': "Rent collected from the first month",
-    'offers.sec.li2': "Yield between 7 and 11 % per year",
+    'offers.sec.li2': "Market yield disclosed in the project file under NDA",
     'offers.sec.li3': "No completion risk, the asset already exists",
 
     'benefits.tag': "What you get",
     'benefits.h2': "Time, yield, and peace of mind.",
-    'benefits.b1.h3': "A yield between 5 and 9 % net",
-    'benefits.b1.p': "Net yield, with no management fees borne by you. Paid out directly to your bank account, in your currency of choice.",
+    'benefits.b1.h3': "Distributed rental proceeds",
+    'benefits.b1.p': "Net rental proceeds are distributed to shareholders as a dividend, per the articles of association. Payments in AED or in EUR/GBP depending on your preference.",
     'benefits.b2.h3': "Capital gain on exit",
-    'benefits.b2.p': "We select assets with strong upside, with long-term value-creation potential. You capture the capital gain on exit, on top of the rental income.",
+    'benefits.b2.p': "We select assets with strong upside, with long-term value-creation potential. You share in any capital gain on exit pro rata to your contribution, on top of the rental income.",
     'benefits.b3.h3': "Zero hassle",
-    'benefits.b3.p': "We handle the asset, the tenant, the maintenance, the local tax, the reporting. You receive a quarterly statement. That's it.",
+    'benefits.b3.p': "We handle the asset, the tenant, the maintenance, the local tax, the accounting. You receive an annual report. That's it.",
 
     'why.tag': "Why Dubai, why now",
     'why.h2': "The most dynamic property market in the world.",
@@ -1158,20 +1212,21 @@ const I18N = {
     'trust.tag': "Why us",
     'trust.h2': "Our obsession: that you come back.",
     'trust.p': "We don't sell a product. We build a long relationship.",
-    'trust.t1.h4': "Direct developer network",
-    'trust.t1.p': "Established relationships with the heads of sales at Emaar, Damac, Sobha, Aldar. Not a broker of a broker.",
+    'trust.t1.h4': "Operational network in Dubai",
+    'trust.t1.p': "Our Dubai-based partner agency maintains direct relationships with the heads of sales at Emaar, Damac, Sobha, Aldar. Not a broker of a broker.",
     'trust.t2.h4': "Full transparency",
-    'trust.t2.p': "All fees are written black on white in the agreement you sign. No hidden commission, ever.",
+    'trust.t2.p': "All fees are written black on white in the shareholders' agreement you sign. No hidden commission, ever.",
     'trust.t3.h4': "Skin in the game",
-    'trust.t3.p': "We take over the management of the company to ensure a quality service for our clients. Our fee is tied to project performance: if you win, we win with you.",
+    'trust.t3.p': "We run the operational management of each operating company to ensure a quality service. Our fee combines flat structuring and management fees with a performance share aligned with co-acquirers.",
     'trust.t4.h4': "You remain the owner",
-    'trust.t4.p': "You're a shareholder of a company that owns a real asset. Not a unit in an opaque fund. You vote, you decide.",
+    'trust.t4.p': "You're a registered shareholder of a UAE-law operating company that owns a real asset. You vote, you access the accounts, you decide.",
 
     'contact.tag': "Next step",
     'contact.h2': `Shall we talk?<br/><span class="green">30 minutes, no commitment.</span>`,
-    'contact.p': "You fill in the form. We call you back within 24h. We talk through your profile and your goals. If it's a fit, we give you access to the next open project. If not, we tell you plainly why.",
+    'contact.p': "You fill in the form. We call you back within 24h. We talk through your profile and your goals. If the solution fits your situation, we give you access to the next operation offered to qualified co-acquirers. If not, we tell you plainly why.",
+    'contact.p2': `<strong style="color: var(--text);">Why a restricted circle and a prior qualification?</strong> We work with a limited number of co-acquirers per operation to preserve the quality of the selection, the rigour of the management and the confidentiality owed to our Dubai-based partners. Any detailed information (negotiated price, yield projection, asset file) is shared with you after signing a confidentiality agreement — that is what sets MyBulkDeal apart from an opportunity catalogue open to all.`,
     'contact.perk1': "A 30-minute call to understand your needs",
-    'contact.perk2': "Full access to the project file (price · projection · tax)",
+    'contact.perk2': "Full access to the project file under NDA (price · projection · tax)",
     'contact.perk3': "No commitment until you've signed",
     'contact.perk4': "Reply within 24 working hours",
 
@@ -1191,18 +1246,22 @@ const I18N = {
     'form.ph.msg': "A few words about your interest, target ticket, questions...",
     'form.submit': "Send my request →",
     'form.footnote': "Your data is only used to call you back. No third-party storage, no resale, no newsletter.",
+    'form.check1': "I have read the legal notice at the bottom of the page.",
+    'form.check2': "I declare being a qualified investor, or contacting MyBulkDeal on my own exclusive initiative as a sophisticated investor.",
+    'form.check3': "I accept that any detailed project information is conditional on the prior signature of a confidentiality agreement.",
 
     'final.h2': `Dubai is waiting,<br/><span class="green">and so are we.</span>`,
-    'final.p': "The next project opens shortly. The pool is capped at 28 seats. If you want one of them, now is the time.",
+    'final.p': "A new operation will be offered shortly to the qualified co-acquirers on file. The circle is capped per operation to preserve governance quality. If you want a seat, now is the time.",
     'final.cta': "Book my call →",
 
-    'footer.tagline': "Real estate SPV operator · Dubai · English-speaking pool",
-    'footer.disclaimer': "MyBulkDeal addresses a limited number of qualified investors and conducts neither a public offer nor solicitation. Past performance is no guarantee of future results. All property investment carries a risk of capital loss. Before any subscription, the investor receives the full contractual documentation and a reflection period."
+    'footer.tagline': "Dubai real estate co-acquisition · English-speaking circle of qualified investors",
+    'footer.entity': "MyBulkDeal is a brand operated by <strong>MONOP'consulting FZ-LLC</strong>, a UAE-law real estate consulting firm registered in Dubai, UAE. The Dubai real estate transaction is handled by our partner agency, holder of a RERA broker licence. The operational management of each operating company is run by MONOP'consulting FZ-LLC.",
+    'footer.disclaimer': "Information on this site does not constitute a public offer of securities, a banking or financial solicitation, or an offer to invest in an alternative investment fund under Directive 2011/61/EU (AIFMD). The scheme is reserved to a limited number of qualified investors, or to sophisticated investors who have contacted MyBulkDeal on their own exclusive initiative. No investment decision should be made based on the public information shown on this site; the full contractual documentation is delivered individually after qualification and signing of a confidentiality agreement. All property investment carries a risk of capital loss. Past performance is no guarantee of future results. MyBulkDeal does not act as a credit intermediary; any financing solution must be reviewed with an independent regulated credit broker."
   },
 
   it: {
-    'meta.title': "MyBulkDeal — Investire nell'immobiliare di Dubai a partire da €6.700",
-    'meta.description': "MyBulkDeal è l'operatore di SPV che ti porta a investire a Dubai in gruppo. Ticket minimo €6.700 (AED 26.700). Nuovo o usato. Gestione completa.",
+    'meta.title': "MyBulkDeal — Co-acquistare un immobile a Dubai a partire da AED 26.700",
+    'meta.description': "MyBulkDeal struttura e gestisce co-acquisizioni immobiliari a Dubai per una cerchia italofona di investitori qualificati. Ticket a partire da AED 26.700 ovvero €6.700. Nuovo o usato. Gestione integrata.",
     'lang.label': "🌐 Italiano",
 
     'nav.mission': "La nostra missione",
@@ -1211,12 +1270,12 @@ const I18N = {
     'nav.contact': "Contattaci",
     'nav.partner': `<span class="spark" aria-hidden="true"></span><span class="label-long">Diventa partner</span>`,
 
-    'hero.h1': `Investire a Dubai,<br/><span class="accent">insieme.</span>`,
-    'hero.amount': `A partire da <span class="amount-green">€6.700</span> per investitore`,
-    'hero.subtitle': `<strong>MyBulkDeal ti permette di investire nell'immobiliare a Dubai</strong>, nuovo o usato, senza dover mobilitare grossi capitali né gestire la distanza.<br/><br/>Selezioniamo gli immobili, negoziamo il prezzo bulk grazie alle nostre partnership, raggruppiamo gli investitori e creiamo la società che possiede l'immobile.<br/><br/><strong>Diventi azionista di un asset immobiliare reale</strong>, ricevi la tua quota di canoni e di plusvalore. A te resta solo da firmare.`,
+    'hero.h1': `Co-acquistare a Dubai,<br/><span class="accent">insieme.</span>`,
+    'hero.amount': `A partire da <span class="amount-green">AED&nbsp;26.700</span> <span style="font-size:0.7em;opacity:0.75;">ovvero €6.700</span> per co-acquirente`,
+    'hero.subtitle': `<strong>MyBulkDeal ti permette di co-acquistare un immobile a Dubai</strong>, nuovo o usato, senza dover mobilitare grossi capitali né gestire la distanza.<br/><br/>Selezioniamo gli immobili, li negoziamo tramite la nostra agenzia partner a Dubai, raggruppiamo i co-acquirenti e creiamo la società di gestione che possiede l'immobile.<br/><br/><strong>Diventi azionista di un asset immobiliare reale</strong>, ricevi la tua quota di canoni e di plusvalore. A te resta solo da firmare.`,
     'hero.cta1': "Voglio saperne di più →",
     'hero.cta2': "Scopri come funziona",
-    'hero.foot1': "A partire da €6.700 (AED 26.700)",
+    'hero.foot1': "A partire da AED 26.700 ovvero €6.700",
     'hero.foot2': "Nuovo (off-plan) &amp; usato",
     'hero.foot3': "Gestiamo tutto per te",
 
@@ -1233,53 +1292,54 @@ const I18N = {
 
     'mission.tag': "La nostra missione",
     'mission.h2': `Portarti a Dubai,<br/>insieme.`,
-    'mission.p1': `<strong>MyBulkDeal è un operatore di SPV.</strong> In parole semplici: creiamo una società dedicata a ogni progetto, in cui diventi azionista insieme ad altri investitori italofoni. Questa società compra l'immobile, lo affitta e ti riversa la tua quota di canoni e di plusvalore all'uscita.`,
+    'mission.p1': `<strong>MyBulkDeal struttura e opera co-acquisizioni immobiliari a Dubai.</strong> Per ogni immobile creiamo una società di gestione dedicata, di cui diventi azionista insieme ad altri co-acquirenti italofoni. La società compra l'immobile a proprio nome, lo affitta, incassa i canoni e li distribuisce ai propri azionisti secondo lo statuto.`,
     'mission.p2': "Una firma, e ci occupiamo del resto.",
 
-    'ticket.tag': "Il ticket d'ingresso",
+    'ticket.tag': "Il conferimento d'ingresso",
     'ticket.h2': `Il prezzo di un viaggio.<br/>Il rendimento di un investimento.`,
-    'ticket.label': "Investimento minimo",
-    'ticket.sub': "ovvero <strong>AED 26.700</strong>",
-    'ticket.tagline': "Con questo ticket, diventi azionista della società che possiede un appartamento a Dubai. Ricevi la tua quota di canoni e di plusvalore, come se fossi proprietario diretto.",
-    'ticket.financing': `<strong style="color:var(--green);">Non vuoi immobilizzare i tuoi risparmi?</strong> Il tuo ticket può essere <strong style="color:var(--text);">finanziato da uno dei nostri partner bancari</strong>, con rata fissa e tasso preferenziale. Calcola la tua rata in 30 secondi.`,
-    'ticket.cta': "Simula il mio finanziamento →",
+    'ticket.label': "Conferimento minimo",
+    'ticket.sub': "ovvero <strong>€6.700</strong>",
+    'ticket.tagline': "Con questo conferimento, diventi azionista della società di gestione che possiede un appartamento a Dubai. Ricevi la tua quota di canoni e di plusvalore, come se fossi proprietario diretto.",
+    'ticket.financing': `<strong style="color:var(--green);">Non vuoi immobilizzare i tuoi risparmi?</strong> Esistono diverse soluzioni di credito al consumo in Italia ed Europa per finanziare un ticket di questa entità (prestito personale, credito Lombard, prestito familiare). Un prestito al 6% su 5 anni per €6.700 corrisponde a circa <strong style="color:var(--text);">€130/mese</strong>. Il nostro simulatore qui sotto ti dà una stima indicativa.`,
+    'ticket.cta': "Stima una rata indicativa →",
+    'ticket.creditdisclaimer': "Strumento di calcolo indicativo, non contrattuale. MyBulkDeal non svolge alcuna intermediazione creditizia. Per verificare la tua idoneità, rivolgiti a un broker creditizio indipendente abilitato nella tua giurisdizione.",
 
     'how.tag': "Come funziona",
     'how.h2': `Quattro passi.<br/>Una sola firma.`,
     'how.p': "Dal tuo primo messaggio al tuo primo canone, ogni passaggio è definito.",
     'how.s1.h3': "Ci parliamo",
-    'how.s1.p': "30 minuti in videocall. Capiamo il tuo profilo, il tuo budget, il tuo orizzonte. Ne esci con una risposta chiara: è per te, o non lo è.",
+    'how.s1.p': "30 minuti in videocall. Capiamo il tuo progetto di co-acquisizione, il tuo conferimento, il tuo orizzonte. Ne esci con una risposta chiara: è per te, o non lo è.",
     'how.s2.h3': "Ti presentiamo il progetto",
-    'how.s2.p': "Accesso alla scheda completa dell'immobile selezionato: indirizzo, prezzo negoziato, proiezione di rendimento, calendario. Studi tutto in piena trasparenza.",
+    'how.s2.p': "Dopo la firma di un accordo di riservatezza, accesso alla scheda completa dell'immobile selezionato: indirizzo, prezzo negoziato, proiezione di rendimento, calendario. Studi tutto in piena trasparenza.",
     'how.s3.h3': "Creiamo la società",
-    'how.s3.p': "Società dedicata al progetto, con sede a Dubai. Entri nel capitale per la tua quota di investimento. L'immobile viene acquistato a nome della società.",
+    'how.s3.p': "Società di gestione dedicata al progetto, con sede a Dubai. Entri nel capitale per la tua quota di conferimento. L'immobile viene acquistato a nome della società.",
     'how.s4.h3': "Gestiamo noi, incassi tu",
-    'how.s4.p': "Locazione, riscossione dei canoni, manutenzione, contabilità. Reporting trimestrale. Distribuzione dei ricavi ad ogni periodo di versamento.",
+    'how.s4.p': "Locazione, riscossione dei canoni, manutenzione, contabilità. Resoconto annuale inviato agli azionisti. Distribuzione dei proventi locativi sotto forma di dividendo secondo lo statuto.",
 
     'offers.tag': "I nostri progetti",
     'offers.h2': `Nuovo o usato,<br/>scelta tua.`,
     'offers.p': "A seconda dei tuoi obiettivi (rendita immediata o plusvalore alla consegna), strutturiamo l'una o l'altra strada.",
     'offers.op.tag': "Off-plan",
     'offers.op.h3': "Comprare nuovo, al prezzo del costruttore",
-    'offers.op.p': "Entriamo presto, nelle fasi di pre-costruzione. Grazie alle nostre partnership negoziate direttamente con i costruttori, otteniamo sconti del 4-20 % sulle vendite in blocco. Paghi meno fin dall'inizio.",
-    'offers.op.li1': "Sconto del 4-20 % grazie alle nostre partnership negoziate",
-    'offers.op.li2': "Plusvalore tipico alla consegna: + 25-35 %",
+    'offers.op.p': "Entriamo presto, nelle fasi di pre-costruzione. La nostra agenzia partner a Dubai intrattiene relazioni dirette con i costruttori e negozia condizioni privilegiate sulle vendite in blocco. Paghi meno fin dall'inizio.",
+    'offers.op.li1': "Condizioni privilegiate tramite la nostra agenzia partner a Dubai",
+    'offers.op.li2': "Potenziale di plusvalore alla consegna comunicato nella scheda progetto sotto NDA",
     'offers.op.li3': "Consegna 18-36 mesi, locazione dalla consegna chiavi",
     'offers.sec.tag': "Usato",
     'offers.sec.h3': "Comprare nell'usato, già locato",
     'offers.sec.p': "Acquistiamo in blocco immobili già costruiti, spesso già locati, da proprietari che vogliono uscire. Incassi un canone dal primo mese.",
     'offers.sec.li1': "Canone incassato dal primo mese",
-    'offers.sec.li2': "Rendimento tra il 7 e l'11 % all'anno",
+    'offers.sec.li2': "Rendimento di mercato comunicato nella scheda progetto sotto NDA",
     'offers.sec.li3': "Nessun rischio di consegna, l'immobile esiste già",
 
     'benefits.tag': "Cosa ottieni",
     'benefits.h2': "Tempo, rendimento, tranquillità.",
-    'benefits.b1.h3': "Un rendimento tra il 5 e il 9 % netto",
-    'benefits.b1.p': "Rendimento netto, senza costi di gestione a tuo carico. Versato direttamente sul tuo conto, in euro se preferisci.",
+    'benefits.b1.h3': "Proventi locativi distribuiti",
+    'benefits.b1.p': "I canoni netti dalle spese vengono distribuiti agli azionisti sotto forma di dividendo, secondo lo statuto. Versamento in AED o in euro a tua scelta.",
     'benefits.b2.h3': "Plusvalore alla rivendita",
-    'benefits.b2.p': "Selezioniamo immobili ad alto valore aggiunto, con un potenziale di apprezzamento a lungo termine. Cogli il plusvalore all'uscita, in aggiunta ai canoni percepiti.",
+    'benefits.b2.p': "Selezioniamo immobili ad alto valore aggiunto, con un potenziale di apprezzamento a lungo termine. Partecipi a un eventuale plusvalore all'uscita in proporzione al tuo conferimento, in aggiunta ai canoni percepiti.",
     'benefits.b3.h3': "Zero stress",
-    'benefits.b3.p': "Gestiamo noi l'immobile, l'inquilino, la manutenzione, la fiscalità locale, il reporting. Tu ricevi un estratto trimestrale. Tutto qui.",
+    'benefits.b3.p': "Gestiamo noi l'immobile, l'inquilino, la manutenzione, la fiscalità locale, la contabilità. Tu ricevi un resoconto annuale. Tutto qui.",
 
     'why.tag': "Perché Dubai, perché adesso",
     'why.h2': "Il mercato immobiliare più dinamico al mondo.",
@@ -1294,20 +1354,21 @@ const I18N = {
     'trust.tag': "Perché noi",
     'trust.h2': "La nostra ossessione: che tu torni.",
     'trust.p': "Non vendiamo un prodotto. Costruiamo una relazione lunga.",
-    'trust.t1.h4': "Rete diretta con i costruttori",
-    'trust.t1.p': "Rapporti consolidati con i responsabili vendita di Emaar, Damac, Sobha, Aldar. Non un intermediario di intermediari.",
+    'trust.t1.h4': "Rete operativa a Dubai",
+    'trust.t1.p': "La nostra agenzia partner a Dubai intrattiene rapporti diretti con i responsabili vendita di Emaar, Damac, Sobha, Aldar. Non un intermediario di intermediari.",
     'trust.t2.h4': "Trasparenza totale",
-    'trust.t2.p': "Tutte le commissioni sono scritte nero su bianco nell'accordo che firmi. Nessuna commissione nascosta, mai.",
+    'trust.t2.p': "Tutte le commissioni sono scritte nero su bianco nel patto parasociale che firmi. Nessuna commissione nascosta, mai.",
     'trust.t3.h4': "Allineamento di interessi",
-    'trust.t3.p': "Riprendiamo la gestione della società per garantire un servizio di qualità ai nostri clienti. La nostra remunerazione è legata alla performance del progetto : se guadagni tu, guadagniamo noi con te.",
+    'trust.t3.p': "Assicuriamo la gestione operativa di ogni società di gestione per garantire un servizio di qualità. La nostra remunerazione combina onorari forfettari di strutturazione e gestione e una partecipazione al risultato allineata con quella dei co-acquirenti.",
     'trust.t4.h4': "Resti proprietario",
-    'trust.t4.p': "Sei azionista di una società che possiede un immobile vero. Non una quota di un fondo opaco. Voti, decidi.",
+    'trust.t4.p': "Sei azionista nominativo di una società di gestione immobiliare di diritto emiratino che possiede un immobile vero. Voti in assemblea, accedi ai conti, decidi.",
 
     'contact.tag': "Prossimo passo",
     'contact.h2': `Ne parliamo?<br/><span class="green">30 minuti, senza impegno.</span>`,
-    'contact.p': "Compili il modulo. Ti richiamiamo entro 24 ore. Parliamo del tuo profilo e dei tuoi obiettivi. Se è il momento giusto, ti diamo accesso al prossimo progetto aperto. In caso contrario, ti diciamo chiaramente perché.",
+    'contact.p': "Compili il modulo. Ti richiamiamo entro 24 ore. Parliamo del tuo profilo e dei tuoi obiettivi. Se la soluzione è adatta alla tua situazione, ti diamo accesso alla prossima operazione proposta ai co-acquirenti qualificati. In caso contrario, ti diciamo chiaramente perché.",
+    'contact.p2': `<strong style="color: var(--text);">Perché una cerchia ristretta e una qualifica preliminare?</strong> Lavoriamo con un numero limitato di co-acquirenti per operazione per preservare la qualità della selezione, il rigore della gestione e la riservatezza dovuta ai nostri partner di Dubai. Ogni informazione dettagliata (prezzo negoziato, proiezione di rendimento, scheda dell'immobile) ti viene trasmessa dopo la firma di un accordo di riservatezza — è ciò che distingue MyBulkDeal da un catalogo di opportunità aperto a tutti.`,
     'contact.perk1': "Una call di 30 minuti per capire le tue esigenze",
-    'contact.perk2': "Accesso completo alla scheda progetto (prezzo · proiezione · fiscalità)",
+    'contact.perk2': "Accesso completo alla scheda progetto sotto NDA (prezzo · proiezione · fiscalità)",
     'contact.perk3': "Nessun impegno finché non hai firmato",
     'contact.perk4': "Risposta entro 24 ore lavorative",
 
@@ -1327,13 +1388,17 @@ const I18N = {
     'form.ph.msg': "Due righe sul tuo interesse, ticket previsto, domande...",
     'form.submit': "Invia la mia richiesta →",
     'form.footnote': "I tuoi dati servono solo per ricontattarti. Nessun archivio terzo, nessuna cessione, nessuna newsletter.",
+    'form.check1': "Ho preso visione delle informazioni legali in fondo alla pagina.",
+    'form.check2': "Dichiaro di essere investitore qualificato, oppure di contattare MyBulkDeal di mia esclusiva iniziativa come investitore consapevole.",
+    'form.check3': "Accetto che qualsiasi informazione dettagliata su un progetto sia subordinata alla previa firma di un accordo di riservatezza.",
 
     'final.h2': `Dubai ti aspetta,<br/><span class="green">e noi con lei.</span>`,
-    'final.p': "Il prossimo progetto apre a breve. Il pool è limitato a 28 posti. Se vuoi farne parte, è il momento.",
+    'final.p': "Una nuova operazione sarà proposta a breve ai co-acquirenti qualificati registrati. La cerchia è limitata per operazione per preservare la qualità della governance. Se vuoi farne parte, è il momento.",
     'final.cta': "Prenota il mio call →",
 
-    'footer.tagline': "Operatore di SPV immobiliari · Dubai · Pool italofono",
-    'footer.disclaimer': "MyBulkDeal si rivolge a un numero limitato di investitori qualificati e non effettua né offerta pubblica né sollecitazione del risparmio. Le performance passate non garantiscono i risultati futuri. Ogni investimento immobiliare comporta un rischio di perdita di capitale. Prima di ogni sottoscrizione, l'investitore riceve la documentazione contrattuale completa e dispone di un periodo di riflessione."
+    'footer.tagline': "Co-acquisizione immobiliare a Dubai · Cerchia italofona di investitori qualificati",
+    'footer.entity': "MyBulkDeal è un marchio gestito da <strong>MONOP'consulting FZ-LLC</strong>, società di consulenza immobiliare di diritto emiratino, iscritta a Dubai, UAE. La transazione immobiliare a Dubai è gestita dalla nostra agenzia partner titolare di una licenza RERA. La gestione operativa di ogni società di gestione è assicurata da MONOP'consulting FZ-LLC.",
+    'footer.disclaimer': "Le informazioni presenti su questo sito non costituiscono né un'offerta al pubblico di strumenti finanziari, né una sollecitazione bancaria o finanziaria, né un'offerta di investimento in un fondo di investimento alternativo (FIA) ai sensi della direttiva 2011/61/UE (AIFMD). Il dispositivo è riservato a un numero limitato di investitori qualificati, o a investitori consapevoli che hanno contattato MyBulkDeal di propria esclusiva iniziativa. Nessuna decisione di investimento può essere presa sulla base delle informazioni pubbliche di questo sito; la documentazione contrattuale completa è consegnata individualmente dopo la qualifica e la firma di un accordo di riservatezza. Ogni investimento immobiliare comporta un rischio di perdita di capitale. Le performance passate non garantiscono i risultati futuri. MyBulkDeal non svolge alcuna intermediazione creditizia; ogni soluzione di finanziamento deve essere studiata con un broker creditizio indipendente abilitato."
   }
 };
 
