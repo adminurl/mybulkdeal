@@ -1,0 +1,1583 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>MyBulkDeal — Postuler comme apporteur d'affaires</title>
+<meta name="description" content="Formulaire de candidature au programme partenaires MyBulkDeal. Apporteurs d'affaires, agences immobilières, courtiers, CIF, CGP, family officers." />
+
+<!--
+=====================================================================
+  CONFIGURATION ENVOI EMAIL — FORMSPREE
+=====================================================================
+  Ce formulaire envoie un récap complet + toutes les pièces jointes
+  à philippe@monopimmobilier.com via Formspree.
+
+  Étapes pour activer (5 minutes) :
+  1. Va sur https://formspree.io/ et crée un compte gratuit
+     (utilise philippe@monopimmobilier.com).
+  2. Crée un nouveau formulaire ("New Form") nommé "MBD Apporteurs".
+  3. Formspree te donne un endpoint du type :
+        https://formspree.io/f/abcd1234
+  4. Remplace dans le code ci-dessous :
+        FORMSPREE_ENDPOINT_ICI
+     par cet endpoint (recherche / remplace tout).
+  5. Optionnel : passe en plan Formspree "Basic" (10€/mois) pour
+     - autoriser les fichiers > 10 Mo
+     - retirer la limite de 50 soumissions / mois
+     - activer l'envoi à plusieurs emails
+
+  Le formulaire utilise multipart/form-data, donc les uploads
+  (CNI, Kbis, RIB, etc.) partent automatiquement en pièces jointes
+  dans le mail récap. Aucune autre infrastructure à monter.
+=====================================================================
+-->
+
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="shortcut icon" href="/favicon.ico">
+<meta name="theme-color" content="#000000">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg: #000000; --bg-2: #060606; --bg-3: #0d0d0d;
+    --surface: #111111; --surface-2: #161616;
+    --border: rgba(255,255,255,0.08); --border-strong: rgba(255,255,255,0.18);
+    --text: #FFFFFF; --text-2: #B8B8B8; --text-3: #6B6B6B;
+    --green: #A3E635; --green-bright: #BEF264; --green-dark: #84CC16;
+    --green-glow: rgba(163, 230, 53, 0.45); --green-soft: rgba(163, 230, 53, 0.08);
+    --red: #f87171; --red-soft: rgba(248, 113, 113, 0.1);
+    --radius: 16px; --radius-lg: 24px; --radius-sm: 10px;
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: var(--bg); color: var(--text); line-height: 1.55; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  ::selection { background: var(--green); color: var(--bg); }
+  .container { max-width: 980px; margin: 0 auto; padding: 0 24px; }
+  h1, h2, h3, h4 { font-family: 'Inter', sans-serif; letter-spacing: -0.035em; line-height: 1.1; font-weight: 800; }
+  h1 { font-size: clamp(2rem, 4.5vw, 3.4rem); }
+  h2 { font-size: clamp(1.5rem, 3vw, 2.2rem); }
+  h3 { font-size: 1.15rem; font-weight: 700; letter-spacing: -0.02em; }
+  p { color: var(--text-2); }
+  a { color: inherit; text-decoration: none; }
+  .green { color: var(--green); }
+
+  /* LOGO */
+  .logotype { font-weight: 900; letter-spacing: -0.04em; }
+  .logotype .my { color: var(--text); }
+  .logotype .bulk { color: var(--green); }
+  .logotype .deal { color: var(--text); }
+  .logotype .dot { color: var(--green); }
+
+  /* NAV */
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(0,0,0,0.82); backdrop-filter: blur(20px) saturate(180%); -webkit-backdrop-filter: blur(20px) saturate(180%); border-bottom: 1px solid var(--border); }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 16px 24px; max-width: 1200px; margin: 0 auto; }
+  .nav-logo { font-size: 1.2rem; }
+  .nav-tag { font-size: 0.72rem; padding: 4px 10px; border-radius: 999px; background: var(--green-soft); color: var(--green); border: 1px solid rgba(163, 230, 53, 0.3); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; }
+  .btn-back { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; border-radius: 999px; background: transparent; color: var(--text-2); font-size: 0.85rem; font-weight: 600; border: 1.5px solid var(--border); transition: all 0.25s; }
+  .btn-back:hover { color: var(--green); border-color: var(--green); }
+  @media (max-width: 640px) { .nav-tag { display: none; } }
+
+  /* HERO */
+  .hero { position: relative; padding: 130px 0 30px; overflow: hidden; text-align: center; }
+  .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(900px 500px at 50% 0%, rgba(163, 230, 53, 0.14), transparent 70%); pointer-events: none; }
+  .hero-tag { display: inline-block; padding: 7px 16px; border-radius: 999px; background: var(--green-soft); border: 1px solid rgba(163, 230, 53, 0.3); color: var(--green); font-size: 0.78rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 20px; position: relative; }
+  .hero h1 { margin-bottom: 18px; position: relative; }
+  .hero h1 .accent { color: var(--green); }
+  .hero-sub { font-size: clamp(1rem, 1.5vw, 1.15rem); color: var(--text-2); max-width: 680px; margin: 0 auto; position: relative; }
+
+  /* STEPPER */
+  .stepper-wrap { position: sticky; top: 70px; z-index: 50; background: rgba(0,0,0,0.92); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); padding: 18px 0; margin-top: 28px; }
+  .stepper { display: flex; gap: 8px; align-items: center; max-width: 980px; margin: 0 auto; padding: 0 24px; overflow-x: auto; scrollbar-width: none; }
+  .stepper::-webkit-scrollbar { display: none; }
+  .step-pill { display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; border-radius: 999px; background: var(--surface); border: 1px solid var(--border); font-size: 0.78rem; font-weight: 600; color: var(--text-3); white-space: nowrap; transition: all 0.3s var(--ease); }
+  .step-pill.active { background: var(--green); color: #000; border-color: var(--green); box-shadow: 0 6px 20px rgba(163,230,53,0.3); }
+  .step-pill.done { background: var(--green-soft); color: var(--green); border-color: rgba(163,230,53,0.3); }
+  .step-pill .n { display: inline-flex; align-items: center; justify-content: center; width: 20px; height: 20px; border-radius: 50%; background: rgba(0,0,0,0.2); font-size: 0.7rem; font-weight: 900; }
+  .step-pill.active .n { background: rgba(0,0,0,0.25); }
+  .step-pill.done .n { background: var(--green); color: #000; }
+
+  /* FORM */
+  .form-wrap { padding: 40px 0 80px; }
+  .form-card { background: var(--surface); border: 1px solid var(--border-strong); border-radius: var(--radius-lg); padding: 44px 40px; box-shadow: 0 30px 80px rgba(0,0,0,0.4); }
+  @media (max-width: 640px) { .form-card { padding: 28px 22px; } }
+
+  .step-panel { display: none; animation: fadeIn 0.4s var(--ease); }
+  .step-panel.active { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+
+  .step-head { margin-bottom: 32px; }
+  .step-head .step-tag { display: inline-block; padding: 5px 12px; border-radius: 999px; background: var(--green-soft); color: var(--green); font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 14px; }
+  .step-head h2 { margin-bottom: 10px; }
+  .step-head p { font-size: 0.98rem; }
+
+  .field-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .field-grid.three { grid-template-columns: 1fr 1fr 1fr; }
+  .field-grid .full { grid-column: 1 / -1; }
+  @media (max-width: 640px) { .field-grid, .field-grid.three { grid-template-columns: 1fr; } }
+
+  .field { display: flex; flex-direction: column; gap: 8px; margin-bottom: 18px; }
+  .field label { font-size: 0.85rem; font-weight: 600; color: var(--text-2); display: flex; align-items: center; gap: 6px; }
+  .field label .req { color: var(--green); font-weight: 900; }
+  .field label .opt { color: var(--text-3); font-weight: 400; font-size: 0.78rem; margin-left: 4px; }
+  .field .help { font-size: 0.78rem; color: var(--text-3); margin-top: -2px; line-height: 1.45; }
+
+  input[type="text"], input[type="email"], input[type="tel"], input[type="date"], input[type="number"], input[type="url"], select, textarea {
+    width: 100%; padding: 13px 16px; background: var(--bg-2); border: 1.5px solid var(--border); border-radius: var(--radius-sm); color: var(--text); font-family: inherit; font-size: 0.95rem; transition: all 0.2s; outline: none;
+  }
+  input:focus, select:focus, textarea:focus { border-color: var(--green); box-shadow: 0 0 0 3px var(--green-soft); }
+  input::placeholder, textarea::placeholder { color: var(--text-3); }
+  input.invalid, select.invalid, textarea.invalid { border-color: var(--red); }
+  select { appearance: none; -webkit-appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23A3E635' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 16px center; padding-right: 40px; }
+  textarea { resize: vertical; min-height: 90px; }
+
+  /* RADIO + CHOICE CARDS */
+  .choice-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  @media (max-width: 540px) { .choice-grid { grid-template-columns: 1fr; } }
+  .choice-card { position: relative; cursor: pointer; }
+  .choice-card input { position: absolute; opacity: 0; pointer-events: none; }
+  .choice-card .card-inner { padding: 22px 20px; background: var(--bg-2); border: 1.5px solid var(--border); border-radius: var(--radius); transition: all 0.25s; height: 100%; }
+  .choice-card:hover .card-inner { border-color: var(--border-strong); transform: translateY(-2px); }
+  .choice-card input:checked + .card-inner { background: linear-gradient(180deg, rgba(163,230,53,0.10), rgba(163,230,53,0.02)); border-color: var(--green); box-shadow: 0 6px 24px -8px var(--green-glow); }
+  .choice-card .card-icon { width: 38px; height: 38px; border-radius: 10px; background: var(--green-soft); color: var(--green); display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 1.1rem; margin-bottom: 12px; }
+  .choice-card input:checked + .card-inner .card-icon { background: var(--green); color: #000; }
+  .choice-card .card-title { font-weight: 700; font-size: 1rem; margin-bottom: 4px; color: var(--text); }
+  .choice-card .card-sub { font-size: 0.85rem; color: var(--text-3); }
+
+  /* CHECKBOXES */
+  .check-list { display: flex; flex-direction: column; gap: 12px; }
+  .check-item { display: flex; gap: 14px; padding: 16px 18px; background: var(--bg-2); border: 1px solid var(--border); border-radius: var(--radius); transition: all 0.25s; cursor: pointer; }
+  .check-item:hover { border-color: var(--border-strong); }
+  .check-item input { position: absolute; opacity: 0; pointer-events: none; }
+  .check-item .check-box { flex-shrink: 0; width: 22px; height: 22px; border-radius: 6px; border: 1.5px solid var(--border-strong); background: var(--bg); display: flex; align-items: center; justify-content: center; transition: all 0.2s; margin-top: 1px; }
+  .check-item .check-box::after { content: ''; width: 12px; height: 12px; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2 6l3 3 5-6' stroke='%23000' stroke-width='2.2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: center; opacity: 0; transition: opacity 0.2s; }
+  .check-item input:checked ~ .check-box { background: var(--green); border-color: var(--green); }
+  .check-item input:checked ~ .check-box::after { opacity: 1; }
+  .check-item input:checked ~ .check-content .check-title { color: var(--text); }
+  .check-content { flex: 1; }
+  .check-title { font-size: 0.92rem; font-weight: 600; color: var(--text-2); margin-bottom: 3px; line-height: 1.4; }
+  .check-content .check-detail { font-size: 0.8rem; color: var(--text-3); line-height: 1.5; }
+
+  /* FILE UPLOAD — DROPZONE */
+  .upload-zone { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; padding: 24px 18px; background: var(--bg-2); border: 1.5px dashed var(--border-strong); border-radius: var(--radius); transition: all 0.25s; cursor: pointer; text-align: center; min-height: 120px; }
+  .upload-zone:hover { border-color: var(--green); background: var(--green-soft); }
+  .upload-zone.dragover { border-color: var(--green); background: rgba(163,230,53,0.12); border-style: solid; }
+  .upload-zone input[type="file"] { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+  .upload-zone .up-icon { width: 36px; height: 36px; border-radius: 10px; background: var(--green-soft); color: var(--green); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; font-weight: 900; margin-bottom: 4px; }
+  .upload-zone .up-text { font-size: 0.92rem; color: var(--text-2); font-weight: 600; }
+  .upload-zone .up-sub { font-size: 0.78rem; color: var(--text-3); }
+  .upload-zone.has-file { border-style: solid; border-color: var(--green); background: rgba(163,230,53,0.06); }
+  .upload-zone.has-file .up-icon { background: var(--green); color: #000; }
+  .upload-zone .file-info { display: none; font-size: 0.85rem; color: var(--green); font-weight: 600; word-break: break-all; padding: 0 12px; }
+  .upload-zone.has-file .file-info { display: block; }
+  .upload-zone.has-file .up-text, .upload-zone.has-file .up-sub { display: none; }
+  .upload-zone .remove-file { display: none; position: absolute; top: 8px; right: 8px; width: 26px; height: 26px; border-radius: 50%; background: var(--bg); color: var(--red); border: 1px solid var(--border-strong); cursor: pointer; font-size: 1rem; font-weight: 700; align-items: center; justify-content: center; }
+  .upload-zone.has-file .remove-file { display: flex; }
+
+  /* CONDITIONAL SECTIONS */
+  .conditional { display: none; }
+  .conditional.show { display: block; animation: fadeIn 0.35s var(--ease); }
+  .subsection { margin-top: 28px; padding-top: 28px; border-top: 1px solid var(--border); }
+  .subsection-title { font-size: 0.95rem; font-weight: 700; color: var(--green); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+  .subsection-title::before { content: ''; width: 24px; height: 2px; background: var(--green); }
+
+  /* BE LIST */
+  .be-list { display: flex; flex-direction: column; gap: 16px; }
+  .be-item { padding: 18px; background: var(--bg-2); border: 1px solid var(--border); border-radius: var(--radius); position: relative; }
+  .be-item .be-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
+  .be-item .be-label { font-size: 0.82rem; font-weight: 700; color: var(--green); text-transform: uppercase; letter-spacing: 0.08em; }
+  .be-item .be-remove { background: transparent; border: 1px solid var(--border); color: var(--text-3); padding: 4px 10px; border-radius: 999px; font-size: 0.75rem; cursor: pointer; transition: all 0.2s; font-family: inherit; }
+  .be-item .be-remove:hover { color: var(--red); border-color: var(--red); }
+  .btn-add { display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; background: transparent; border: 1.5px dashed var(--border-strong); color: var(--text-2); border-radius: var(--radius); cursor: pointer; font-family: inherit; font-size: 0.88rem; font-weight: 600; transition: all 0.2s; margin-top: 12px; }
+  .btn-add:hover { border-color: var(--green); color: var(--green); border-style: solid; }
+
+  /* RECAP */
+  .recap-block { background: var(--bg-2); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px; margin-bottom: 14px; }
+  .recap-block-title { font-size: 0.82rem; font-weight: 700; color: var(--green); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 14px; }
+  .recap-row { display: grid; grid-template-columns: 220px 1fr; gap: 14px; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
+  .recap-row:last-child { border-bottom: none; }
+  .recap-row .k { color: var(--text-3); }
+  .recap-row .v { color: var(--text); font-weight: 500; word-break: break-word; }
+  .recap-row .v.empty { color: var(--text-3); font-style: italic; }
+  @media (max-width: 540px) { .recap-row { grid-template-columns: 1fr; gap: 2px; padding: 10px 0; } }
+
+  /* NAV BUTTONS */
+  .form-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 36px; padding-top: 28px; border-top: 1px solid var(--border); gap: 14px; flex-wrap: wrap; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 13px 26px; border-radius: 999px; font-family: inherit; font-weight: 800; font-size: 0.95rem; cursor: pointer; border: none; text-decoration: none; transition: all 0.3s var(--ease); letter-spacing: -0.005em; }
+  .btn-primary { background: var(--green); color: #000; box-shadow: 0 6px 24px rgba(163, 230, 53, 0.25); }
+  .btn-primary:hover { background: var(--green-bright); transform: translateY(-2px); box-shadow: 0 14px 40px var(--green-glow); }
+  .btn-primary:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+  .btn-ghost { background: transparent; color: var(--text-2); border: 1.5px solid var(--border-strong); }
+  .btn-ghost:hover { border-color: var(--green); color: var(--green); }
+  .btn-submit { padding: 16px 40px; font-size: 1.05rem; }
+
+  /* SUCCESS / ERROR */
+  .alert { padding: 14px 18px; border-radius: var(--radius); font-size: 0.9rem; margin-bottom: 18px; display: none; align-items: center; gap: 12px; }
+  .alert.show { display: flex; }
+  .alert.error { background: var(--red-soft); border: 1px solid rgba(248,113,113,0.3); color: var(--red); }
+  .alert.info { background: var(--green-soft); border: 1px solid rgba(163,230,53,0.3); color: var(--green); }
+
+  /* THANK YOU */
+  .thanks { display: none; text-align: center; padding: 60px 24px; }
+  .thanks.show { display: block; animation: fadeIn 0.5s var(--ease); }
+  .thanks .check-icon { width: 80px; height: 80px; border-radius: 50%; background: var(--green); color: #000; display: inline-flex; align-items: center; justify-content: center; font-size: 2.6rem; font-weight: 900; margin-bottom: 24px; box-shadow: 0 12px 40px var(--green-glow); }
+  .thanks h2 { margin-bottom: 14px; }
+  .thanks p { font-size: 1.05rem; max-width: 540px; margin: 0 auto 28px; }
+
+  /* FOOTER */
+  footer { padding: 32px 0 24px; background: var(--bg-2); border-top: 1px solid var(--border); text-align: center; }
+  .foot-logo { font-size: 1.2rem; margin-bottom: 10px; }
+  .foot-info { color: var(--text-3); font-size: 0.85rem; }
+  .foot-disclaimer { color: var(--text-3); font-size: 0.72rem; max-width: 720px; margin: 14px auto 0; line-height: 1.55; }
+
+  /* SPINNER */
+  .spinner { display: inline-block; width: 16px; height: 16px; border: 2px solid rgba(0,0,0,0.3); border-top-color: #000; border-radius: 50%; animation: spin 0.7s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* LATER TOGGLE — "je transmettrai cet élément plus tard" */
+  .later-toggle { display: inline-flex; align-items: center; gap: 7px; margin-top: 6px; font-size: 0.74rem; color: var(--text-3); cursor: pointer; user-select: none; transition: color 0.2s; padding: 4px 0; line-height: 1.3; }
+  .later-toggle:hover { color: var(--text-2); }
+  .later-toggle input[type="checkbox"] { width: 13px; height: 13px; accent-color: var(--green); cursor: pointer; margin: 0; }
+  .later-toggle .later-tag { display: inline-flex; align-items: center; gap: 4px; }
+  .field.is-later > label .req { color: var(--text-3); }
+  .field.is-later .later-toggle { color: var(--green); font-weight: 600; }
+  .field.is-later input[type="text"],
+  .field.is-later input[type="email"],
+  .field.is-later input[type="tel"],
+  .field.is-later input[type="date"],
+  .field.is-later input[type="number"],
+  .field.is-later input[type="url"],
+  .field.is-later select,
+  .field.is-later textarea { opacity: 0.45; pointer-events: none; background: rgba(255,255,255,0.02); border-style: dashed; }
+  .field.is-later .upload-zone { opacity: 0.45; pointer-events: none; border-style: dashed; }
+  .field.is-later .later-toggle { pointer-events: auto; opacity: 1; }
+  .field.is-later .later-toggle input { pointer-events: auto; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="/brokers" class="logotype nav-logo" aria-label="MyBulkDeal">
+      <span class="my">My</span><span class="bulk">Bulk</span><span class="deal">Deal<span class="dot">.</span></span>
+    </a>
+    <div style="display:flex; gap: 14px; align-items: center;">
+      <span class="nav-tag">Postulation partenaire</span>
+      <a href="/brokers" class="btn-back">← Retour</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="container">
+    <span class="hero-tag">Programme partenaires</span>
+    <h1>Postulez au programme<br/><span class="accent">partenaires MyBulkDeal.</span></h1>
+    <p class="hero-sub">
+      Remplissez ce formulaire pour postuler comme apporteur d'affaires. Nous revenons vers vous sous <strong style="color:var(--text)">48 heures</strong> avec une proposition de convention adaptée à votre profil.
+    </p>
+  </div>
+</header>
+
+<!-- STEPPER -->
+<div class="stepper-wrap">
+  <div class="stepper" id="stepper">
+    <div class="step-pill active" data-step="1"><span class="n">1</span>Profil</div>
+    <div class="step-pill" data-step="2"><span class="n">2</span>Identité</div>
+    <div class="step-pill" data-step="3"><span class="n">3</span>Habilitations</div>
+    <div class="step-pill" data-step="4"><span class="n">4</span>Banque / fiscal</div>
+    <div class="step-pill" data-step="5"><span class="n">5</span>Activité</div>
+    <div class="step-pill" data-step="6"><span class="n">6</span>Commercial</div>
+    <div class="step-pill" data-step="7"><span class="n">7</span>Engagements</div>
+    <div class="step-pill" data-step="8"><span class="n">8</span>Signataire</div>
+    <div class="step-pill" data-step="9"><span class="n">9</span>Récap</div>
+  </div>
+</div>
+
+<main class="form-wrap">
+  <div class="container">
+    <form id="apporteurForm" action="FORMSPREE_ENDPOINT_ICI" method="POST" enctype="multipart/form-data" novalidate>
+      <input type="hidden" name="_subject" value="🎯 Nouvelle candidature apporteur MBD" />
+      <input type="hidden" name="_format" value="plain" />
+
+      <div class="form-card">
+
+        <div id="alert" class="alert error">
+          <span>⚠</span>
+          <span id="alertText">Merci de compléter les champs obligatoires marqués d'un astérisque.</span>
+        </div>
+
+        <!-- ============== ÉTAPE 1 : TYPE D'APPORTEUR ============== -->
+        <section class="step-panel active" data-panel="1">
+          <div class="step-head">
+            <span class="step-tag">Étape 1 / 9</span>
+            <h2>Qui êtes-vous ?</h2>
+            <p>Le formulaire s'adapte à votre profil. Sélectionnez d'abord votre situation pour ne voir que les champs qui vous concernent.</p>
+          </div>
+
+          <div class="field">
+            <label>Vous postulez en tant que… <span class="req">*</span></label>
+            <div class="choice-grid">
+              <label class="choice-card">
+                <input type="radio" name="type_apporteur" value="Personne physique" data-required="step1" required />
+                <div class="card-inner">
+                  <div class="card-icon">👤</div>
+                  <div class="card-title">Personne physique</div>
+                  <div class="card-sub">Indépendant, freelance, auto-entrepreneur, profession libérale</div>
+                </div>
+              </label>
+              <label class="choice-card">
+                <input type="radio" name="type_apporteur" value="Personne morale" />
+                <div class="card-inner">
+                  <div class="card-icon">🏢</div>
+                  <div class="card-title">Personne morale</div>
+                  <div class="card-sub">Société (SARL, SAS, SA, SCI, etc.), agence, cabinet</div>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <div class="field" style="margin-top: 28px;">
+            <label for="profession">Votre profession <span class="req">*</span></label>
+            <select id="profession" name="profession" data-required="step1" required>
+              <option value="">— Sélectionnez —</option>
+              <option value="Agence immobilière">Agence immobilière (carte T)</option>
+              <option value="Courtier en crédit (IOBSP)">Courtier en crédit (IOBSP)</option>
+              <option value="Conseiller en investissements financiers (CIF)">Conseiller en investissements financiers (CIF)</option>
+              <option value="Conseiller en gestion de patrimoine (CGP)">Conseiller en gestion de patrimoine (CGP)</option>
+              <option value="Family Officer">Family Officer</option>
+              <option value="Apporteur indépendant">Apporteur d'affaires indépendant</option>
+              <option value="Autre">Autre</option>
+            </select>
+            <div class="help">Cette information conditionne les justificatifs réglementaires demandés à l'étape 3.</div>
+          </div>
+
+          <div class="field conditional" id="profession-autre-wrap">
+            <label for="profession_autre">Précisez votre activité <span class="req">*</span></label>
+            <input type="text" id="profession_autre" name="profession_autre" placeholder="Ex. responsable développement réseau, ancien banquier privé…" />
+          </div>
+        </section>
+
+        <!-- ============== ÉTAPE 2 : IDENTITÉ ============== -->
+        <section class="step-panel" data-panel="2">
+          <div class="step-head">
+            <span class="step-tag">Étape 2 / 9</span>
+            <h2>Votre identité</h2>
+            <p>Les pièces justificatives sont chiffrées en transit et utilisées uniquement pour la conformité KYC / LCB-FT.</p>
+          </div>
+
+          <!-- === PERSONNE PHYSIQUE === -->
+          <div class="conditional" id="block-pp">
+            <div class="field-grid">
+              <div class="field">
+                <label for="pp_civilite">Civilité <span class="req">*</span></label>
+                <select id="pp_civilite" name="pp_civilite" data-required-pp>
+                  <option value="">—</option>
+                  <option value="M.">M.</option>
+                  <option value="Mme">Mme</option>
+                </select>
+              </div>
+              <div class="field"></div>
+              <div class="field">
+                <label for="pp_nom">Nom <span class="req">*</span></label>
+                <input type="text" id="pp_nom" name="pp_nom" data-required-pp autocomplete="family-name" />
+              </div>
+              <div class="field">
+                <label for="pp_prenom">Prénom <span class="req">*</span></label>
+                <input type="text" id="pp_prenom" name="pp_prenom" data-required-pp autocomplete="given-name" />
+              </div>
+              <div class="field">
+                <label for="pp_naissance_date">Date de naissance <span class="req">*</span></label>
+                <input type="date" id="pp_naissance_date" name="pp_naissance_date" data-required-pp />
+              </div>
+              <div class="field">
+                <label for="pp_naissance_lieu">Lieu de naissance <span class="req">*</span></label>
+                <input type="text" id="pp_naissance_lieu" name="pp_naissance_lieu" placeholder="Ville, pays" data-required-pp />
+              </div>
+              <div class="field">
+                <label for="pp_nationalite">Nationalité <span class="req">*</span></label>
+                <input type="text" id="pp_nationalite" name="pp_nationalite" placeholder="Française, Émirienne…" data-required-pp />
+              </div>
+              <div class="field">
+                <label for="pp_siren">N° SIREN <span class="opt">si auto-entrepreneur</span></label>
+                <input type="text" id="pp_siren" name="pp_siren" pattern="[0-9 ]{9,14}" placeholder="123 456 789" />
+              </div>
+              <div class="field full">
+                <label for="pp_adresse">Adresse complète <span class="req">*</span></label>
+                <input type="text" id="pp_adresse" name="pp_adresse" placeholder="N°, rue, code postal, ville, pays" data-required-pp />
+              </div>
+              <div class="field">
+                <label for="pp_email">Email <span class="req">*</span></label>
+                <input type="email" id="pp_email" name="pp_email" data-required-pp autocomplete="email" />
+              </div>
+              <div class="field">
+                <label for="pp_tel">Téléphone <span class="req">*</span></label>
+                <input type="tel" id="pp_tel" name="pp_tel" placeholder="+33 6 12 34 56 78" data-required-pp autocomplete="tel" />
+              </div>
+            </div>
+
+            <div class="subsection">
+              <div class="subsection-title">Pièces justificatives</div>
+              <div class="field-grid">
+                <div class="field">
+                  <label>Pièce d'identité — recto <span class="req">*</span></label>
+                  <label class="upload-zone">
+                    <input type="file" name="pp_cni_recto" accept="image/*,application/pdf" data-required-pp />
+                    <div class="up-icon">⤴</div>
+                    <div class="up-text">Cliquez ou déposez ici</div>
+                    <div class="up-sub">CNI, passeport, titre de séjour — PDF/JPG/PNG, max 10 Mo</div>
+                    <div class="file-info"></div>
+                    <button type="button" class="remove-file" aria-label="Retirer">×</button>
+                  </label>
+                </div>
+                <div class="field">
+                  <label>Pièce d'identité — verso <span class="req">*</span></label>
+                  <label class="upload-zone">
+                    <input type="file" name="pp_cni_verso" accept="image/*,application/pdf" data-required-pp />
+                    <div class="up-icon">⤴</div>
+                    <div class="up-text">Cliquez ou déposez ici</div>
+                    <div class="up-sub">Verso de la même pièce, max 10 Mo</div>
+                    <div class="file-info"></div>
+                    <button type="button" class="remove-file" aria-label="Retirer">×</button>
+                  </label>
+                </div>
+                <div class="field full">
+                  <label>Justificatif de domicile <span class="req">*</span> <span class="opt">moins de 3 mois</span></label>
+                  <label class="upload-zone">
+                    <input type="file" name="pp_justif_domicile" accept="image/*,application/pdf" data-required-pp />
+                    <div class="up-icon">⤴</div>
+                    <div class="up-text">Cliquez ou déposez ici</div>
+                    <div class="up-sub">Facture EDF/Orange, quittance loyer, avis d'imposition — PDF/JPG/PNG, max 10 Mo</div>
+                    <div class="file-info"></div>
+                    <button type="button" class="remove-file" aria-label="Retirer">×</button>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- === PERSONNE MORALE === -->
+          <div class="conditional" id="block-pm">
+            <div class="field-grid">
+              <div class="field full">
+                <label for="pm_raison">Raison sociale <span class="req">*</span></label>
+                <input type="text" id="pm_raison" name="pm_raison" data-required-pm />
+              </div>
+              <div class="field">
+                <label for="pm_forme">Forme juridique <span class="req">*</span></label>
+                <select id="pm_forme" name="pm_forme" data-required-pm>
+                  <option value="">—</option>
+                  <option>SAS / SASU</option>
+                  <option>SARL / EURL</option>
+                  <option>SA</option>
+                  <option>SCI</option>
+                  <option>SNC</option>
+                  <option>Société civile</option>
+                  <option>Auto-entreprise</option>
+                  <option>LLC / Free Zone (UAE)</option>
+                  <option>Ltd</option>
+                  <option>Autre</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="pm_capital">Capital social <span class="req">*</span></label>
+                <input type="text" id="pm_capital" name="pm_capital" placeholder="Ex. 10 000 €" data-required-pm />
+              </div>
+              <div class="field">
+                <label for="pm_siren">N° SIREN / SIRET <span class="req">*</span></label>
+                <input type="text" id="pm_siren" name="pm_siren" placeholder="123 456 789" data-required-pm />
+              </div>
+              <div class="field">
+                <label for="pm_rcs">RCS de rattachement <span class="req">*</span></label>
+                <input type="text" id="pm_rcs" name="pm_rcs" placeholder="Ex. RCS Paris" data-required-pm />
+              </div>
+              <div class="field full">
+                <label for="pm_siege">Siège social <span class="req">*</span></label>
+                <input type="text" id="pm_siege" name="pm_siege" placeholder="Adresse complète du siège" data-required-pm />
+              </div>
+              <div class="field">
+                <label for="pm_date_creation">Date de création <span class="req">*</span></label>
+                <input type="date" id="pm_date_creation" name="pm_date_creation" data-required-pm />
+              </div>
+              <div class="field">
+                <label for="pm_email">Email principal <span class="req">*</span></label>
+                <input type="email" id="pm_email" name="pm_email" data-required-pm />
+              </div>
+              <div class="field">
+                <label for="pm_tel">Téléphone <span class="req">*</span></label>
+                <input type="tel" id="pm_tel" name="pm_tel" placeholder="+33 …" data-required-pm />
+              </div>
+              <div class="field">
+                <label for="pm_site">Site internet <span class="opt">optionnel</span></label>
+                <input type="url" id="pm_site" name="pm_site" placeholder="https://..." />
+              </div>
+            </div>
+
+            <div class="subsection">
+              <div class="subsection-title">Représentant légal</div>
+              <div class="field-grid">
+                <div class="field">
+                  <label for="pm_rep_nom">Nom et prénom <span class="req">*</span></label>
+                  <input type="text" id="pm_rep_nom" name="pm_rep_nom" data-required-pm />
+                </div>
+                <div class="field">
+                  <label for="pm_rep_fonction">Fonction <span class="req">*</span></label>
+                  <input type="text" id="pm_rep_fonction" name="pm_rep_fonction" placeholder="Président, Gérant…" data-required-pm />
+                </div>
+                <div class="field">
+                  <label>Pièce d'identité représentant <span class="req">*</span></label>
+                  <label class="upload-zone">
+                    <input type="file" name="pm_rep_cni" accept="image/*,application/pdf" data-required-pm />
+                    <div class="up-icon">⤴</div>
+                    <div class="up-text">Recto + verso (PDF unique idéalement)</div>
+                    <div class="up-sub">PDF/JPG/PNG, max 10 Mo</div>
+                    <div class="file-info"></div>
+                    <button type="button" class="remove-file" aria-label="Retirer">×</button>
+                  </label>
+                </div>
+                <div class="field">
+                  <label for="pm_rep_email">Email du représentant <span class="req">*</span></label>
+                  <input type="email" id="pm_rep_email" name="pm_rep_email" data-required-pm />
+                </div>
+              </div>
+            </div>
+
+            <div class="subsection">
+              <div class="subsection-title">Documents société</div>
+              <div class="field-grid">
+                <div class="field">
+                  <label>Kbis <span class="req">*</span> <span class="opt">moins de 3 mois</span></label>
+                  <label class="upload-zone">
+                    <input type="file" name="pm_kbis" accept="application/pdf,image/*" data-required-pm />
+                    <div class="up-icon">⤴</div>
+                    <div class="up-text">Cliquez ou déposez ici</div>
+                    <div class="up-sub">Extrait Kbis ou équivalent étranger</div>
+                    <div class="file-info"></div>
+                    <button type="button" class="remove-file" aria-label="Retirer">×</button>
+                  </label>
+                </div>
+                <div class="field">
+                  <label>Statuts à jour <span class="req">*</span></label>
+                  <label class="upload-zone">
+                    <input type="file" name="pm_statuts" accept="application/pdf" data-required-pm />
+                    <div class="up-icon">⤴</div>
+                    <div class="up-text">Cliquez ou déposez ici</div>
+                    <div class="up-sub">PDF, max 10 Mo</div>
+                    <div class="file-info"></div>
+                    <button type="button" class="remove-file" aria-label="Retirer">×</button>
+                  </label>
+                </div>
+                <div class="field full">
+                  <label>Attestation des bénéficiaires effectifs (DBE) <span class="opt">recommandé</span></label>
+                  <label class="upload-zone">
+                    <input type="file" name="pm_dbe" accept="application/pdf,image/*" />
+                    <div class="up-icon">⤴</div>
+                    <div class="up-text">Cliquez ou déposez ici</div>
+                    <div class="up-sub">Extrait du registre des bénéficiaires effectifs</div>
+                    <div class="file-info"></div>
+                    <button type="button" class="remove-file" aria-label="Retirer">×</button>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="subsection">
+              <div class="subsection-title">Bénéficiaires effectifs (> 25 %)</div>
+              <p style="font-size:0.88rem; color: var(--text-3); margin-bottom:14px;">Listez toute personne physique détenant directement ou indirectement plus de 25 % du capital ou des droits de vote.</p>
+              <div class="be-list" id="beList">
+                <!-- be-item template inséré ici par JS -->
+              </div>
+              <button type="button" class="btn-add" id="btnAddBe">+ Ajouter un bénéficiaire effectif</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============== ÉTAPE 3 : HABILITATIONS PROFESSIONNELLES ============== -->
+        <section class="step-panel" data-panel="3">
+          <div class="step-head">
+            <span class="step-tag">Étape 3 / 9</span>
+            <h2>Habilitations professionnelles</h2>
+            <p>Les pièces demandées dépendent de votre profession sélectionnée à l'étape 1.</p>
+          </div>
+
+          <!-- AGENCE IMMO -->
+          <div class="conditional" id="hab-agence">
+            <div class="subsection-title">Carte T (transactions sur immeubles)</div>
+            <div class="field-grid">
+              <div class="field">
+                <label for="agence_carte_t_num">Numéro de carte T <span class="req">*</span></label>
+                <input type="text" id="agence_carte_t_num" name="agence_carte_t_num" />
+              </div>
+              <div class="field">
+                <label for="agence_carte_t_date">Date de délivrance <span class="req">*</span></label>
+                <input type="date" id="agence_carte_t_date" name="agence_carte_t_date" />
+              </div>
+              <div class="field full">
+                <label for="agence_carte_t_auto">Autorité de délivrance <span class="req">*</span></label>
+                <input type="text" id="agence_carte_t_auto" name="agence_carte_t_auto" placeholder="CCI de…" />
+              </div>
+              <div class="field">
+                <label>Scan de la carte T <span class="req">*</span></label>
+                <label class="upload-zone">
+                  <input type="file" name="agence_carte_t_scan" accept="image/*,application/pdf" />
+                  <div class="up-icon">⤴</div>
+                  <div class="up-text">Cliquez ou déposez ici</div>
+                  <div class="up-sub">PDF/JPG/PNG</div>
+                  <div class="file-info"></div>
+                  <button type="button" class="remove-file" aria-label="Retirer">×</button>
+                </label>
+              </div>
+              <div class="field">
+                <label>Attestation garantie financière <span class="req">*</span></label>
+                <label class="upload-zone">
+                  <input type="file" name="agence_garantie_attestation" accept="image/*,application/pdf" />
+                  <div class="up-icon">⤴</div>
+                  <div class="up-text">Cliquez ou déposez ici</div>
+                  <div class="up-sub">Organisme + plafond visibles</div>
+                  <div class="file-info"></div>
+                  <button type="button" class="remove-file" aria-label="Retirer">×</button>
+                </label>
+              </div>
+              <div class="field">
+                <label for="agence_garantie_organisme">Organisme garant</label>
+                <input type="text" id="agence_garantie_organisme" name="agence_garantie_organisme" placeholder="Galian, CEGC…" />
+              </div>
+              <div class="field">
+                <label for="agence_garantie_plafond">Plafond de garantie</label>
+                <input type="text" id="agence_garantie_plafond" name="agence_garantie_plafond" placeholder="Ex. 120 000 €" />
+              </div>
+            </div>
+          </div>
+
+          <!-- IOBSP / CIF -->
+          <div class="conditional" id="hab-orias">
+            <div class="subsection-title">Immatriculation ORIAS</div>
+            <div class="field-grid">
+              <div class="field">
+                <label for="orias_num">N° ORIAS <span class="req">*</span></label>
+                <input type="text" id="orias_num" name="orias_num" placeholder="8 chiffres" />
+              </div>
+              <div class="field">
+                <label for="orias_categorie">Catégorie <span class="req">*</span></label>
+                <select id="orias_categorie" name="orias_categorie">
+                  <option value="">—</option>
+                  <option>IOBSP (Intermédiaire en opérations de banque)</option>
+                  <option>CIF (Conseiller en investissements financiers)</option>
+                  <option>MIA (Mandataire en intermédiation en assurance)</option>
+                  <option>Plusieurs catégories</option>
+                </select>
+              </div>
+              <div class="field full">
+                <label>Attestation ORIAS en cours de validité <span class="req">*</span></label>
+                <label class="upload-zone">
+                  <input type="file" name="orias_attestation" accept="image/*,application/pdf" />
+                  <div class="up-icon">⤴</div>
+                  <div class="up-text">Cliquez ou déposez ici</div>
+                  <div class="up-sub">Extrait du registre ORIAS</div>
+                  <div class="file-info"></div>
+                  <button type="button" class="remove-file" aria-label="Retirer">×</button>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- RC PRO -->
+          <div class="subsection" id="hab-rcpro-wrap">
+            <div class="subsection-title">Assurance responsabilité civile professionnelle</div>
+            <div class="field-grid">
+              <div class="field">
+                <label for="rcpro_assureur">Assureur</label>
+                <input type="text" id="rcpro_assureur" name="rcpro_assureur" placeholder="MMA, Allianz, AIG…" />
+              </div>
+              <div class="field">
+                <label for="rcpro_num">N° de contrat</label>
+                <input type="text" id="rcpro_num" name="rcpro_num" />
+              </div>
+              <div class="field">
+                <label for="rcpro_plafond">Plafond de garantie</label>
+                <input type="text" id="rcpro_plafond" name="rcpro_plafond" placeholder="Ex. 500 000 €" />
+              </div>
+              <div class="field">
+                <label for="rcpro_date">Date de validité</label>
+                <input type="date" id="rcpro_date" name="rcpro_date" />
+              </div>
+              <div class="field full">
+                <label>Attestation RC Pro</label>
+                <label class="upload-zone">
+                  <input type="file" name="rcpro_attestation" accept="image/*,application/pdf" />
+                  <div class="up-icon">⤴</div>
+                  <div class="up-text">Cliquez ou déposez ici</div>
+                  <div class="up-sub">PDF/JPG/PNG en cours de validité</div>
+                  <div class="file-info"></div>
+                  <button type="button" class="remove-file" aria-label="Retirer">×</button>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="subsection">
+            <div class="subsection-title">Autres agréments <span style="font-size:0.7rem; color: var(--text-3); font-weight:400; letter-spacing:0;">(AMF, ACPR, autres juridictions…)</span></div>
+            <div class="field">
+              <label for="autres_agrements">Précisez si applicable <span class="opt">optionnel</span></label>
+              <textarea id="autres_agrements" name="autres_agrements" placeholder="Ex. agrément AMF n°XXX, licence broker RERA Dubaï, autre régulateur…"></textarea>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============== ÉTAPE 4 : BANQUE / FISCAL ============== -->
+        <section class="step-panel" data-panel="4">
+          <div class="step-head">
+            <span class="step-tag">Étape 4 / 9</span>
+            <h2>Coordonnées bancaires et fiscales</h2>
+            <p>Ces informations permettent d'éditer la convention et les futurs versements de commissions.</p>
+          </div>
+
+          <div class="field-grid">
+            <div class="field full">
+              <label>RIB / IBAN <span class="req">*</span></label>
+              <label class="upload-zone">
+                <input type="file" name="rib" accept="image/*,application/pdf" data-required="step4" />
+                <div class="up-icon">⤴</div>
+                <div class="up-text">Cliquez ou déposez ici</div>
+                <div class="up-sub">Relevé d'identité bancaire — PDF/JPG/PNG</div>
+                <div class="file-info"></div>
+                <button type="button" class="remove-file" aria-label="Retirer">×</button>
+              </label>
+            </div>
+            <div class="field">
+              <label for="pays_fiscal">Pays de résidence fiscale <span class="req">*</span></label>
+              <input type="text" id="pays_fiscal" name="pays_fiscal" placeholder="France, Émirats arabes unis…" data-required="step4" />
+            </div>
+            <div class="field">
+              <label for="tva_num">N° TVA intracommunautaire <span class="opt">si UE</span></label>
+              <input type="text" id="tva_num" name="tva_num" placeholder="FR12345678901" />
+            </div>
+            <div class="field full">
+              <label for="tva_regime">Régime TVA <span class="req">*</span></label>
+              <select id="tva_regime" name="tva_regime" data-required="step4">
+                <option value="">—</option>
+                <option>Assujetti TVA (taux normal)</option>
+                <option>Franchise en base de TVA</option>
+                <option>Autoliquidation (hors UE / B2B)</option>
+                <option>Non concerné (résidence hors UE)</option>
+                <option>À déterminer</option>
+              </select>
+            </div>
+            <div class="field full">
+              <label>Attestation de régularité fiscale et sociale <span class="opt">recommandé — URSSAF + fiscale</span></label>
+              <label class="upload-zone">
+                <input type="file" name="attestation_fiscale" accept="image/*,application/pdf" />
+                <div class="up-icon">⤴</div>
+                <div class="up-text">Cliquez ou déposez ici</div>
+                <div class="up-sub">PDF/JPG/PNG — optionnel mais accélère l'onboarding</div>
+                <div class="file-info"></div>
+                <button type="button" class="remove-file" aria-label="Retirer">×</button>
+              </label>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============== ÉTAPE 5 : ACTIVITÉ ============== -->
+        <section class="step-panel" data-panel="5">
+          <div class="step-head">
+            <span class="step-tag">Étape 5 / 9</span>
+            <h2>Votre activité aujourd'hui</h2>
+            <p>Aidez-nous à dimensionner le partenariat et à préparer un onboarding utile.</p>
+          </div>
+
+          <div class="field-grid">
+            <div class="field">
+              <label for="zones">Zones géographiques d'activité <span class="req">*</span></label>
+              <select id="zones" name="zones" multiple size="6" data-required="step5" style="padding: 10px 14px; min-height: 160px;">
+                <option>France métropolitaine</option>
+                <option>DOM-TOM</option>
+                <option>Émirats arabes unis (Dubaï)</option>
+                <option>Suisse</option>
+                <option>Belgique</option>
+                <option>Luxembourg</option>
+                <option>Monaco</option>
+                <option>Royaume-Uni</option>
+                <option>Maghreb</option>
+                <option>Afrique de l'Ouest</option>
+                <option>Asie</option>
+                <option>Amérique du Nord</option>
+                <option>Autre</option>
+              </select>
+              <div class="help">Maintenez ⌘ (Mac) ou Ctrl (PC) pour en sélectionner plusieurs.</div>
+            </div>
+            <div class="field">
+              <label for="volume_leads">Volume de leads estimé / mois <span class="req">*</span></label>
+              <select id="volume_leads" name="volume_leads" data-required="step5">
+                <option value="">—</option>
+                <option>1 à 5 leads / mois</option>
+                <option>6 à 15 leads / mois</option>
+                <option>16 à 30 leads / mois</option>
+                <option>31 à 50 leads / mois</option>
+                <option>50+ leads / mois</option>
+              </select>
+            </div>
+            <div class="field full">
+              <label for="typologie">Typologie de clients que vous adressez <span class="req">*</span></label>
+              <textarea id="typologie" name="typologie" placeholder="Ex. HNWI > 1 M€ patrimoine, expats français à Dubaï, dirigeants TPE/PME, professions libérales, retail avec capacité d'emprunt…" data-required="step5"></textarea>
+            </div>
+            <div class="field full">
+              <label for="sources">Sources de leads <span class="req">*</span></label>
+              <textarea id="sources" name="sources" placeholder="Réseau personnel, CRM existant (ex. 2 500 contacts), marketing digital (LinkedIn, Meta Ads), partenariats notaires/experts-comptables…" data-required="step5"></textarea>
+            </div>
+            <div class="field">
+              <label for="deja_place">Avez-vous déjà placé des produits financiers ?</label>
+              <select id="deja_place" name="deja_place">
+                <option value="">—</option>
+                <option>Oui</option>
+                <option>Non</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="produits_passes">Si oui, lesquels ?</label>
+              <input type="text" id="produits_passes" name="produits_passes" placeholder="Ex. SCPI, OPCI, crowdfunding immo, club deals…" />
+            </div>
+          </div>
+        </section>
+
+        <!-- ============== ÉTAPE 6 : COMMERCIAL ============== -->
+        <section class="step-panel" data-panel="6">
+          <div class="step-head">
+            <span class="step-tag">Étape 6 / 9</span>
+            <h2>Conditions commerciales souhaitées</h2>
+            <p>Indicatif — toutes les conditions finales sont actées dans la convention d'apport.</p>
+          </div>
+
+          <div class="field">
+            <label>Modèle de partenariat souhaité <span class="req">*</span></label>
+            <div class="choice-grid">
+              <label class="choice-card">
+                <input type="radio" name="modele_partenariat" value="Direct (commission MBD)" data-required="step6" />
+                <div class="card-inner">
+                  <div class="card-icon">→</div>
+                  <div class="card-title">Modèle Direct</div>
+                  <div class="card-sub">MBD gère la commission agence et vous reverse une quote-part.</div>
+                </div>
+              </label>
+              <label class="choice-card">
+                <input type="radio" name="modele_partenariat" value="White Label" />
+                <div class="card-inner">
+                  <div class="card-icon">⊕</div>
+                  <div class="card-title">White Label</div>
+                  <div class="card-sub">Vous gardez 100 % de la commission agence. MBD facture les frais de dossier au client.</div>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <div class="field-grid" style="margin-top: 28px;">
+            <div class="field">
+              <label for="comm_taux">Taux ou montant discuté <span class="opt">indicatif</span></label>
+              <input type="text" id="comm_taux" name="comm_taux" placeholder="Ex. 2 % du souscrit, ou 500 € fixe" />
+            </div>
+            <div class="field">
+              <label for="comm_base">Base de calcul</label>
+              <select id="comm_base" name="comm_base">
+                <option value="">—</option>
+                <option>Montant souscrit en OC</option>
+                <option>Frais de dossier perçus</option>
+                <option>Commission agence (Direct)</option>
+                <option>À discuter</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="exclusivite">Exclusivité demandée ?</label>
+              <select id="exclusivite" name="exclusivite">
+                <option value="">—</option>
+                <option>Non</option>
+                <option>Oui, sur ma zone</option>
+                <option>Oui, sur ma typologie de client</option>
+                <option>À discuter</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="protection_lead">Durée de protection des leads souhaitée</label>
+              <select id="protection_lead" name="protection_lead">
+                <option value="">—</option>
+                <option>6 mois</option>
+                <option>12 mois</option>
+                <option>18 mois</option>
+                <option>24 mois</option>
+                <option>À discuter</option>
+              </select>
+            </div>
+            <div class="field full">
+              <label for="duree_contrat">Durée de contrat / tacite reconduction souhaitée</label>
+              <select id="duree_contrat" name="duree_contrat">
+                <option value="">—</option>
+                <option>12 mois, tacite reconduction</option>
+                <option>24 mois, tacite reconduction</option>
+                <option>36 mois, tacite reconduction</option>
+                <option>Sans engagement de durée</option>
+                <option>À discuter</option>
+              </select>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============== ÉTAPE 7 : ENGAGEMENTS ============== -->
+        <section class="step-panel" data-panel="7">
+          <div class="step-head">
+            <span class="step-tag">Étape 7 / 9</span>
+            <h2>Déclarations et engagements</h2>
+            <p>Pour pouvoir contractualiser, nous avons besoin de vos déclarations sur l'honneur ci-dessous. Tout est repris noir sur blanc dans la convention finale.</p>
+          </div>
+
+          <div class="check-list">
+            <label class="check-item">
+              <input type="checkbox" name="dec_honneur" value="OK" data-required="step7" />
+              <span class="check-box"></span>
+              <span class="check-content">
+                <span class="check-title">Déclaration de non-condamnation <span class="req">*</span></span>
+                <span class="check-detail">Je déclare sur l'honneur n'avoir fait l'objet d'aucune condamnation pour fraude, blanchiment, abus de biens sociaux, escroquerie ou délit financier, et n'être visé par aucune procédure en cours pouvant entraîner une telle condamnation.</span>
+              </span>
+            </label>
+
+            <label class="check-item">
+              <input type="checkbox" name="dec_lcbft" value="OK" data-required="step7" />
+              <span class="check-box"></span>
+              <span class="check-content">
+                <span class="check-title">Déclaration LCB-FT <span class="req">*</span></span>
+                <span class="check-detail">Je déclare ne pas être listé sur les listes de sanctions internationales (UE, OFAC, ONU), ne pas être une Personne Politiquement Exposée (PPE) non déclarée, et m'engage à informer MBD de tout changement de statut à cet égard.</span>
+              </span>
+            </label>
+
+            <label class="check-item">
+              <input type="checkbox" name="dec_rgpd" value="OK" data-required="step7" />
+              <span class="check-box"></span>
+              <span class="check-content">
+                <span class="check-title">Politique RGPD <span class="req">*</span></span>
+                <span class="check-detail">J'accepte la politique de traitement des données de MyBulkDeal et m'engage à recueillir le consentement de mes prospects avant transmission de leurs données à MBD. Toute personne dont les données sont transmises pourra exercer ses droits RGPD.</span>
+              </span>
+            </label>
+
+            <label class="check-item">
+              <input type="checkbox" name="dec_cgv" value="OK" data-required="step7" />
+              <span class="check-box"></span>
+              <span class="check-content">
+                <span class="check-title">CGV du programme partenaires <span class="req">*</span></span>
+                <span class="check-detail">Je prends connaissance des conditions générales du programme partenaires MyBulkDeal et accepte qu'elles servent de socle à la convention d'apport d'affaires qui me sera proposée.</span>
+              </span>
+            </label>
+
+            <label class="check-item">
+              <input type="checkbox" name="dec_charte" value="OK" data-required="step7" />
+              <span class="check-box"></span>
+              <span class="check-content">
+                <span class="check-title">Charte de communication <span class="req">*</span></span>
+                <span class="check-detail">Je m'engage à n'utiliser que les supports marketing validés par MyBulkDeal, à ne pas formuler de promesses de rendement non documentées, à ne pas exercer de démarchage financier sans habilitation, et à toujours présenter MBD de manière fidèle au cadre contractuel.</span>
+              </span>
+            </label>
+
+            <label class="check-item">
+              <input type="checkbox" name="dec_independance" value="OK" data-required="step7" />
+              <span class="check-box"></span>
+              <span class="check-content">
+                <span class="check-title">Statut d'indépendance <span class="req">*</span></span>
+                <span class="check-detail">Je reconnais agir en qualité d'apporteur d'affaires indépendant. Aucun lien de subordination, aucune représentation et aucun pouvoir d'engagement au nom de MBD ne sont ou ne seront créés par la convention envisagée.</span>
+              </span>
+            </label>
+          </div>
+        </section>
+
+        <!-- ============== ÉTAPE 8 : SIGNATAIRE + COMPLÉMENTAIRES ============== -->
+        <section class="step-panel" data-panel="8">
+          <div class="step-head">
+            <span class="step-tag">Étape 8 / 9</span>
+            <h2>Signataire et pièces complémentaires</h2>
+            <p>Dernière étape avant l'envoi.</p>
+          </div>
+
+          <div class="subsection-title">Signataire de la convention</div>
+          <div class="field-grid">
+            <div class="field">
+              <label for="sign_nom">Nom et prénom <span class="req">*</span></label>
+              <input type="text" id="sign_nom" name="sign_nom" data-required="step8" />
+            </div>
+            <div class="field">
+              <label for="sign_fonction">Fonction <span class="req">*</span></label>
+              <input type="text" id="sign_fonction" name="sign_fonction" placeholder="Président, Gérant, Indépendant…" data-required="step8" />
+            </div>
+            <div class="field full">
+              <label for="sign_email">Email pour signature électronique (DocuSign) <span class="req">*</span></label>
+              <input type="email" id="sign_email" name="sign_email" data-required="step8" />
+              <div class="help">C'est sur cet email que la convention vous sera envoyée pour signature.</div>
+            </div>
+          </div>
+
+          <div class="subsection">
+            <div class="subsection-title">Pièces complémentaires <span style="font-size:0.7rem; color: var(--text-3); font-weight:400; letter-spacing:0;">(optionnel — accélère le traitement)</span></div>
+            <div class="field-grid">
+              <div class="field">
+                <label>Pitch deck / présentation de votre structure</label>
+                <label class="upload-zone">
+                  <input type="file" name="pitch_deck" accept="application/pdf,image/*,.pptx,.ppt,.key" />
+                  <div class="up-icon">⤴</div>
+                  <div class="up-text">Cliquez ou déposez ici</div>
+                  <div class="up-sub">PDF, PPTX, max 10 Mo</div>
+                  <div class="file-info"></div>
+                  <button type="button" class="remove-file" aria-label="Retirer">×</button>
+                </label>
+              </div>
+              <div class="field">
+                <label>Track record / références</label>
+                <label class="upload-zone">
+                  <input type="file" name="track_record" accept="application/pdf,image/*" />
+                  <div class="up-icon">⤴</div>
+                  <div class="up-text">Cliquez ou déposez ici</div>
+                  <div class="up-sub">PDF/JPG/PNG, max 10 Mo</div>
+                  <div class="file-info"></div>
+                  <button type="button" class="remove-file" aria-label="Retirer">×</button>
+                </label>
+              </div>
+              <div class="field full">
+                <label for="linkedin">URL LinkedIn du dirigeant ou de la structure</label>
+                <input type="url" id="linkedin" name="linkedin" placeholder="https://www.linkedin.com/in/..." />
+              </div>
+              <div class="field full">
+                <label for="commentaire">Un mot pour nous (optionnel)</label>
+                <textarea id="commentaire" name="commentaire" placeholder="Contexte, attentes spécifiques, dossier client déjà identifié…"></textarea>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============== ÉTAPE 9 : RÉCAP ============== -->
+        <section class="step-panel" data-panel="9">
+          <div class="step-head">
+            <span class="step-tag">Étape 9 / 9</span>
+            <h2>Récapitulatif avant envoi</h2>
+            <p>Vérifiez vos informations. Vous pouvez revenir en arrière à tout moment pour ajuster.</p>
+          </div>
+
+          <div id="recap"></div>
+
+          <input type="hidden" name="_recap_meta" id="_recap_meta" value="" />
+        </section>
+
+        <!-- ========== NAV BUTTONS ========== -->
+        <div class="form-nav">
+          <button type="button" class="btn btn-ghost" id="btnPrev" style="visibility: hidden;">← Précédent</button>
+          <button type="button" class="btn btn-primary" id="btnNext">Continuer →</button>
+          <button type="submit" class="btn btn-primary btn-submit" id="btnSubmit" style="display:none;">Envoyer ma candidature →</button>
+        </div>
+
+      </div>
+    </form>
+
+    <!-- THANK YOU PAGE -->
+    <div class="thanks" id="thanks">
+      <div class="check-icon">✓</div>
+      <h2>Candidature envoyée !</h2>
+      <p>Merci. Nous avons bien reçu votre dossier et toutes les pièces jointes. L'équipe MyBulkDeal revient vers vous sous <strong style="color:var(--green)">48 heures</strong> avec une proposition de convention adaptée à votre profil.</p>
+      <a href="/brokers" class="btn btn-primary">← Retour à la page partenaires</a>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="logotype foot-logo">
+      <span class="my">My</span><span class="bulk">Bulk</span><span class="deal">Deal<span class="dot">.</span></span>
+    </div>
+    <div class="foot-info">Programme partenaires — apporteurs d'affaires</div>
+    <p class="foot-disclaimer">Les informations transmises via ce formulaire sont utilisées exclusivement dans le cadre de l'instruction de votre candidature au programme partenaires MyBulkDeal et de la conformité KYC / LCB-FT. Conformément au RGPD, vous disposez d'un droit d'accès, de rectification et de suppression de vos données en écrivant à privacy@mybulkdeal.com.</p>
+  </div>
+</footer>
+
+<!-- ====================== TEMPLATE BÉNÉFICIAIRE EFFECTIF ====================== -->
+<template id="beTemplate">
+  <div class="be-item">
+    <div class="be-head">
+      <span class="be-label">Bénéficiaire effectif</span>
+      <button type="button" class="be-remove">Retirer</button>
+    </div>
+    <div class="field-grid">
+      <div class="field">
+        <label>Nom et prénom</label>
+        <input type="text" name="be_nom[]" />
+      </div>
+      <div class="field">
+        <label>% de détention</label>
+        <input type="number" name="be_pct[]" min="25" max="100" step="0.1" placeholder="Ex. 51" />
+      </div>
+      <div class="field full">
+        <label>Pièce d'identité du bénéficiaire</label>
+        <label class="upload-zone">
+          <input type="file" name="be_cni[]" accept="image/*,application/pdf" />
+          <div class="up-icon">⤴</div>
+          <div class="up-text">Cliquez ou déposez ici</div>
+          <div class="up-sub">CNI ou passeport — PDF/JPG/PNG</div>
+          <div class="file-info"></div>
+          <button type="button" class="remove-file" aria-label="Retirer">×</button>
+        </label>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+/* ============================================================
+   STATE
+   ============================================================ */
+const form = document.getElementById('apporteurForm');
+const panels = [...document.querySelectorAll('.step-panel')];
+const pills = [...document.querySelectorAll('.step-pill')];
+const btnPrev = document.getElementById('btnPrev');
+const btnNext = document.getElementById('btnNext');
+const btnSubmit = document.getElementById('btnSubmit');
+const alertBox = document.getElementById('alert');
+const alertText = document.getElementById('alertText');
+const recap = document.getElementById('recap');
+const thanks = document.getElementById('thanks');
+const TOTAL_STEPS = 9;
+let currentStep = 1;
+
+/* ============================================================
+   ADAPTIVE LOGIC — show only relevant fields
+   ============================================================ */
+function applyAdaptive() {
+  const type = form.querySelector('input[name="type_apporteur"]:checked')?.value;
+  const prof = form.profession.value;
+
+  // Étape 2 : PP vs PM
+  document.getElementById('block-pp').classList.toggle('show', type === 'Personne physique');
+  document.getElementById('block-pm').classList.toggle('show', type === 'Personne morale');
+
+  // Étape 1 : "Autre" profession
+  document.getElementById('profession-autre-wrap').classList.toggle('show', prof === 'Autre');
+  form.profession_autre.required = (prof === 'Autre');
+
+  // Étape 3 : habilitations conditionnelles
+  document.getElementById('hab-agence').classList.toggle('show', prof === 'Agence immobilière');
+  document.getElementById('hab-orias').classList.toggle('show',
+    prof === 'Courtier en crédit (IOBSP)' ||
+    prof === 'Conseiller en investissements financiers (CIF)'
+  );
+
+  // Required dynamique sur les uploads et champs PP / PM
+  document.querySelectorAll('[data-required-pp]').forEach(el => el.required = (type === 'Personne physique'));
+  document.querySelectorAll('[data-required-pm]').forEach(el => el.required = (type === 'Personne morale'));
+
+  // Habilitations : required selon profession
+  const isAgence = (prof === 'Agence immobilière');
+  ['agence_carte_t_num','agence_carte_t_date','agence_carte_t_auto'].forEach(n => form[n] && (form[n].required = isAgence));
+  const isOrias = (prof === 'Courtier en crédit (IOBSP)' || prof === 'Conseiller en investissements financiers (CIF)');
+  ['orias_num','orias_categorie'].forEach(n => form[n] && (form[n].required = isOrias));
+}
+
+form.querySelectorAll('input[name="type_apporteur"], #profession').forEach(el => {
+  el.addEventListener('change', () => { applyAdaptive(); injectLaterToggles(); });
+});
+
+/* ============================================================
+   "JE TRANSMETTRAI PLUS TARD" — toggle injecté sur chaque champ requis
+   (sauf étape 7 : engagements / déclarations sur l'honneur, qui restent
+    bloquants par nature)
+   ============================================================ */
+function injectLaterToggles() {
+  document.querySelectorAll('.step-panel .field').forEach(field => {
+    // Exclure l'étape 7 (engagements)
+    if (field.closest('.step-panel[data-panel="7"]')) return;
+    // Ne pas dupliquer
+    if (field.querySelector('.later-toggle')) return;
+
+    // Chercher au moins un champ obligatoire dans ce .field
+    const reqEl = field.querySelector(
+      'input[required], select[required], textarea[required], ' +
+      'input[data-required], select[data-required], textarea[data-required], ' +
+      'input[data-required-pp], select[data-required-pp], textarea[data-required-pp], ' +
+      'input[data-required-pm], select[data-required-pm], textarea[data-required-pm]'
+    );
+    if (!reqEl) return;
+    // Pas pour les radios (le groupe se gère globalement à l'étape 1)
+    if (reqEl.type === 'radio') return;
+
+    const toggle = document.createElement('label');
+    toggle.className = 'later-toggle';
+    toggle.innerHTML = '<input type="checkbox" class="later-check"><span class="later-tag">⏱ Je transmettrai cet élément plus tard</span>';
+    field.appendChild(toggle);
+
+    const check = toggle.querySelector('input');
+    check.addEventListener('change', () => {
+      const isLater = check.checked;
+      field.classList.toggle('is-later', isLater);
+      // Mark all relevant inputs of the field
+      field.querySelectorAll('input, select, textarea').forEach(inp => {
+        if (inp === check) return;
+        inp.dataset.later = isLater ? '1' : '';
+        if (isLater) inp.classList.remove('invalid');
+      });
+      // Pour le _meta envoyé par email, on flag le champ
+      const namedInputs = field.querySelectorAll('input[name], select[name], textarea[name]');
+      namedInputs.forEach(inp => {
+        if (inp === check) return;
+        // Ajouter / retirer un champ caché "<name>_plus_tard" pour le récap email
+        const flagName = inp.name + '__plus_tard';
+        let hidden = form.querySelector(`input[type="hidden"][name="${flagName}"]`);
+        if (isLater) {
+          if (!hidden) {
+            hidden = document.createElement('input');
+            hidden.type = 'hidden';
+            hidden.name = flagName;
+            hidden.value = 'À FOURNIR PLUS TARD';
+            form.appendChild(hidden);
+          }
+        } else if (hidden) {
+          hidden.remove();
+        }
+      });
+    });
+  });
+}
+
+/* ============================================================
+   FILE UPLOAD — visual feedback + drag/drop
+   ============================================================ */
+function bindUploadZone(zone) {
+  const input = zone.querySelector('input[type="file"]');
+  const info = zone.querySelector('.file-info');
+  const remove = zone.querySelector('.remove-file');
+
+  input.addEventListener('change', () => {
+    if (input.files && input.files.length) {
+      const f = input.files[0];
+      const kb = (f.size / 1024).toFixed(0);
+      const sizeText = kb > 1024 ? (kb/1024).toFixed(1) + ' Mo' : kb + ' Ko';
+      info.textContent = `✓ ${f.name}  ·  ${sizeText}`;
+      zone.classList.add('has-file');
+    }
+  });
+
+  remove.addEventListener('click', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    input.value = '';
+    info.textContent = '';
+    zone.classList.remove('has-file');
+  });
+
+  ['dragenter','dragover'].forEach(ev => zone.addEventListener(ev, e => {
+    e.preventDefault(); e.stopPropagation(); zone.classList.add('dragover');
+  }));
+  ['dragleave','drop'].forEach(ev => zone.addEventListener(ev, e => {
+    e.preventDefault(); e.stopPropagation(); zone.classList.remove('dragover');
+  }));
+  zone.addEventListener('drop', e => {
+    if (e.dataTransfer.files && e.dataTransfer.files.length) {
+      input.files = e.dataTransfer.files;
+      input.dispatchEvent(new Event('change'));
+    }
+  });
+}
+document.querySelectorAll('.upload-zone').forEach(bindUploadZone);
+
+/* ============================================================
+   BÉNÉFICIAIRES EFFECTIFS — dynamic list
+   ============================================================ */
+const beList = document.getElementById('beList');
+const beTemplate = document.getElementById('beTemplate');
+
+function addBe() {
+  const node = beTemplate.content.cloneNode(true);
+  const item = node.querySelector('.be-item');
+  item.querySelector('.be-remove').addEventListener('click', () => item.remove());
+  bindUploadZone(item.querySelector('.upload-zone'));
+  beList.appendChild(node);
+  injectLaterToggles();
+}
+document.getElementById('btnAddBe').addEventListener('click', addBe);
+
+/* ============================================================
+   STEPS NAVIGATION
+   ============================================================ */
+function showStep(n) {
+  currentStep = n;
+  panels.forEach(p => p.classList.toggle('active', +p.dataset.panel === n));
+  pills.forEach(p => {
+    const s = +p.dataset.step;
+    p.classList.toggle('active', s === n);
+    p.classList.toggle('done', s < n);
+  });
+  btnPrev.style.visibility = (n === 1) ? 'hidden' : 'visible';
+  btnNext.style.display = (n < TOTAL_STEPS) ? 'inline-flex' : 'none';
+  btnSubmit.style.display = (n === TOTAL_STEPS) ? 'inline-flex' : 'none';
+  alertBox.classList.remove('show');
+  window.scrollTo({ top: document.querySelector('.stepper-wrap').offsetTop - 70, behavior: 'smooth' });
+
+  if (n === TOTAL_STEPS) buildRecap();
+}
+
+function validateStep(n) {
+  const panel = panels[n-1];
+  const required = panel.querySelectorAll('[required]');
+  let firstInvalid = null;
+  required.forEach(el => {
+    el.classList.remove('invalid');
+    // Skip hidden fields
+    if (el.closest('.conditional') && !el.closest('.conditional').classList.contains('show')) return;
+    // Skip si user a coché "je transmettrai plus tard"
+    if (el.dataset.later === '1' || (el.closest('.field') && el.closest('.field').classList.contains('is-later'))) return;
+    const val = (el.type === 'file') ? (el.files && el.files.length) : (el.value || '').trim();
+    if (!val) {
+      el.classList.add('invalid');
+      if (!firstInvalid) firstInvalid = el;
+    }
+    if (el.type === 'email' && val && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)) {
+      el.classList.add('invalid');
+      if (!firstInvalid) firstInvalid = el;
+    }
+  });
+
+  // Étape 7 : toutes les checkboxes requises
+  if (n === 7) {
+    panel.querySelectorAll('input[type="checkbox"][data-required="step7"]').forEach(cb => {
+      cb.closest('.check-item').style.borderColor = '';
+      if (!cb.checked) {
+        cb.closest('.check-item').style.borderColor = 'var(--red)';
+        if (!firstInvalid) firstInvalid = cb;
+      }
+    });
+  }
+
+  if (firstInvalid) {
+    alertText.textContent = (n === 7)
+      ? 'Merci de cocher toutes les déclarations pour pouvoir contractualiser.'
+      : 'Merci de compléter les champs obligatoires marqués d\'un astérisque.';
+    alertBox.classList.add('show');
+    firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    return false;
+  }
+  return true;
+}
+
+btnNext.addEventListener('click', () => {
+  if (!validateStep(currentStep)) return;
+  applyAdaptive();
+  if (currentStep < TOTAL_STEPS) showStep(currentStep + 1);
+});
+btnPrev.addEventListener('click', () => {
+  if (currentStep > 1) showStep(currentStep - 1);
+});
+
+/* Clickable stepper — only to go back */
+pills.forEach(p => p.addEventListener('click', () => {
+  const target = +p.dataset.step;
+  if (target < currentStep) showStep(target);
+}));
+
+/* ============================================================
+   RECAP BUILDER
+   ============================================================ */
+function v(name) {
+  const el = form.elements[name];
+  if (!el) return '';
+  // Detect "je transmettrai plus tard"
+  const target = (el.length && !el.options) ? el[0] : el;
+  if (target && target.dataset && target.dataset.later === '1') {
+    return '⏱ À fournir plus tard';
+  }
+  if (target && target.closest && target.closest('.field') && target.closest('.field').classList.contains('is-later')) {
+    return '⏱ À fournir plus tard';
+  }
+  if (el.length && !el.options) { // RadioNodeList
+    return el.value || '';
+  }
+  if (el.type === 'file') {
+    return (el.files && el.files.length) ? `📎 ${el.files[0].name}` : '';
+  }
+  if (el.tagName === 'SELECT' && el.multiple) {
+    return [...el.selectedOptions].map(o => o.value).join(', ');
+  }
+  return el.value || '';
+}
+function row(k, val) {
+  const empty = !val || val === '';
+  const isLater = val === '⏱ À fournir plus tard';
+  return `<div class="recap-row"><div class="k">${k}</div><div class="v ${empty?'empty':''}" style="${isLater?'color:var(--green); font-weight:600;':''}">${empty ? '— non renseigné —' : val}</div></div>`;
+}
+function block(title, rows) {
+  return `<div class="recap-block"><div class="recap-block-title">${title}</div>${rows.join('')}</div>`;
+}
+
+function buildRecap() {
+  const type = v('type_apporteur');
+  const isPM = (type === 'Personne morale');
+  const html = [];
+
+  html.push(block('1 · Profil', [
+    row('Type', type),
+    row('Profession', v('profession') + (v('profession') === 'Autre' ? ` (${v('profession_autre')})` : ''))
+  ]));
+
+  if (!isPM) {
+    html.push(block('2 · Identité (personne physique)', [
+      row('Civilité', v('pp_civilite')),
+      row('Nom / prénom', `${v('pp_nom')} ${v('pp_prenom')}`),
+      row('Naissance', `${v('pp_naissance_date')} — ${v('pp_naissance_lieu')}`),
+      row('Nationalité', v('pp_nationalite')),
+      row('Adresse', v('pp_adresse')),
+      row('Email / Tél', `${v('pp_email')} · ${v('pp_tel')}`),
+      row('SIREN (le cas échéant)', v('pp_siren')),
+      row('CNI recto', v('pp_cni_recto')),
+      row('CNI verso', v('pp_cni_verso')),
+      row('Justif. domicile', v('pp_justif_domicile'))
+    ]));
+  } else {
+    html.push(block('2 · Identité (personne morale)', [
+      row('Raison sociale', v('pm_raison')),
+      row('Forme / Capital', `${v('pm_forme')} · ${v('pm_capital')}`),
+      row('SIREN / RCS', `${v('pm_siren')} · ${v('pm_rcs')}`),
+      row('Siège', v('pm_siege')),
+      row('Date création', v('pm_date_creation')),
+      row('Email / Tél / Web', `${v('pm_email')} · ${v('pm_tel')} · ${v('pm_site')}`),
+      row('Représentant légal', `${v('pm_rep_nom')} (${v('pm_rep_fonction')}) — ${v('pm_rep_email')}`),
+      row('Kbis', v('pm_kbis')),
+      row('Statuts', v('pm_statuts')),
+      row('CNI représentant', v('pm_rep_cni')),
+      row('DBE', v('pm_dbe'))
+    ]));
+    const beItems = beList.querySelectorAll('.be-item');
+    if (beItems.length) {
+      const rows = [];
+      beItems.forEach((item, i) => {
+        const nom = item.querySelector('input[name="be_nom[]"]').value;
+        const pct = item.querySelector('input[name="be_pct[]"]').value;
+        const cni = item.querySelector('input[name="be_cni[]"]').files;
+        rows.push(row(`BE ${i+1}`, `${nom} — ${pct}% ${cni && cni.length ? '· 📎 '+cni[0].name : ''}`));
+      });
+      html.push(block('Bénéficiaires effectifs', rows));
+    }
+  }
+
+  // Habilitations
+  const prof = v('profession');
+  const habRows = [];
+  if (prof === 'Agence immobilière') {
+    habRows.push(row('Carte T', `n° ${v('agence_carte_t_num')} · ${v('agence_carte_t_date')} · ${v('agence_carte_t_auto')}`));
+    habRows.push(row('Scan carte T', v('agence_carte_t_scan')));
+    habRows.push(row('Garantie financière', `${v('agence_garantie_organisme')} · ${v('agence_garantie_plafond')}`));
+    habRows.push(row('Attestation garantie', v('agence_garantie_attestation')));
+  }
+  if (prof === 'Courtier en crédit (IOBSP)' || prof === 'Conseiller en investissements financiers (CIF)') {
+    habRows.push(row('ORIAS', `n° ${v('orias_num')} · ${v('orias_categorie')}`));
+    habRows.push(row('Attestation ORIAS', v('orias_attestation')));
+  }
+  habRows.push(row('RC Pro', `${v('rcpro_assureur')} · n° ${v('rcpro_num')} · plafond ${v('rcpro_plafond')} · valide ${v('rcpro_date')}`));
+  habRows.push(row('Attestation RC Pro', v('rcpro_attestation')));
+  habRows.push(row('Autres agréments', v('autres_agrements')));
+  html.push(block('3 · Habilitations professionnelles', habRows));
+
+  html.push(block('4 · Banque / fiscal', [
+    row('RIB', v('rib')),
+    row('Résidence fiscale', v('pays_fiscal')),
+    row('N° TVA', v('tva_num')),
+    row('Régime TVA', v('tva_regime')),
+    row('Attestation fiscale', v('attestation_fiscale'))
+  ]));
+
+  html.push(block('5 · Activité', [
+    row('Zones', v('zones')),
+    row('Volume leads / mois', v('volume_leads')),
+    row('Typologie clients', v('typologie')),
+    row('Sources de leads', v('sources')),
+    row('Déjà placé des produits ?', `${v('deja_place')} ${v('produits_passes') ? '— ' + v('produits_passes') : ''}`)
+  ]));
+
+  html.push(block('6 · Conditions commerciales souhaitées', [
+    row('Modèle', v('modele_partenariat')),
+    row('Taux / montant', v('comm_taux')),
+    row('Base de calcul', v('comm_base')),
+    row('Exclusivité', v('exclusivite')),
+    row('Protection lead', v('protection_lead')),
+    row('Durée contrat', v('duree_contrat'))
+  ]));
+
+  const decs = [];
+  ['dec_honneur','dec_lcbft','dec_rgpd','dec_cgv','dec_charte','dec_independance'].forEach(n => {
+    const cb = form.elements[n];
+    decs.push(row(n.replace('dec_','').toUpperCase(), cb && cb.checked ? '✅ accepté' : '❌ non coché'));
+  });
+  html.push(block('7 · Engagements', decs));
+
+  html.push(block('8 · Signataire & complémentaires', [
+    row('Signataire', `${v('sign_nom')} (${v('sign_fonction')})`),
+    row('Email signature', v('sign_email')),
+    row('Pitch deck', v('pitch_deck')),
+    row('Track record', v('track_record')),
+    row('LinkedIn', v('linkedin')),
+    row('Commentaire', v('commentaire'))
+  ]));
+
+  recap.innerHTML = html.join('');
+
+  // Méta pour l'email
+  const meta = `Candidat: ${type === 'Personne morale' ? v('pm_raison') : (v('pp_nom') + ' ' + v('pp_prenom'))} · Profession: ${prof} · Modèle: ${v('modele_partenariat')} · Volume: ${v('volume_leads')}`;
+  document.getElementById('_recap_meta').value = meta;
+  form.querySelector('input[name="_subject"]').value = `🎯 MBD — Candidature ${type === 'Personne morale' ? v('pm_raison') : v('pp_nom') + ' ' + v('pp_prenom')} (${prof})`;
+}
+
+/* ============================================================
+   SUBMIT
+   ============================================================ */
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  // Validate every step before submit (safety net)
+  for (let i = 1; i <= TOTAL_STEPS - 1; i++) {
+    if (!validateStep(i)) {
+      showStep(i);
+      return;
+    }
+  }
+
+  // Check Formspree endpoint configured
+  if (form.action.includes('FORMSPREE_ENDPOINT_ICI')) {
+    alertText.textContent = 'Le formulaire n\'est pas encore connecté à Formspree. Suivez les instructions en commentaire du fichier HTML (5 min).';
+    alertBox.classList.add('show');
+    return;
+  }
+
+  btnSubmit.disabled = true;
+  btnSubmit.innerHTML = '<span class="spinner"></span> Envoi…';
+
+  try {
+    const fd = new FormData(form);
+    const resp = await fetch(form.action, {
+      method: 'POST',
+      body: fd,
+      headers: { 'Accept': 'application/json' }
+    });
+    if (resp.ok) {
+      document.querySelector('.form-card').style.display = 'none';
+      document.querySelector('.stepper-wrap').style.display = 'none';
+      thanks.classList.add('show');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      throw new Error('Réponse serveur ' + resp.status);
+    }
+  } catch (err) {
+    btnSubmit.disabled = false;
+    btnSubmit.textContent = 'Envoyer ma candidature →';
+    alertText.textContent = 'Une erreur est survenue lors de l\'envoi. Vérifiez votre connexion et réessayez, ou contactez philippe@monopimmobilier.com.';
+    alertBox.classList.add('show');
+  }
+});
+
+/* ============================================================
+   INIT
+   ============================================================ */
+applyAdaptive();
+injectLaterToggles();
+showStep(1);
+</script>
+
+</body>
+</html>
