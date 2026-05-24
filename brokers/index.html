@@ -143,6 +143,8 @@
   .sim-balance-label { font-size: 0.92rem; color: var(--text); font-weight: 600; }
   .sim-balance-value { font-family: 'Inter', sans-serif; font-weight: 900; font-size: 2.1rem; color: var(--green); letter-spacing: -0.03em; white-space: nowrap; }
   .sim-balance-detail { font-size: 0.85rem; color: var(--text-2); margin-top: 4px; }
+  /* Bloc cumul désormais en pleine largeur sous le simulateur */
+  .sim-balance.sim-balance-full { width: 100%; margin-top: 32px; }
 
   /* LEVIERS */
   .levers { background: var(--bg); }
@@ -154,7 +156,7 @@
   .lever-card h3 { margin-bottom: 12px; font-size: 1.25rem; }
   .lever-card p { font-size: 0.96rem; }
 
-  /* CRÉDIT FRANCE — section vedette */
+  /* CRÉDIT — section vedette */
   .credit { background: var(--bg-2); }
   .credit-card { max-width: 980px; margin: 0 auto; padding: 50px 44px; background: radial-gradient(700px 350px at 50% 0%, var(--green-soft), transparent 70%), var(--surface); border: 1.5px solid rgba(163,230,53,0.35); border-radius: var(--radius-lg); box-shadow: 0 0 60px -20px var(--green-glow); }
   .credit-tag { display: inline-block; padding: 6px 14px; border-radius: 8px; background: var(--green); color: #000; font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 18px; }
@@ -185,7 +187,7 @@
   .comp-card.old .comp-list li::before { content: '×'; position: absolute; left: 0; color: #f87171; font-weight: 700; font-size: 1.1rem; }
   .comp-card.new .comp-list li::before { content: '✓'; position: absolute; left: 0; color: var(--green); font-weight: 700; }
   .comp-range { margin-top: 22px; padding: 18px 22px; background: var(--bg-2); border-radius: var(--radius); text-align: center; }
-  .comp-range-value { font-family: 'Inter', sans-serif; font-weight: 900; font-size: 2.2rem; color: var(--green); letter-spacing: -0.03em; line-height: 1; }
+  .comp-range-value { font-family: 'Inter', sans-serif; font-weight: 900; font-size: 1.6rem; color: var(--green); letter-spacing: -0.03em; line-height: 1.1; }
   .comp-range-label { font-size: 0.85rem; color: var(--text-2); margin-top: 6px; }
 
   /* HOW IT WORKS */
@@ -292,13 +294,13 @@
         <span class="logo-mark"><span class="my">My</span><span class="bulk">Bulk</span><span class="deal">Deal<span class="dot">.</span></span></span>
       </a>
       <a href="https://mybulkdeal.com/" class="btn-website" data-i18n="nav.website" aria-label="Aller au site principal">
-        <span class="arrow" aria-hidden="true">←</span><span class="label">Web site</span>
+        <span class="arrow" aria-hidden="true">←</span><span class="label">Revenir au site</span>
       </a>
     </div>
     <div class="nav-links">
       <a href="#contexte" data-i18n="nav.context">Contexte</a>
       <a href="#simulateur" data-i18n="nav.sim">Simulateur</a>
-      <a href="#credit" data-i18n="nav.credit">Crédit France</a>
+      <a href="#credit" data-i18n="nav.credit">Réseau crédit</a>
       <a href="#remuneration" data-i18n="nav.compensation">Rémunération</a>
       <a href="#partenariat" data-i18n="nav.partnership">Partenariat</a>
     </div>
@@ -320,20 +322,20 @@
 
     <h1 data-i18n="hero.h1">Activez les leads dormants<br/><span class="accent">de votre pipeline.</span></h1>
     <p class="hero-subtitle" data-i18n="hero.subtitle">
-      Vos prospects sérieux qui butent sur le ticket d'entrée Dubai (<strong>200 à 400 K AED</strong>) entrent désormais à partir de <strong>6 700 €</strong>.
+      Vos clients sérieux qui butent sur le ticket d'entrée Dubaï (<strong>1,2 M AED minimum pour un appartement neuf</strong>) accèdent à la co-acquisition d'un bien réel à partir de <strong>26 700 AED, soit 6 700 €</strong>.
       <br/><br/>
-      Vous monétisez du <strong>flux récurrent</strong>, pas un événement unique. Commission <strong>2 à 5 % sur le capital placé</strong>, avec effet de levier via nos partenaires crédit France.
+      Vous leur ouvrez une porte que personne d'autre ne leur ouvre. Vous monétisez du <strong>flux récurrent</strong>, pas un événement unique.
       <br/><br/>
       Et surtout — <strong>vous restez le seul contact de votre client</strong>.
     </p>
     <div class="hero-cta">
-      <a href="#simulateur" class="btn btn-primary" data-i18n="hero.cta1">Calculer ma commission ↓</a>
+      <a href="#simulateur" class="btn btn-primary" data-i18n="hero.cta1">Estimer ma rémunération ↓</a>
       <a href="#partenariat" class="btn btn-ghost" data-i18n="hero.cta2">Voir notre proposition</a>
     </div>
     <div class="hero-foot">
-      <span><span class="tick">✓</span> <span data-i18n="hero.foot1">Vos leads dormants activés</span></span>
-      <span><span class="tick">✓</span> <span data-i18n="hero.foot2">Crédit France pour vos clients</span></span>
-      <span><span class="tick">✓</span> <span data-i18n="hero.foot3">Commission 2-5 % récurrente</span></span>
+      <span><span class="tick">✓</span> <span data-i18n="hero.foot1">Vos clients dormants réactivés</span></span>
+      <span><span class="tick">✓</span> <span data-i18n="hero.foot2">Un actif immobilier réel à Dubaï</span></span>
+      <span><span class="tick">✓</span> <span data-i18n="hero.foot3">Vous restez l'interlocuteur unique</span></span>
     </div>
   </div>
 </header>
@@ -343,28 +345,28 @@
   <div class="container">
     <div class="section-head reveal">
       <span class="section-tag" data-i18n="context.tag">Le contexte que vous vivez</span>
-      <h2 data-i18n="context.h2">30 à 50 % de vos leads<br/>ne signent pas.<br/><span class="green">Pour une seule raison.</span></h2>
-      <p data-i18n="context.p">Le ticket d'entrée.<br/><br/>Pas le sérieux du prospect, pas son intérêt pour Dubai. Juste le mur des <strong>200 à 400 K AED</strong>.<br/><br/>Trois profils reviennent en boucle dans votre pipeline.</p>
+      <h2 data-i18n="context.h2">30 à 50 % de vos clients qualifiés<br/>ne signent pas.<br/><span class="green">Pour une seule raison.</span></h2>
+      <p data-i18n="context.p">Le ticket d'entrée.<br/><br/>Pas le sérieux du client, pas son intérêt pour Dubaï. Juste le mur des <strong>1,2 M AED minimum</strong> pour un appartement neuf en direct.<br/><br/>Trois profils reviennent en boucle dans votre portefeuille.</p>
     </div>
     <div class="context-grid">
       <div class="context-card reveal">
         <div class="pct" data-i18n="context.c1.pct">Profil 01 · épargne moyenne</div>
         <h3 data-i18n="context.c1.h3">30 à 80 K€ de côté</h3>
-        <p data-i18n="context.c1.p">Solide, mais insuffisant pour acheter seul à Dubai.<br/><br/>Vous lui dites « revenez quand vous aurez plus », et il disparaît.</p>
+        <p data-i18n="context.c1.p">Solide, mais insuffisant pour acheter seul à Dubaï.<br/><br/>Vous lui dites « revenez quand vous aurez plus », et il disparaît dans la nature.</p>
       </div>
       <div class="context-card reveal">
         <div class="pct" data-i18n="context.c2.pct">Profil 02 · capacité d'emprunt</div>
         <h3 data-i18n="context.c2.h3">Bon dossier bancaire FR</h3>
-        <p data-i18n="context.c2.p">Cadre, salaire confortable, vraie capacité à lever de la dette.<br/><br/>Personne ne lui a jamais montré comment transformer ça en investissement Dubai.</p>
+        <p data-i18n="context.c2.p">Cadre, salaire confortable, vraie capacité d'emprunt en France.<br/><br/>Personne ne lui a jamais montré comment transformer cette capacité en exposition immobilière à Dubaï sans casser son épargne.</p>
       </div>
       <div class="context-card reveal">
         <div class="pct" data-i18n="context.c3.pct">Profil 03 · épargne immobilisée</div>
-        <h3 data-i18n="context.c3.h3">Cash en assurance-vie dormante</h3>
-        <p data-i18n="context.c3.p">Livrets, fonds euros peu rémunérateurs, comptes-titres dormants.<br/><br/>Il veut bouger, mais ne sait pas comment passer le pas sans tout casser.</p>
+        <h3 data-i18n="context.c3.h3">Épargne dormante</h3>
+        <p data-i18n="context.c3.p">Assurance-vie, livrets, comptes-titres dormants.<br/><br/>Il veut bouger, mais ne sait pas comment passer le pas sans tout liquider.</p>
       </div>
     </div>
     <p class="context-bottom reveal" data-i18n="context.bottom">
-      Ces leads ne sont pas une perte. <span class="arrow">→</span> <span class="green">C'est un gisement.</span>
+      Ces clients ne sont pas une perte. <span class="arrow">→</span> <span class="green">C'est un gisement.</span>
     </p>
   </div>
 </section>
@@ -375,15 +377,15 @@
     <div class="sim-card reveal">
       <div class="sim-head">
         <span class="section-tag" data-i18n="sim.tag">Le simulateur</span>
-        <h2 data-i18n="sim.h2">Combien vous rapporte votre base dormante.</h2>
-        <p data-i18n="sim.p">Ajustez les trois variables — nous projetons votre commission additionnelle sur <strong style="color:var(--text)">3 ans</strong>.</p>
+        <h2 data-i18n="sim.h2">Estimez la rémunération générée par votre base dormante.</h2>
+        <p data-i18n="sim.p">Ajustez les deux variables — nous projetons votre rémunération additionnelle sur <strong style="color:var(--text)">3 ans</strong>.</p>
       </div>
 
       <div class="sim-grid">
         <div class="sim-controls">
           <div>
             <div class="sim-field-head">
-              <span class="sim-field-label" data-i18n="sim.clients">Clients dormants par an</span>
+              <span class="sim-field-label" data-i18n="sim.clients">Co-acquéreurs activés par an</span>
               <span class="sim-field-value"><span id="clientsVal">20</span></span>
             </div>
             <input type="range" id="clientsSlider" min="1" max="200" value="20" step="1">
@@ -392,60 +394,59 @@
 
           <div>
             <div class="sim-field-head">
-              <span class="sim-field-label" data-i18n="sim.budget">Budget moyen par client</span>
-              <span class="sim-field-value" id="budgetDisplay">30 000 €</span>
+              <span class="sim-field-label" data-i18n="sim.budget">Apport moyen par client</span>
+              <span class="sim-field-value" id="budgetDisplay">15 000 €</span>
             </div>
-            <input type="range" id="budgetSlider" min="6700" max="200000" value="30000" step="1000">
-            <div class="sim-field-range-labels"><span>6 700 €</span><span>200 000 €</span></div>
+            <input type="range" id="budgetSlider" min="6700" max="50000" value="15000" step="100">
+            <div class="sim-field-range-labels"><span>6 700 €</span><span>50 000 €</span></div>
           </div>
 
-          <div>
-            <div class="sim-field-head">
-              <span class="sim-field-label" data-i18n="sim.commission">Votre commission</span>
-              <span class="sim-field-value"><span id="commissionVal">3,0</span><span class="unit">%</span></span>
-            </div>
-            <input type="range" id="commissionSlider" min="2" max="5" value="3" step="0.1">
-            <div class="sim-field-range-labels"><span>2 %</span><span>5 %</span></div>
-          </div>
+          <!-- 3e slider supprimé : taux d'apport d'affaires pré-réglé côté JS, jamais affiché dans l'UI -->
 
           <div class="sim-hypothesis" data-i18n="sim.hypothesis">
-            <strong>Projection 3 ans</strong> · Année 1 : conversion de votre base dormante. Année 2 : +70 % (réinvestissements de vos clients + nouveaux leads activés). Année 3 : +150 % vs Année 1. Hypothèses basées sur les pipelines observés. <em>Valeurs ajustables en RDV.</em>
+            <strong>Projection 3 ans</strong> · Année 1 : conversion de votre base dormante. Année 2 : +70 % (réinvestissements de vos clients + nouveaux clients activés). Année 3 : +150 % vs Année 1. Hypothèses basées sur les portefeuilles observés. <em>Valeurs ajustables en rendez-vous.</em>
+          </div>
+
+          <div class="sim-hypothesis" data-i18n="sim.method">
+            <strong>Comment ces chiffres se construisent</strong> · Apports orientés Année N = Co-acquéreurs activés × Apport moyen × coefficient de croissance. La rémunération d'apport d'affaires associée est cadrée par la convention que nous signons ensemble et versée sur dossier finalisé. Le simulateur est un outil indicatif non contractuel, calibré sur les portefeuilles partenaires déjà activés.
           </div>
         </div>
 
         <div class="sim-results">
           <div class="sim-result-row">
             <div class="sim-stat">
-              <div class="sim-stat-label" data-i18n="sim.r.y1">Commission année 1</div>
-              <div class="sim-stat-value" id="y1Val">18 000 €</div>
-              <div class="sim-stat-sub"><span id="y1Capital">600 000 €</span> <span data-i18n="sim.r.placed">de capital placé</span></div>
+              <div class="sim-stat-label" data-i18n="sim.r.y1">Rémunération année 1</div>
+              <div class="sim-stat-value" id="y1Val">12 000 €</div>
+              <div class="sim-stat-sub"><span id="y1Capital">300 000 €</span> <span data-i18n="sim.r.placed">d'apports orientés</span></div>
             </div>
             <div class="sim-stat">
-              <div class="sim-stat-label" data-i18n="sim.r.y2">Commission année 2</div>
-              <div class="sim-stat-value" id="y2Val">30 600 €</div>
-              <div class="sim-stat-sub"><span id="y2Capital">1 020 000 €</span> <span data-i18n="sim.r.placed">de capital placé</span></div>
+              <div class="sim-stat-label" data-i18n="sim.r.y2">Rémunération année 2</div>
+              <div class="sim-stat-value" id="y2Val">20 400 €</div>
+              <div class="sim-stat-sub"><span id="y2Capital">510 000 €</span> <span data-i18n="sim.r.placed">d'apports orientés</span></div>
             </div>
             <div class="sim-stat">
-              <div class="sim-stat-label" data-i18n="sim.r.y3">Commission année 3</div>
-              <div class="sim-stat-value" id="y3Val">45 000 €</div>
-              <div class="sim-stat-sub"><span id="y3Capital">1 500 000 €</span> <span data-i18n="sim.r.placed">de capital placé</span></div>
+              <div class="sim-stat-label" data-i18n="sim.r.y3">Rémunération année 3</div>
+              <div class="sim-stat-value" id="y3Val">30 000 €</div>
+              <div class="sim-stat-sub"><span id="y3Capital">750 000 €</span> <span data-i18n="sim.r.placed">d'apports orientés</span></div>
             </div>
           </div>
 
           <div class="sim-chart-wrap">
-            <div class="sim-chart-title" data-i18n="sim.chart.title">Votre commission projetée — Année 1 / 2 / 3</div>
+            <div class="sim-chart-title" data-i18n="sim.chart.title">Votre rémunération projetée — Année 1 / 2 / 3</div>
             <canvas id="simChart" class="sim-chart-canvas"></canvas>
-          </div>
-
-          <div class="sim-balance">
-            <div>
-              <div class="sim-balance-label" data-i18n="sim.balance.label">Commission cumulée sur 3 ans</div>
-              <div class="sim-balance-detail" data-i18n="sim.balance.detail">Que vous ne touchiez pas hier avec votre modèle classique</div>
-            </div>
-            <div class="sim-balance-value" id="totalVal">+93 600 €</div>
           </div>
         </div>
       </div>
+
+      <!-- Bloc cumul désormais en pleine largeur, sous la grille -->
+      <div class="sim-balance sim-balance-full">
+        <div>
+          <div class="sim-balance-label" data-i18n="sim.balance.label">Rémunération cumulée sur 3 ans</div>
+          <div class="sim-balance-detail" data-i18n="sim.balance.detail">Que vous ne touchiez pas hier avec votre modèle classique</div>
+        </div>
+        <div class="sim-balance-value" id="totalVal">+62 400 €</div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -455,59 +456,59 @@
   <div class="container">
     <div class="section-head reveal">
       <span class="section-tag" data-i18n="levers.tag">Ce que MyBulkDeal change pour vous</span>
-      <h2 data-i18n="levers.h2">Trois effets sur votre P&L,<br/>tout de suite.</h2>
+      <h2 data-i18n="levers.h2">Trois effets sur votre activité,<br/>tout de suite.</h2>
     </div>
     <div class="lever-grid">
       <div class="lever-card reveal">
         <div class="lever-num">×&nbsp;3</div>
-        <h3 data-i18n="levers.l1.h3">Le même lead, plusieurs fois</h3>
-        <p data-i18n="levers.l1.p">Un investisseur qui démarre à 6 700 € revient. Une fois rassuré sur la mécanique, il refait un deal, puis un autre. Vous monétisez la confiance — pas une transaction isolée.</p>
+        <h3 data-i18n="levers.l1.h3">Le même client, plusieurs opérations</h3>
+        <p data-i18n="levers.l1.p">Un co-acquéreur qui entre à 6 700 € revient. Une fois rassuré sur la mécanique, sur les distributions, sur la gouvernance — il refait une opération, puis une autre. Vous monétisez la confiance que vous avez construite, pas une vente isolée.</p>
       </div>
       <div class="lever-card reveal">
         <div class="lever-num">+0&nbsp;€</div>
-        <h3 data-i18n="levers.l2.h3">Aucun coût d'acquisition</h3>
-        <p data-i18n="levers.l2.p">Tous les dossiers classés « pas mûr » dans votre CRM redeviennent actifs. Pas de nouveau lead à acheter, pas de nouvelle pub. Vous réveillez votre base existante.</p>
+        <h3 data-i18n="levers.l2.h3">Aucun coût d'acquisition supplémentaire</h3>
+        <p data-i18n="levers.l2.p">Tous les dossiers classés « pas mûrs pour Dubaï » dans votre CRM redeviennent actifs. Pas de nouveau lead à acheter, pas de nouvelle campagne. Vous réveillez votre base existante.</p>
       </div>
       <div class="lever-card reveal">
         <div class="lever-num">2-3</div>
-        <h3 data-i18n="levers.l3.h3">Ventes additionnelles par an</h3>
-        <p data-i18n="levers.l3.p">L'ordre de grandeur que nous observons sur les pipelines déjà activés. Pas un objectif marketing — un constat terrain, par broker, en plus de votre flux habituel.</p>
+        <h3 data-i18n="levers.l3.h3">Opérations additionnelles par an</h3>
+        <p data-i18n="levers.l3.p">L'ordre de grandeur observé sur les portefeuilles déjà activés. Pas un objectif marketing — un constat terrain, par partenaire actif, en complément de votre flux habituel.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CRÉDIT FRANCE -->
+<!-- RÉSEAU CRÉDIT (ex Crédit France) -->
 <section id="credit" class="credit">
   <div class="container">
     <div class="credit-card reveal">
       <span class="credit-tag" data-i18n="credit.tag">Le levier qui change tout</span>
-      <h2 data-i18n="credit.h2">Vos clients financent leur projet d'investissement à Dubai<br/>par du <span class="green">crédit en France</span>.</h2>
+      <h2 data-i18n="credit.h2">Vos clients n'ont pas besoin<br/>d'attendre <span class="green">d'avoir épargné</span>.</h2>
       <p data-i18n="credit.p">
-        Nous avons noué des partenariats avec des sociétés de crédit en France. Vos clients <strong>n'ont plus besoin d'attendre d'avoir épargné le ticket complet</strong>.
+        L'apport de <strong>26 700 AED (soit 6 700 €)</strong> est volontairement calibré pour être finançable par les solutions de crédit qui existent déjà en France. Vos clients n'ont rien à attendre, rien à liquider.
         <br/><br/>
-        Ils lèvent de la dette en France — à un coût compétitif — pour financer leur entrée sur un deal MyBulkDeal à Dubai. Leur épargne reste intacte, leur capacité d'investissement est démultipliée.
+        Plusieurs solutions de financement existent en France pour un ticket de ce niveau — chacune adaptée à un profil de client différent. <strong>Avec le bon réseau et un courtier crédit indépendant</strong>, vos clients assemblent la solution qui leur correspond.
       </p>
       <div class="credit-grid">
         <div class="credit-point">
           <div class="icon">✓</div>
-          <h4 data-i18n="credit.p1.h4">L'épargne client reste préservée</h4>
-          <p data-i18n="credit.p1.p">Plutôt que de casser une assurance-vie ou vider un livret, il garde son matelas intact et finance son investissement par effet de levier.</p>
+          <h4 data-i18n="credit.p1.h4">Crédit consommation classique</h4>
+          <p data-i18n="credit.p1.p">La voie la plus directe. Un crédit conso à 6 % sur 5 ans pour 6 700 € représente environ 130 €/mois. Accessible à tout client avec une situation professionnelle stable.</p>
         </div>
         <div class="credit-point">
           <div class="icon">×</div>
-          <h4 data-i18n="credit.p2.h4">Capacité d'investissement multipliée</h4>
-          <p data-i18n="credit.p2.p">Un client avec 30 K€ d'épargne peut potentiellement entrer sur un deal à 80, 100, voire 120 K€ selon son profil bancaire — sans toucher à son cash.</p>
+          <h4 data-i18n="credit.p2.h4">Crédit Lombard</h4>
+          <p data-i18n="credit.p2.p">Pour les clients qui détiennent un portefeuille titres ou un contrat d'assurance-vie. Ils empruntent en garantissant le crédit par leurs actifs financiers, sans casser leur épargne ni générer de fiscalité.</p>
         </div>
         <div class="credit-point">
           <div class="icon">€</div>
-          <h4 data-i18n="credit.p3.h4">Coût du crédit FR raisonnable</h4>
-          <p data-i18n="credit.p3.p">Comparé aux rendements locatifs et à la plus-value attendue sur l'actif Dubai, le différentiel est intéressant. Nos partenaires connaissent ce produit et qualifient vite.</p>
+          <h4 data-i18n="credit.p3.h4">Prêt familial documenté</h4>
+          <p data-i18n="credit.p3.p">Solution simple, peu coûteuse, parfaite quand l'environnement familial peut prêter contre reconnaissance de dette enregistrée. Pas d'intermédiaire, pas de frais cachés.</p>
         </div>
         <div class="credit-point">
           <div class="icon">→</div>
           <h4 data-i18n="credit.p4.h4">Vous gardez la relation client</h4>
-          <p data-i18n="credit.p4.p">Nous vous fournissons les coordonnées de notre partenaire crédit France ; c'est vous qui les transmettez à votre client (ou organisez la mise en relation). Vous restez son interlocuteur unique du début à la fin — vous gardez la relation, vous touchez la commission.</p>
+          <p data-i18n="credit.p4.p">MyBulkDeal n'effectue aucune intermédiation en crédit. Vous orientez votre client vers un courtier crédit indépendant français immatriculé ORIAS de votre choix. Vous restez son interlocuteur unique du début à la fin.</p>
         </div>
       </div>
     </div>
@@ -519,33 +520,33 @@
   <div class="container">
     <div class="section-head reveal">
       <span class="section-tag" data-i18n="comp.tag">Un nouveau modèle de rémunération</span>
-      <h2 data-i18n="comp.h2">Moins d'aléa, plus de récurrence,<br/>un ARPU client qui grimpe.</h2>
+      <h2 data-i18n="comp.h2">Moins d'aléa, plus de récurrence,<br/>une valeur client qui grimpe.</h2>
     </div>
     <div class="comp-grid">
       <div class="comp-card old reveal">
-        <h3 data-i18n="comp.old.h3">Broker classique</h3>
-        <p class="comp-sub" data-i18n="comp.old.sub">Commission attachée à la vente, au closing.</p>
+        <h3 data-i18n="comp.old.h3">Mandat immobilier classique</h3>
+        <p class="comp-sub" data-i18n="comp.old.sub">Rémunération attachée à la vente, au closing.</p>
         <ul class="comp-list">
-          <li data-i18n="comp.old.li1">Commission sur un événement isolé</li>
-          <li data-i18n="comp.old.li2">Cycle de vente long (6-18 mois)</li>
-          <li data-i18n="comp.old.li3">Aucune rémunération sur les « pas mûr »</li>
-          <li data-i18n="comp.old.li4">Pas d'effet de levier crédit</li>
+          <li data-i18n="comp.old.li1">Rémunération sur un événement isolé</li>
+          <li data-i18n="comp.old.li2">Cycle de vente long (6 à 18 mois)</li>
+          <li data-i18n="comp.old.li3">Aucune rémunération sur les « pas mûrs »</li>
+          <li data-i18n="comp.old.li4">Aucun effet de levier crédit positionné</li>
           <li data-i18n="comp.old.li5">Aléa fort sur le closing final</li>
         </ul>
       </div>
       <div class="comp-card new reveal">
-        <h3 data-i18n="comp.new.h3">Modèle MyBulkDeal</h3>
-        <p class="comp-sub" data-i18n="comp.new.sub">Commission sur le capital placé dans nos véhicules.</p>
+        <h3 data-i18n="comp.new.h3">Programme partenaires MyBulkDeal</h3>
+        <p class="comp-sub" data-i18n="comp.new.sub">Rémunération d'apport d'affaires sur chaque opération.</p>
         <ul class="comp-list">
-          <li data-i18n="comp.new.li1">Commission sur du flux récurrent</li>
+          <li data-i18n="comp.new.li1">Rémunération sur du flux récurrent</li>
           <li data-i18n="comp.new.li2">Premier closing visé sous 60 jours</li>
-          <li data-i18n="comp.new.li3">Vos « pas mûr » redeviennent actifs</li>
-          <li data-i18n="comp.new.li4">Commission sur capital total (apport + crédit)</li>
-          <li data-i18n="comp.new.li5">Un même client : 3, 5, 10 lignes de commission</li>
+          <li data-i18n="comp.new.li3">Vos clients « pas mûrs » redeviennent actifs</li>
+          <li data-i18n="comp.new.li4">Mécanique calibrée pour le crédit en France</li>
+          <li data-i18n="comp.new.li5">Un même client : 3, 5, 10 opérations dans le temps</li>
         </ul>
         <div class="comp-range">
-          <div class="comp-range-value" data-i18n="comp.range.value">2 à 5 %</div>
-          <div class="comp-range-label" data-i18n="comp.range.label">du capital placé par votre client, projet par projet</div>
+          <div class="comp-range-value" data-i18n="comp.range.value">Apport d'affaires</div>
+          <div class="comp-range-label" data-i18n="comp.range.label">cadré par convention signée, projet par projet</div>
         </div>
       </div>
     </div>
@@ -563,27 +564,27 @@
       <div class="step reveal">
         <div class="step-num">1</div>
         <h3 data-i18n="how.s1.h3">Vous identifiez & premier RDV</h3>
-        <p data-i18n="how.s1.p">Un lead dans votre pipeline qui matche : intérêt Dubai, ticket insuffisant pour un deal direct, épargne ou capacité d'emprunt FR. Vous organisez le premier rendez-vous avec votre client.</p>
+        <p data-i18n="how.s1.p">Un client de votre portefeuille qui correspond : intérêt pour Dubaï, ticket insuffisant pour un achat direct, épargne mobilisable ou capacité d'emprunt FR. Vous organisez le premier échange.</p>
       </div>
       <div class="step reveal">
         <div class="step-num">2</div>
-        <h3 data-i18n="how.s2.h3">RDV avec MyBulkDeal</h3>
-        <p data-i18n="how.s2.p">Prise de rendez-vous avec un membre de l'équipe MyBulkDeal, en présence du partenaire (vous). On valide ensemble la pertinence du dossier et on présente la mécanique au client.</p>
+        <h3 data-i18n="how.s2.h3">RDV tripartite avec MyBulkDeal</h3>
+        <p data-i18n="how.s2.p">Visio de 30 à 45 minutes avec un membre de l'équipe MyBulkDeal, en votre présence. Nous validons ensemble la pertinence du dossier et nous présentons la mécanique de co-acquisition.</p>
       </div>
       <div class="step reveal">
         <div class="step-num">3</div>
         <h3 data-i18n="how.s3.h3">Suivi client & LOI</h3>
-        <p data-i18n="how.s3.p">Vous assurez le suivi de votre client. Dès qu'il manifeste son intention de prendre position sur un deal, vous nous transmettez la LOI (Letter of Intent). Vous restez le seul interlocuteur du client.</p>
+        <p data-i18n="how.s3.p">Vous gardez la main sur votre client. Dès qu'il manifeste son intention de prendre position sur une opération, nous lui transmettons la fiche projet sous NDA puis la lettre d'intention. Vous restez son interlocuteur unique.</p>
       </div>
       <div class="step reveal">
         <div class="step-num">4</div>
-        <h3 data-i18n="how.s4.h3">Entrée dans le SPV</h3>
-        <p data-i18n="how.s4.p">Le client rejoint la SPV dédiée (à partir de 6 700 €) et le bien est acheté. Capital sécurisé via un mandataire RERA local.</p>
+        <h3 data-i18n="how.s4.h3">Entrée dans la société d'exploitation</h3>
+        <p data-i18n="how.s4.p">Votre client devient actionnaire de la société d'exploitation dédiée (à partir de 26 700 AED). Le bien est acheté au nom de la société par notre agence partenaire titulaire d'une licence RERA.</p>
       </div>
       <div class="step reveal">
         <div class="step-num">5</div>
         <h3 data-i18n="how.s5.h3">Vous encaissez</h3>
-        <p data-i18n="how.s5.p">Commission 2 à 5 % sur le capital placé. Le client reste le vôtre — vous remontez les prochains deals à votre rythme.</p>
+        <p data-i18n="how.s5.p">Versement sur dossier finalisé, selon les modalités définies dans la convention d'apport d'affaires que nous signons ensemble. Votre client reste le vôtre — vous remontez les opérations suivantes à votre rythme.</p>
       </div>
     </div>
   </div>
@@ -596,49 +597,49 @@
       <div class="partnership-intro">
         <span class="section-tag" data-i18n="partnership.tag">Ce qu'on vous propose</span>
         <h2 data-i18n="partnership.h2">Un partenariat souple,<br/>sans exclusivité, sans engagement de volume.</h2>
-        <p data-i18n="partnership.p">Notre approche s'intègre à votre activité actuelle sans la perturber. Voici ce qui constitue un partenariat MyBulkDeal côté broker.</p>
+        <p data-i18n="partnership.p">Notre approche s'intègre à votre activité actuelle sans la perturber. Voici ce qui constitue un partenariat MyBulkDeal.</p>
       </div>
 
       <div class="partnership-list">
         <div class="partnership-item">
           <div class="partnership-icon">1</div>
           <div class="partnership-content">
-            <h3 data-i18n="partnership.p1.h3">Un accord de partenariat simple</h3>
-            <p data-i18n="partnership.p1.p">Une page, deux signatures. Définit le périmètre, la rémunération et le mode de transmission des leads. Pas d'exclusivité demandée, pas d'engagement de volume.</p>
+            <h3 data-i18n="partnership.p1.h3">Une convention d'apport d'affaires claire</h3>
+            <p data-i18n="partnership.p1.p">Un document encadré : périmètre, modalités de rémunération, mode de transmission des dossiers, protection apporteur, non-démarchage croisé. Pas d'exclusivité demandée, pas d'objectif chiffré imposé.</p>
           </div>
         </div>
         <div class="partnership-item">
           <div class="partnership-icon">2</div>
           <div class="partnership-content">
-            <h3 data-i18n="partnership.p2.h3">Un accès direct à nos deals en cours</h3>
-            <p data-i18n="partnership.p2.p">Off-plan et secondary market, mis à jour en continu. Vous voyez en temps réel ce qui est ouvert, ce qui ferme, ce qui se prépare.</p>
+            <h3 data-i18n="partnership.p2.h3">Un accès direct aux opérations en cours</h3>
+            <p data-i18n="partnership.p2.p">Off-plan et ancien, mis à jour en continu. Vous voyez ce qui est ouvert, ce qui ferme, ce qui se prépare. Les fiches détaillées sont accessibles sous NDA.</p>
           </div>
         </div>
         <div class="partnership-item">
           <div class="partnership-icon">3</div>
           <div class="partnership-content">
             <h3 data-i18n="partnership.p3.h3">Un onboarding court de votre équipe</h3>
-            <p data-i18n="partnership.p3.p">Une session de 90 minutes : mécanique, pitch client, outils de qualification, présentation du partenaire crédit France. Vos commerciaux sont opérationnels le lendemain.</p>
+            <p data-i18n="partnership.p3.p">Une session de 90 minutes : mécanique de la co-acquisition, pitch client, outils de qualification, panorama des solutions de financement disponibles côté France. Vos commerciaux sont opérationnels le lendemain.</p>
           </div>
         </div>
         <div class="partnership-item">
           <div class="partnership-icon">4</div>
           <div class="partnership-content">
             <h3 data-i18n="partnership.p4.h3">Un point de contact dédié</h3>
-            <p data-i18n="partnership.p4.p">Une personne référente, joignable en direct, qui pilote vos dossiers du premier appel jusqu'au closing. Pas de support multi-tickets, pas de standard.</p>
+            <p data-i18n="partnership.p4.p">Une personne référente, joignable en direct, qui pilote vos dossiers du premier appel jusqu'à la distribution des produits locatifs. Pas de support multi-tickets, pas de standard.</p>
           </div>
         </div>
         <div class="partnership-item">
           <div class="partnership-icon">5</div>
           <div class="partnership-content">
             <h3 data-i18n="partnership.p5.h3">Un reporting trimestriel</h3>
-            <p data-i18n="partnership.p5.p">Leads convertis, capital placé, rémunération cumulée, opportunités de relance sur votre base. Vous savez exactement où vous en êtes.</p>
+            <p data-i18n="partnership.p5.p">Clients qualifiés, opérations conclues, rémunération cumulée, opportunités de relance sur votre base. Vous savez exactement où vous en êtes.</p>
           </div>
         </div>
       </div>
 
       <div class="partnership-cta">
-        <p data-i18n="partnership.cta.p">Un appel ou un café de 30 minutes. On regarde ensemble la typologie de votre pipeline et on identifie 2 ou 3 profils tests.</p>
+        <p data-i18n="partnership.cta.p">Un appel ou un café de 30 minutes. On regarde ensemble la typologie de votre portefeuille et on identifie 2 ou 3 profils tests.</p>
         <a href="https://calendar.app.google/THtgFsGRfykeiTnE8" target="_blank" rel="noopener" class="btn btn-primary" data-i18n="partnership.cta.btn">Réserver un RDV →</a>
       </div>
     </div>
@@ -649,9 +650,9 @@
 <section class="final">
   <div class="container">
     <div class="reveal">
-      <h2 data-i18n="final.h2">Votre base de clients est là.<br/>Le reste, on le construit ensemble.</h2>
-      <p data-i18n="final.p">Premier deal closé visé sous 60 jours à partir du premier dossier transmis.</p>
-      <a href="https://calendar.app.google/THtgFsGRfykeiTnE8" target="_blank" rel="noopener" class="btn btn-primary" data-i18n="final.cta">Réserver mon RDV →</a>
+      <h2 data-i18n="final.h2">Votre portefeuille est là.<br/>Le reste, on le construit ensemble.</h2>
+      <p data-i18n="final.p">Premier closing visé sous 60 jours à partir du premier dossier transmis.</p>
+      <a href="https://mybulkdeal.com/brokers/formulaire" class="btn btn-primary" data-i18n="final.cta">Postuler maintenant →</a>
     </div>
   </div>
 </section>
@@ -661,12 +662,12 @@
     <div class="logotype foot-logo">
       <span class="my">My</span><span class="bulk">Bulk</span><span class="deal">Deal<span class="dot">.</span></span>
     </div>
-    <div class="foot-info" data-i18n="footer.tagline">Opérateur de SPV immobilier · Dubai · Partenariat brokers</div>
+    <div class="foot-info" data-i18n="footer.tagline">Opérateur de co-acquisitions immobilières à Dubaï · Programme partenaires francophone</div>
     <div class="foot-entity">
-      <strong>MONOP'consulting FZ-LLC</strong> · Dubai, UAE
+      <strong>MONOP'consulting FZ-LLC</strong> · Dubaï, UAE
     </div>
     <p class="foot-disclaimer" data-i18n="footer.disclaimer">
-      Document à destination des brokers et agences partenaires. Les chiffres du simulateur reposent sur des hypothèses de marché et des observations sur des pipelines existants. La rémunération réelle se cale projet par projet selon la nature du deal et le niveau d'accompagnement client fourni. Aucune offre contractuelle n'est formulée par ce document.
+      Espace destiné aux professionnels de l'apport d'affaires immobilier et patrimonial souhaitant orienter des clients qualifiés vers nos opérations de co-acquisition. Les éléments figurant sur cette page ne constituent ni une offre au public de titres financiers au sens des articles L.411-1 et suivants du Code monétaire et financier, ni un acte de démarchage bancaire et financier au sens des articles L.341-1 et suivants du même code, ni une sollicitation à investir dans un fonds d'investissement alternatif au sens de la directive 2011/61/UE. Le simulateur est un outil indicatif et non contractuel ; la rémunération d'apport d'affaires réelle est définie projet par projet dans la convention signée. Les chiffres reposent sur des hypothèses de marché et des observations sur des portefeuilles existants. MyBulkDeal n'effectue aucune intermédiation en crédit ; toute solution de financement présentée à un client doit être étudiée avec un courtier crédit indépendant français immatriculé ORIAS.
     </p>
   </div>
 </footer>
@@ -674,394 +675,396 @@
 <script>
 const I18N = {
   fr: {
-    'meta.title': "MyBulkDeal — Partenariat brokers & agences Dubai",
+    'meta.title': "MyBulkDeal — Programme partenaires Dubaï",
     'meta.description': "Activez les leads dormants de votre pipeline. Vos prospects qui n'ont pas le ticket d'entrée 200 K AED entrent à 6 700 €. Vous monétisez du flux, pas un événement. Commission 2 à 5 % sur le capital placé.",
     'lang.label': "🌐 Français",
-    'nav.website': `<span class="arrow" aria-hidden="true">←</span><span class="label">Web site</span>`,
+    'nav.website': `<span class="arrow" aria-hidden="true">←</span><span class="label">Revenir au site</span>`,
     'nav.context': "Contexte",
     'nav.sim': "Simulateur",
-    'nav.credit': "Crédit France",
+    'nav.credit': "Réseau crédit",
     'nav.compensation': "Rémunération",
     'nav.partnership': "Partenariat",
 
     'hero.h1': `Activez les leads dormants<br/><span class="accent">de votre pipeline.</span>`,
-    'hero.subtitle': `Vos prospects sérieux qui butent sur le ticket d'entrée Dubai (<strong>200 à 400 K AED</strong>) entrent désormais à partir de <strong>6 700 €</strong>.<br/><br/>Vous monétisez du <strong>flux récurrent</strong>, pas un événement unique. Commission <strong>2 à 5 % sur le capital placé</strong>, avec effet de levier via nos partenaires crédit France.<br/><br/>Et surtout — <strong>vous restez le seul contact de votre client</strong>.`,
-    'hero.cta1': "Calculer ma commission ↓",
+    'hero.subtitle': `Vos clients sérieux qui butent sur le ticket d'entrée Dubaï (<strong>1,2 M AED minimum pour un appartement neuf</strong>) accèdent à la co-acquisition d'un bien réel à partir de <strong>26 700 AED, soit 6 700 €</strong>.<br/><br/>Vous leur ouvrez une porte que personne d'autre ne leur ouvre. Vous monétisez du <strong>flux récurrent</strong>, pas un événement unique.<br/><br/>Et surtout — <strong>vous restez le seul contact de votre client</strong>.`,
+    'hero.cta1': "Estimer ma rémunération ↓",
     'hero.cta2': "Voir notre proposition",
-    'hero.foot1': "Vos leads dormants activés",
-    'hero.foot2': "Crédit France pour vos clients",
-    'hero.foot3': "Commission 2-5 % récurrente",
+    'hero.foot1': "Vos clients dormants réactivés",
+    'hero.foot2': "Un actif immobilier réel à Dubaï",
+    'hero.foot3': "Vous restez l'interlocuteur unique",
 
     'context.tag': "Le contexte que vous vivez",
-    'context.h2': `30 à 50 % de vos leads<br/>ne signent pas.<br/><span class="green">Pour une seule raison.</span>`,
-    'context.p': `Le ticket d'entrée.<br/><br/>Pas le sérieux du prospect, pas son intérêt pour Dubai. Juste le mur des <strong>200 à 400 K AED</strong>.<br/><br/>Trois profils reviennent en boucle dans votre pipeline.`,
+    'context.h2': `30 à 50 % de vos clients qualifiés<br/>ne signent pas.<br/><span class="green">Pour une seule raison.</span>`,
+    'context.p': `Le ticket d'entrée.<br/><br/>Pas le sérieux du client, pas son intérêt pour Dubaï. Juste le mur des <strong>1,2 M AED minimum</strong> pour un appartement neuf en direct.<br/><br/>Trois profils reviennent en boucle dans votre portefeuille.`,
     'context.c1.pct': "Profil 01 · épargne moyenne",
     'context.c1.h3': "30 à 80 K€ de côté",
-    'context.c1.p': `Solide, mais insuffisant pour acheter seul à Dubai.<br/><br/>Vous lui dites « revenez quand vous aurez plus », et il disparaît.`,
+    'context.c1.p': `Solide, mais insuffisant pour acheter seul à Dubaï.<br/><br/>Vous lui dites « revenez quand vous aurez plus », et il disparaît dans la nature.`,
     'context.c2.pct': "Profil 02 · capacité d'emprunt",
     'context.c2.h3': "Bon dossier bancaire FR",
-    'context.c2.p': `Cadre, salaire confortable, vraie capacité à lever de la dette.<br/><br/>Personne ne lui a jamais montré comment transformer ça en investissement Dubai.`,
+    'context.c2.p': `Cadre, salaire confortable, vraie capacité d'emprunt en France.<br/><br/>Personne ne lui a jamais montré comment transformer cette capacité en exposition immobilière à Dubaï sans casser son épargne.`,
     'context.c3.pct': "Profil 03 · épargne immobilisée",
-    'context.c3.h3': "Cash en assurance-vie dormante",
-    'context.c3.p': `Livrets, fonds euros peu rémunérateurs, comptes-titres dormants.<br/><br/>Il veut bouger, mais ne sait pas comment passer le pas sans tout casser.`,
-    'context.bottom': `Ces leads ne sont pas une perte. <span class="arrow">→</span> <span class="green">C'est un gisement.</span>`,
+    'context.c3.h3': "Épargne dormante",
+    'context.c3.p': `Assurance-vie, livrets, comptes-titres dormants.<br/><br/>Il veut bouger, mais ne sait pas comment passer le pas sans tout liquider.`,
+    'context.bottom': `Ces clients ne sont pas une perte. <span class="arrow">→</span> <span class="green">C'est un gisement.</span>`,
 
     'sim.tag': "Le simulateur",
-    'sim.h2': "Combien vous rapporte votre base dormante.",
-    'sim.p': `Ajustez les trois variables — nous projetons votre commission additionnelle sur <strong style="color:var(--text)">3 ans</strong>.`,
-    'sim.clients': "Clients dormants par an",
-    'sim.budget': "Budget moyen par client",
-    'sim.commission': "Votre commission",
-    'sim.hypothesis': `<strong>Projection 3 ans</strong> · Année 1 : conversion de votre base dormante. Année 2 : +70 % (réinvestissements de vos clients + nouveaux leads activés). Année 3 : +150 % vs Année 1. Hypothèses basées sur les pipelines observés. <em>Valeurs ajustables en RDV.</em>`,
-    'sim.r.y1': "Commission année 1",
-    'sim.r.y2': "Commission année 2",
-    'sim.r.y3': "Commission année 3",
-    'sim.r.placed': "de capital placé",
-    'sim.chart.title': "Votre commission projetée — Année 1 / 2 / 3",
-    'sim.chart.legend.commission': "Commission",
-    'sim.chart.legend.capital': "Capital placé",
+    'sim.h2': "Estimez la rémunération générée par votre base dormante.",
+    'sim.p': `Ajustez les deux variables — nous projetons votre rémunération additionnelle sur <strong style="color:var(--text)">3 ans</strong>.`,
+    'sim.clients': "Co-acquéreurs activés par an",
+    'sim.budget': "Apport moyen par client",
+    'sim.hypothesis': `<strong>Projection 3 ans</strong> · Année 1 : conversion de votre base dormante. Année 2 : +70 % (réinvestissements de vos clients + nouveaux clients activés). Année 3 : +150 % vs Année 1. Hypothèses basées sur les portefeuilles observés. <em>Valeurs ajustables en rendez-vous.</em>`,
+    'sim.method': `<strong>Comment ces chiffres se construisent</strong> · Apports orientés Année N = Co-acquéreurs activés × Apport moyen × coefficient de croissance. La rémunération d'apport d'affaires associée est cadrée par la convention que nous signons ensemble et versée sur dossier finalisé. Le simulateur est un outil indicatif non contractuel, calibré sur les portefeuilles partenaires déjà activés.`,
+    'sim.r.y1': "Rémunération année 1",
+    'sim.r.y2': "Rémunération année 2",
+    'sim.r.y3': "Rémunération année 3",
+    'sim.r.placed': "d'apports orientés",
+    'sim.chart.title': "Votre rémunération projetée — Année 1 / 2 / 3",
+    'sim.chart.legend.commission': "Rémunération",
+    'sim.chart.legend.capital': "Apports orientés",
     'sim.chart.year': "Année",
-    'sim.balance.label': "Commission cumulée sur 3 ans",
+    'sim.balance.label': "Rémunération cumulée sur 3 ans",
     'sim.balance.detail': "Que vous ne touchiez pas hier avec votre modèle classique",
 
     'levers.tag': "Ce que MyBulkDeal change pour vous",
-    'levers.h2': `Trois effets sur votre P&L,<br/>tout de suite.`,
-    'levers.l1.h3': "Le même lead, plusieurs fois",
-    'levers.l1.p': "Un investisseur qui démarre à 6 700 € revient. Une fois rassuré sur la mécanique, il refait un deal, puis un autre. Vous monétisez la confiance — pas une transaction isolée.",
-    'levers.l2.h3': "Aucun coût d'acquisition",
-    'levers.l2.p': "Tous les dossiers classés « pas mûr » dans votre CRM redeviennent actifs. Pas de nouveau lead à acheter, pas de nouvelle pub. Vous réveillez votre base existante.",
-    'levers.l3.h3': "Ventes additionnelles par an",
-    'levers.l3.p': "L'ordre de grandeur que nous observons sur les pipelines déjà activés. Pas un objectif marketing — un constat terrain, par broker, en plus de votre flux habituel.",
+    'levers.h2': `Trois effets sur votre activité,<br/>tout de suite.`,
+    'levers.l1.h3': "Le même client, plusieurs opérations",
+    'levers.l1.p': "Un co-acquéreur qui entre à 6 700 € revient. Une fois rassuré sur la mécanique, sur les distributions, sur la gouvernance — il refait une opération, puis une autre. Vous monétisez la confiance que vous avez construite, pas une vente isolée.",
+    'levers.l2.h3': "Aucun coût d'acquisition supplémentaire",
+    'levers.l2.p': "Tous les dossiers classés « pas mûrs pour Dubaï » dans votre CRM redeviennent actifs. Pas de nouveau lead à acheter, pas de nouvelle campagne. Vous réveillez votre base existante.",
+    'levers.l3.h3': "Opérations additionnelles par an",
+    'levers.l3.p': "L'ordre de grandeur observé sur les portefeuilles déjà activés. Pas un objectif marketing — un constat terrain, par partenaire actif, en complément de votre flux habituel.",
 
     'credit.tag': "Le levier qui change tout",
-    'credit.h2': `Vos clients financent leur projet d'investissement à Dubai<br/>par du <span class="green">crédit en France</span>.`,
-    'credit.p': `Nous avons noué des partenariats avec des sociétés de crédit en France. Vos clients <strong>n'ont plus besoin d'attendre d'avoir épargné le ticket complet</strong>.<br/><br/>Ils lèvent de la dette en France — à un coût compétitif — pour financer leur entrée sur un deal MyBulkDeal à Dubai. Leur épargne reste intacte, leur capacité d'investissement est démultipliée.`,
-    'credit.p1.h4': "L'épargne client reste préservée",
-    'credit.p1.p': "Plutôt que de casser une assurance-vie ou vider un livret, il garde son matelas intact et finance son investissement par effet de levier.",
-    'credit.p2.h4': "Capacité d'investissement multipliée",
-    'credit.p2.p': "Un client avec 30 K€ d'épargne peut potentiellement entrer sur un deal à 80, 100, voire 120 K€ selon son profil bancaire — sans toucher à son cash.",
-    'credit.p3.h4': "Coût du crédit FR raisonnable",
-    'credit.p3.p': "Comparé aux rendements locatifs et à la plus-value attendue sur l'actif Dubai, le différentiel est intéressant. Nos partenaires connaissent ce produit et qualifient vite.",
+    'credit.h2': `Vos clients n'ont pas besoin<br/>d'attendre <span class="green">d'avoir épargné</span>.`,
+    'credit.p': `L'apport de <strong>26 700 AED (soit 6 700 €)</strong> est volontairement calibré pour être finançable par les solutions de crédit qui existent déjà en France. Vos clients n'ont rien à attendre, rien à liquider.<br/><br/>Plusieurs solutions de financement existent en France pour un ticket de ce niveau — chacune adaptée à un profil de client différent. <strong>Avec le bon réseau et un courtier crédit indépendant</strong>, vos clients assemblent la solution qui leur correspond.`,
+    'credit.p1.h4': "Crédit consommation classique",
+    'credit.p1.p': "La voie la plus directe. Un crédit conso à 6 % sur 5 ans pour 6 700 € représente environ 130 €/mois. Accessible à tout client avec une situation professionnelle stable.",
+    'credit.p2.h4': "Crédit Lombard",
+    'credit.p2.p': "Pour les clients qui détiennent un portefeuille titres ou un contrat d'assurance-vie. Ils empruntent en garantissant le crédit par leurs actifs financiers, sans casser leur épargne ni générer de fiscalité.",
+    'credit.p3.h4': "Prêt familial documenté",
+    'credit.p3.p': "Solution simple, peu coûteuse, parfaite quand l'environnement familial peut prêter contre reconnaissance de dette enregistrée. Pas d'intermédiaire, pas de frais cachés.",
     'credit.p4.h4': "Vous gardez la relation client",
-    'credit.p4.p': "Nous vous fournissons les coordonnées de notre partenaire crédit France ; c'est vous qui les transmettez à votre client (ou organisez la mise en relation). Vous restez son interlocuteur unique du début à la fin — vous gardez la relation, vous touchez la commission.",
+    'credit.p4.p': "MyBulkDeal n'effectue aucune intermédiation en crédit. Vous orientez votre client vers un courtier crédit indépendant français immatriculé ORIAS de votre choix. Vous restez son interlocuteur unique du début à la fin.",
 
     'comp.tag': "Un nouveau modèle de rémunération",
-    'comp.h2': `Moins d'aléa, plus de récurrence,<br/>un ARPU client qui grimpe.`,
-    'comp.old.h3': "Broker classique",
-    'comp.old.sub': "Commission attachée à la vente, au closing.",
-    'comp.old.li1': "Commission sur un événement isolé",
-    'comp.old.li2': "Cycle de vente long (6-18 mois)",
-    'comp.old.li3': "Aucune rémunération sur les « pas mûr »",
-    'comp.old.li4': "Pas d'effet de levier crédit",
+    'comp.h2': `Moins d'aléa, plus de récurrence,<br/>une valeur client qui grimpe.`,
+    'comp.old.h3': "Mandat immobilier classique",
+    'comp.old.sub': "Rémunération attachée à la vente, au closing.",
+    'comp.old.li1': "Rémunération sur un événement isolé",
+    'comp.old.li2': "Cycle de vente long (6 à 18 mois)",
+    'comp.old.li3': "Aucune rémunération sur les « pas mûrs »",
+    'comp.old.li4': "Aucun effet de levier crédit positionné",
     'comp.old.li5': "Aléa fort sur le closing final",
-    'comp.new.h3': "Modèle MyBulkDeal",
-    'comp.new.sub': "Commission sur le capital placé dans nos véhicules.",
-    'comp.new.li1': "Commission sur du flux récurrent",
+    'comp.new.h3': "Programme partenaires MyBulkDeal",
+    'comp.new.sub': "Rémunération d'apport d'affaires sur chaque opération.",
+    'comp.new.li1': "Rémunération sur du flux récurrent",
     'comp.new.li2': "Premier closing visé sous 60 jours",
-    'comp.new.li3': "Vos « pas mûr » redeviennent actifs",
-    'comp.new.li4': "Commission sur capital total (apport + crédit)",
-    'comp.new.li5': "Un même client : 3, 5, 10 lignes de commission",
-    'comp.range.value': "2 à 5 %",
-    'comp.range.label': "du capital placé par votre client, projet par projet",
+    'comp.new.li3': "Vos clients « pas mûrs » redeviennent actifs",
+    'comp.new.li4': "Mécanique calibrée pour le crédit en France",
+    'comp.new.li5': "Un même client : 3, 5, 10 opérations dans le temps",
+    'comp.range.value': "Apport d'affaires",
+    'comp.range.label': "cadré par convention signée, projet par projet",
 
     'how.tag': "Comment ça marche",
     'how.h2': "Cinq étapes. Vous restez sur votre métier.",
     'how.s1.h3': "Vous identifiez & premier RDV",
-    'how.s1.p': "Un lead dans votre pipeline qui matche : intérêt Dubai, ticket insuffisant pour un deal direct, épargne ou capacité d'emprunt FR. Vous organisez le premier rendez-vous avec votre client.",
-    'how.s2.h3': "RDV avec MyBulkDeal",
-    'how.s2.p': "Prise de rendez-vous avec un membre de l'équipe MyBulkDeal, en présence du partenaire (vous). On valide ensemble la pertinence du dossier et on présente la mécanique au client.",
+    'how.s1.p': "Un client de votre portefeuille qui correspond : intérêt pour Dubaï, ticket insuffisant pour un achat direct, épargne mobilisable ou capacité d'emprunt FR. Vous organisez le premier échange.",
+    'how.s2.h3': "RDV tripartite avec MyBulkDeal",
+    'how.s2.p': "Visio de 30 à 45 minutes avec un membre de l'équipe MyBulkDeal, en votre présence. Nous validons ensemble la pertinence du dossier et nous présentons la mécanique de co-acquisition.",
     'how.s3.h3': "Suivi client & LOI",
-    'how.s3.p': "Vous assurez le suivi de votre client. Dès qu'il manifeste son intention de prendre position sur un deal, vous nous transmettez la LOI (Letter of Intent). Vous restez le seul interlocuteur du client.",
-    'how.s4.h3': "Entrée dans le SPV",
-    'how.s4.p': "Le client rejoint la SPV dédiée (à partir de 6 700 €) et le bien est acheté. Capital sécurisé via un mandataire RERA local.",
+    'how.s3.p': "Vous gardez la main sur votre client. Dès qu'il manifeste son intention de prendre position sur une opération, nous lui transmettons la fiche projet sous NDA puis la lettre d'intention. Vous restez son interlocuteur unique.",
+    'how.s4.h3': "Entrée dans la société d'exploitation",
+    'how.s4.p': "Votre client devient actionnaire de la société d'exploitation dédiée (à partir de 26 700 AED). Le bien est acheté au nom de la société par notre agence partenaire titulaire d'une licence RERA.",
     'how.s5.h3': "Vous encaissez",
-    'how.s5.p': "Commission 2 à 5 % sur le capital placé. Le client reste le vôtre — vous remontez les prochains deals à votre rythme.",
+    'how.s5.p': "Versement sur dossier finalisé, selon les modalités définies dans la convention d'apport d'affaires que nous signons ensemble. Votre client reste le vôtre — vous remontez les opérations suivantes à votre rythme.",
 
     'partnership.tag': "Ce qu'on vous propose",
     'partnership.h2': `Un partenariat souple,<br/>sans exclusivité, sans engagement de volume.`,
-    'partnership.p': "Notre approche s'intègre à votre activité actuelle sans la perturber. Voici ce qui constitue un partenariat MyBulkDeal côté broker.",
-    'partnership.p1.h3': "Un accord de partenariat simple",
-    'partnership.p1.p': "Une page, deux signatures. Définit le périmètre, la rémunération et le mode de transmission des leads. Pas d'exclusivité demandée, pas d'engagement de volume.",
-    'partnership.p2.h3': "Un accès direct à nos deals en cours",
-    'partnership.p2.p': "Off-plan et secondary market, mis à jour en continu. Vous voyez en temps réel ce qui est ouvert, ce qui ferme, ce qui se prépare.",
+    'partnership.p': "Notre approche s'intègre à votre activité actuelle sans la perturber. Voici ce qui constitue un partenariat MyBulkDeal.",
+    'partnership.p1.h3': "Une convention d'apport d'affaires claire",
+    'partnership.p1.p': "Un document encadré : périmètre, modalités de rémunération, mode de transmission des dossiers, protection apporteur, non-démarchage croisé. Pas d'exclusivité demandée, pas d'objectif chiffré imposé.",
+    'partnership.p2.h3': "Un accès direct aux opérations en cours",
+    'partnership.p2.p': "Off-plan et ancien, mis à jour en continu. Vous voyez ce qui est ouvert, ce qui ferme, ce qui se prépare. Les fiches détaillées sont accessibles sous NDA.",
     'partnership.p3.h3': "Un onboarding court de votre équipe",
-    'partnership.p3.p': "Une session de 90 minutes : mécanique, pitch client, outils de qualification, présentation du partenaire crédit France. Vos commerciaux sont opérationnels le lendemain.",
+    'partnership.p3.p': "Une session de 90 minutes : mécanique de la co-acquisition, pitch client, outils de qualification, panorama des solutions de financement disponibles côté France. Vos commerciaux sont opérationnels le lendemain.",
     'partnership.p4.h3': "Un point de contact dédié",
-    'partnership.p4.p': "Une personne référente, joignable en direct, qui pilote vos dossiers du premier appel jusqu'au closing. Pas de support multi-tickets, pas de standard.",
+    'partnership.p4.p': "Une personne référente, joignable en direct, qui pilote vos dossiers du premier appel jusqu'à la distribution des produits locatifs. Pas de support multi-tickets, pas de standard.",
     'partnership.p5.h3': "Un reporting trimestriel",
-    'partnership.p5.p': "Leads convertis, capital placé, rémunération cumulée, opportunités de relance sur votre base. Vous savez exactement où vous en êtes.",
-    'partnership.cta.p': "Un appel ou un café de 30 minutes. On regarde ensemble la typologie de votre pipeline et on identifie 2 ou 3 profils tests.",
+    'partnership.p5.p': "Clients qualifiés, opérations conclues, rémunération cumulée, opportunités de relance sur votre base. Vous savez exactement où vous en êtes.",
+    'partnership.cta.p': "Un appel ou un café de 30 minutes. On regarde ensemble la typologie de votre portefeuille et on identifie 2 ou 3 profils tests.",
     'partnership.cta.btn': "Réserver un RDV →",
 
-    'final.h2': `Votre base de clients est là.<br/>Le reste, on le construit ensemble.`,
-    'final.p': "Premier deal closé visé sous 60 jours à partir du premier dossier transmis.",
-    'final.cta': "Réserver mon RDV →",
+    'final.h2': `Votre portefeuille est là.<br/>Le reste, on le construit ensemble.`,
+    'final.p': "Premier closing visé sous 60 jours à partir du premier dossier transmis.",
+    'final.cta': "Postuler maintenant →",
 
-    'footer.tagline': "Opérateur de SPV immobilier · Dubai · Partenariat brokers",
-    'footer.disclaimer': "Document à destination des brokers et agences partenaires. Les chiffres du simulateur reposent sur des hypothèses de marché et des observations sur des pipelines existants. La rémunération réelle se cale projet par projet selon la nature du deal et le niveau d'accompagnement client fourni. Aucune offre contractuelle n'est formulée par ce document."
+    'footer.tagline': "Opérateur de co-acquisitions immobilières à Dubaï · Programme partenaires francophone",
+    'footer.disclaimer': "Espace destiné aux professionnels de l'apport d'affaires immobilier et patrimonial souhaitant orienter des clients qualifiés vers nos opérations de co-acquisition. Les éléments figurant sur cette page ne constituent ni une offre au public de titres financiers au sens des articles L.411-1 et suivants du Code monétaire et financier, ni un acte de démarchage bancaire et financier au sens des articles L.341-1 et suivants du même code, ni une sollicitation à investir dans un fonds d'investissement alternatif au sens de la directive 2011/61/UE. Le simulateur est un outil indicatif et non contractuel ; la rémunération d'apport d'affaires réelle est définie projet par projet dans la convention signée. Les chiffres reposent sur des hypothèses de marché et des observations sur des portefeuilles existants. MyBulkDeal n'effectue aucune intermédiation en crédit ; toute solution de financement présentée à un client doit être étudiée avec un courtier crédit indépendant français immatriculé ORIAS."
   },
 
   en: {
-    'meta.title': "MyBulkDeal — Brokers & agencies partnership for Dubai",
+    'meta.title': "MyBulkDeal — Dubai partners programme",
     'meta.description': "Activate the dormant leads in your pipeline. Your prospects who can't afford the AED 200K+ entry ticket can now enter from €6,700. You monetise recurring flow, not a one-off event. 2 to 5% commission on placed capital.",
     'lang.label': "🌐 English",
-    'nav.website': `<span class="arrow" aria-hidden="true">←</span><span class="label">Web site</span>`,
+    'nav.website': `<span class="arrow" aria-hidden="true">←</span><span class="label">Back to site</span>`,
     'nav.context': "Context",
     'nav.sim': "Simulator",
-    'nav.credit': "France credit",
+    'nav.credit': "Credit network",
     'nav.compensation': "Compensation",
     'nav.partnership': "Partnership",
 
     'hero.h1': `Activate the dormant leads<br/><span class="accent">in your pipeline.</span>`,
-    'hero.subtitle': `Your serious prospects who hit the Dubai entry wall (<strong>AED 200 to 400K</strong>) now enter from <strong>€6,700</strong>.<br/><br/>You monetise <strong>recurring flow</strong>, not a one-off event. <strong>2 to 5% commission on placed capital</strong>, with French credit leverage for your clients.<br/><br/>And above all — <strong>you remain your client's only contact</strong>.`,
-    'hero.cta1': "Calculate my commission ↓",
+    'hero.subtitle': `Your serious clients who hit the Dubai entry ticket (<strong>AED 1.2M minimum for a new-build flat</strong>) now enter co-acquisition from <strong>AED 26,700 — €6,700</strong>.<br/><br/>You open a door no one else opens for them. You monetise <strong>recurring flow</strong>, not a one-off event.<br/><br/>And above all — <strong>you remain your client's only contact</strong>.`,
+    'hero.cta1': "Estimate my fee ↓",
     'hero.cta2': "See our proposal",
-    'hero.foot1': "Your dormant leads activated",
-    'hero.foot2': "French credit for your clients",
-    'hero.foot3': "Recurring 2-5% commission",
+    'hero.foot1': "Your dormant clients reactivated",
+    'hero.foot2': "A real Dubai property asset",
+    'hero.foot3': "You stay the single point of contact",
 
-    'context.tag': "The context you live every day",
-    'context.h2': `30 to 50% of your leads<br/>don't sign.<br/><span class="green">For one single reason.</span>`,
-    'context.p': `The entry ticket.<br/><br/>Not the prospect's seriousness, not their interest in Dubai. Just the <strong>AED 200 to 400K wall</strong>.<br/><br/>Three profiles keep coming back in your pipeline.`,
+    'context.tag': "The reality you live every day",
+    'context.h2': `30 to 50% of your qualified clients<br/>don't sign.<br/><span class="green">For one single reason.</span>`,
+    'context.p': `The entry ticket.<br/><br/>Not the client's seriousness, not their interest in Dubai. Just the <strong>AED 1.2M minimum</strong> wall for a direct new-build purchase.<br/><br/>Three profiles keep coming back in your portfolio.`,
     'context.c1.pct': "Profile 01 · average savings",
     'context.c1.h3': "€30 to €80K set aside",
     'context.c1.p': `Solid, but not enough to buy alone in Dubai.<br/><br/>You tell them "come back when you have more", and they disappear.`,
     'context.c2.pct': "Profile 02 · borrowing capacity",
     'context.c2.h3': "Strong banking profile",
-    'context.c2.p': `Executive, comfortable salary, real debt capacity.<br/><br/>No one ever showed them how to turn this into a Dubai investment.`,
+    'context.c2.p': `Executive, comfortable salary, real borrowing capacity in France.<br/><br/>No one ever showed them how to turn that capacity into Dubai real estate exposure without breaking their savings.`,
     'context.c3.pct': "Profile 03 · locked-in savings",
-    'context.c3.h3': "Cash in dormant life insurance",
-    'context.c3.p': `Savings accounts, low-yield funds, dormant securities accounts.<br/><br/>They want to move but don't know how without breaking everything.`,
-    'context.bottom': `These leads aren't a loss. <span class="arrow">→</span> <span class="green">They're a goldmine.</span>`,
+    'context.c3.h3': "Dormant savings",
+    'context.c3.p': `Life insurance, savings accounts, dormant securities accounts.<br/><br/>They want to move but don't know how without liquidating everything.`,
+    'context.bottom': `These clients aren't a loss. <span class="arrow">→</span> <span class="green">They're a goldmine.</span>`,
 
     'sim.tag': "The simulator",
-    'sim.h2': "How much your dormant base is worth.",
-    'sim.p': `Adjust the three variables — we project your additional commission over <strong style="color:var(--text)">3 years</strong>.`,
-    'sim.clients': "Dormant clients per year",
-    'sim.budget': "Average client budget",
-    'sim.commission': "Your commission",
-    'sim.hypothesis': `<strong>3-year projection</strong> · Year 1: conversion of your dormant base. Year 2: +70% (existing clients reinvesting + new activated leads). Year 3: +150% vs Year 1. Assumptions based on observed pipelines. <em>Adjustable in call.</em>`,
-    'sim.r.y1': "Year 1 commission",
-    'sim.r.y2': "Year 2 commission",
-    'sim.r.y3': "Year 3 commission",
-    'sim.r.placed': "of placed capital",
-    'sim.chart.title': "Your projected commission — Year 1 / 2 / 3",
-    'sim.chart.legend.commission': "Commission",
-    'sim.chart.legend.capital': "Placed capital",
+    'sim.h2': "Estimate the fee generated by your dormant base.",
+    'sim.p': `Adjust the two variables — we project your additional fee over <strong style="color:var(--text)">3 years</strong>.`,
+    'sim.clients': "Co-acquirers activated per year",
+    'sim.budget': "Average client contribution",
+    'sim.hypothesis': `<strong>3-year projection</strong> · Year 1: conversion of your dormant base. Year 2: +70% (existing clients reinvesting + new activated clients). Year 3: +150% vs Year 1. Assumptions based on observed portfolios. <em>Adjustable in call.</em>`,
+    'sim.method': `<strong>How these figures are built</strong> · Year N contributions = Activated co-acquirers × Average ticket × Growth coefficient. The associated introducer fee is framed by the convention we sign together and paid on finalised file. The simulator is an indicative, non-contractual tool, calibrated on already activated partner portfolios.`,
+    'sim.r.y1': "Year 1 fee",
+    'sim.r.y2': "Year 2 fee",
+    'sim.r.y3': "Year 3 fee",
+    'sim.r.placed': "of contributions introduced",
+    'sim.chart.title': "Your projected fee — Year 1 / 2 / 3",
+    'sim.chart.legend.commission': "Fee",
+    'sim.chart.legend.capital': "Contributions introduced",
     'sim.chart.year': "Year",
-    'sim.balance.label': "Cumulative commission over 3 years",
+    'sim.balance.label': "Cumulative fee over 3 years",
     'sim.balance.detail': "Money you weren't earning yesterday with the classic model",
 
     'levers.tag': "What MyBulkDeal changes for you",
-    'levers.h2': `Three effects on your P&L,<br/>right away.`,
-    'levers.l1.h3': "The same lead, several times",
-    'levers.l1.p': "An investor starting at €6,700 comes back. Once reassured on the mechanism, they do another deal, then another. You monetise trust — not an isolated transaction.",
-    'levers.l2.h3': "No acquisition cost",
-    'levers.l2.p': "All those files tagged 'not mature' in your CRM become active again. No new lead to buy, no new ad. You wake up your existing base.",
-    'levers.l3.h3': "Additional sales per year",
-    'levers.l3.p': "The order of magnitude we observe on already activated pipelines. Not a marketing target — a field observation, per broker, on top of your usual flow.",
+    'levers.h2': `Three effects on your business,<br/>right away.`,
+    'levers.l1.h3': "The same client, several operations",
+    'levers.l1.p': "A co-acquirer entering at €6,700 comes back. Once reassured on the mechanism, on the distributions, on governance — they do another operation, then another. You monetise the trust you've built, not an isolated sale.",
+    'levers.l2.h3': "No additional acquisition cost",
+    'levers.l2.p': "All files tagged 'not mature for Dubai' in your CRM become active again. No new lead to buy, no new campaign. You wake up your existing base.",
+    'levers.l3.h3': "Additional operations per year",
+    'levers.l3.p': "The order of magnitude observed on already activated portfolios. Not a marketing target — a field observation, per active partner, on top of your usual flow.",
 
     'credit.tag': "The game-changing lever",
-    'credit.h2': `Your clients fund their Dubai investment project<br/>with <span class="green">credit raised in France</span>.`,
-    'credit.p': `We've partnered with credit companies in France. Your clients <strong>no longer need to wait until they've saved the full ticket</strong>.<br/><br/>They raise debt in France — at a competitive cost — to fund their entry into a MyBulkDeal Dubai deal. Their savings stay intact, their investment capacity is multiplied.`,
-    'credit.p1.h4': "Client savings stay intact",
-    'credit.p1.p': "Rather than breaking a life insurance or emptying a savings account, they keep their safety net intact and finance their investment with leverage.",
-    'credit.p2.h4': "Investment capacity multiplied",
-    'credit.p2.p': "A client with €30K of savings can potentially enter a deal worth €80K, €100K, even €120K depending on their banking profile — without touching their cash.",
-    'credit.p3.h4': "French credit cost stays reasonable",
-    'credit.p3.p': "Compared to the rental yields and expected capital gain on the Dubai asset, the spread is attractive. Our partners know this product and qualify fast.",
+    'credit.h2': `Your clients don't need to wait<br/>to <span class="green">have saved up</span>.`,
+    'credit.p': `The <strong>AED 26,700 (€6,700)</strong> contribution is deliberately calibrated to be financeable by credit solutions that already exist in France. Your clients have nothing to wait for, nothing to liquidate.<br/><br/>Several financing solutions exist in France for a ticket of this size — each suited to a different client profile. <strong>With the right network and an independent credit broker</strong>, your clients assemble the solution that fits them.`,
+    'credit.p1.h4': "Classic consumer credit",
+    'credit.p1.p': "The most direct route. A consumer loan at 6% over 5 years for €6,700 is roughly €130/month. Accessible to any client with a stable professional situation.",
+    'credit.p2.h4': "Lombard credit",
+    'credit.p2.p': "For clients holding a securities portfolio or a life insurance contract. They borrow by pledging their financial assets, without breaking their savings or triggering tax.",
+    'credit.p3.h4': "Documented family loan",
+    'credit.p3.p': "Simple, low-cost solution, perfect when the family environment can lend against a registered IOU. No intermediary, no hidden fees.",
     'credit.p4.h4': "You keep the client relationship",
-    'credit.p4.p': "We provide you with our France credit partner's contact details; you are the one passing them on to your client (or organising the introduction). You remain their single point of contact from start to finish — you keep the relationship, you earn the commission.",
+    'credit.p4.p': "MyBulkDeal does not act as a credit intermediary. You refer your client to an independent French credit broker registered with ORIAS, of your choice. You remain their single point of contact from start to finish.",
 
     'comp.tag': "A new compensation model",
-    'comp.h2': `Less randomness, more recurrence,<br/>client ARPU goes up.`,
-    'comp.old.h3': "Classic broker",
-    'comp.old.sub': "Commission tied to the sale, at closing.",
-    'comp.old.li1': "Commission on an isolated event",
-    'comp.old.li2': "Long sales cycle (6-18 months)",
-    'comp.old.li3': "No compensation on 'not mature' leads",
-    'comp.old.li4': "No credit leverage effect",
+    'comp.h2': `Less randomness, more recurrence,<br/>client lifetime value goes up.`,
+    'comp.old.h3': "Classic real estate mandate",
+    'comp.old.sub': "Fee tied to the sale, at closing.",
+    'comp.old.li1': "Fee on an isolated event",
+    'comp.old.li2': "Long sales cycle (6 to 18 months)",
+    'comp.old.li3': "No compensation on 'not mature' clients",
+    'comp.old.li4': "No credit leverage positioned",
     'comp.old.li5': "High randomness on final closing",
-    'comp.new.h3': "MyBulkDeal model",
-    'comp.new.sub': "Commission on capital placed in our vehicles.",
-    'comp.new.li1': "Commission on recurring flow",
+    'comp.new.h3': "MyBulkDeal partners programme",
+    'comp.new.sub': "Introducer fee on each operation.",
+    'comp.new.li1': "Fee on recurring flow",
     'comp.new.li2': "First closing targeted within 60 days",
-    'comp.new.li3': "Your 'not mature' leads become active",
-    'comp.new.li4': "Commission on total capital (equity + credit)",
-    'comp.new.li5': "One client: 3, 5, 10 commission lines",
-    'comp.range.value': "2 to 5%",
-    'comp.range.label': "of capital placed by your client, project by project",
+    'comp.new.li3': "Your 'not mature' clients become active",
+    'comp.new.li4': "Mechanism calibrated for French credit",
+    'comp.new.li5': "One client: 3, 5, 10 operations over time",
+    'comp.range.value': "Introducer fee",
+    'comp.range.label': "framed by signed convention, project by project",
 
     'how.tag': "How it works",
     'how.h2': "Five steps. You stay on your job.",
     'how.s1.h3': "You identify & first meeting",
-    'how.s1.p': "A lead in your pipeline that matches: Dubai interest, insufficient ticket for a direct deal, savings or French borrowing capacity. You set up the first meeting with your client.",
-    'how.s2.h3': "Joint call with MyBulkDeal",
-    'how.s2.p': "A call with a member of the MyBulkDeal team, with you (the partner) present. We validate the file together and walk the client through the mechanism.",
+    'how.s1.p': "A client in your portfolio that matches: Dubai interest, ticket insufficient for a direct purchase, savings to mobilise or French borrowing capacity. You set up the first conversation.",
+    'how.s2.h3': "Three-way call with MyBulkDeal",
+    'how.s2.p': "30 to 45-minute video call with a member of the MyBulkDeal team, with you present. We validate the file together and walk the client through the co-acquisition mechanism.",
     'how.s3.h3': "Client follow-up & LOI",
-    'how.s3.p': "You handle the client follow-up. As soon as they confirm intention to take a position on a deal, you pass us the LOI (Letter of Intent). You remain the client's sole point of contact.",
-    'how.s4.h3': "Entry into the SPV",
-    'how.s4.p': "The client joins the dedicated SPV (from €6,700) and the asset is acquired. Capital secured via a local RERA trustee.",
+    'how.s3.p': "You handle client follow-up. As soon as they confirm intention to take a position on an operation, we send them the project sheet under NDA, then the Letter of Intent. You remain their sole point of contact.",
+    'how.s4.h3': "Entry into the operating company",
+    'how.s4.p': "Your client becomes a shareholder of the dedicated operating company (from AED 26,700). The asset is acquired in the company's name by our RERA-licensed partner agency.",
     'how.s5.h3': "You get paid",
-    'how.s5.p': "2 to 5% commission on placed capital. The client stays yours — you bring the next deals at your own pace.",
+    'how.s5.p': "Payment on finalised file, according to the terms defined in the introducer convention we sign together. Your client stays yours — you bring the next operations at your own pace.",
 
     'partnership.tag': "What we offer you",
     'partnership.h2': `A flexible partnership,<br/>no exclusivity, no volume commitment.`,
-    'partnership.p': "Our approach fits into your current activity without disrupting it. Here's what makes a MyBulkDeal broker partnership.",
-    'partnership.p1.h3': "A simple partnership agreement",
-    'partnership.p1.p': "One page, two signatures. Defines the scope, the compensation and the lead transmission method. No exclusivity required, no volume commitment.",
-    'partnership.p2.h3': "Direct access to our current deals",
-    'partnership.p2.p': "Off-plan and secondary market, continuously updated. You see in real time what's open, what's closing, what's coming up.",
+    'partnership.p': "Our approach fits into your current activity without disrupting it. Here's what makes a MyBulkDeal partnership.",
+    'partnership.p1.h3': "A clear introducer convention",
+    'partnership.p1.p': "A framed document: scope, fee terms, file transmission method, introducer protection, no cross-solicitation. No exclusivity required, no volume target imposed.",
+    'partnership.p2.h3': "Direct access to live operations",
+    'partnership.p2.p': "Off-plan and secondary, continuously updated. You see what's open, what's closing, what's coming. Detailed sheets accessible under NDA.",
     'partnership.p3.h3': "A short onboarding for your team",
-    'partnership.p3.p': "A 90-minute session: mechanics, client pitch, qualification tools, presentation of the French credit partner. Your sales team is operational the next day.",
+    'partnership.p3.p': "A 90-minute session: co-acquisition mechanism, client pitch, qualification tools, overview of financing solutions available in France. Your sales team is operational the next day.",
     'partnership.p4.h3': "A dedicated point of contact",
-    'partnership.p4.p': "One referent person, reachable directly, who pilots your files from first call to closing. No multi-ticket support, no switchboard.",
+    'partnership.p4.p': "One referent person, reachable directly, who pilots your files from the first call to distribution of rental proceeds. No multi-ticket support, no switchboard.",
     'partnership.p5.h3': "Quarterly reporting",
-    'partnership.p5.p': "Converted leads, placed capital, cumulative compensation, follow-up opportunities on your base. You know exactly where you stand.",
-    'partnership.cta.p': "A call or coffee for 30 minutes. We look together at your pipeline typology and identify 2 or 3 test profiles.",
+    'partnership.p5.p': "Qualified clients, closed operations, cumulative fee, follow-up opportunities on your base. You know exactly where you stand.",
+    'partnership.cta.p': "A call or coffee for 30 minutes. We look together at your portfolio typology and identify 2 or 3 test profiles.",
     'partnership.cta.btn': "Book a call →",
 
-    'final.h2': `Your client base is there.<br/>The rest, we build together.`,
-    'final.p': "First deal closed targeted within 60 days from the first file transmitted.",
-    'final.cta': "Book my call →",
+    'final.h2': `Your portfolio is there.<br/>The rest, we build together.`,
+    'final.p': "First closing targeted within 60 days from the first file transmitted.",
+    'final.cta': "Apply now →",
 
-    'footer.tagline': "Real estate SPV operator · Dubai · Brokers partnership",
-    'footer.disclaimer': "Document addressed to broker and agency partners. The simulator figures rely on market assumptions and observations on existing pipelines. Actual compensation is calibrated project by project according to deal nature and client support level. No contractual offer is made through this document."
+    'footer.tagline': "Dubai property co-acquisition operator · Francophone partners programme",
+    'footer.disclaimer': "Space addressed to real estate and patrimonial introducer professionals wishing to refer qualified clients to our co-acquisition operations. The elements on this page do not constitute a public offering of financial securities under articles L.411-1 et seq. of the French Monetary and Financial Code, nor banking and financial canvassing under articles L.341-1 et seq., nor solicitation to invest in an alternative investment fund within the meaning of directive 2011/61/EU. The simulator is an indicative, non-contractual tool; the actual introducer fee is defined project by project in the signed convention. Figures rely on market assumptions and observations on existing portfolios. MyBulkDeal does not act as a credit intermediary; any financing solution presented to a client must be studied with an independent French credit broker registered with ORIAS."
   },
 
   it: {
-    'meta.title': "MyBulkDeal — Partnership con broker e agenzie Dubai",
+    'meta.title': "MyBulkDeal — Programma partner Dubai",
     'meta.description': "Attivate i lead dormienti del vostro pipeline. I prospect senza il ticket d'ingresso 200 K AED entrano da €6.700. Monetizzate flusso ricorrente, non un evento isolato. Commissione 2-5% sul capitale collocato.",
     'lang.label': "🌐 Italiano",
-    'nav.website': `<span class="arrow" aria-hidden="true">←</span><span class="label">Sito web</span>`,
+    'nav.website': `<span class="arrow" aria-hidden="true">←</span><span class="label">Torna al sito</span>`,
     'nav.context': "Contesto",
     'nav.sim': "Simulatore",
-    'nav.credit': "Credito Francia",
+    'nav.credit': "Rete credito",
     'nav.compensation': "Remunerazione",
     'nav.partnership': "Partnership",
 
-    'hero.h1': `Attivate i lead dormienti<br/><span class="accent">del vostro pipeline.</span>`,
-    'hero.subtitle': `I vostri prospect seri che sbattono contro il ticket d'ingresso Dubai (<strong>200 a 400 K AED</strong>) entrano ora da <strong>€6.700</strong>.<br/><br/>Monetizzate <strong>flusso ricorrente</strong>, non un evento isolato. Commissione <strong>2-5% sul capitale collocato</strong>, con leva via i nostri partner credito Francia.<br/><br/>E soprattutto — <strong>restate l'unico contatto del vostro cliente</strong>.`,
-    'hero.cta1': "Calcola la mia commissione ↓",
+    'hero.h1': `Attiva i lead dormienti<br/><span class="accent">della tua pipeline.</span>`,
+    'hero.subtitle': `I vostri clienti seri che sbattono contro il ticket d'ingresso Dubai (<strong>1,2 M AED minimo per un appartamento nuovo</strong>) entrano nella co-acquisizione da <strong>26.700 AED, ossia €6.700</strong>.<br/><br/>Aprite loro una porta che nessun altro apre. Monetizzate <strong>flusso ricorrente</strong>, non un evento isolato.<br/><br/>E soprattutto — <strong>restate l'unico contatto del vostro cliente</strong>.`,
+    'hero.cta1': "Stima la mia remunerazione ↓",
     'hero.cta2': "Vedi la nostra proposta",
-    'hero.foot1': "I vostri lead dormienti attivati",
-    'hero.foot2': "Credito Francia per i vostri clienti",
-    'hero.foot3': "Commissione 2-5% ricorrente",
+    'hero.foot1': "I vostri clienti dormienti riattivati",
+    'hero.foot2': "Un asset immobiliare reale a Dubai",
+    'hero.foot3': "Restate l'interlocutore unico",
 
     'context.tag': "Il contesto che vivete ogni giorno",
-    'context.h2': `Il 30-50% dei vostri lead<br/>non firma.<br/><span class="green">Per un solo motivo.</span>`,
-    'context.p': `Il ticket d'ingresso.<br/><br/>Non la serietà del prospect, non il suo interesse per Dubai. Solo il muro dei <strong>200 a 400 K AED</strong>.<br/><br/>Tre profili tornano sempre nel vostro pipeline.`,
+    'context.h2': `Il 30-50% dei vostri clienti qualificati<br/>non firma.<br/><span class="green">Per un solo motivo.</span>`,
+    'context.p': `Il ticket d'ingresso.<br/><br/>Non la serietà del cliente, non il suo interesse per Dubai. Solo il muro dei <strong>1,2 M AED minimo</strong> per un appartamento nuovo in diretta.<br/><br/>Tre profili tornano sempre nel vostro portafoglio.`,
     'context.c1.pct': "Profilo 01 · risparmio medio",
     'context.c1.h3': "30-80 K€ da parte",
     'context.c1.p': `Solido, ma insufficiente per comprare da solo a Dubai.<br/><br/>Gli dite "tornate quando ne avrete di più", e sparisce.`,
     'context.c2.pct': "Profilo 02 · capacità di indebitamento",
     'context.c2.h3': "Buon profilo bancario",
-    'context.c2.p': `Dirigente, stipendio confortevole, reale capacità di levare debito.<br/><br/>Nessuno gli ha mai mostrato come trasformarla in investimento Dubai.`,
+    'context.c2.p': `Dirigente, stipendio confortevole, reale capacità di indebitamento in Francia.<br/><br/>Nessuno gli ha mai mostrato come trasformarla in esposizione immobiliare a Dubai senza rompere il risparmio.`,
     'context.c3.pct': "Profilo 03 · risparmio immobilizzato",
-    'context.c3.h3': "Cash in polizza vita dormiente",
-    'context.c3.p': `Libretti, fondi a basso rendimento, conti titoli dormienti.<br/><br/>Vuole muoversi ma non sa come fare senza rompere tutto.`,
-    'context.bottom': `Questi lead non sono una perdita. <span class="arrow">→</span> <span class="green">Sono un giacimento.</span>`,
+    'context.c3.h3': "Risparmio dormiente",
+    'context.c3.p': `Polizze vita, libretti, conti titoli dormienti.<br/><br/>Vuole muoversi ma non sa come fare senza liquidare tutto.`,
+    'context.bottom': `Questi clienti non sono una perdita. <span class="arrow">→</span> <span class="green">Sono un giacimento.</span>`,
 
     'sim.tag': "Il simulatore",
-    'sim.h2': "Quanto vi rende la vostra base dormiente.",
-    'sim.p': `Regolate le tre variabili — proiettiamo la vostra commissione aggiuntiva su <strong style="color:var(--text)">3 anni</strong>.`,
-    'sim.clients': "Clienti dormienti all'anno",
-    'sim.budget': "Budget medio per cliente",
-    'sim.commission': "La vostra commissione",
-    'sim.hypothesis': `<strong>Proiezione 3 anni</strong> · Anno 1: conversione della base dormiente. Anno 2: +70% (reinvestimenti dei clienti + nuovi lead attivati). Anno 3: +150% vs Anno 1. Ipotesi basate sui pipeline osservati. <em>Valori modulabili in call.</em>`,
-    'sim.r.y1': "Commissione anno 1",
-    'sim.r.y2': "Commissione anno 2",
-    'sim.r.y3': "Commissione anno 3",
-    'sim.r.placed': "di capitale collocato",
-    'sim.chart.title': "La vostra commissione proiettata — Anno 1 / 2 / 3",
-    'sim.chart.legend.commission': "Commissione",
-    'sim.chart.legend.capital': "Capitale collocato",
+    'sim.h2': "Stimate la remunerazione generata dalla vostra base dormiente.",
+    'sim.p': `Regolate le due variabili — proiettiamo la vostra remunerazione aggiuntiva su <strong style="color:var(--text)">3 anni</strong>.`,
+    'sim.clients': "Co-acquirenti attivati all'anno",
+    'sim.budget': "Apporto medio per cliente",
+    'sim.hypothesis': `<strong>Proiezione 3 anni</strong> · Anno 1: conversione della base dormiente. Anno 2: +70% (reinvestimenti dei clienti + nuovi clienti attivati). Anno 3: +150% vs Anno 1. Ipotesi basate sui portafogli osservati. <em>Valori modulabili in call.</em>`,
+    'sim.method': `<strong>Come si costruiscono questi numeri</strong> · Apporti orientati Anno N = Co-acquirenti attivati × Apporto medio × coefficiente di crescita. La remunerazione d'apporto d'affari associata è incorniciata dalla convenzione che firmiamo insieme e versata su dossier finalizzato. Il simulatore è uno strumento indicativo non contrattuale, calibrato sui portafogli partner già attivati.`,
+    'sim.r.y1': "Remunerazione anno 1",
+    'sim.r.y2': "Remunerazione anno 2",
+    'sim.r.y3': "Remunerazione anno 3",
+    'sim.r.placed': "di apporti orientati",
+    'sim.chart.title': "La vostra remunerazione proiettata — Anno 1 / 2 / 3",
+    'sim.chart.legend.commission': "Remunerazione",
+    'sim.chart.legend.capital': "Apporti orientati",
     'sim.chart.year': "Anno",
-    'sim.balance.label': "Commissione cumulata su 3 anni",
+    'sim.balance.label': "Remunerazione cumulata su 3 anni",
     'sim.balance.detail': "Soldi che ieri non incassavate con il modello classico",
 
     'levers.tag': "Cosa MyBulkDeal cambia per voi",
-    'levers.h2': `Tre effetti sul vostro P&L,<br/>subito.`,
-    'levers.l1.h3': "Lo stesso lead, più volte",
-    'levers.l1.p': "Un investitore che parte da €6.700 torna. Una volta rassicurato sul meccanismo, fa un altro deal, poi un altro. Monetizzate la fiducia — non una transazione isolata.",
-    'levers.l2.h3': "Zero costi di acquisizione",
-    'levers.l2.p': "Tutti i dossier classificati 'non maturo' nel CRM tornano attivi. Niente lead nuovi da comprare, niente nuove ads. Risvegliate la base esistente.",
-    'levers.l3.h3': "Vendite addizionali all'anno",
-    'levers.l3.p': "L'ordine di grandezza che osserviamo sui pipeline già attivati. Non un target marketing — una constatazione di campo, per broker, in aggiunta al flusso abituale.",
+    'levers.h2': `Tre effetti sulla vostra attività,<br/>subito.`,
+    'levers.l1.h3': "Lo stesso cliente, più operazioni",
+    'levers.l1.p': "Un co-acquirente che entra a €6.700 torna. Una volta rassicurato sul meccanismo, sulle distribuzioni, sulla governance — fa un'altra operazione, poi un'altra. Monetizzate la fiducia che avete costruito, non una vendita isolata.",
+    'levers.l2.h3': "Zero costi di acquisizione aggiuntivi",
+    'levers.l2.p': "Tutti i dossier classificati 'non maturi per Dubai' nel CRM tornano attivi. Niente lead nuovi da comprare, niente nuove campagne. Risvegliate la base esistente.",
+    'levers.l3.h3': "Operazioni addizionali all'anno",
+    'levers.l3.p': "L'ordine di grandezza osservato sui portafogli già attivati. Non un target marketing — una constatazione di campo, per partner attivo, in aggiunta al flusso abituale.",
 
     'credit.tag': "La leva che cambia tutto",
-    'credit.h2': `I vostri clienti finanziano il loro progetto d'investimento a Dubai<br/>con <span class="green">credito in Francia</span>.`,
-    'credit.p': `Abbiamo stretto partnership con società di credito in Francia. I vostri clienti <strong>non devono più aspettare di aver risparmiato il ticket intero</strong>.<br/><br/>Levano debito in Francia — a un costo competitivo — per finanziare l'ingresso in un deal MyBulkDeal a Dubai. Il loro risparmio resta intatto, la capacità d'investimento è moltiplicata.`,
-    'credit.p1.h4': "Il risparmio del cliente resta intatto",
-    'credit.p1.p': "Invece di rompere una polizza vita o svuotare un libretto, mantiene il cuscinetto intatto e finanzia l'investimento con leva.",
-    'credit.p2.h4': "Capacità di investimento moltiplicata",
-    'credit.p2.p': "Un cliente con 30 K€ di risparmio può potenzialmente entrare su un deal da 80, 100, fino a 120 K€ in base al profilo bancario — senza toccare il cash.",
-    'credit.p3.h4': "Costo del credito FR ragionevole",
-    'credit.p3.p': "Confrontato ai rendimenti locativi e al plusvalore atteso sull'asset Dubai, il differenziale è interessante. I nostri partner conoscono il prodotto e qualificano in fretta.",
+    'credit.h2': `I vostri clienti non devono aspettare<br/>di <span class="green">aver risparmiato</span>.`,
+    'credit.p': `L'apporto di <strong>26.700 AED (€6.700)</strong> è volutamente calibrato per essere finanziabile dalle soluzioni di credito già esistenti in Francia. I vostri clienti non hanno nulla da aspettare, nulla da liquidare.<br/><br/>Diverse soluzioni di finanziamento esistono in Francia per un ticket di questo livello — ognuna adattata a un profilo di cliente diverso. <strong>Con la rete giusta e un broker credito indipendente</strong>, i vostri clienti assemblano la soluzione che fa al caso loro.`,
+    'credit.p1.h4': "Credito al consumo classico",
+    'credit.p1.p': "La via più diretta. Un credito al consumo al 6% su 5 anni per €6.700 rappresenta circa €130/mese. Accessibile a ogni cliente con una situazione professionale stabile.",
+    'credit.p2.h4': "Credito Lombard",
+    'credit.p2.p': "Per i clienti che detengono un portafoglio titoli o una polizza vita. Si indebitano dando in garanzia i loro asset finanziari, senza rompere il risparmio né generare fiscalità.",
+    'credit.p3.h4': "Prestito familiare documentato",
+    'credit.p3.p': "Soluzione semplice, poco costosa, perfetta quando l'ambiente familiare può prestare contro riconoscimento di debito registrato. Niente intermediario, niente costi nascosti.",
     'credit.p4.h4': "Mantenete la relazione cliente",
-    'credit.p4.p': "Vi forniamo i contatti del nostro partner credito Francia; siete voi a trasmetterli al vostro cliente (o organizzare la presentazione). Restate il loro interlocutore unico dall'inizio alla fine — mantenete la relazione, incassate la commissione.",
+    'credit.p4.p': "MyBulkDeal non effettua alcuna intermediazione in credito. Orientate il vostro cliente verso un broker credito indipendente francese registrato ORIAS di vostra scelta. Restate il suo interlocutore unico dall'inizio alla fine.",
 
     'comp.tag': "Un nuovo modello di remunerazione",
-    'comp.h2': `Meno casualità, più ricorrenza,<br/>un ARPU cliente che cresce.`,
-    'comp.old.h3': "Broker classico",
-    'comp.old.sub': "Commissione legata alla vendita, al closing.",
-    'comp.old.li1': "Commissione su un evento isolato",
+    'comp.h2': `Meno casualità, più ricorrenza,<br/>un valore cliente che cresce.`,
+    'comp.old.h3': "Mandato immobiliare classico",
+    'comp.old.sub': "Remunerazione legata alla vendita, al closing.",
+    'comp.old.li1': "Remunerazione su un evento isolato",
     'comp.old.li2': "Ciclo di vendita lungo (6-18 mesi)",
     'comp.old.li3': "Zero remunerazione sui 'non maturi'",
-    'comp.old.li4': "Nessuna leva credito",
+    'comp.old.li4': "Nessuna leva credito posizionata",
     'comp.old.li5': "Forte aleatorietà sul closing finale",
-    'comp.new.h3': "Modello MyBulkDeal",
-    'comp.new.sub': "Commissione sul capitale collocato nei nostri veicoli.",
-    'comp.new.li1': "Commissione su flusso ricorrente",
-    'comp.new.li2': "Primo closing in 60 giorni",
+    'comp.new.h3': "Programma partner MyBulkDeal",
+    'comp.new.sub': "Remunerazione di apporto d'affari su ogni operazione.",
+    'comp.new.li1': "Remunerazione su flusso ricorrente",
+    'comp.new.li2': "Primo closing previsto entro 60 giorni",
     'comp.new.li3': "I vostri 'non maturi' tornano attivi",
-    'comp.new.li4': "Commissione sul capitale totale (apporto + credito)",
-    'comp.new.li5': "Uno stesso cliente: 3, 5, 10 linee di commissione",
-    'comp.range.value': "2 a 5%",
-    'comp.range.label': "del capitale collocato dal vostro cliente, progetto per progetto",
+    'comp.new.li4': "Meccanica calibrata per il credito in Francia",
+    'comp.new.li5': "Uno stesso cliente: 3, 5, 10 operazioni nel tempo",
+    'comp.range.value': "Apporto d'affari",
+    'comp.range.label': "incorniciato da convenzione firmata, progetto per progetto",
 
     'how.tag': "Come funziona",
     'how.h2': "Cinque passi. Voi restate sul vostro mestiere.",
     'how.s1.h3': "Identificate & primo incontro",
-    'how.s1.p': "Un lead nel pipeline che combacia: interesse Dubai, ticket insufficiente per deal diretto, risparmio o capacità di indebitamento FR. Organizzate il primo incontro con il vostro cliente.",
-    'how.s2.h3': "Call con MyBulkDeal",
-    'how.s2.p': "Appuntamento con un membro del team MyBulkDeal, in presenza del partner (voi). Validiamo insieme la pertinenza del dossier e presentiamo il meccanismo al cliente.",
+    'how.s1.p': "Un cliente del vostro portafoglio che combacia: interesse Dubai, ticket insufficiente per acquisto diretto, risparmio mobilizzabile o capacità di indebitamento FR. Organizzate il primo scambio.",
+    'how.s2.h3': "Call tripartita con MyBulkDeal",
+    'how.s2.p': "Visio di 30-45 minuti con un membro del team MyBulkDeal, in vostra presenza. Validiamo insieme la pertinenza del dossier e presentiamo la meccanica di co-acquisizione.",
     'how.s3.h3': "Follow-up cliente & LOI",
-    'how.s3.p': "Voi gestite il follow-up del cliente. Appena conferma l'intenzione di prendere posizione su un deal, ci trasmettete la LOI (Letter of Intent). Restate l'unico interlocutore del cliente.",
-    'how.s4.h3': "Ingresso nella SPV",
-    'how.s4.p': "Il cliente raggiunge la SPV dedicata (da €6.700) e l'immobile viene acquistato. Capitale sicuro tramite mandatario RERA locale.",
+    'how.s3.p': "Voi gestite il follow-up del cliente. Appena conferma l'intenzione di prendere posizione su un'operazione, gli trasmettiamo la scheda progetto sotto NDA poi la lettera d'intenti. Restate il suo interlocutore unico.",
+    'how.s4.h3': "Ingresso nella società operativa",
+    'how.s4.p': "Il vostro cliente diventa azionista della società operativa dedicata (da 26.700 AED). L'immobile viene acquistato a nome della società dalla nostra agenzia partner titolare di una licenza RERA.",
     'how.s5.h3': "Voi incassate",
-    'how.s5.p': "Commissione 2-5% sul capitale collocato. Il cliente resta vostro — risalite i prossimi deal al vostro ritmo.",
+    'how.s5.p': "Versamento su dossier finalizzato, secondo le modalità definite nella convenzione d'apporto d'affari che firmiamo insieme. Il cliente resta vostro — risalite le operazioni successive al vostro ritmo.",
 
     'partnership.tag': "Cosa vi proponiamo",
     'partnership.h2': `Una partnership flessibile,<br/>senza esclusiva, senza impegno di volume.`,
-    'partnership.p': "Il nostro approccio si integra nella vostra attività attuale senza perturbarla. Ecco cosa costituisce una partnership MyBulkDeal lato broker.",
-    'partnership.p1.h3': "Un accordo di partnership semplice",
-    'partnership.p1.p': "Una pagina, due firme. Definisce il perimetro, la remunerazione e il modo di trasmissione dei lead. Niente esclusiva richiesta, niente impegno di volume.",
-    'partnership.p2.h3': "Accesso diretto ai nostri deal in corso",
-    'partnership.p2.p': "Off-plan e secondary market, aggiornati in continuo. Vedete in tempo reale cosa è aperto, cosa chiude, cosa si prepara.",
+    'partnership.p': "Il nostro approccio si integra nella vostra attività attuale senza perturbarla. Ecco cosa costituisce una partnership MyBulkDeal.",
+    'partnership.p1.h3': "Una convenzione d'apporto d'affari chiara",
+    'partnership.p1.p': "Un documento incorniciato: perimetro, modalità di remunerazione, modo di trasmissione dei dossier, protezione apportatore, non-sollecitazione incrociata. Niente esclusiva richiesta, nessun obiettivo cifrato imposto.",
+    'partnership.p2.h3': "Accesso diretto alle operazioni in corso",
+    'partnership.p2.p': "Off-plan e usato, aggiornati in continuo. Vedete cosa è aperto, cosa chiude, cosa si prepara. Le schede dettagliate sono accessibili sotto NDA.",
     'partnership.p3.h3': "Un onboarding corto del vostro team",
-    'partnership.p3.p': "Una sessione di 90 minuti: meccanica, pitch cliente, strumenti di qualifica, presentazione del partner credito Francia. I vostri commerciali operativi l'indomani.",
+    'partnership.p3.p': "Una sessione di 90 minuti: meccanica della co-acquisizione, pitch cliente, strumenti di qualifica, panorama delle soluzioni di finanziamento disponibili lato Francia. I vostri commerciali operativi l'indomani.",
     'partnership.p4.h3': "Un punto di contatto dedicato",
-    'partnership.p4.p': "Una persona referente, raggiungibile in diretta, che pilota i vostri dossier dalla prima call al closing. Niente supporto multi-ticket, niente centralino.",
+    'partnership.p4.p': "Una persona referente, raggiungibile in diretta, che pilota i vostri dossier dalla prima call alla distribuzione dei proventi locativi. Niente supporto multi-ticket, niente centralino.",
     'partnership.p5.h3': "Un reporting trimestrale",
-    'partnership.p5.p': "Lead convertiti, capitale collocato, remunerazione cumulata, opportunità di rilancio sulla base. Sapete esattamente dove siete.",
-    'partnership.cta.p': "Una call o un caffè di 30 minuti. Guardiamo insieme la tipologia del vostro pipeline e identifichiamo 2-3 profili test.",
+    'partnership.p5.p': "Clienti qualificati, operazioni concluse, remunerazione cumulata, opportunità di rilancio sulla base. Sapete esattamente dove siete.",
+    'partnership.cta.p': "Una call o un caffè di 30 minuti. Guardiamo insieme la tipologia del vostro portafoglio e identifichiamo 2-3 profili test.",
     'partnership.cta.btn': "Prenota una call →",
 
-    'final.h2': `La vostra base clienti è lì.<br/>Il resto, lo costruiamo insieme.`,
-    'final.p': "Primo deal chiuso atteso entro 60 giorni dal primo dossier trasmesso.",
-    'final.cta': "Prenota la mia call →",
+    'final.h2': `Il vostro portafoglio è lì.<br/>Il resto, lo costruiamo insieme.`,
+    'final.p': "Primo closing previsto entro 60 giorni dal primo dossier trasmesso.",
+    'final.cta': "Candidati ora →",
 
-    'footer.tagline': "Operatore di SPV immobiliari · Dubai · Partnership broker",
-    'footer.disclaimer': "Documento destinato a broker e agenzie partner. I numeri del simulatore si basano su ipotesi di mercato e osservazioni su pipeline esistenti. La remunerazione effettiva si cala progetto per progetto secondo la natura del deal e il livello di accompagnamento cliente fornito. Nessuna offerta contrattuale è formulata da questo documento."
+    'footer.tagline': "Operatore di co-acquisizioni immobiliari a Dubai · Programma partner francofono",
+    'footer.disclaimer': "Spazio destinato ai professionisti dell'apporto d'affari immobiliare e patrimoniale che desiderano orientare clienti qualificati verso le nostre operazioni di co-acquisizione. Gli elementi presenti su questa pagina non costituiscono né un'offerta al pubblico di titoli finanziari ai sensi degli articoli L.411-1 e seguenti del Codice monetario e finanziario francese, né un atto di sollecitazione bancaria e finanziaria ai sensi degli articoli L.341-1 e seguenti, né una sollecitazione a investire in un fondo d'investimento alternativo ai sensi della direttiva 2011/61/UE. Il simulatore è uno strumento indicativo e non contrattuale; la remunerazione d'apporto d'affari effettiva è definita progetto per progetto nella convenzione firmata. I numeri si basano su ipotesi di mercato e osservazioni su portafogli esistenti. MyBulkDeal non effettua alcuna intermediazione in credito; ogni soluzione di finanziamento presentata a un cliente deve essere studiata con un broker credito indipendente francese registrato ORIAS."
   }
 };
 
 let currentLang = 'fr';
 
+// Taux d'apport d'affaires pré-réglé. Cadré dans la convention signée. Jamais affiché.
+const RATE = 0.04;
+
 function formatEur(amount, lang) {
-  // amount in € (number). Returns formatted string.
   const sep = (lang === 'en') ? ',' : ' ';
   const fmt = Math.round(amount).toString().replace(/\B(?=(\d{3})+(?!\d))/g, sep);
   return (lang === 'en') ? `€${fmt}` : `${fmt} €`;
@@ -1069,10 +1072,8 @@ function formatEur(amount, lang) {
 
 const clientsSlider = document.getElementById('clientsSlider');
 const budgetSlider = document.getElementById('budgetSlider');
-const commissionSlider = document.getElementById('commissionSlider');
 const clientsVal = document.getElementById('clientsVal');
 const budgetDisplay = document.getElementById('budgetDisplay');
-const commissionVal = document.getElementById('commissionVal');
 const y1Val = document.getElementById('y1Val');
 const y2Val = document.getElementById('y2Val');
 const y3Val = document.getElementById('y3Val');
@@ -1081,7 +1082,6 @@ const y2Capital = document.getElementById('y2Capital');
 const y3Capital = document.getElementById('y3Capital');
 const totalVal = document.getElementById('totalVal');
 
-// Croissance pipeline
 const Y2_MULT = 1.7;
 const Y3_MULT = 2.5;
 
@@ -1096,23 +1096,20 @@ let chart = null;
 function compute() {
   const clients = +clientsSlider.value;
   const budget = +budgetSlider.value;
-  const commission = +commissionSlider.value;
   const lang = currentLang;
 
   clientsVal.textContent = clients;
   budgetDisplay.textContent = formatEur(budget, lang);
-  commissionVal.textContent = (lang === 'en') ? commission.toFixed(1) : commission.toFixed(1).replace('.', ',');
 
   updateSliderFill(clientsSlider);
   updateSliderFill(budgetSlider);
-  updateSliderFill(commissionSlider);
 
   const capitalY1 = clients * budget;
   const capitalY2 = capitalY1 * Y2_MULT;
   const capitalY3 = capitalY1 * Y3_MULT;
-  const commissionY1 = capitalY1 * (commission / 100);
-  const commissionY2 = capitalY2 * (commission / 100);
-  const commissionY3 = capitalY3 * (commission / 100);
+  const commissionY1 = capitalY1 * RATE;
+  const commissionY2 = capitalY2 * RATE;
+  const commissionY3 = capitalY3 * RATE;
   const total = commissionY1 + commissionY2 + commissionY3;
 
   y1Val.textContent = formatEur(commissionY1, lang);
@@ -1173,7 +1170,6 @@ function updateChart(c1, c2, c3, lang) {
 
 clientsSlider.addEventListener('input', compute);
 budgetSlider.addEventListener('input', compute);
-commissionSlider.addEventListener('input', compute);
 
 function applyLang(lang) {
   if (!I18N[lang]) lang = 'fr';
