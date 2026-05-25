@@ -13,19 +13,15 @@
   Ce formulaire envoie un récap complet + toutes les pièces jointes
   à philippe@monopimmobilier.com via Formspree.
 
-  Étapes pour activer (5 minutes) :
-  1. Va sur https://formspree.io/ et crée un compte gratuit
-     (utilise philippe@monopimmobilier.com).
-  2. Crée un nouveau formulaire ("New Form") nommé "MBD Apporteurs".
-  3. Formspree te donne un endpoint du type :
-        https://formspree.io/f/abcd1234
-  4. Remplace dans le code ci-dessous :
-        FORMSPREE_ENDPOINT_ICI
-     par cet endpoint (recherche / remplace tout).
-  5. Optionnel : passe en plan Formspree "Basic" (10€/mois) pour
-     - autoriser les fichiers > 10 Mo
-     - retirer la limite de 50 soumissions / mois
-     - activer l'envoi à plusieurs emails
+  Endpoint actif : https://formspree.io/f/xqejddbo
+  Compte Formspree : philippe@monopimmobilier.com
+  Dashboard : https://formspree.io/forms/xqejddbo/submissions
+
+  Plan gratuit Formspree : 50 soumissions/mois, fichiers jusqu'à 10 Mo.
+  Passer en plan "Basic" (10€/mois) pour :
+    - autoriser les fichiers > 10 Mo
+    - retirer la limite de 50 soumissions / mois
+    - activer l'envoi à plusieurs emails
 
   Le formulaire utilise multipart/form-data, donc les uploads
   (CNI, Kbis, RIB, etc.) partent automatiquement en pièces jointes
@@ -289,16 +285,15 @@
     <div class="step-pill" data-step="3"><span class="n">3</span>Habilitations</div>
     <div class="step-pill" data-step="4"><span class="n">4</span>Banque / fiscal</div>
     <div class="step-pill" data-step="5"><span class="n">5</span>Activité</div>
-    <div class="step-pill" data-step="6"><span class="n">6</span>Commercial</div>
-    <div class="step-pill" data-step="7"><span class="n">7</span>Engagements</div>
-    <div class="step-pill" data-step="8"><span class="n">8</span>Signataire</div>
-    <div class="step-pill" data-step="9"><span class="n">9</span>Récap</div>
+    <div class="step-pill" data-step="6"><span class="n">6</span>Engagements</div>
+    <div class="step-pill" data-step="7"><span class="n">7</span>Signataire</div>
+    <div class="step-pill" data-step="8"><span class="n">8</span>Récap</div>
   </div>
 </div>
 
 <main class="form-wrap">
   <div class="container">
-    <form id="apporteurForm" action="FORMSPREE_ENDPOINT_ICI" method="POST" enctype="multipart/form-data" novalidate>
+    <form id="apporteurForm" action="https://formspree.io/f/xqejddbo" method="POST" enctype="multipart/form-data" novalidate>
       <input type="hidden" name="_subject" value="🎯 Nouvelle candidature apporteur MBD" />
       <input type="hidden" name="_format" value="plain" />
 
@@ -312,7 +307,7 @@
         <!-- ============== ÉTAPE 1 : TYPE D'APPORTEUR ============== -->
         <section class="step-panel active" data-panel="1">
           <div class="step-head">
-            <span class="step-tag">Étape 1 / 9</span>
+            <span class="step-tag">Étape 1 / 8</span>
             <h2>Qui êtes-vous ?</h2>
             <p>Le formulaire s'adapte à votre profil. Sélectionnez d'abord votre situation pour ne voir que les champs qui vous concernent.</p>
           </div>
@@ -363,7 +358,7 @@
         <!-- ============== ÉTAPE 2 : IDENTITÉ ============== -->
         <section class="step-panel" data-panel="2">
           <div class="step-head">
-            <span class="step-tag">Étape 2 / 9</span>
+            <span class="step-tag">Étape 2 / 8</span>
             <h2>Votre identité</h2>
             <p>Les pièces justificatives sont chiffrées en transit et utilisées uniquement pour la conformité KYC / LCB-FT.</p>
           </div>
@@ -597,7 +592,7 @@
         <!-- ============== ÉTAPE 3 : HABILITATIONS PROFESSIONNELLES ============== -->
         <section class="step-panel" data-panel="3">
           <div class="step-head">
-            <span class="step-tag">Étape 3 / 9</span>
+            <span class="step-tag">Étape 3 / 8</span>
             <h2>Habilitations professionnelles</h2>
             <p>Les pièces demandées dépendent de votre profession sélectionnée à l'étape 1.</p>
           </div>
@@ -683,40 +678,6 @@
             </div>
           </div>
 
-          <!-- RC PRO -->
-          <div class="subsection" id="hab-rcpro-wrap">
-            <div class="subsection-title">Assurance responsabilité civile professionnelle</div>
-            <div class="field-grid">
-              <div class="field">
-                <label for="rcpro_assureur">Assureur</label>
-                <input type="text" id="rcpro_assureur" name="rcpro_assureur" placeholder="MMA, Allianz, AIG…" />
-              </div>
-              <div class="field">
-                <label for="rcpro_num">N° de contrat</label>
-                <input type="text" id="rcpro_num" name="rcpro_num" />
-              </div>
-              <div class="field">
-                <label for="rcpro_plafond">Plafond de garantie</label>
-                <input type="text" id="rcpro_plafond" name="rcpro_plafond" placeholder="Ex. 500 000 €" />
-              </div>
-              <div class="field">
-                <label for="rcpro_date">Date de validité</label>
-                <input type="date" id="rcpro_date" name="rcpro_date" />
-              </div>
-              <div class="field full">
-                <label>Attestation RC Pro</label>
-                <label class="upload-zone">
-                  <input type="file" name="rcpro_attestation" accept="image/*,application/pdf" />
-                  <div class="up-icon">⤴</div>
-                  <div class="up-text">Cliquez ou déposez ici</div>
-                  <div class="up-sub">PDF/JPG/PNG en cours de validité</div>
-                  <div class="file-info"></div>
-                  <button type="button" class="remove-file" aria-label="Retirer">×</button>
-                </label>
-              </div>
-            </div>
-          </div>
-
           <div class="subsection">
             <div class="subsection-title">Autres agréments <span style="font-size:0.7rem; color: var(--text-3); font-weight:400; letter-spacing:0;">(AMF, ACPR, autres juridictions…)</span></div>
             <div class="field">
@@ -729,9 +690,9 @@
         <!-- ============== ÉTAPE 4 : BANQUE / FISCAL ============== -->
         <section class="step-panel" data-panel="4">
           <div class="step-head">
-            <span class="step-tag">Étape 4 / 9</span>
+            <span class="step-tag">Étape 4 / 8</span>
             <h2>Coordonnées bancaires et fiscales</h2>
-            <p>Ces informations permettent d'éditer la convention et les futurs versements de commissions.</p>
+            <p>Ces informations permettent d'éditer la convention et les futurs versements.</p>
           </div>
 
           <div class="field-grid">
@@ -765,24 +726,13 @@
                 <option>À déterminer</option>
               </select>
             </div>
-            <div class="field full">
-              <label>Attestation de régularité fiscale et sociale <span class="opt">recommandé — URSSAF + fiscale</span></label>
-              <label class="upload-zone">
-                <input type="file" name="attestation_fiscale" accept="image/*,application/pdf" />
-                <div class="up-icon">⤴</div>
-                <div class="up-text">Cliquez ou déposez ici</div>
-                <div class="up-sub">PDF/JPG/PNG — optionnel mais accélère l'onboarding</div>
-                <div class="file-info"></div>
-                <button type="button" class="remove-file" aria-label="Retirer">×</button>
-              </label>
-            </div>
           </div>
         </section>
 
         <!-- ============== ÉTAPE 5 : ACTIVITÉ ============== -->
         <section class="step-panel" data-panel="5">
           <div class="step-head">
-            <span class="step-tag">Étape 5 / 9</span>
+            <span class="step-tag">Étape 5 / 8</span>
             <h2>Votre activité aujourd'hui</h2>
             <p>Aidez-nous à dimensionner le partenariat et à préparer un onboarding utile.</p>
           </div>
@@ -826,112 +776,20 @@
               <label for="sources">Sources de leads <span class="req">*</span></label>
               <textarea id="sources" name="sources" placeholder="Réseau personnel, CRM existant (ex. 2 500 contacts), marketing digital (LinkedIn, Meta Ads), partenariats notaires/experts-comptables…" data-required="step5"></textarea>
             </div>
-            <div class="field">
-              <label for="deja_place">Avez-vous déjà placé des produits financiers ?</label>
-              <select id="deja_place" name="deja_place">
-                <option value="">—</option>
-                <option>Oui</option>
-                <option>Non</option>
-              </select>
-            </div>
-            <div class="field">
-              <label for="produits_passes">Si oui, lesquels ?</label>
-              <input type="text" id="produits_passes" name="produits_passes" placeholder="Ex. SCPI, OPCI, crowdfunding immo, club deals…" />
-            </div>
           </div>
         </section>
 
-        <!-- ============== ÉTAPE 6 : COMMERCIAL ============== -->
+        <!-- ============== ÉTAPE 6 : ENGAGEMENTS (ex-7) ============== -->
         <section class="step-panel" data-panel="6">
           <div class="step-head">
-            <span class="step-tag">Étape 6 / 9</span>
-            <h2>Conditions commerciales souhaitées</h2>
-            <p>Indicatif — toutes les conditions finales sont actées dans la convention d'apport.</p>
-          </div>
-
-          <div class="field">
-            <label>Modèle de partenariat souhaité <span class="req">*</span></label>
-            <div class="choice-grid">
-              <label class="choice-card">
-                <input type="radio" name="modele_partenariat" value="Direct (commission MBD)" data-required="step6" />
-                <div class="card-inner">
-                  <div class="card-icon">→</div>
-                  <div class="card-title">Modèle Direct</div>
-                  <div class="card-sub">MBD gère la commission agence et vous reverse une quote-part.</div>
-                </div>
-              </label>
-              <label class="choice-card">
-                <input type="radio" name="modele_partenariat" value="White Label" />
-                <div class="card-inner">
-                  <div class="card-icon">⊕</div>
-                  <div class="card-title">White Label</div>
-                  <div class="card-sub">Vous gardez 100 % de la commission agence. MBD facture les frais de dossier au client.</div>
-                </div>
-              </label>
-            </div>
-          </div>
-
-          <div class="field-grid" style="margin-top: 28px;">
-            <div class="field">
-              <label for="comm_taux">Taux ou montant discuté <span class="opt">indicatif</span></label>
-              <input type="text" id="comm_taux" name="comm_taux" placeholder="Ex. 2 % du souscrit, ou 500 € fixe" />
-            </div>
-            <div class="field">
-              <label for="comm_base">Base de calcul</label>
-              <select id="comm_base" name="comm_base">
-                <option value="">—</option>
-                <option>Montant souscrit en OC</option>
-                <option>Frais de dossier perçus</option>
-                <option>Commission agence (Direct)</option>
-                <option>À discuter</option>
-              </select>
-            </div>
-            <div class="field">
-              <label for="exclusivite">Exclusivité demandée ?</label>
-              <select id="exclusivite" name="exclusivite">
-                <option value="">—</option>
-                <option>Non</option>
-                <option>Oui, sur ma zone</option>
-                <option>Oui, sur ma typologie de client</option>
-                <option>À discuter</option>
-              </select>
-            </div>
-            <div class="field">
-              <label for="protection_lead">Durée de protection des leads souhaitée</label>
-              <select id="protection_lead" name="protection_lead">
-                <option value="">—</option>
-                <option>6 mois</option>
-                <option>12 mois</option>
-                <option>18 mois</option>
-                <option>24 mois</option>
-                <option>À discuter</option>
-              </select>
-            </div>
-            <div class="field full">
-              <label for="duree_contrat">Durée de contrat / tacite reconduction souhaitée</label>
-              <select id="duree_contrat" name="duree_contrat">
-                <option value="">—</option>
-                <option>12 mois, tacite reconduction</option>
-                <option>24 mois, tacite reconduction</option>
-                <option>36 mois, tacite reconduction</option>
-                <option>Sans engagement de durée</option>
-                <option>À discuter</option>
-              </select>
-            </div>
-          </div>
-        </section>
-
-        <!-- ============== ÉTAPE 7 : ENGAGEMENTS ============== -->
-        <section class="step-panel" data-panel="7">
-          <div class="step-head">
-            <span class="step-tag">Étape 7 / 9</span>
+            <span class="step-tag">Étape 6 / 8</span>
             <h2>Déclarations et engagements</h2>
             <p>Pour pouvoir contractualiser, nous avons besoin de vos déclarations sur l'honneur ci-dessous. Tout est repris noir sur blanc dans la convention finale.</p>
           </div>
 
           <div class="check-list">
             <label class="check-item">
-              <input type="checkbox" name="dec_honneur" value="OK" data-required="step7" />
+              <input type="checkbox" name="dec_honneur" value="OK" data-required="step6" />
               <span class="check-box"></span>
               <span class="check-content">
                 <span class="check-title">Déclaration de non-condamnation <span class="req">*</span></span>
@@ -940,7 +798,7 @@
             </label>
 
             <label class="check-item">
-              <input type="checkbox" name="dec_lcbft" value="OK" data-required="step7" />
+              <input type="checkbox" name="dec_lcbft" value="OK" data-required="step6" />
               <span class="check-box"></span>
               <span class="check-content">
                 <span class="check-title">Déclaration LCB-FT <span class="req">*</span></span>
@@ -949,7 +807,7 @@
             </label>
 
             <label class="check-item">
-              <input type="checkbox" name="dec_rgpd" value="OK" data-required="step7" />
+              <input type="checkbox" name="dec_rgpd" value="OK" data-required="step6" />
               <span class="check-box"></span>
               <span class="check-content">
                 <span class="check-title">Politique RGPD <span class="req">*</span></span>
@@ -958,7 +816,7 @@
             </label>
 
             <label class="check-item">
-              <input type="checkbox" name="dec_cgv" value="OK" data-required="step7" />
+              <input type="checkbox" name="dec_cgv" value="OK" data-required="step6" />
               <span class="check-box"></span>
               <span class="check-content">
                 <span class="check-title">CGV du programme partenaires <span class="req">*</span></span>
@@ -967,7 +825,7 @@
             </label>
 
             <label class="check-item">
-              <input type="checkbox" name="dec_charte" value="OK" data-required="step7" />
+              <input type="checkbox" name="dec_charte" value="OK" data-required="step6" />
               <span class="check-box"></span>
               <span class="check-content">
                 <span class="check-title">Charte de communication <span class="req">*</span></span>
@@ -976,7 +834,7 @@
             </label>
 
             <label class="check-item">
-              <input type="checkbox" name="dec_independance" value="OK" data-required="step7" />
+              <input type="checkbox" name="dec_independance" value="OK" data-required="step6" />
               <span class="check-box"></span>
               <span class="check-content">
                 <span class="check-title">Statut d'indépendance <span class="req">*</span></span>
@@ -986,10 +844,10 @@
           </div>
         </section>
 
-        <!-- ============== ÉTAPE 8 : SIGNATAIRE + COMPLÉMENTAIRES ============== -->
-        <section class="step-panel" data-panel="8">
+        <!-- ============== ÉTAPE 7 : SIGNATAIRE + COMPLÉMENTAIRES (ex-8) ============== -->
+        <section class="step-panel" data-panel="7">
           <div class="step-head">
-            <span class="step-tag">Étape 8 / 9</span>
+            <span class="step-tag">Étape 7 / 8</span>
             <h2>Signataire et pièces complémentaires</h2>
             <p>Dernière étape avant l'envoi.</p>
           </div>
@@ -998,15 +856,15 @@
           <div class="field-grid">
             <div class="field">
               <label for="sign_nom">Nom et prénom <span class="req">*</span></label>
-              <input type="text" id="sign_nom" name="sign_nom" data-required="step8" />
+              <input type="text" id="sign_nom" name="sign_nom" data-required="step7" />
             </div>
             <div class="field">
               <label for="sign_fonction">Fonction <span class="req">*</span></label>
-              <input type="text" id="sign_fonction" name="sign_fonction" placeholder="Président, Gérant, Indépendant…" data-required="step8" />
+              <input type="text" id="sign_fonction" name="sign_fonction" placeholder="Président, Gérant, Indépendant…" data-required="step7" />
             </div>
             <div class="field full">
               <label for="sign_email">Email pour signature électronique (DocuSign) <span class="req">*</span></label>
-              <input type="email" id="sign_email" name="sign_email" data-required="step8" />
+              <input type="email" id="sign_email" name="sign_email" data-required="step7" />
               <div class="help">C'est sur cet email que la convention vous sera envoyée pour signature.</div>
             </div>
           </div>
@@ -1048,10 +906,10 @@
           </div>
         </section>
 
-        <!-- ============== ÉTAPE 9 : RÉCAP ============== -->
-        <section class="step-panel" data-panel="9">
+        <!-- ============== ÉTAPE 8 : RÉCAP (ex-9) ============== -->
+        <section class="step-panel" data-panel="8">
           <div class="step-head">
-            <span class="step-tag">Étape 9 / 9</span>
+            <span class="step-tag">Étape 8 / 8</span>
             <h2>Récapitulatif avant envoi</h2>
             <p>Vérifiez vos informations. Vous pouvez revenir en arrière à tout moment pour ajuster.</p>
           </div>
@@ -1137,7 +995,7 @@ const alertBox = document.getElementById('alert');
 const alertText = document.getElementById('alertText');
 const recap = document.getElementById('recap');
 const thanks = document.getElementById('thanks');
-const TOTAL_STEPS = 9;
+const TOTAL_STEPS = 8;
 let currentStep = 1;
 
 /* ============================================================
@@ -1184,8 +1042,8 @@ form.querySelectorAll('input[name="type_apporteur"], #profession').forEach(el =>
    ============================================================ */
 function injectLaterToggles() {
   document.querySelectorAll('.step-panel .field').forEach(field => {
-    // Exclure l'étape 7 (engagements)
-    if (field.closest('.step-panel[data-panel="7"]')) return;
+    // Exclure l'étape 6 (engagements)
+    if (field.closest('.step-panel[data-panel="6"]')) return;
     // Ne pas dupliquer
     if (field.querySelector('.later-toggle')) return;
 
@@ -1336,9 +1194,9 @@ function validateStep(n) {
     }
   });
 
-  // Étape 7 : toutes les checkboxes requises
-  if (n === 7) {
-    panel.querySelectorAll('input[type="checkbox"][data-required="step7"]').forEach(cb => {
+  // Étape 6 : toutes les checkboxes requises (engagements)
+  if (n === 6) {
+    panel.querySelectorAll('input[type="checkbox"][data-required="step6"]').forEach(cb => {
       cb.closest('.check-item').style.borderColor = '';
       if (!cb.checked) {
         cb.closest('.check-item').style.borderColor = 'var(--red)';
@@ -1348,7 +1206,7 @@ function validateStep(n) {
   }
 
   if (firstInvalid) {
-    alertText.textContent = (n === 7)
+    alertText.textContent = (n === 6)
       ? 'Merci de cocher toutes les déclarations pour pouvoir contractualiser.'
       : 'Merci de compléter les champs obligatoires marqués d\'un astérisque.';
     alertBox.classList.add('show');
@@ -1470,8 +1328,6 @@ function buildRecap() {
     habRows.push(row('ORIAS', `n° ${v('orias_num')} · ${v('orias_categorie')}`));
     habRows.push(row('Attestation ORIAS', v('orias_attestation')));
   }
-  habRows.push(row('RC Pro', `${v('rcpro_assureur')} · n° ${v('rcpro_num')} · plafond ${v('rcpro_plafond')} · valide ${v('rcpro_date')}`));
-  habRows.push(row('Attestation RC Pro', v('rcpro_attestation')));
   habRows.push(row('Autres agréments', v('autres_agrements')));
   html.push(block('3 · Habilitations professionnelles', habRows));
 
@@ -1479,25 +1335,14 @@ function buildRecap() {
     row('RIB', v('rib')),
     row('Résidence fiscale', v('pays_fiscal')),
     row('N° TVA', v('tva_num')),
-    row('Régime TVA', v('tva_regime')),
-    row('Attestation fiscale', v('attestation_fiscale'))
+    row('Régime TVA', v('tva_regime'))
   ]));
 
   html.push(block('5 · Activité', [
     row('Zones', v('zones')),
     row('Volume leads / mois', v('volume_leads')),
     row('Typologie clients', v('typologie')),
-    row('Sources de leads', v('sources')),
-    row('Déjà placé des produits ?', `${v('deja_place')} ${v('produits_passes') ? '— ' + v('produits_passes') : ''}`)
-  ]));
-
-  html.push(block('6 · Conditions commerciales souhaitées', [
-    row('Modèle', v('modele_partenariat')),
-    row('Taux / montant', v('comm_taux')),
-    row('Base de calcul', v('comm_base')),
-    row('Exclusivité', v('exclusivite')),
-    row('Protection lead', v('protection_lead')),
-    row('Durée contrat', v('duree_contrat'))
+    row('Sources de leads', v('sources'))
   ]));
 
   const decs = [];
@@ -1505,9 +1350,9 @@ function buildRecap() {
     const cb = form.elements[n];
     decs.push(row(n.replace('dec_','').toUpperCase(), cb && cb.checked ? '✅ accepté' : '❌ non coché'));
   });
-  html.push(block('7 · Engagements', decs));
+  html.push(block('6 · Engagements', decs));
 
-  html.push(block('8 · Signataire & complémentaires', [
+  html.push(block('7 · Signataire & complémentaires', [
     row('Signataire', `${v('sign_nom')} (${v('sign_fonction')})`),
     row('Email signature', v('sign_email')),
     row('Pitch deck', v('pitch_deck')),
@@ -1519,7 +1364,7 @@ function buildRecap() {
   recap.innerHTML = html.join('');
 
   // Méta pour l'email
-  const meta = `Candidat: ${type === 'Personne morale' ? v('pm_raison') : (v('pp_nom') + ' ' + v('pp_prenom'))} · Profession: ${prof} · Modèle: ${v('modele_partenariat')} · Volume: ${v('volume_leads')}`;
+  const meta = `Candidat: ${type === 'Personne morale' ? v('pm_raison') : (v('pp_nom') + ' ' + v('pp_prenom'))} · Profession: ${prof} · Volume: ${v('volume_leads')}`;
   document.getElementById('_recap_meta').value = meta;
   form.querySelector('input[name="_subject"]').value = `🎯 MBD — Candidature ${type === 'Personne morale' ? v('pm_raison') : v('pp_nom') + ' ' + v('pp_prenom')} (${prof})`;
 }
